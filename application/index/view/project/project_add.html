@@ -1,0 +1,428 @@
+{extend name="layout"/}
+{block name="title"/}
+    <title>添加项目 - 客户管理系统</title>
+  {/block}
+{block name="breadcrumb"/}
+    <div class="col-md-5 col-8 align-self-center">
+                    <h3 class="text-themecolor">工作台</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">首页</a></li>
+                        <li class="breadcrumb-item go_back"><a href="javascript:void(0)">项目管理</a></li>
+                        <li class="breadcrumb-item active">添加项目</li>
+                    </ol>
+                </div>
+ {/block}
+{block name="detail"/}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-outline-info">
+                <div class="card-header">
+                    <h4 class="m-b-0 text-white">添加项目</h4>
+                </div>
+                <div class="card-body">
+                    <form action="#">
+                        <div class="form-body">
+                            <h3 class="card-title">客户信息</h3>
+                            <hr>
+                            <div class="row p-t-20">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">客户全称</label>
+                                        <input type="text" id="firstName" class="form-control" placeholder="珠海金融投资控股有限公司" value="珠海金融投资控股有限公司">
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group has-danger">
+                                        <label class="control-label">客户行业</label>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                            <option value="Category 1">贵金属</option>
+                                            <option value="Category 2">外汇</option>
+                                            <option value="Category 3">在线教育</option>
+                                            <option value="Category 4">电子商务</option>
+                                        </select>
+                                        <small class="form-control-feedback"></small> </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+                            <!--/row-->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group has-success">
+                                        <label class="control-label">公司性质</label>
+                                        <div class="form-check">
+                                            <label class="custom-control custom-radio">
+                                                <input id="radio1" name="radio" type="radio" checked class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">合资</span>
+                                            </label>
+                                            <label class="custom-control custom-radio">
+                                                <input id="radio2" name="radio" type="radio" class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">国企</span>
+                                            </label>
+                                            <label class="custom-control custom-radio">
+                                                <input id="radio2" name="radio" type="radio" class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">民营</span>
+                                            </label>
+                                            <label class="custom-control custom-radio">
+                                                <input id="radio2" name="radio" type="radio" class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">其他</span>
+                                            </label>
+                                        </div>
+                                        <small class="form-control-feedback"></small> </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">年营业额</label>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                            <option value="Category 1">10万以内</option>
+                                            <option value="Category 2">10-50万</option>
+                                            <option value="Category 3">50-100万</option>
+                                            <option value="Category 4">100万以上</option>
+                                        </select>
+                                        <small class="form-control-feedback"></small>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+                            <!--/row-->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">客户状态一级</label>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                            <option value="Category 1">潜在客户</option>
+                                            <option value="Category 2">需求客户</option>
+                                            <option value="Category 3">提案客户</option>
+                                            <option value="Category 4">签约客户</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">客户状态二级</label>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                            <option value="Category 1">战略级客户</option>
+                                            <option value="Category 2">品牌级客户</option>
+                                            <option value="Category 3">核心级客户</option>
+                                            <option value="Category 4">普通级客户</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+                            <h3 class="card-title">首要联系人信息</h3>
+                            <hr>
+                            <div class="row p-t-20">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">联系人</label>
+                                        <input type="text" id="firstName" class="form-control" placeholder="张思德" value="张思德">
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-4">
+                                    <div class="form-group has-danger">
+                                        <label class="control-label">职位</label>
+                                        <input type="text" id="firstName" class="form-control" placeholder="采购总监" value="采购总监">
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-4">
+                                    <div class="form-group has-danger">
+                                        <label class="control-label">性别</label>
+                                        <div class="form-check">
+                                            <label class="custom-control custom-radio">
+                                                <input id="radio1" name="radio_sex" type="radio" checked class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">男</span>
+                                            </label>
+                                            <label class="custom-control custom-radio">
+                                                <input id="radio2" name="radio_sex" type="radio" class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">女</span>
+                                            </label>
+                                        </div>
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+                            <div class="row p-t-20">
+                                <div class="col-md-4">
+                                    <div class="form-group has-danger">
+                                        <label class="control-label">电话</label>
+                                        <input type="text" id="firstName" class="form-control" placeholder="15878817547" value="15878817547">
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group has-danger">
+                                        <label class="control-label">邮箱</label>
+                                        <input type="text" id="firstName" class="form-control" placeholder="15878817547@139.com" value="15878817547@139.com">
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-4">
+                                    <div class="form-group has-danger">
+                                        <label class="control-label">QQ</label>
+                                        <input type="text" id="firstName" class="form-control" placeholder="259854458" value="259854458">
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-12">
+                                    <div class="form-group has-danger">
+                                        <label class="control-label">备注</label>
+                                        <textarea id="firstName" rows="6" class="form-control" placeholder="采购总监" >直接对总经理负责，需要在采购领域具有良好的业绩和职业道德纪录，分析能力强</textarea>
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+
+                                <!--/span-->
+                            </div>
+                            <!--/row-->
+
+
+                            <!--/row-->
+                            <h3 class="box-title m-t-40">项目信息</h3>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3 ">
+                                    <div class="form-group">
+                                        <label>项目所在部门</label>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                            <option value="Category 1">项目部</option>
+                                            <option value="Category 2">新媒体部</option>
+                                            <option value="Category 3">媒介部</option>
+                                            <option value="Category 4">SEM</option>
+                                            <option value="Category 4">技术部</option>
+                                            <option value="Category 4">创意策划部</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 ">
+                                    <div class="form-group">
+                                        <label>项目执行人</label>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                            <option value="Category 1">刘鉴兰</option>
+                                            <option value="Category 2">林晓敏</option>
+                                            <option value="Category 3">谭璐璐</option>
+                                            <option value="Category 4">肖乳香</option>
+                                            <option value="Category 4">罗文渊</option>
+                                            <option value="Category 4">吴大明</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 ">
+                                    <div class="form-group">
+                                        <label>策划部门</label>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                            <option value="Category 1">项目部</option>
+                                            <option value="Category 2">新媒体部</option>
+                                            <option value="Category 3">媒介部</option>
+                                            <option value="Category 4">SEM</option>
+                                            <option value="Category 4">技术部</option>
+                                            <option value="Category 4">创意策划部</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 ">
+                                    <div class="form-group">
+                                        <label>策划人</label>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                            <option value="Category 1">刘鉴兰</option>
+                                            <option value="Category 2">林晓敏</option>
+                                            <option value="Category 3">谭璐璐</option>
+                                            <option value="Category 4">肖乳香</option>
+                                            <option value="Category 4">罗文渊</option>
+                                            <option value="Category 4">吴大明</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 ">
+                                    <div class="form-group">
+                                        <label>对接部门</label>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                            <option value="Category 1">项目部</option>
+                                            <option value="Category 2">新媒体部</option>
+                                            <option value="Category 3">媒介部</option>
+                                            <option value="Category 4">SEM</option>
+                                            <option value="Category 4">技术部</option>
+                                            <option value="Category 4">创意策划部</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 ">
+                                    <div class="form-group">
+                                        <label>对接人</label>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                            <option value="Category 1">刘鉴兰</option>
+                                            <option value="Category 2">林晓敏</option>
+                                            <option value="Category 3">谭璐璐</option>
+                                            <option value="Category 4">肖乳香</option>
+                                            <option value="Category 4">罗文渊</option>
+                                            <option value="Category 4">吴大明</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 ">
+                                    <div class="form-group">
+                                        <label>管理部门</label>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                            <option value="Category 1">项目部</option>
+                                            <option value="Category 2">新媒体部</option>
+                                            <option value="Category 3">媒介部</option>
+                                            <option value="Category 4">SEM</option>
+                                            <option value="Category 4">技术部</option>
+                                            <option value="Category 4">创意策划部</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 ">
+                                    <div class="form-group">
+                                        <label>管理人</label>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                            <option value="Category 1">刘鉴兰</option>
+                                            <option value="Category 2">林晓敏</option>
+                                            <option value="Category 3">谭璐璐</option>
+                                            <option value="Category 4">肖乳香</option>
+                                            <option value="Category 4">罗文渊</option>
+                                            <option value="Category 4">吴大明</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 ">
+                                    <div class="form-group">
+                                        <label>需求产品一级</label>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                            <option value="Category 1">品牌信息壁垒体系</option>
+                                            <option value="Category 2">创意策划传播</option>
+                                            <option value="Category 3">平面视觉</option>
+                                            <option value="Category 4">视频视觉</option>
+                                            <option value="Category 4">媒介资源采购</option>
+                                            <option value="Category 4">技术开发</option>
+                                            <option value="Category 4">整合营销顾问</option>
+                                            <option value="Category 4">效果营销优化</option>
+                                            <option value="Category 4">新媒体运营</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <div class="form-group">
+                                        <label>需求产品二级</label>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                            <option value="Category 1">官网SEO</option>
+                                            <option value="Category 2">自然流量优化</option>
+                                            <option value="Category 3">新闻信息环境优化</option>
+                                            <option value="Category 4">口碑信息环境优化</option>
+                                            <option value="Category 4">公关信息环境优化</option>
+                                            <option value="Category 4">舆情风险管理</option>
+                                            <option value="Category 4">ASO/天猫/京东泛优化</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+                            <!--/row-->
+                            <h3 class="box-title m-t-40">合同信息</h3>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>合同状态</label>
+                                        <select class="form-control custom-select">
+                                            <option>合约审核</option>
+                                            <option>合约签署</option>
+                                            <option>合约执行</option>
+                                            <option>合约完成</option>
+                                            <option>续约审核</option>
+                                            <option>续约签署</option>
+                                            <option>续约执行</option>
+                                            <option>续约完成</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>合同金额</label>
+                                        <input type="text" id="firstName" class="form-control" placeholder="800000" value="800000">
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>回款模式</label>
+                                        <select class="form-control custom-select">
+                                            <option>合约审核</option>
+                                            <option>合约签署</option>
+                                            <option>合约执行</option>
+                                            <option>合约完成</option>
+                                            <option>续约审核</option>
+                                            <option>续约签署</option>
+                                            <option>续约执行</option>
+                                            <option>续约完成</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>回款状态</label>
+                                        <select class="form-control custom-select">
+                                            <option>合约审核</option>
+                                            <option>合约签署</option>
+                                            <option>合约执行</option>
+                                            <option>合约完成</option>
+                                            <option>续约审核</option>
+                                            <option>续约签署</option>
+                                            <option>续约执行</option>
+                                            <option>续约完成</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>毛利润率</label>
+                                        <input type="text" id="firstName" class="form-control" placeholder="30%" value="30%">
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>成本支出</label>
+                                        <input type="text" id="firstName" class="form-control" placeholder="30000" value="30000">
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+                            <div class="row">
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
+                                <button type="button" class="btn btn-inverse">重置</button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+ {/block}

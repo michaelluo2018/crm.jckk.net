@@ -1,0 +1,214 @@
+{extend name="layout"/}
+{block name="title"}
+    <title>项目列表 - 客户管理系统</title>
+{/block}
+{block name="breadcrumb"/}
+    <div class="col-md-5 col-8 align-self-center">
+        <h3 class="text-themecolor">工作台</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">首页</a></li>
+            <li class="breadcrumb-item active">项目管理</li>
+        </ol>
+    </div>
+{/block}
+
+{block name="detail"/}
+    <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">项目管理</h4>
+                            <h6 class="card-subtitle"></h6>
+                            <div class="m-t-40">
+                                <div class="d-flex">
+                                    <div class="mr-auto">
+                                        <div class="form-group">
+                                            <a id="demo-btn-addrow" class="btn btn-primary btn-sm" href="project_add.html"><i class="icon wb-plus" aria-hidden="true"></i>添加项目
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <div class="form-group">
+                                            <input id="demo-input-search2" type="text" placeholder="搜索项目" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" data-page-size="6">
+                                <thead>
+                                <tr class="text-align">
+                                    <th data-sort-initial="true" data-toggle="true"  data-hide="phone, tablet">序号</th>
+                                    <th>客户全称</th>
+                                    <th>客户类别</th>
+                                    <th>客户状态</th>
+                                    <th data-hide="phone">所属部门</th>
+                                    <th data-hide="phone, tablet">管理人</th>
+                                    <th data-hide="phone, tablet">执行人</th>
+                                    <th data-hide="phone, tablet">策划人</th>
+                                    <th data-hide="phone, tablet">对接人</th>
+                                    <th data-hide="phone, tablet">需求产品</th>
+                                    <th data-hide="phone, tablet">合同状态</th>
+                                    <th data-hide="phone, tablet">回款模式</th>
+                                    <th data-hide="phone, tablet">回款状态</th>
+                                    <th data-hide="phone, tablet">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>珠海金融投资控股有限公司</td>
+                                    <td>战略级客户</td>
+                                    <td><span class="label label-table label-success">合约执行</span></td>
+                                    <td>项目部</td>
+                                    <td>肖乳香</td>
+                                    <td>徐明珠</td>
+                                    <td>李盼</td>
+                                    <td>李盼</td>
+                                    <td>技术开发</td>
+                                    <td>合约执行</td>
+                                    <td>55</td>
+                                    <td>尾款未接</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline" data-toggle="tooltip" data-original-title="修改"><i class="ti-pencil" aria-hidden="true"></i></button>
+                                        <a href="project_des.html" class="btn btn-sm btn-icon btn-pure btn-outline" data-toggle="tooltip" data-original-title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>广东良策金融服务有限公司</td>
+                                    <td>战略级客户</td>
+                                    <td><span class="label label-table label-success">合约执行</span></td>
+                                    <td>新媒体部</td>
+                                    <td>谭璐璐</td>
+                                    <td>徐明珠</td>
+                                    <td>陈坚游</td>
+                                    <td>张树颖</td>
+                                    <td>技术开发</td>
+                                    <td>合约执行</td>
+                                    <td>55分</td>
+                                    <td>尾款未接</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="修改"><i class="ti-pencil" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="查看详情"><i class="ti-search" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>深圳证券交易所</td>
+                                    <td>核心级客户</td>
+                                    <td><span class="label label-table label-success">续约签署</span></td>
+                                    <td>新媒体部</td>
+                                    <td>谭璐璐</td>
+                                    <td>徐明珠</td>
+                                    <td>李盼</td>
+                                    <td>李盼</td>
+                                    <td>技术开发</td>
+                                    <td>合约执行</td>
+                                    <td>55</td>
+                                    <td>尾款未接</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="修改"><i class="ti-pencil" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="查看详情"><i class="ti-search" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>广东良策金融服务有限公司</td>
+                                    <td>战略级客户</td>
+                                    <td><span class="label label-table label-success">合约执行</span></td>
+                                    <td>新媒体部</td>
+                                    <td>谭璐璐</td>
+                                    <td>徐明珠</td>
+                                    <td>陈坚游</td>
+                                    <td>张树颖</td>
+                                    <td>技术开发</td>
+                                    <td>合约执行</td>
+                                    <td>55分</td>
+                                    <td>尾款未接</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="修改"><i class="ti-pencil" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="查看详情"><i class="ti-search" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>深圳证券交易所</td>
+                                    <td>核心级客户</td>
+                                    <td><span class="label label-table label-success">续约签署</span></td>
+                                    <td>新媒体部</td>
+                                    <td>谭璐璐</td>
+                                    <td>徐明珠</td>
+                                    <td>李盼</td>
+                                    <td>李盼</td>
+                                    <td>技术开发</td>
+                                    <td>合约执行</td>
+                                    <td>55</td>
+                                    <td>尾款未接</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="修改"><i class="ti-pencil" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="查看详情"><i class="ti-search" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>广东良策金融服务有限公司</td>
+                                    <td>战略级客户</td>
+                                    <td><span class="label label-table label-success">合约执行</span></td>
+                                    <td>新媒体部</td>
+                                    <td>谭璐璐</td>
+                                    <td>徐明珠</td>
+                                    <td>陈坚游</td>
+                                    <td>张树颖</td>
+                                    <td>技术开发</td>
+                                    <td>合约执行</td>
+                                    <td>55分</td>
+                                    <td>尾款未接</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="修改"><i class="ti-pencil" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="查看详情"><i class="ti-search" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>深圳证券交易所</td>
+                                    <td>核心级客户</td>
+                                    <td><span class="label label-table label-success">续约签署</span></td>
+                                    <td>新媒体部</td>
+                                    <td>谭璐璐</td>
+                                    <td>徐明珠</td>
+                                    <td>李盼</td>
+                                    <td>李盼</td>
+                                    <td>技术开发</td>
+                                    <td>合约执行</td>
+                                    <td>55</td>
+                                    <td>尾款未接</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="修改"><i class="ti-pencil" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="查看详情"><i class="ti-search" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="14">
+                                        <div class="text-right">
+                                            <ul class="pagination">
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+ {/block}

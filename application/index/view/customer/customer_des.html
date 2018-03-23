@@ -1,0 +1,196 @@
+{extend name="layout"/}
+{block name="title"/}
+    <title>客户详情 - 客户管理系统</title>
+{/block}
+{block name="breadcrumb"/}
+    <div class="col-md-5 col-8 align-self-center">
+        <h3 class="text-themecolor">工作台</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">首页</a></li>
+            <li class="breadcrumb-item go_back"><a href="javascript:void(0)">客户管理</a></li>
+            <li class="breadcrumb-item active">客户详情</li>
+        </ol>
+    </div>
+{/block}
+ {block name="detail"}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-outline-info">
+                <div class="card-header">
+                    <h4 class="m-b-0 text-white">客户详情</h4>
+                </div>
+                <div class="card-body">
+                    <form action="#">
+                        <div class="form-body">
+                            <h3 class="card-title">客户信息</h3>
+                            <hr>
+                            <div class="row p-t-20">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">客户全称</label>
+                                        <input type="text" id="firstName" class="form-control" placeholder="珠海金融投资控股有限公司" value="珠海金融投资控股有限公司">
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group has-danger">
+                                        <label class="control-label">客户行业</label>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                            <option value="Category 1">贵金属</option>
+                                            <option value="Category 2">外汇</option>
+                                            <option value="Category 3">在线教育</option>
+                                            <option value="Category 4">电子商务</option>
+                                        </select>
+                                        <small class="form-control-feedback"></small> </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+                            <!--/row-->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group has-success">
+                                        <label class="control-label">公司性质</label>
+                                        <div class="form-check">
+                                            <label class="custom-control custom-radio">
+                                                <input id="radio1" name="radio" type="radio" checked class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">合资</span>
+                                            </label>
+                                            <label class="custom-control custom-radio">
+                                                <input id="radio2" name="radio" type="radio" class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">国企</span>
+                                            </label>
+                                            <label class="custom-control custom-radio">
+                                                <input id="radio2" name="radio" type="radio" class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">民营</span>
+                                            </label>
+                                            <label class="custom-control custom-radio">
+                                                <input id="radio2" name="radio" type="radio" class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">其他</span>
+                                            </label>
+                                        </div>
+                                        <small class="form-control-feedback"></small> </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">年营业额</label>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                            <option value="Category 1">10万以内</option>
+                                            <option value="Category 2">10-50万</option>
+                                            <option value="Category 3">50-100万</option>
+                                            <option value="Category 4">100万以上</option>
+                                        </select>
+                                        <small class="form-control-feedback"></small>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+                            <!--/row-->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">客户状态一级</label>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                            <option value="Category 1">潜在客户</option>
+                                            <option value="Category 2">需求客户</option>
+                                            <option value="Category 3">提案客户</option>
+                                            <option value="Category 4">签约客户</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">客户状态二级</label>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                            <option value="Category 1">战略级客户</option>
+                                            <option value="Category 2">品牌级客户</option>
+                                            <option value="Category 3">核心级客户</option>
+                                            <option value="Category 4">普通级客户</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+                            <h3 class="card-title">首要联系人信息</h3>
+                            <hr>
+                            <div class="row p-t-20">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">联系人</label>
+                                        <input type="text" id="firstName" class="form-control" placeholder="张思德" value="张思德">
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-4">
+                                    <div class="form-group has-danger">
+                                        <label class="control-label">职位</label>
+                                        <input type="text" id="firstName" class="form-control" placeholder="采购总监" value="采购总监">
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-4">
+                                    <div class="form-group has-danger">
+                                        <label class="control-label">性别</label>
+                                        <div class="form-check">
+                                            <label class="custom-control custom-radio">
+                                                <input id="radio1" name="radio_sex" type="radio" checked class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">男</span>
+                                            </label>
+                                            <label class="custom-control custom-radio">
+                                                <input id="radio2" name="radio_sex" type="radio" class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">女</span>
+                                            </label>
+                                        </div>
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+                            <div class="row p-t-20">
+                                <div class="col-md-4">
+                                    <div class="form-group has-danger">
+                                        <label class="control-label">电话</label>
+                                        <input type="text" id="firstName" class="form-control" placeholder="15878817547" value="15878817547">
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group has-danger">
+                                        <label class="control-label">邮箱</label>
+                                        <input type="text" id="firstName" class="form-control" placeholder="15878817547@139.com" value="15878817547@139.com">
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-4">
+                                    <div class="form-group has-danger">
+                                        <label class="control-label">QQ</label>
+                                        <input type="text" id="firstName" class="form-control" placeholder="259854458" value="259854458">
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-12">
+                                    <div class="form-group has-danger">
+                                        <label class="control-label">备注</label>
+                                        <textarea id="firstName" rows="6" class="form-control" placeholder="采购总监" >直接对总经理负责，需要在采购领域具有良好的业绩和职业道德纪录，分析能力强</textarea>
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+
+                                <!--/span-->
+                            </div>
+                            <!--/row-->
+
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" onclick="history.back()" class="btn btn-success"> <i class="fa fa-back"></i> 返回列表</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  {/block}
