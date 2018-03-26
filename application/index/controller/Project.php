@@ -4,8 +4,9 @@ namespace  app\index\controller;
 class Project{
     //客户列表
     public function project_list(){
+        $data = model("customer","logic")->get_customers();
+        return  view("project_list")->assign("data",$data);
 
-        return  view("project_list");
     }
 
     //客户添加
