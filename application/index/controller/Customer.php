@@ -1,31 +1,58 @@
 <?php
 namespace  app\index\controller;
+use think\Controller;
+use think\Request;
+use think\Db;
 
-class Customer{
+class Customer extends Controller{
     //客户列表
     public function customer_list(){
-
-        return  view("customer_list");
+        $data = model("customer","logic")->get_customers();
+        return  view("customer_list")->assign("data",$data);
     }
 
     //客户添加
     public function customer_add(){
-        return view("customer_add");
+
+       $data = model("customer","logic")->get_customer_entity();
+        return view("customer_add")->assign("data",$data);
     }
+
+    //保存客户
+    public  function  save_customer(){
+        $data = Request::instance()->post();
+        $customer_logic =   model("customer",'logic');
+        $res = $customer_logic->save_customer($data);
+        if(!$res){
+            //跳转到customer_list
+            $this->redirect("customer_list");
+        }
+
+    }
+
+
+
     //客户修改
 
-    public function  customer_edit(){
-        return view("customer_edit");
+    public function  customer_edit($id){
+        $data = model("customer","logic")->get_customer_entity();
+        $customer = model("customer","logic")->get_customer_by_id($id);
+        return view("customer_edit")->assign("data",$data)->assign("customer",$customer);
     }
     //客户删除
 
     public function  customer_del($id){
-
+       $res = model("customer","logic")->delete_customer($id);
+       if($res){
+           $this->redirect("customer_list");
+       }
     }
     //客户信息查看
 
-    public function  customer_des($id=null){
-        return view("customer_des");
+    public function  customer_des($id){
+        $data = model("customer","logic")->get_customer_entity();
+        $customer = model("customer","logic")->get_customer_by_id($id);
+        return view("customer_des")->assign("data",$data)->assign("customer",$customer);
     }
 
     //客户搜索
