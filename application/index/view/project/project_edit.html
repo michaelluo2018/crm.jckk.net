@@ -23,7 +23,10 @@
                 <h4 class="m-b-0 text-white">添加项目</h4>
             </div>
             <div class="card-body">
-                <form>
+                <form action="{:url('index/index/project/save_project')}" method="post">
+                    <input type="hidden" name="customer_id" value="{$customer.id}">
+                    <input type="hidden" name="contact_id" value="{$customer.contact_id}">
+                    <input type="hidden" name="project_id" value="{$project.id}">
                     <div class="form-body">
                         <h3 class="card-title">客户信息</h3>
                         <hr>
@@ -31,15 +34,21 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">客户全称</label>
-                                    <input type="text"  class="form-control" value="{$customer.customer_name}" name="customer_name" disabled >
+                                    <input type="text"  class="form-control" value="{$customer.customer_name}" name="customer_name" required >
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group has-danger">
                                     <label class="control-label">客户行业</label>
-                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="industry" disabled>
-                                        <option value="{$customer.industry}" selected>{$customer.industry}</option>
+                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="industry" required>
+                                        {volist name="data['industry']" id= "vo"}
+                                        {if condition="$vo eq $customer.industry"}
+                                        <option value="{$vo}" selected>{$vo}</option>
+                                        {else/}
+                                        <option value="{$vo}">{$vo}</option>
+                                        {/if}
+                                        {/volist}
                                     </select>
                                     <small class="form-control-feedback"></small> </div>
                             </div>
@@ -54,9 +63,9 @@
                                         {volist name="data['company_nature']" id="company_nature" key="k"}
                                         <label class="custom-control custom-radio">
                                             {if condition="$company_nature eq $customer.company_nature"}
-                                            <input id="radio{$k}" name="company_nature" value="{$company_nature}" type="radio" checked class="custom-control-input" disabled>
+                                            <input id="radio{$k}" name="company_nature" value="{$company_nature}" type="radio" checked class="custom-control-input" >
                                             {else/}
-                                            <input id="radio{$k}" name="company_nature" value="{$company_nature}" type="radio"  class="custom-control-input" disabled>
+                                            <input id="radio{$k}" name="company_nature" value="{$company_nature}" type="radio"  class="custom-control-input" >
                                             {/if}
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-description">{$company_nature}</span>
@@ -69,8 +78,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">年营业额</label>
-                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="annual_turnover" disabled>
-                                        <option value="{$customer.annual_turnover}" >{$customer.annual_turnover}</option>
+                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="annual_turnover" required>
+                                        {volist name="data['annual_turnover']" id="annual_turnover" }
+                                        {if condition="$annual_turnover eq $customer.annual_turnover"}
+                                        <option value="{$annual_turnover}" selected>{$annual_turnover}</option>
+                                        {else/}
+                                        <option value="{$annual_turnover}">{$annual_turnover}</option>
+                                        {/if}
+                                        {/volist}
                                     </select>
                                     <small class="form-control-feedback"></small>
                                 </div>
@@ -82,8 +97,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">客户状态一级</label>
-                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="customer_status_1" disabled>
-                                        <option value="{$customer.customer_status_1}" >{$customer.customer_status_1}</option>
+                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="customer_status_1" required>
+                                        {volist name="data['customer_status_1']" id="customer_status_1"}
+                                        {if condition="$customer_status_1 eq $customer.customer_status_1"}
+                                        <option value="{$customer_status_1}" selected>{$customer_status_1}</option>
+                                        {else/}
+                                        <option value="{$customer_status_1}">{$customer_status_1}</option>
+                                        {/if}
+                                        {/volist}
                                     </select>
                                 </div>
                             </div>
@@ -91,8 +112,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">客户状态二级</label>
-                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="customer_status_2" disabled>
-                                        <option value="{$customer.customer_status_2}">{$customer.customer_status_2}</option>
+                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="customer_status_2" required>
+                                        {volist name="data['customer_status_2']" id="customer_status_2"}
+                                        {if condition="$customer_status_2 eq $customer.customer_status_2"}
+                                            <option value="{$customer_status_2}" selected>{$customer_status_2}</option>
+                                        {else/}
+                                        <option value="{$customer_status_2}">{$customer_status_2}</option>
+                                        {/if}
+                                        {/volist}
                                     </select>
                                 </div>
                             </div>
@@ -104,14 +131,14 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">联系人</label>
-                                    <input type="text"  class="form-control" value="{$customer.contact_name}" name="contact_name" disabled>
+                                    <input type="text"  class="form-control" value="{$customer.contact_name}" name="contact_name" required>
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-4">
                                 <div class="form-group has-danger">
                                     <label class="control-label">职位</label>
-                                    <input type="text"  class="form-control" value="{$customer.position}" name="position" disabled>
+                                    <input type="text"  class="form-control" value="{$customer.position}" name="position" required>
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
                             <!--/span-->
@@ -121,18 +148,18 @@
                                     <div class="form-check">
                                         <label class="custom-control custom-radio">
                                             {if condition="$customer.sex eq 0"}
-                                            <input id="radio1" name="radio_sex" type="radio"  class="custom-control-input" value="男" checked disabled>
+                                            <input id="radio1" name="radio_sex" type="radio"  class="custom-control-input" value="男" checked>
                                             {else/}
-                                            <input id="radio1" name="radio_sex" type="radio"  class="custom-control-input" value="男" disabled>
+                                            <input id="radio1" name="radio_sex" type="radio"  class="custom-control-input" value="男" >
                                             {/if}
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-description">男</span>
                                         </label>
                                         <label class="custom-control custom-radio">
                                             {if condition="$customer.sex eq 1"}
-                                            <input id="radio1" name="radio_sex" type="radio"  class="custom-control-input" value="女" checked disabled>
+                                            <input id="radio1" name="radio_sex" type="radio"  class="custom-control-input" value="女" checked>
                                             {else/}
-                                            <input id="radio1" name="radio_sex" type="radio"  class="custom-control-input" value="女" disabled>
+                                            <input id="radio1" name="radio_sex" type="radio"  class="custom-control-input" value="女" >
                                             {/if}
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-description">女</span>
@@ -146,27 +173,27 @@
                             <div class="col-md-4">
                                 <div class="form-group has-danger">
                                     <label class="control-label">电话</label>
-                                    <input type="text"  class="form-control" value="{$customer.mobile}" name="contact_mobile" disabled>
+                                    <input type="text"  class="form-control" value="{$customer.mobile}" name="contact_mobile" required>
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group has-danger">
                                     <label class="control-label">邮箱</label>
-                                    <input type="text"  class="form-control" value="{$customer.email}" name="contact_email" disabled>
+                                    <input type="text"  class="form-control" value="{$customer.email}" name="contact_email">
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-4">
                                 <div class="form-group has-danger">
                                     <label class="control-label">QQ</label>
-                                    <input type="text"  class="form-control" value="{$customer.qq}" name="contact_qq" disabled>
+                                    <input type="text"  class="form-control" value="{$customer.qq}" name="contact_qq">
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-12">
                                 <div class="form-group has-danger">
                                     <label class="control-label">备注</label>
-                                    <textarea  rows="6" class="form-control" placeholder="请填写备注" name="note" disabled>{$customer.note}</textarea>
+                                    <textarea  rows="6" class="form-control" placeholder="请填写备注" name="note">{$customer.note}</textarea>
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
 
@@ -182,7 +209,7 @@
                             <div class="col-md-3 ">
                                 <div class="form-group">
                                     <label>项目所在部门</label>
-                                    <select class="form-control custom-select department"  name="executor_department_id"  disabled>
+                                    <select class="form-control custom-select department"  name="executor_department_id"  required>
                                         {volist name="departments" id="dep"}
                                         {if condition="$dep.id eq $project.e_d_id"/}
                                         <option value="{$dep.id}" selected>{$dep.department_name}</option>
@@ -196,7 +223,7 @@
                             <div class="col-md-3 ">
                                 <div class="form-group">
                                     <label>项目执行人</label>
-                                    <select class="form-control custom-select executor_department_id"   required name="executor_uid" disabled>
+                                    <select class="form-control custom-select executor_department_id"   required name="executor_uid" >
                                         <option value="">请选择</option>
                                     </select>
                                 </div>
@@ -205,13 +232,13 @@
                             <div class="col-md-3 ">
                                 <div class="form-group">
                                     <label>策划部门</label>
-                                    <select class="form-control custom-select department"   name="planning_department_id" disabled>
+                                    <select class="form-control custom-select department"   name="planning_department_id" required>
                                         {volist name="departments" id="dep"}
-                                        {if condition="$dep.id eq $project.p_d_id"/}
-                                        <option value="{$dep.id}" selected>{$dep.department_name}</option>
-                                        {else/}
-                                        <option value="{$dep.id}">{$dep.department_name}</option>
-                                        {/if}
+                                            {if condition="$dep.id eq $project.p_d_id"/}
+                                                <option value="{$dep.id}" selected>{$dep.department_name}</option>
+                                            {else/}
+                                                 <option value="{$dep.id}">{$dep.department_name}</option>
+                                            {/if}
                                         {/volist}
                                     </select>
                                 </div>
@@ -219,7 +246,7 @@
                             <div class="col-md-3 ">
                                 <div class="form-group">
                                     <label>策划人</label>
-                                    <select class="form-control custom-select planning_department_id"   required name="planning_uid" disabled>
+                                    <select class="form-control custom-select planning_department_id"   required name="planning_uid">
                                         <option value="">请选择</option>
                                     </select>
                                 </div>
@@ -230,13 +257,13 @@
                             <div class="col-md-3 ">
                                 <div class="form-group">
                                     <label>对接部门</label>
-                                    <select class="form-control custom-select department"   name="docking_department_id" disabled>
+                                    <select class="form-control custom-select department"   name="docking_department_id" required>
                                         {volist name="departments" id="dep"}
-                                        {if condition="$dep.id eq $project.d_d_id"/}
-                                        <option value="{$dep.id}" selected>{$dep.department_name}</option>
-                                        {else/}
-                                        <option value="{$dep.id}">{$dep.department_name}</option>
-                                        {/if}
+                                            {if condition="$dep.id eq $project.d_d_id"/}
+                                            <option value="{$dep.id}" selected>{$dep.department_name}</option>
+                                            {else/}
+                                            <option value="{$dep.id}">{$dep.department_name}</option>
+                                            {/if}
                                         {/volist}
                                     </select>
                                 </div>
@@ -244,7 +271,7 @@
                             <div class="col-md-3 ">
                                 <div class="form-group">
                                     <label>对接人</label>
-                                    <select class="form-control custom-select docking_department_id"   required name="docking_uid" disabled>
+                                    <select class="form-control custom-select docking_department_id"   required name="docking_uid">
                                         <option value="">请选择</option>
                                     </select>
                                 </div>
@@ -253,13 +280,13 @@
                             <div class="col-md-3 ">
                                 <div class="form-group">
                                     <label>管理部门</label>
-                                    <select class="form-control custom-select department"   required name="manage_department_id" disabled>
+                                    <select class="form-control custom-select department"   required name="manage_department_id">
                                         {volist name="departments" id="dep"}
-                                        {if condition="$dep.id eq $project.m_d_id"/}
-                                        <option value="{$dep.id}" selected>{$dep.department_name}</option>
-                                        {else/}
-                                        <option value="{$dep.id}">{$dep.department_name}</option>
-                                        {/if}
+                                            {if condition="$dep.id eq $project.m_d_id"/}
+                                                <option value="{$dep.id}" selected>{$dep.department_name}</option>
+                                            {else/}
+                                                 <option value="{$dep.id}">{$dep.department_name}</option>
+                                            {/if}
                                         {/volist}
                                     </select>
                                 </div>
@@ -267,7 +294,7 @@
                             <div class="col-md-3 ">
                                 <div class="form-group">
                                     <label>管理人</label>
-                                    <select class="form-control custom-select manage_department_id"   name="manage_uid" disabled>
+                                    <select class="form-control custom-select manage_department_id"   name="manage_uid" required>
                                         <option value="">请选择</option>
                                     </select>
                                 </div>
@@ -278,12 +305,12 @@
                             <div class="col-md-6 ">
                                 <div class="form-group">
                                     <label>需求产品一级</label>
-                                    <select class="form-control custom-select" name="product_demand_1" disabled>
+                                    <select class="form-control custom-select" name="product_demand_1" >
                                         {volist name="$data['product_demand']" id="product_demand" }
                                         {if condition="$product_demand eq $project.product_demand_1"/}
-                                        <option value="{$product_demand}" selected>{$product_demand}</option>
+                                            <option value="{$product_demand}" selected>{$product_demand}</option>
                                         {else/}
-                                        <option value="{$product_demand}">{$product_demand}</option>
+                                            <option value="{$product_demand}">{$product_demand}</option>
                                         {/if}
                                         {/volist}
                                     </select>
@@ -292,7 +319,7 @@
                             <div class="col-md-6 ">
                                 <div class="form-group">
                                     <label>需求产品二级</label>
-                                    <select class="form-control custom-select"  name="product_demand_2"disabled>
+                                    <select class="form-control custom-select"  name="product_demand_2">
                                         <option value="">请选择</option>
                                     </select>
                                 </div>
@@ -307,13 +334,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>合同状态</label>
-                                    <select class="form-control custom-select" required name="contract_status" disabled>
+                                    <select class="form-control custom-select" required name="contract_status">
                                         {volist name="data['contract_status']" id="contract_status"}
-                                        {if condition="$contract_status eq $project.contract_status" /}
-                                        <option value="{$contract_status}" selected>{$contract_status}</option>
-                                        {else/}
-                                        <option value="{$contract_status}" >{$contract_status}</option>
-                                        {/if}
+                                            {if condition="$contract_status eq $project.contract_status" /}
+                                                <option value="{$contract_status}" selected>{$contract_status}</option>
+                                            {else/}
+                                                <option value="{$contract_status}" >{$contract_status}</option>
+                                            {/if}
                                         {/volist}
                                     </select>
                                 </div>
@@ -322,7 +349,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>合同金额</label>
-                                    <input type="text"  class="form-control" value="{$project.contract_amount}" disabled name="contract_amount" >
+                                    <input type="text"  class="form-control" value="{$project.contract_amount}" required name="contract_amount" >
                                     <small class="form-control-feedback"> </small>
                                 </div>
                             </div>
@@ -332,13 +359,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>回款模式</label>
-                                    <select class="form-control custom-select" disabled name="payment_type">
+                                    <select class="form-control custom-select" required name="payment_type">
                                         {volist name="data['payment_type']" id="payment_type"}
-                                        {if condition="$payment_type eq $project.payment_type"/}
-                                        <option value="{$payment_type}" selected>{$payment_type}</option>
-                                        {else/}
-                                        <option value="{$payment_type}">{$payment_type}</option>
-                                        {/if}
+                                            {if condition="$payment_type eq $project.payment_type"/}
+                                                <option value="{$payment_type}" selected>{$payment_type}</option>
+                                            {else/}
+                                                <option value="{$payment_type}">{$payment_type}</option>
+                                            {/if}
 
                                         {/volist}
                                     </select>
@@ -348,13 +375,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>回款状态</label>
-                                    <select class="form-control custom-select" disabled name="payment_status">
+                                    <select class="form-control custom-select" required name="payment_status">
                                         {volist name="data['payment_status']" id="payment_status"}
-                                        {if condition="$payment_status eq $project.payment_status"/}
-                                        <option value="{$payment_status}" selected>{$payment_status}</option>
-                                        {else/}
-                                        <option value="{$payment_status}">{$payment_status}</option>
-                                        {/if}
+                                            {if condition="$payment_status eq $project.payment_status"/}
+                                                <option value="{$payment_status}" selected>{$payment_status}</option>
+                                            {else/}
+                                                <option value="{$payment_status}">{$payment_status}</option>
+                                            {/if}
                                         {/volist}
                                     </select>
                                 </div>
@@ -365,7 +392,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>毛利润率</label>
-                                    <input type="text"  class="form-control" value="{$project.rate}" name="rate" disabled>
+                                    <input type="text"  class="form-control" value="{$project.rate}" name="rate" required>
                                     <small class="form-control-feedback"> </small>
                                 </div>
                             </div>
@@ -373,7 +400,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>成本支出</label>
-                                    <input type="text"  class="form-control" value="{$project.cost}"  name="cost" disabled>
+                                    <input type="text"  class="form-control" value="{$project.cost}"  name="cost" required>
                                     <small class="form-control-feedback"> </small>
                                 </div>
                             </div>
@@ -382,7 +409,8 @@
                         <div class="row">
                         </div>
                         <div class="form-actions">
-                            <a href="{:url('index/index/project/project_edit')}?id={$project.id}" class="btn btn-inverse">修改</a>
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
+                            <button type="reset" class="btn btn-inverse">重置</button>
                         </div>
                     </div>
                 </form>
@@ -415,8 +443,8 @@
                 if($('.'+ name +'').attr("name") == "executor_uid" ){
                     $('.'+ name +'').val(executor_uid);
                 }
-                if ($('.'+ name +'').attr("name") == "planning_uid"){
-                    $('.'+ name +'').val(planning_uid);
+               if ($('.'+ name +'').attr("name") == "planning_uid"){
+                   $('.'+ name +'').val(planning_uid);
                 }
                 if ($('.'+ name +'').attr("name") == "docking_uid"){
                     $('.'+ name +'').val(docking_uid);

@@ -2,7 +2,7 @@
 namespace  app\index\controller;
 use think\Controller;
 use think\Request;
-use think\Db;
+
 
 class Customer extends Controller{
     //客户列表
@@ -23,7 +23,7 @@ class Customer extends Controller{
         $data = Request::instance()->post();
         $customer_logic =   model("customer",'logic');
         $res = $customer_logic->save_customer($data);
-        if(!$res){
+        if($res){
             //跳转到customer_list
             $this->redirect("customer_list");
         }

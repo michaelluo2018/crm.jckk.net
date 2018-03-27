@@ -89,8 +89,8 @@ class Customer extends  Model{
             $customer->note = $data['note'];
             $customer->create_time = time();
 
-            if(!$customer->save()){
-                return "save customer error";
+            if($customer->save()){
+                return $customer->id;
             }
     }
 
@@ -128,8 +128,8 @@ class Customer extends  Model{
         $customer->note = $data['note'];
         $customer->create_time = time();
 
-        if(!$customer->save()){
-            return "save customer error";
+        if($customer->save()){
+            return $customer->id;
         }
     }
 
