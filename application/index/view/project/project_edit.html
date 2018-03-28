@@ -23,7 +23,7 @@
                 <h4 class="m-b-0 text-white">添加项目</h4>
             </div>
             <div class="card-body">
-                <form action="{:url('index/index/project/save_project')}" method="post">
+                <form action="{:url('index/project/save_project')}" method="post">
                     <input type="hidden" name="customer_id" value="{$customer.id}">
                     <input type="hidden" name="contact_id" value="{$customer.contact_id}">
                     <input type="hidden" name="project_id" value="{$project.id}">

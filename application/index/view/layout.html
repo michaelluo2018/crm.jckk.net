@@ -240,10 +240,10 @@
                             <li><a href="system_profile.html">个人中心</a></li>
                             <li><a href="system_authority.html" class="has-arrow" aria-expanded="true">用户和权限</a>
                                 <ul>
-                                    <li><a href="system_organization.html">组织架构管理</a></li>
-                                    <li style="display:none"><a href="system_organization_add.html">添加组织架构</a></li>
-                                    <li><a href="system_member.html">用户管理</a>
-                                    <li style="display:none"><a href="system_member_add.html">添加用户</a></li>
+                                    <li><a href="{:url('index/system/organization')}">组织架构管理</a></li>
+                                    <li style="display:none"><a href="{:url('index/system/organization_add')}">添加组织架构</a></li>
+                                    <li><a href="{:url('index/system/member')}">用户管理</a>
+                                    <li style="display:none"><a href="{:url('index/system/member_add')}">添加用户</a></li>
                                     </li>
                                 </ul>
                             </li>
@@ -704,6 +704,15 @@
 <!-- Style switcher -->
 <!-- ============================================================== -->
 <script src="__STATIC__/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+<script>
+    function delete_sure(msg,url) {
+        if (confirm(msg)==true){
+           return true;
+        }else{
+            return false;
+        }
+    }
+</script>
 </body>
 
 </html>

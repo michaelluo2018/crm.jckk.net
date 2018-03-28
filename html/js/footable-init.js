@@ -86,8 +86,8 @@ $(window).on('load', function() {
 		
 		//build up the row we are wanting to add
 		var newRow = '<tr>'                                          
-                     +'<td><input type="text" id="department_name" name="department_name" class="form-control" placeholder="" value=""></td>'
-                     +'<td><input type="text" id="listorder" name="listorder" class="form-control" placeholder="" value=""></td>   '
+                     +'<td><input type="text" id="department_name" name="department_name[]" class="form-control" placeholder="" value=""></td>'
+                     +'<td><input type="text" id="listorder" name="listorder[]" class="form-control" placeholder="" value=""></td>   '
                      +'<td><button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>'
 					 +'</td></tr>';
 
@@ -105,8 +105,8 @@ $(window).on('load', function() {
 		
 		//build up the row we are wanting to add
 		var newRow = '<tr>'
-                     +'<td><input type="text" id="department_name" name="department_name" class="form-control" placeholder="" value=""></td>'
-                     +'<td><input type="text" id="listorder" name="listorder" class="form-control" placeholder="" value=""></td>'						
+                     +'<td><input type="text" id="department_name" name="department_name[]" class="form-control" placeholder="" value=""></td>'
+                     +'<td><input type="text" id="listorder" name="listorder[]" class="form-control" placeholder="" value=""></td>'
                      +'<td><button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button></td></tr>';
 
 		//add it

@@ -23,7 +23,7 @@
                     <h4 class="m-b-0 text-white">添加项目</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{:url('index/index/project/save_project')}" method="post">
+                    <form action="{:url('index/project/save_project')}" method="post">
                         <div class="form-body">
                             <h3 class="card-title">客户信息</h3>
                             <hr>
@@ -381,7 +381,7 @@
             var department_id = $(this).val();
            //获取department_id下所有用户
             $.ajax({
-                url: "{:url('index/index/project/ajax_get_user')}",
+                url: "{:url('index/project/ajax_get_user')}",
                 data: {'department_id':department_id},
                 method:"get",
                 success:function(data){
@@ -399,7 +399,7 @@
         //产品需求二级
         var first_demand_1 =  $("select[name=product_demand_1]").val();
         $.ajax({
-            url: "{:url('index/index/project/ajax_get_demand2')}",
+            url: "{:url('index/project/ajax_get_demand2')}",
             data: {'demand_value':first_demand_1},
             method:"get",
             success:function(data){
@@ -416,7 +416,7 @@
         $("select[name=product_demand_1]").change(function(){
             var demand_value = $(this).val();
             $.ajax({
-                url: "{:url('index/index/project/ajax_get_demand2')}",
+                url: "{:url('index/project/ajax_get_demand2')}",
                 data: {'demand_value':demand_value},
                 method:"get",
                 success:function(data){

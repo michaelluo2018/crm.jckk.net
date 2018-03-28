@@ -21,7 +21,7 @@ create table jckk_contact (
   email varchar(50) comment "邮箱",
   qq varchar(20) comment "QQ",
   create_time int comment "加入时间"
-  )ENGINE=MYISAM DEFAULT CHARSET=utf8;;
+  )ENGINE=MYISAM DEFAULT CHARSET=utf8;
 
 
   create table jckk_project (
@@ -40,7 +40,7 @@ create table jckk_contact (
     rate varchar(50) comment "毛利率 ",
     cost varchar(50) comment "成本支出 ",
     create_time int comment "加入时间"
-    )ENGINE=MYISAM DEFAULT CHARSET=utf8;;
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
 
 
 
@@ -58,7 +58,7 @@ create table jckk_contact (
     heard_img  varchar(100)  comment "头像 ",
     introduction  text  comment "个人简介 ",
     create_time int comment "加入时间"
-    )ENGINE=MYISAM DEFAULT CHARSET=utf8;;
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
 
 
   create table jckk_department (
@@ -66,7 +66,7 @@ create table jckk_contact (
     department_name varchar(50) comment "部门名称",
     sort  int(10)  comment "排序 ",
     create_time int comment "加入时间"
-    )ENGINE=MYISAM DEFAULT CHARSET=utf8;;
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
 
 
 
@@ -75,8 +75,9 @@ create table jckk_contact (
     post_name varchar(50) comment "岗位名称",
     department_id  int(10)  comment "所属部门 ",
     pid  int(10) default 0   comment "上级post_id ",
+    sort  int(10)    comment "排序",
     create_time int comment "加入时间"
-    );
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
 
 
 
