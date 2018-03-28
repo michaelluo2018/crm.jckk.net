@@ -55,6 +55,7 @@ create table jckk_contact (
     mobile  varchar(20)  comment "手机号 ",
     wechat  varchar(20)  comment "微信号 ",
     email  varchar(30)  comment "电子邮箱 ",
+    qq  varchar(30)  comment "qq ",
     heard_img  varchar(100)  comment "头像 ",
     introduction  text  comment "个人简介 ",
     create_time int comment "加入时间"
