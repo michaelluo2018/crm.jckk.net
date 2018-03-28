@@ -41,21 +41,33 @@ class System extends Controller{
 
 
 
-
-
-
     public function member(){
 
-
+        return view("member");
     }
 
 
     public function member_add(){
+        //部门
+        $departments = model('department','logic')->get_departments();
 
+        return view("member_add")->assign("departments",$departments);
+    }
 
+    public function ajax_get_post(){
+        $department_id = Request::instance()->get("department_id");
+
+       return model("post","logic")->get_posts_by_department($department_id);
     }
 
 
+    public  function  save_user(){
+        $data = Request::instance()->post();
+        $file = Request::instance()->file();
+
+        dump($file);
+        dump($data);die;
+    }
 
 
 

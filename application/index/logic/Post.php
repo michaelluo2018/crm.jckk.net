@@ -7,7 +7,7 @@ class Post extends Model{
 
     public  function  get_posts_by_department($department_id){
 
-        return $this->where("department_id",$department_id)->order("sort asc")->select();
+        return $this->where("department_id",$department_id)->order("pid asc,sort asc")->select();
 
     }
 

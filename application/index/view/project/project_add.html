@@ -361,7 +361,7 @@
             var department_id = $(this).val();
             //获取department_id下所有用户
             $.ajax({
-                url: "{:url('index/index/project/ajax_get_user')}",
+                url: "{:url('index/project/ajax_get_user')}",
                 data: {'department_id':department_id},
                 method:"get",
                 success:function(data){
