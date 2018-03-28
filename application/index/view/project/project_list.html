@@ -71,8 +71,8 @@
                                     <td>{$project.payment_status}</td>
                                     <td>
                                         <a href="javascript:void (0);" onclick="delete_sure('确定要删除此项目吗？','{:url(\'index/project/project_del\')}?id={$project.id}')" class="btn btn-sm btn-icon btn-pure btn-outline " data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></a>
-                                        <a href="{:url('index/project/project_edit')}?id={$project.id}" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="修改"><i class="ti-pencil" aria-hidden="true"></i></a>
-                                        <a href="{:url('index/project/project_des')}?id={$project.id}" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
+                                        <a href="{:url('index/project/project_edit')}?id={$project.id}" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="修改"><i class="ti-pencil" aria-hidden="true"></i></a>
+                                        <a href="{:url('index/project/project_des')}?id={$project.id}" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                                 {/volist}
