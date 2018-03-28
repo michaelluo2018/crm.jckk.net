@@ -15,16 +15,23 @@ class User extends Model{
 
     public function save_user($data,$file){
 
-        if(!$url=$this->upload_heard_img($file)){
+        if(isset($file)&&!$url=$this->upload_heard_img($file)){
             return ["status"=>"error","msg"=>"图片上传错误"];
         }
-        $img_url = "/uploads/".$url;
+        if(isset($url)){
+            $img_url = "/uploads/".$url;
+        }
+        else{
+            $img_url = null;
+        }
+
         if(isset($data['uid'])){
             $user = $this->where("uid",$data['uid'])->find();
-            //删除之前图片
-            unlink(ROOT_PATH . 'public'.$user->heard_img);
-          // dump( unlink(ROOT_PATH . 'public'.$user->heard_img));
-            $data['heard_img'] = $img_url;
+            if($img_url){
+                //删除之前图片
+                unlink(ROOT_PATH . 'public'.$user->heard_img);
+                $data['heard_img'] = $img_url;
+            }
             $user->update($data);
         }
         else{
