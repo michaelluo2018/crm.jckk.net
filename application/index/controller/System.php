@@ -39,6 +39,15 @@ class System extends Controller{
 
 
 
+    //岗位删除
+    public function post_del($id,$depart_id){
+        
+        model('post','logic')->delete_post($id);
+        $this->redirect("organization",["id"=>$depart_id]);
+    }
+
+
+
 
 
     public function member(){

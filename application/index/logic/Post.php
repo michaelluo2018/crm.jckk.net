@@ -44,5 +44,9 @@ class Post extends Model{
     }
 
 
+    public function delete_post($id){
+        $this->where("pid",$id)->delete();
+        $this->where("id",$id)->delete();
+    }
 
 }
