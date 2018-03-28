@@ -41,7 +41,7 @@ class System extends Controller{
 
     //岗位删除
     public function post_del($id,$depart_id){
-        
+
         model('post','logic')->delete_post($id);
         $this->redirect("organization",["id"=>$depart_id]);
     }
@@ -51,8 +51,9 @@ class System extends Controller{
 
 
     public function member(){
+        $users = model("user","logic")->get_users();
 
-        return view("member");
+        return view("member")->assign("users",$users);
     }
 
 
@@ -72,15 +73,28 @@ class System extends Controller{
 
     public  function  save_user(){
         $data = Request::instance()->post();
-        $file = Request::instance()->file();
+        $file = Request::instance()->file("heard_img");
+        model('user','logic')->save_user($data,$file);
+        $this->redirect("member");
+    }
 
-        dump($file);
-        dump($data);die;
+    public  function user_del($id){
+
+        model("user","logic")->delete_user($id);
+        $this->redirect("member");
+    }
+
+    public function user_edit($id){
+        $user = model("user","logic")->get_user($id);
+        $departments = model('department','logic')->get_departments();
+        return view("member_edit")->assign("departments",$departments)->assign("user",$user);
     }
 
 
-
-
+     public function user_des($id){
+            $user = model("user","logic")->get_user($id);
+            return view("member_des")->assign("user",$user);
+        }
 
 
 

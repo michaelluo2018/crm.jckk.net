@@ -1,6 +1,7 @@
 <?php
 namespace  app\index\logic;
 use think\Model;
+use think\Db;
 class User extends Model{
 
     protected  $table="jckk_user";
@@ -10,5 +11,82 @@ class User extends Model{
         $users = $this->where("department_id",$department_id)->select();
         return $users;
     }
+
+
+    public function save_user($data,$file){
+
+        if(!$url=$this->upload_heard_img($file)){
+            return ["status"=>"error","msg"=>"图片上传错误"];
+        }
+        $img_url = "/uploads/".$url;
+        if(isset($data['uid'])){
+            $user = $this->where("uid",$data['uid'])->find();
+            //删除之前图片
+            unlink(ROOT_PATH . 'public'.$user->heard_img);
+          // dump( unlink(ROOT_PATH . 'public'.$user->heard_img));
+            $data['heard_img'] = $img_url;
+            $user->update($data);
+        }
+        else{
+
+            $data['heard_img'] = $img_url;
+            $data['create_time'] = time();
+            $arr[0]=$data;
+            $this->saveAll($arr);
+        }
+
+
+    }
+
+
+
+    public function upload_heard_img($file){
+
+        $info = $file->validate(['ext'=>'jpg,png,gif'])->move(ROOT_PATH . 'public' . DS . 'uploads');
+            if($info){
+                return $info->getSaveName();
+            }else{
+
+               //  return  $file->getError();
+            }
+
+    }
+
+
+    public  function  get_users(){
+
+        $users=  Db::table("jckk_user")
+         ->field(["jckk_user.*","jckk_department.department_name","jckk_post.post_name"])
+          ->join("jckk_department","jckk_department.id = jckk_user.department_id",'LEFT')
+          ->join("jckk_post","jckk_post.id=jckk_user.post_id",'LEFT')
+          ->paginate();
+
+        return $users;
+    }
+
+
+
+    public  function  get_user($id){
+
+        $user=  Db::table("jckk_user")
+            ->where("jckk_user.uid",$id)
+            ->field(["jckk_user.*","jckk_department.department_name","jckk_post.post_name"])
+            ->join("jckk_department","jckk_department.id = jckk_user.department_id",'LEFT')
+            ->join("jckk_post","jckk_post.id=jckk_user.post_id",'LEFT')
+            ->find();
+
+        return $user;
+    }
+
+
+    public function delete_user($id){
+        //删除头像
+        $user =  $this->where("uid",$id)->find();
+        unlink(ROOT_PATH . 'public'.$user->heard_img);
+        $user->delete();
+    }
+
+
+
 
 }

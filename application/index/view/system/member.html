@@ -50,54 +50,24 @@
                     </tr>
                     </thead>
                     <tbody>
+                    {volist name="users" id="user" key="k"/}
                     <tr>
-                        <td>1</td>
-                        <td>刘鉴兰</td>
-                        <td>Nancy</td>
-                        <td>媒介部</td>
-                        <td>媒介经理</td>
-                        <td>18202801837</td>
-                        <td>nancy.liu@jckk.net</td>
-                        <td>867038874</td>
-                        <td>xiaodiao9933</td>
+                        <td>{$k}</td>
+                        <td>{$user.chinese_name}</td>
+                        <td>{$user.english_name}</td>
+                        <td>{$user.department_name}</td>
+                        <td>{$user.post_name}</td>
+                        <td>{$user.mobile}</td>
+                        <td>{$user.email}</td>
+                        <td>{$user.qq}</td>
+                        <td>{$user.wechat}</td>
                         <td>
-                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
-                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline" data-toggle="tooltip" data-original-title="修改"><i class="ti-pencil" aria-hidden="true"></i></button>
-                            <a href="# class="btn btn-sm btn-icon btn-pure btn-outline" data-toggle="tooltip" data-original-title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
+                            <a href="javascript:void(0);" onclick="delete_sure('确定要删除吗？', '{:url(\'index/system/user_del\')}?id={$user.uid}')"  class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></a>
+                            <a href="{:url('index/system/user_edit')}?id={$user.uid}" class="btn btn-sm btn-icon btn-pure btn-outline"  data-original-title="修改"><i class="ti-pencil" aria-hidden="true"></i></a>
+                            <a href="{:url('index/system/user_des')}?id={$user.uid}" class="btn btn-sm btn-icon btn-pure btn-outline"  data-original-title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>黄嘉琪</td>
-                        <td>Jessie</td>
-                        <td>媒介部</td>
-                        <td>媒介专员</td>
-                        <td>18826522677</td>
-                        <td>jessie.huang@jckk.net</td>
-                        <td>3201560988</td>
-                        <td>iskkwong</td>
-                        <td>
-                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
-                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline" data-toggle="tooltip" data-original-title="修改"><i class="ti-pencil" aria-hidden="true"></i></button>
-                            <a href="# class="btn btn-sm btn-icon btn-pure btn-outline" data-toggle="tooltip" data-original-title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>林晓敏</td>
-                        <td>Erin</td>
-                        <td>SEM</td>
-                        <td>营销经理</td>
-                        <td>13530466214</td>
-                        <td>erin.lin@jckk.net</td>
-                        <td>3433138225</td>
-                        <td>Min280</td>
-                        <td>
-                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
-                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline" data-toggle="tooltip" data-original-title="修改"><i class="ti-pencil" aria-hidden="true"></i></button>
-                            <a href="# class="btn btn-sm btn-icon btn-pure btn-outline" data-toggle="tooltip" data-original-title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
-                        </td>
-                    </tr>
+                    {/volist}
                     </tbody>
                     <tfoot>
                     <tr>
