@@ -55,4 +55,10 @@ class Department extends Model{
       return $data;
     }
 
+
+    public function  delete_department($id){
+        model('post')->where('department_id',$id)->delete();
+        $this->where('id',$id)->delete();
+    }
+
 }

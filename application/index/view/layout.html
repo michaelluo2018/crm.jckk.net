@@ -707,7 +707,7 @@
 <script>
     function delete_sure(msg,url) {
         if (confirm(msg)==true){
-           return true;
+            window.location.href = url;
         }else{
             return false;
         }

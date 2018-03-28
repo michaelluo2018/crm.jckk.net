@@ -31,9 +31,10 @@ class System extends Controller{
 
 
     //部门删除
-    public function department_del($id=null){
+    public function department_del($id){
 
-        echo "sure";
+        model('department','logic')->delete_department($id);
+        $this->redirect("organization");
     }
 
 
