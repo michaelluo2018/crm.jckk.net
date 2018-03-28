@@ -460,7 +460,7 @@
                                             <td><input type="text" id="listorder" name="listorder" class="form-control" placeholder="" value="1"></td>  						
                                             <td>
                                                 <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
-                                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="添加子岗位"><i class="ti-plus" aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="modal" data-target="#add-post" data-original-title="添加子岗位" ><i class="ti-plus" aria-hidden="true"></i></button>
 												<button class="btn btn-sm btn-icon btn-pure btn-outline" data-original-title="授权"  data-toggle="modal" data-target="#add-contact"><i class="ti-settings" data-original-title="授权" data-toggle="tooltip" aria-hidden="true"></i></button>
                                             </td>
                                         </tr>
@@ -469,7 +469,7 @@
                                             <td><input type="text" id="listorder" name="listorder" class="form-control" placeholder="" value="2"></td>						
                                             <td>
                                                 <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
-                                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="添加子岗位"><i class="ti-plus" aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="modal" data-target="#add-post" data-original-title="添加子岗位"><i class="ti-plus" aria-hidden="true"></i></button>
 												<button class="btn btn-sm btn-icon btn-pure btn-outline" data-original-title="授权"  data-toggle="modal" data-target="#add-contact"><i class="ti-settings" data-original-title="授权" data-toggle="tooltip" aria-hidden="true"></i></button>
                                             </td>
                                         </tr>
@@ -597,6 +597,58 @@
 										                                </div>
 										                                <div class="tab-pane p-20" id="profile2" role="tabpanel" aria-expanded="false">同上</div>
 										                                <div class="tab-pane p-20" id="messages2" role="tabpanel" aria-expanded="false">同上</div>
+										                            </div>
+										                        </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">保存</button>
+                                                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.modal-content -->
+                                                    </div>
+                                                    <!-- /.modal-dialog -->
+                                                </div>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                            </div>
+                            
+                            
+                            <div id="add-post" class="modal fade in show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+                                                    <div class="modal-dialog col-10">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title" id="myModalLabel">添加子岗位</h4>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                               <div class="card">
+										                            <div class="card-body p-b-0">										                                
+										                            
+										                            <!-- Tab panes -->
+										                            <div class="tab-content">
+										                                <div class="tab-pane active" id="home2" role="tabpanel" aria-expanded="true">
+                                                                        
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="control-label">子岗位名称</label>
+                                                                                <input type="text" id="department_name" class="form-control" placeholder="" value="">
+                                                                                <small class="form-control-feedback"> </small> </div>
+                                                                        </div>
+                                                                        <!--/span-->
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group has-danger">
+                                                                                <label class="control-label">排序</label>
+                                                                                <input type="text" id="listorder" class="form-control" placeholder="" value="">
+                                                                                <small class="form-control-feedback"></small> </div>
+                                                                        </div>
+										                                </div>
+										                                
 										                            </div>
 										                        </div>
                                                             </div>
