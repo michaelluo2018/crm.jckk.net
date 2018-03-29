@@ -38,4 +38,46 @@ class Login extends Controller {
         }
 
     }
+
+
+    public  function  find_pwd(){
+        $email = Request::instance()->post("email");
+        $title = "密码重置";
+        $str = base64_encode($email."^jckk0322^".time());
+        $url = "http://localhost/index.php/index/login/reset_pwd?email=".$str;
+        $cont = "请点击此链接，按流程进行密码重设，如果点击无效，请将地址手工粘贴到浏览器地址栏访问：";
+        $content = "<a href='".$url."'>".$cont."</a>".$url;
+
+        $res = Common::send_mail($email,$title,$content);
+
+        if(!$res){
+            //ok
+            $this->success("系统已将重置密码的链接安全的发到了您的邮箱，30分钟内有效，请及时查收");
+        }
+        else{
+            $this->error("邮件发送失败");
+        }
+
+    }
+
+    public function  reset_pwd(){
+        $str = Request::instance()->get("email");
+        $arr = explode('^',base64_decode($str));
+        $email = $arr[0];
+        $time = $arr[2];
+        if(($time+30*60)-time()<0){
+            //邮件已经过期
+            $this->error("邮件已经过期,请重试",url('index/login/login'));
+        }
+        else{
+            return view("reset")->assign("email",$email);
+        }
+    }
+
+
+
+
+
+
+
 }

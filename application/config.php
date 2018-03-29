@@ -236,4 +236,11 @@ return [
         'var_page'  => 'page',
         'list_rows' => 15,
     ],
+    //邮件配置
+    'email'               => [
+        'server'      => 'smtp.163.com',
+        'port'  => '25',
+        'user' => 'jckk2017@163.com',
+        'pwd' => 'jchd2017',
+    ],
 ];
