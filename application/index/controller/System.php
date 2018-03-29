@@ -1,10 +1,10 @@
 <?php
 
 namespace  app\index\controller;
-use think\Controller;
+
 use think\Request;
 
-class System extends Controller{
+class System extends Base{
 
     public function organization($id = null){
 
@@ -20,6 +20,7 @@ class System extends Controller{
        $this->redirect("organization");
 
     }
+
 
      public function save_post(){
            $data = Request::instance()->post();
@@ -38,15 +39,12 @@ class System extends Controller{
     }
 
 
-
     //岗位删除
     public function post_del($id,$depart_id){
 
         model('post','logic')->delete_post($id);
         $this->redirect("organization",["id"=>$depart_id]);
     }
-
-
 
 
 
@@ -98,7 +96,8 @@ class System extends Controller{
 
 
     public  function  profile(){
-
+        $id=11;
+        $user = model("user","logic")->get_user($id);
         return view("profile");
     }
 

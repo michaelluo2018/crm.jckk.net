@@ -1,9 +1,8 @@
 <?php
 namespace app\index\controller;
-use think\Controller;
 use think\Request;
 
-class Department extends Controller{
+class Department extends Base {
 
 
 

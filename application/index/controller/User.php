@@ -1,7 +1,7 @@
 <?php
 namespace  app\index\controller;
-use think\Controller;
-class User extends Controller{
+
+class User extends Base{
 
 
 }

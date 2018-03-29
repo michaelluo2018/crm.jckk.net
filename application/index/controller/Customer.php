@@ -1,10 +1,10 @@
 <?php
 namespace  app\index\controller;
-use think\Controller;
+use app\index\controller\Base;
 use think\Request;
 
 
-class Customer extends Controller{
+class Customer extends Base{
     //客户列表
     public function customer_list(){
         $data = model("customer","logic")->get_customers();

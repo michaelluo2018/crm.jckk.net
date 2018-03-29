@@ -2,10 +2,10 @@
 namespace  app\index\controller;
 
 use think\Config;
-use think\Controller;
+
 use think\Request;
 
-class Project extends Controller {
+class Project extends Base {
     //项目列表
     public function project_list(){
         $projects = model("project","logic")->get_projects();
