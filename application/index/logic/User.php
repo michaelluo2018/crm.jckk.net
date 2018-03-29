@@ -41,13 +41,14 @@ class User extends Model{
                 $data['password'] = $user->password;
             }
             $user->update($data);
+            return $user->uid;
         }
         else{
             $data['password'] = $this->password($data['password']);
             $data['heard_img'] = $img_url;
             $data['create_time'] = time();
             $arr[0]=$data;
-            $this->saveAll($arr);
+            return $this->saveAll($arr);
         }
 
 

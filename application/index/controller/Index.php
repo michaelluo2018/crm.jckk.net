@@ -10,5 +10,10 @@ class Index extends Base
         return view("index");
     }
 
+    public function  login_out(){
+        $this->login_out();
+        $this->redirect("login/login");
+    }
+
 }
 

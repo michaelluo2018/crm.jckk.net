@@ -183,18 +183,18 @@
                     <!-- Profile -->
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" class="profile-pic" /></a>
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{$user_info.heard_img}" alt="{$user_info.chinese_name}" class="profile-pic" /></a>
                         <div class="dropdown-menu dropdown-menu-right scale-up">
                             <ul class="dropdown-user">
                                 <li>
                                     <div class="dw-user-box">
-                                        <div class="u-img"><img src="__STATIC__/assets/images/users/1.jpg" alt="user"></div>
+                                        <div class="u-img"><img src="{$user_info.heard_img}" alt="user"></div>
                                         <div class="u-text">
-                                            <h4>管理员</h4>
-                                            <p class="text-muted">zdf@gmail.com</p><a href="{:url('index/system/profile')}" class="btn btn-rounded btn-danger btn-sm">个人中心</a></div>
+                                            <h4>{$user_info.chinese_name}</h4>
+                                            <p class="text-muted">{$user_info.email}</p><a href="{:url('index/user/profile')}" class="btn btn-rounded btn-danger btn-sm">个人中心</a></div>
                                     </div>
                                 </li>
-                                <li><a href="#"><i class="fa fa-power-off"></i> 退出</a></li>
+                                <li><a href="{:url('index/index/login_out')}"><i class="fa fa-power-off"></i> 退出</a></li>
                             </ul>
                         </div>
                     </li>
@@ -237,7 +237,7 @@
                     </li>
                     <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="true"><i class="mdi mdi-laptop-windows"></i><span class="hide-menu">系统设置</span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href="{:url('index/system/profile')}">个人中心</a></li>
+                            <li><a href="{:url('index/user/profile')}">个人中心</a></li>
                             <li><a href="system_authority.html" class="has-arrow" aria-expanded="true">用户和权限</a>
                                 <ul>
                                     <li><a href="{:url('index/system/organization')}">组织架构管理</a></li>

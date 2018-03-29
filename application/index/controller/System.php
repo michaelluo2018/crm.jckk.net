@@ -72,8 +72,8 @@ class System extends Base{
     public  function  save_user(){
         $data = Request::instance()->post();
         $file = Request::instance()->file("heard_img");
-        model('user','logic')->save_user($data,$file);
-        $this->redirect("member");
+        $uid = model('user','logic')->save_user($data,$file);
+        $this->redirect("user_des",["id"=>$uid]);
     }
 
     public  function user_del($id){
@@ -95,11 +95,7 @@ class System extends Base{
         }
 
 
-    public  function  profile(){
-        $id=11;
-        $user = model("user","logic")->get_user($id);
-        return view("profile");
-    }
+
 
 
 
