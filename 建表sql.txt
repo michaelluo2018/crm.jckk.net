@@ -58,6 +58,7 @@ create table jckk_contact (
     qq  varchar(30)  comment "qq ",
     heard_img  varchar(100)  comment "头像 ",
     introduction  text  comment "个人简介 ",
+    password  varchar(50)  comment "密码 ",
     create_time int comment "加入时间"
     )ENGINE=MYISAM DEFAULT CHARSET=utf8;
 

@@ -191,7 +191,7 @@
                                         <div class="u-img"><img src="__STATIC__/assets/images/users/1.jpg" alt="user"></div>
                                         <div class="u-text">
                                             <h4>管理员</h4>
-                                            <p class="text-muted">zdf@gmail.com</p><a href="system_profile.html" class="btn btn-rounded btn-danger btn-sm">个人中心</a></div>
+                                            <p class="text-muted">zdf@gmail.com</p><a href="{:url('index/system/profile')}" class="btn btn-rounded btn-danger btn-sm">个人中心</a></div>
                                     </div>
                                 </li>
                                 <li><a href="#"><i class="fa fa-power-off"></i> 退出</a></li>
@@ -237,7 +237,7 @@
                     </li>
                     <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="true"><i class="mdi mdi-laptop-windows"></i><span class="hide-menu">系统设置</span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href="system_profile.html">个人中心</a></li>
+                            <li><a href="{:url('index/system/profile')}">个人中心</a></li>
                             <li><a href="system_authority.html" class="has-arrow" aria-expanded="true">用户和权限</a>
                                 <ul>
                                     <li><a href="{:url('index/system/organization')}">组织架构管理</a></li>
@@ -704,6 +704,8 @@
 <!-- Style switcher -->
 <!-- ============================================================== -->
 <script src="__STATIC__/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+{block name="footer_js"/}
+{/block}
 <script>
     function delete_sure(msg,url) {
         if (confirm(msg)==true){

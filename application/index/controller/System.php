@@ -91,13 +91,16 @@ class System extends Controller{
     }
 
 
-     public function user_des($id){
+    public function user_des($id){
             $user = model("user","logic")->get_user($id);
             return view("member_des")->assign("user",$user);
         }
 
 
+    public  function  profile(){
 
+        return view("profile");
+    }
 
 
 

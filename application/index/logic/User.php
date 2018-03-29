@@ -25,6 +25,8 @@ class User extends Model{
             $img_url = null;
         }
 
+
+        //写库
         if(isset($data['uid'])){
             $user = $this->where("uid",$data['uid'])->find();
             if($img_url){
@@ -32,10 +34,16 @@ class User extends Model{
                 unlink(ROOT_PATH . 'public'.$user->heard_img);
                 $data['heard_img'] = $img_url;
             }
+            if($data['password']){
+                $data['password'] = $this->password($data['password']);
+            }
+            else{
+                $data['password'] = $user->password;
+            }
             $user->update($data);
         }
         else{
-
+            $data['password'] = $this->password($data['password']);
             $data['heard_img'] = $img_url;
             $data['create_time'] = time();
             $arr[0]=$data;
@@ -45,6 +53,9 @@ class User extends Model{
 
     }
 
+    public function password($pwd){
+        return md5("!@#JC".$pwd."kk0322");
+    }
 
 
     public function upload_heard_img($file){
