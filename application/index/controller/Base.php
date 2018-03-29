@@ -11,7 +11,7 @@ class Base extends Controller{
     function __construct(Request $request = null)
     {
         parent::__construct($request);
-        
+
         if(!$this->is_login()){
             if(!$this->is_remember_me()){
                 $this->redirect("login/login");

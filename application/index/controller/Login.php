@@ -12,7 +12,7 @@ class Login extends Controller {
 
     public  function  login(){
 
-        $data = Session::get("login_data");
+        $data = Cookie::get("login_data");
 
         return view("login")->assign("data",$data);
     }
@@ -27,12 +27,12 @@ class Login extends Controller {
                  Cookie::set("account",$data['account'],3600*24*365);
                  Cookie::set("pwd",model("user","logic")->password($data['account']),3600*24*365);
             }
-            Session::delete("login_data");
+            Cookie::delete("login_data");
             $this->redirect("index/index");
         }
         else{
             $data['msg'] = "账号或密码错误，请重试！";
-            Session::set("login_data",$data);
+            Cookie::set("login_data",$data,10);
             return $this->redirect("login/login");
 
         }
