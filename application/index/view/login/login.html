@@ -40,20 +40,34 @@
     <div class="login-register" style="background-image:url(__STATIC__/assets/images/background/login-register.jpg);">
         <div class="login-box card">
             <div class="card-body">
-                <form class="form-horizontal form-material" id="loginform" action="index.html">
+                <form class="form-horizontal form-material" id="loginform" action="{:url('index/login/login_in')}" method="post">
                     <h3 class="box-title m-b-20">客户管理系统</h3>
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <input class="form-control" type="text" required="" placeholder="账户"> </div>
+                            {if condition="isset($data['account'])" /}
+                            <input class="form-control" type="text" required placeholder="邮箱/手机号" name="account" value="{$data['account']}">
+                            {else/}
+                            <input class="form-control" type="text" required placeholder="邮箱/手机号" name="account" >
+                            {/if}
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input class="form-control" type="password" required="" placeholder="密码"> </div>
+                            {if condition="isset($data['pwd'])" /}
+                            <input class="form-control" type="password" required placeholder="密码" name="pwd" value="{$data['pwd']}">
+                            {else/}
+                            <input class="form-control" type="password" required placeholder="密码" name="pwd" >
+                            {/if}
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
                             <div class="checkbox checkbox-primary pull-left p-t-0">
-                                <input id="checkbox-signup" type="checkbox">
+                                {if condition="isset($data['remember_me'])" /}
+                                <input id="checkbox-signup" type="checkbox" name="remember_me" value="1" checked>
+                                {else/}
+                                <input id="checkbox-signup" type="checkbox" name="remember_me" value="1">
+                                {/if}
                                 <label for="checkbox-signup"> 记住我 </label>
                             </div> <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> 忘记密码？</a> </div>
                     </div>
@@ -75,6 +89,9 @@
                             <p>Don't have an account? <a href="register.html" class="text-info m-l-5"><b>Sign Up</b></a></p>
                         </div>
                     </div>-->
+                    {if condition="isset($data['msg'])" /}
+                    <p style="color: darkred">{$data['msg']}</p>
+                    {else/}{/if}
                 </form>
                 <form class="form-horizontal" id="recoverform" action="#">
                     <div class="form-group ">

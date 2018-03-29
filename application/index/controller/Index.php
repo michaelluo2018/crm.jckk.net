@@ -1,6 +1,7 @@
 <?php
 namespace app\index\controller;
 
+
 class Index extends Base
 {
 
@@ -13,6 +14,7 @@ class Index extends Base
         parent::login_out();
         $this->redirect("login/login");
     }
+
 
 }
 

@@ -106,6 +106,19 @@ class User extends Model{
     }
 
 
+    public function check_user($account,$pwd,$is_pwd = false){
+        if($is_pwd){
+            $pwd = $this->password($pwd);
+        }
+        $user1 = $this->where(["mobile"=>$account,"password"=>$pwd])->find();
+        $user2 = $this->where(["email"=>$account,"password"=>$pwd])->find();
+        if($user1){
+            return $user1->uid;
+        }
+        elseif ($user2){
+            return $user2->uid;
+        }
+    }
 
 
 }

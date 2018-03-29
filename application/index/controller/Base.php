@@ -2,6 +2,7 @@
 
 namespace  app\index\controller;
 use think\Controller;
+use think\Cookie;
 use think\Request;
 use think\Session;
 
@@ -10,16 +11,15 @@ class Base extends Controller{
     function __construct(Request $request = null)
     {
         parent::__construct($request);
-       // $this->login(11);
-        if($this->is_login()){
-            $this->uid = Session::get("uid");
-            $user_info = model("user","logic")->get_user($this->uid);
-            $this->assign("user_info",$user_info);
+        
+        if(!$this->is_login()){
+            if(!$this->is_remember_me()){
+                $this->redirect("login/login");
+            }
         }
-        else{
-            $this->redirect("login/login");
-        }
-
+        $this->uid = Session::get("uid");
+        $user_info = model("user","logic")->get_user($this->uid);
+        $this->assign("user_info",$user_info);
     }
 
     protected function login($uid){
@@ -35,7 +35,17 @@ class Base extends Controller{
         return Session::has("uid");
     }
 
+    protected function is_remember_me(){
+        $account = Cookie::get("account");
+        $pwd = Cookie::get("pwd");
+        if($account && $pwd){
+            if( $uid = model("user","logic")->check_user($account,$pwd)){
+                 $this->login($uid);
+                 return true;
+            }
+        }
 
+    }
 
 
 }
