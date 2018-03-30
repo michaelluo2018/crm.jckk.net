@@ -3,6 +3,7 @@ namespace  app\index\logic;
 use think\Model;
 use think\Config;
 use think\Db;
+use app\index\model\Log;
 class Project extends Model{
 
     protected $table="jckk_project";
@@ -31,6 +32,7 @@ class Project extends Model{
         if(isset($data['project_id'])){
             //修改
             $project = model("project","model")->where("id",$data['project_id'])->find();
+            $before_value = json_encode($project);
         }
         else{
             //添加
@@ -50,9 +52,32 @@ class Project extends Model{
         $project->payment_status = $data['payment_status'];
         $project->rate = $data['rate'];
         $project->cost = $data['cost'];
-        if( $project->save()){
-            return $project->id;
+        $project->save();
+        $after_value =json_encode(model("project")->where('id',$project->id)->find()) ;
+        //处理日志
+        $customer_log = model("customer")->where("id",$customer_id)->find();
+     //  dump($customer_log);die;
+        if(isset($data['project_id'])){
+            //修改
+            $project_log["type"] = Log::UPDATE_TYPE;
+
+            $project_log["before_value"] = $before_value;
+            $project_log["after_value"] = $after_value;
+            $project_log["title"] = "更改".$customer_log->customer_name ."(客户)的项目，项目ID是".$project->id;
+        }else{
+            //添加
+            $project_log["type"] = Log::ADD_TYPE;
+
+            $project_log["before_value"] = "";
+            $project_log["after_value"] = $after_value;
+            $project_log["title"] = "给".$customer_log->customer_name."(客户)添加项目,项目ID是".$project->id;
+
         }
+
+        model("log","logic")->write_log( $project_log);
+
+        return $project->id;
+
 
     }
 
@@ -60,6 +85,7 @@ class Project extends Model{
     public function get_projects(){
         return Db::table("jckk_project")
             ->alias("p")
+            ->where("p.is_delete","<>",1)
             ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
                 "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","d.department_name"])
             ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
@@ -89,7 +115,19 @@ class Project extends Model{
 
     //删除
     public function  delete_project($id){
-        return $this->where("id",$id)->delete();
+        $project = $this->where("id",$id)->find();
+        $customer = model("customer")->where("id",$project->customer_id)->find();
+       // dump($customer);die;
+        //添加日志
+        $project_log["type"] = Log::DELETE_TYPE;
+
+        $project_log["before_value"] = json_encode($project);
+        $project_log["after_value"] = "";
+        $project_log["title"] = "删除".$customer->customer_name."(客户)的项目,项目ID是".$project->id;
+        model("log","logic")->write_log( $project_log);
+        $project->is_delete = 1;
+        return   $project->save();
+
     }
 
 

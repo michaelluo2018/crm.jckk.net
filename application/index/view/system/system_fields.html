@@ -1,0 +1,197 @@
+{extend name="layout"/}
+{block name="title"}
+<title>自定义字段设置 - 系统管理 - 客户管理系统</title>
+{/block}
+{block name="breadcrumb"/}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">工作台</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0)">首页</a></li>
+        <li class="breadcrumb-item">系统设置</li>
+        <li class="breadcrumb-item active">自定义字段设置</li>
+    </ol>
+</div>
+{/block}
+{block name="detail"/}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">自定义字段设置</h4>
+                <h6 class="card-subtitle"></h6>
+                <div class="m-t-40">
+                    <div class="d-flex">
+                        <div class="mr-auto">
+                            <div class="form-group">
+                                <a id="demo-btn-addrow" class="btn btn-primary btn-sm" href="javasript:void(0)"><i class="icon wb-plus" aria-hidden="true"></i>添加自定义字段</a>
+                            </div>
+                        </div>
+                        <div class="ml-auto">
+                            <div class="form-group">
+                                <input id="demo-input-search2" type="text" placeholder="搜索字段标识" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" data-page-size="6">
+                    <thead>
+                    <tr class="text-align">
+                        <th data-sort-initial="true" data-toggle="true"  data-hide="phone, tablet">序号</th>
+                        <th>所属模块</th>
+                        <th>字段名</th>
+                        <th>字段标识名</th>
+                        <th>字段类型</th>
+                        <th>是否必填</th>
+                        <th data-hide="phone, tablet">默认值</th>
+                        <th data-hide="phone, tablet">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>客户</td>
+                        <td>customer_status_one</td>
+                        <td>客户状态一级</td>
+                        <td><select class="form-control type-select" data-placeholder="Choose a Category" tabindex="1">
+                            <option value="Category 1">单行文本</option>
+                            <option value="Category 2">多行文本</option>
+                            <option value="Category 3">单选项</option>
+                            <option value="Category 4">多选项</option>
+                            <option value="Category 5" selected="selected">下拉框</option>
+                            <option value="Category 6">日期</option>
+                            <option value="Category 7">文件上传</option>
+                        </select></td>
+                        <td>
+                            <label class="custom-control custom-radio">
+                                <input id="radio1" name="radio_1[]" type="radio" checked class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">是</span>
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input id="radio2" name="radio_1[]" type="radio" class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">否</span>
+                            </label>
+                        </td>
+                        <td><input type="text" id="firstName" class="form-control" placeholder="" value="潜在客户,需求客户,提案客户,签约客户"></td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
+                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline" data-toggle="tooltip" data-original-title="修改"><i class="ti-pencil" aria-hidden="true"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>客户</td>
+                        <td>customer_status_two</td>
+                        <td>客户状态二级</td>
+                        <td><select class="form-control type-select" data-placeholder="Choose a Category" tabindex="1">
+                            <option value="Category 1">单行文本</option>
+                            <option value="Category 2">多行文本</option>
+                            <option value="Category 3">单选项</option>
+                            <option value="Category 4">多选项</option>
+                            <option value="Category 5" selected="selected">下拉框</option>
+                            <option value="Category 6">日期</option>
+                            <option value="Category 7">文件上传</option>
+                        </select></td>
+                        <td>
+                            <label class="custom-control custom-radio">
+                                <input id="radio1" name="radio_2[]" type="radio" checked class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">是</span>
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input id="radio2" name="radio_2[]" type="radio" class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">否</span>
+                            </label>
+                        </td>
+                        <td><input type="text" id="firstName" class="form-control" placeholder="" value="战略级客户,品牌级客户,核心级客户,普通级客户"></td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
+                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline" data-toggle="tooltip" data-original-title="修改"><i class="ti-pencil" aria-hidden="true"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>项目</td>
+                        <td>contract_status</td>
+                        <td>合同状态</td>
+                        <td><select class="form-control type-select" data-placeholder="Choose a Category" tabindex="1">
+                            <option value="Category 1">单行文本</option>
+                            <option value="Category 2">多行文本</option>
+                            <option value="Category 3">单选项</option>
+                            <option value="Category 4">多选项</option>
+                            <option value="Category 5" selected="selected">下拉框</option>
+                            <option value="Category 6">日期</option>
+                            <option value="Category 7">文件上传</option>
+                        </select></td>
+                        <td>
+                            <label class="custom-control custom-radio">
+                                <input id="radio1" name="radio_3[]" type="radio" checked class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">是</span>
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input id="radio2" name="radio_3[]" type="radio" class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">否</span>
+                            </label>
+                        </td>
+                        <td><input type="text" id="firstName" class="form-control" placeholder="" value="合约审核,合约签署,合约执行,合约完成,续约审核,续约签署,续约执行,续约完成"></td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
+                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline" data-toggle="tooltip" data-original-title="修改"><i class="ti-pencil" aria-hidden="true"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>项目</td>
+                        <td>product_class</td>
+                        <td>产品一级</td>
+                        <td><select class="form-control type-select" data-placeholder="Choose a Category" tabindex="1">
+                            <option value="Category 1">单行文本</option>
+                            <option value="Category 2">多行文本</option>
+                            <option value="Category 3">单选项</option>
+                            <option value="Category 4">多选项</option>
+                            <option value="Category 5" selected="selected">下拉框</option>
+                            <option value="Category 6">日期</option>
+                            <option value="Category 7">文件上传</option>
+                        </select></td>
+                        <td>
+                            <label class="custom-control custom-radio">
+                                <input id="radio1" name="radio_4[]" type="radio" checked class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">是</span>
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input id="radio2" name="radio_4[]" type="radio" class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">否</span>
+                            </label>
+                        </td>
+                        <td><input type="text" id="firstName" class="form-control" placeholder="" value="品牌信息壁垒体系|官网SEO#自然流量优化,创意策划传播,平面视觉,视频视觉,媒介资源采购,技术开发,整合营销顾问,效果营销优化,新媒体运营"></td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
+                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline" data-toggle="tooltip" data-original-title="修改"><i class="ti-pencil" aria-hidden="true"></i></button>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="14">
+                            <div class="text-right">
+                                <ul class="pagination">
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+                <a id="demo-btn-addrow" class="btn btn-success btn-sm fa-pull-right" href="javasript:void(0)"><i class="icon wb-plus" aria-hidden="true"></i>保存修改</a>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{/block}

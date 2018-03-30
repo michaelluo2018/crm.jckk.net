@@ -97,6 +97,24 @@ class System extends Base{
 
 
 
+    public function system_log(){
+
+        return view("system_log");
+    }
+
+
+
+
+    public function system_settings(){
+
+        return view("system_settings");
+    }
+
+
+    public function system_fields(){
+
+        return view("system_fields");
+    }
 
 
 
