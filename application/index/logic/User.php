@@ -100,7 +100,7 @@ class User extends Model{
 
         return $users;
     }
-    
+
 
     public  function  get_user($id){
 
