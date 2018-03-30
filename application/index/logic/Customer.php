@@ -144,7 +144,7 @@ class Customer extends  Model{
         model("log","logic")->write_log( $customer_log);
         $customer->is_delete = 1;
         return   $customer->save();
-       
+
     }
 
 

@@ -2,6 +2,8 @@
 namespace  app\index\logic;
 use think\Model;
 use think\Db;
+use app\index\model\Log;
+use app\index\controller\Common;
 class User extends Model{
 
     protected  $table="jckk_user";
@@ -29,9 +31,10 @@ class User extends Model{
         //写库
         if(isset($data['uid'])){
             $user = $this->where("uid",$data['uid'])->find();
+            $before_value = json_encode($user);
             if($img_url){
                 //删除之前图片
-                unlink(ROOT_PATH . 'public'.$user->heard_img);
+                Common::unlink_file(ROOT_PATH . 'public'.$user->heard_img);
                 $data['heard_img'] = $img_url;
             }
             if($data['password']){
@@ -41,14 +44,28 @@ class User extends Model{
                 $data['password'] = $user->password;
             }
             $user->update($data);
+
+            $user_log["type"] = Log::UPDATE_TYPE;
+            $user_log["before_value"] = $before_value;
+            $user_log["after_value"] = json_encode($user);
+            $user_log["title"] = "更改".$user->chinese_name ."(系统用户)信息，用户ID是".$user->uid;
+            model("log","logic")->write_log($user_log);
+
             return $user->uid;
         }
         else{
             $data['password'] = $this->password($data['password']);
             $data['heard_img'] = $img_url;
             $data['create_time'] = time();
-            $arr[0]=$data;
-            return $this->saveAll($arr);
+            $this->save($data);
+
+            $user = model("user")->where("uid",$this->uid)->find();
+            $user_log["type"] = Log::ADD_TYPE;
+            $user_log["before_value"] = "";
+            $user_log["after_value"] = json_encode($user);
+            $user_log["title"] = "添加".$user->chinese_name ."(系统用户)信息，用户ID是".$user->uid;
+            model("log","logic")->write_log($user_log);
+            return $this->uid;
         }
 
 
@@ -75,15 +92,15 @@ class User extends Model{
     public  function  get_users(){
 
         $users=  Db::table("jckk_user")
-         ->field(["jckk_user.*","jckk_department.department_name","jckk_post.post_name"])
-          ->join("jckk_department","jckk_department.id = jckk_user.department_id",'LEFT')
-          ->join("jckk_post","jckk_post.id=jckk_user.post_id",'LEFT')
-          ->paginate();
+            ->where("jckk_user.is_delete","<>",1)
+            ->field(["jckk_user.*","jckk_department.department_name","jckk_post.post_name"])
+            ->join("jckk_department","jckk_department.id = jckk_user.department_id",'LEFT')
+            ->join("jckk_post","jckk_post.id=jckk_user.post_id",'LEFT')
+            ->paginate();
 
         return $users;
     }
-
-
+    
 
     public  function  get_user($id){
 
@@ -101,8 +118,18 @@ class User extends Model{
     public function delete_user($id){
         //删除头像
         $user =  $this->where("uid",$id)->find();
-        unlink(ROOT_PATH . 'public'.$user->heard_img);
-        $user->delete();
+        Common::unlink_file(ROOT_PATH . 'public'.$user->heard_img);
+        //添加日志
+        $user_log["type"] = Log::DELETE_TYPE;
+
+        $user_log["before_value"] = json_encode($user);
+        $user_log["after_value"] = "";
+        $user_log["title"] = "删除".$user->chinese_name."(系统用户),用户ID是".$user->uid;
+        model("log","logic")->write_log( $user_log);
+        $user->is_delete = 1;
+        return   $user->save();
+
+
     }
 
 

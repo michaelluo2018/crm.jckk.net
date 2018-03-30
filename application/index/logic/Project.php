@@ -53,7 +53,7 @@ class Project extends Model{
         $project->rate = $data['rate'];
         $project->cost = $data['cost'];
         $project->save();
-        $after_value =json_encode(model("project")->where('id',$project->id)->find()) ;
+
         //处理日志
         $customer_log = model("customer")->where("id",$customer_id)->find();
      //  dump($customer_log);die;
@@ -62,14 +62,14 @@ class Project extends Model{
             $project_log["type"] = Log::UPDATE_TYPE;
 
             $project_log["before_value"] = $before_value;
-            $project_log["after_value"] = $after_value;
+            $project_log["after_value"] = json_encode($project);
             $project_log["title"] = "更改".$customer_log->customer_name ."(客户)的项目，项目ID是".$project->id;
         }else{
             //添加
             $project_log["type"] = Log::ADD_TYPE;
 
             $project_log["before_value"] = "";
-            $project_log["after_value"] = $after_value;
+            $project_log["after_value"] = json_encode($project);
             $project_log["title"] = "给".$customer_log->customer_name."(客户)添加项目,项目ID是".$project->id;
 
         }
@@ -117,7 +117,7 @@ class Project extends Model{
     public function  delete_project($id){
         $project = $this->where("id",$id)->find();
         $customer = model("customer")->where("id",$project->customer_id)->find();
-       // dump($customer);die;
+
         //添加日志
         $project_log["type"] = Log::DELETE_TYPE;
 

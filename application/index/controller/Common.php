@@ -51,6 +51,13 @@ class Common{
     }
 
 
+    static  function  unlink_file($file){
+        if(file_exists($file)){
+           @unlink($file);
+        }
+    }
+
+
 
 
 
