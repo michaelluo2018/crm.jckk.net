@@ -120,5 +120,20 @@ class User extends Model{
         }
     }
 
+    public function chang_pwd_by_email($email,$pwd){
+        $user = $this->where("email",$email)->find();
+        $user->password = $this->password($pwd);
+        $user->save();
+        return $user->uid;
+    }
+
+    public  function  is_exist_email($email){
+        if($user = $this->where("email",$email)->find()){
+            return $user->uid;
+        }
+        else{
+            return false;
+        }
+    }
 
 }

@@ -60,6 +60,7 @@ class Login extends Controller {
 
     }
 
+
     public function  reset_pwd(){
         $str = Request::instance()->get("email");
         $arr = explode('^',base64_decode($str));
@@ -75,7 +76,24 @@ class Login extends Controller {
     }
 
 
+    public  function  change_pwd(){
+        $data = Request::instance()->post();
+        //更改pwd
+       $uid =  model("user","logic")->chang_pwd_by_email($data['email'],$data['pwd1']);
+        Session::set("uid",$uid);
+        $this->redirect("index/index");
+    }
 
+    public  function  check_email(){
+        $email = Request::instance()->get("email");
+        if(model("user","logic")->is_exist_email($email)){
+            return 1;
+        }
+        else{
+            return 2;
+        }
+
+    }
 
 
 
