@@ -3,6 +3,7 @@ namespace  app\index\logic;
 use think\Model;
 use think\Config;
 use think\Db;
+use app\index\model\Log;
 class Customer extends  Model{
 
     protected $table="jckk_customer";
@@ -58,85 +59,92 @@ class Customer extends  Model{
                return $this->save_edit_customer($data);
             }
 
-            if(!$contact = model("contact","logic")->is_exist_contact_by_name_and_mobile($data['contact_name'],$data['contact_mobile'])){
-                //联系人不存在
-                $contact = model("contact",'model');
+            if($customer = $this->is_exist_customer_by_name($data['customer_name'])){
+                //客户存在
+                $data['customer_id'] = $customer->id;
+                //修改客户
+                return $this->save_edit_customer($data);
             }
-            //save contact
-            $contact->contact_name = $data["contact_name"];
-            $contact->mobile = $data["contact_mobile"];
-            $contact->position = $data["position"];
-            $contact->sex = $data["radio_sex"]=="男"?0:1;
-            $contact->email = $data["contact_email"];
-            $contact->qq = $data["contact_qq"];
-            $contact->create_time = time();
 
-            if( !$contact->save()){
-                return "save contact error";
-            }
-            if(!$customer = $this->is_exist_customer_by_name($data['customer_name'])){
-                //客户不存在
-                $customer = model("customer",'model');
-            }
+           $contact_id = model("contact","logic")->save_contact($data);
+
+
             //save customer
-             $customer ->customer_name = $data["customer_name"];
+            $customer = model("customer",'model');
+            $customer ->customer_name = $data["customer_name"];
             $customer->industry = $data['industry'];
             $customer->company_nature = $data['company_nature'];
             $customer->annual_turnover = $data['annual_turnover'];
             $customer->customer_status_1 = $data['customer_status_1'];
             $customer->customer_status_2 = $data['customer_status_2'];
-            $customer->contact_id = $contact->id;
+            $customer->contact_id = $contact_id;
             $customer->note = $data['note'];
             $customer->create_time = time();
+            $customer->save();
 
-            if($customer->save()){
-                return $customer->id;
-            }
+            $customer_log["type"] = Log::ADD_TYPE;
+            $customer_log["before_value"] = "";
+            $customer_log["after_value"] = json_encode($customer);
+            $customer_log["title"] = "添加". $data["customer_name"] ."(客户)，客户ID是". $customer->id;
+            model("log","logic")->write_log( $customer_log);
+
+            return $customer->id;
+
     }
 
     //修改客户
     public function save_edit_customer($data){
 
-        if(!$contact = model("contact","logic")->is_exist_contact_by_id($data['contact_id'])){
-            //联系人不存在
-            $contact = model("contact",'model');
-        }
-        //save contact
-        $contact->contact_name = $data["contact_name"];
-        $contact->mobile = $data["contact_mobile"];
-        $contact->position = $data["position"];
-        $contact->sex = $data["radio_sex"]=="男"?0:1;
-        $contact->email = $data["contact_email"];
-        $contact->qq = $data["contact_qq"];
-        $contact->create_time = time();
+            $contact_id = model("contact","logic")->save_contact($data);
 
-        if( !$contact->save()){
-            return "save contact error";
-        }
-        if(!$customer = $this->is_exist_customer_by_id($data['customer_id'])){
-            //客户不存在
-           return "customer not exist";
-        }
-        //save customer
-        $customer ->customer_name = $data["customer_name"];
-        $customer->industry = $data['industry'];
-        $customer->company_nature = $data['company_nature'];
-        $customer->annual_turnover = $data['annual_turnover'];
-        $customer->customer_status_1 = $data['customer_status_1'];
-        $customer->customer_status_2 = $data['customer_status_2'];
-        $customer->contact_id = $contact->id;
-        $customer->note = $data['note'];
-        $customer->create_time = time();
+            if(!$customer = $this->is_exist_customer_by_id($data['customer_id'])){
+                //客户不存在
+               return "customer not exist";
+            }
+            else{
+                $before_value = json_encode($customer);
+            }
+            //save customer
+            $customer ->customer_name = $data["customer_name"];
+            $customer->industry = $data['industry'];
+            $customer->company_nature = $data['company_nature'];
+            $customer->annual_turnover = $data['annual_turnover'];
+            $customer->customer_status_1 = $data['customer_status_1'];
+            $customer->customer_status_2 = $data['customer_status_2'];
+            $customer->contact_id = $contact_id;
+            $customer->note = $data['note'];
+            $customer->create_time = time();
+            $customer->save();
 
-        if($customer->save()){
+            $customer_log["type"] = Log::UPDATE_TYPE;
+            $customer_log["before_value"] = $before_value;
+            $customer_log["after_value"] = json_encode($customer);
+            $customer_log["title"] = "修改". $data["customer_name"] ."(客户)，客户ID是". $customer->id;
+            model("log","logic")->write_log( $customer_log);
+
             return $customer->id;
-        }
+
     }
+
+
+
+
 
     //删除客户
     public  function delete_customer($id)
     {
-        return $this->where("id",$id)->delete();
+        $customer = $this->where("id",$id)->find();
+
+        //添加日志
+        $customer_log["type"] = Log::DELETE_TYPE;
+
+        $customer_log["before_value"] = json_encode($customer);
+        $customer_log["after_value"] = "";
+        $customer_log["title"] = "删除".$customer->customer_name."(客户),客户ID是".$customer->id;
+        model("log","logic")->write_log( $customer_log);
+        $customer->is_delete = 1;
+        return   $customer->save();
+       
     }
 
 
