@@ -137,8 +137,8 @@ class User extends Model{
         if($is_pwd){
             $pwd = $this->password($pwd);
         }
-        $user1 = $this->where(["mobile"=>$account,"password"=>$pwd])->find();
-        $user2 = $this->where(["email"=>$account,"password"=>$pwd])->find();
+        $user1 = $this->where(["mobile"=>$account,"password"=>$pwd,"is_delete"=>0])->find();
+        $user2 = $this->where(["email"=>$account,"password"=>$pwd,"is_delete"=>0])->find();
         if($user1){
             return $user1->uid;
         }

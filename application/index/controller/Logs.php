@@ -1,22 +1,25 @@
 <?php
 namespace  app\index\controller;
 
-use think\Controller;
 
-use app\index\model\Log;
-
-class Logs extends Controller
+class Logs extends Base
 {
 
     public function index(){
-        $data['type'] = Log::ADD_TYPE;
-        $data['before_value'] = "before";
-        $data['after_value'] = "after";
-        model("log","logic")->write_log( $data);
+       $logs = model("log","logic")->get_logs();
+
+       return view("index")->assign("logs",$logs);
     }
 
 
 
+    public function log_des($id){
+
+        $log = model("log","logic")->get_log($id);
+
+        return view("log_des")->assign("log",$log);
+
+    }
 
 
 

@@ -22,6 +22,8 @@ class Login extends Controller {
 
         if($uid = model("user","logic")->check_user($data["account"],$data["pwd"],true)){
             Session::set("uid",$uid);
+            $value = $uid."^".request()->ip();
+            Cookie::set("user",base64_encode($value),3600*24*7);
             if(isset($data["remember_me"])){
                 //把账户和密码写入cookie
                  Cookie::set("account",$data['account'],3600*24*365);
@@ -31,7 +33,7 @@ class Login extends Controller {
             $this->redirect("index/index");
         }
         else{
-            $data['msg'] = "账号或密码错误，请重试！";
+            $data['msg'] = "账号或密码错误,或者用户不存在，请重试！";
             Cookie::set("login_data",$data,10);
             return $this->redirect("login/login");
 

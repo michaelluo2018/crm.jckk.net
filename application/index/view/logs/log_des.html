@@ -1,0 +1,73 @@
+
+{extend name="layout"/}
+{block name="title"}
+<title>系统日志 - 系统管理 - 客户管理系统</title>
+{/block}
+{block name="breadcrumb"/}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">工作台</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0)">首页</a></li>
+        <li class="breadcrumb-item">系统管理</li>
+        <li class="breadcrumb-item active">系统日志</li>
+    </ol>
+</div>
+{/block}
+{block name="detail"/}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">系统日志</h4>
+                <h6 class="card-subtitle"></h6>
+                <table  class="table table-bordered table-hover toggle-circle" data-page-size="6">
+
+                    <tr class="text-align">
+                        <td >模块</td>
+                        <td>{$log.model}</td>
+                    </tr>
+                    <tr class="text-align">
+                        <td >动作</td>
+                        <td>  {if condition="$log.type eq 1"/}
+                            增加
+                            {elseif condition="$log.type eq 2"/}
+                            删除
+                            {else/}
+                            修改
+                            {/if}
+                        </td>
+                    </tr>
+                    <tr class="text-align">
+                        <td >IP</td>
+                        <td>{$log.ip}</td>
+                    </tr>
+                    <tr class="text-align">
+                        <td >时间</td>
+                        <td>{$log.create_time}</td>
+                    </tr>
+                    <tr class="text-align">
+                        <td >操作员</td>
+                        <td>{$log.chinese_name}</td>
+                    </tr>
+
+                    <tr class="text-align">
+
+                        <th >之前内容</th>
+                        <th>{$log.before_value}</th>
+
+                    </tr>
+                    <tr class="text-align">
+
+                        <td >之后内容</td>
+                        <td>{$log.after_value}</td>
+
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+{/block}
