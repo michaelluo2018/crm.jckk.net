@@ -43,13 +43,15 @@ class User extends Model{
             else{
                 $data['password'] = $user->password;
             }
-            $user->update($data);
-
-            $user_log["type"] = Log::UPDATE_TYPE;
-            $user_log["before_value"] = $before_value;
-            $user_log["after_value"] = json_encode($user);
-            $user_log["title"] = "更改".$user->chinese_name ."(系统用户)信息，用户ID是".$user->uid;
-            model("log","logic")->write_log($user_log);
+            if($user->update($data)){
+                $user = $this->where("uid",$data['uid'])->find();
+                $user_log["type"] = Log::UPDATE_TYPE;
+                $user_log["before_value"] = $before_value;
+                $user_log["after_value"] = json_encode($user);
+                $user_log["title"] = "更改".$user->chinese_name ."(系统用户)信息，用户ID是".$user->uid;
+                model("log","logic")->write_log($user_log);
+            }
+          
 
             return $user->uid;
         }
