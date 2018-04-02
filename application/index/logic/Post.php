@@ -104,10 +104,11 @@ class Post extends Model{
         $post_log["before_value"] = json_encode($post);
         $post_log["after_value"] = "";
         $post_log["title"] = "删除".$post->post_name."(岗位),岗位ID是".$post->id;
-        model("log","logic")->write_log( $post_log);
 
         $post->is_delete=1;
-        $post->save();
+        if($post->save()){
+            model("log","logic")->write_log( $post_log);
+        }
 
 
         //删除子岗位

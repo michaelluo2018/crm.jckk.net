@@ -52,29 +52,31 @@ class Project extends Model{
         $project->payment_status = $data['payment_status'];
         $project->rate = $data['rate'];
         $project->cost = $data['cost'];
-        $project->save();
 
-        //处理日志
-        $customer_log = model("customer")->where("id",$customer_id)->find();
-     //  dump($customer_log);die;
-        if(isset($data['project_id'])){
-            //修改
-            $project_log["type"] = Log::UPDATE_TYPE;
+        if($project->save()){
+            //处理日志
+            $customer_log = model("customer")->where("id",$customer_id)->find();
 
-            $project_log["before_value"] = $before_value;
-            $project_log["after_value"] = json_encode($project);
-            $project_log["title"] = "更改".$customer_log->customer_name ."(客户)的项目，项目ID是".$project->id;
-        }else{
-            //添加
-            $project_log["type"] = Log::ADD_TYPE;
+            if(isset($data['project_id'])){
+                //修改
+                $project_log["type"] = Log::UPDATE_TYPE;
 
-            $project_log["before_value"] = "";
-            $project_log["after_value"] = json_encode($project);
-            $project_log["title"] = "给".$customer_log->customer_name."(客户)添加项目,项目ID是".$project->id;
+                $project_log["before_value"] = $before_value;
+                $project_log["after_value"] = json_encode($project);
+                $project_log["title"] = "更改".$customer_log->customer_name ."(客户)的项目，项目ID是".$project->id;
+            }
+            else{
+                //添加
+                $project_log["type"] = Log::ADD_TYPE;
 
+                $project_log["before_value"] = "";
+                $project_log["after_value"] = json_encode($project);
+                $project_log["title"] = "给".$customer_log->customer_name."(客户)添加项目,项目ID是".$project->id;
+
+            }
+
+            model("log","logic")->write_log( $project_log);
         }
-
-        model("log","logic")->write_log( $project_log);
 
         return $project->id;
 
@@ -124,9 +126,12 @@ class Project extends Model{
         $project_log["before_value"] = json_encode($project);
         $project_log["after_value"] = "";
         $project_log["title"] = "删除".$customer->customer_name."(客户)的项目,项目ID是".$project->id;
-        model("log","logic")->write_log( $project_log);
         $project->is_delete = 1;
-        return   $project->save();
+        if($project->save()){
+            model("log","logic")->write_log( $project_log);
+        }
+
+
 
     }
 

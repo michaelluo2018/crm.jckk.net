@@ -11,6 +11,7 @@ class Customer extends  Model{
     //获取所有客户
     public function get_customers(){
         return Db::table("jckk_customer")
+            ->where("jckk_customer.is_delete","<>",1)
             ->field(["jckk_customer.*","jckk_contact.contact_name","jckk_contact.position","jckk_contact.sex","jckk_contact.mobile","jckk_contact.email","jckk_contact.qq"])
             ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
             ->paginate();
@@ -20,6 +21,7 @@ class Customer extends  Model{
     //获取一条客户信息
     public function get_customer_by_id($id){
         return Db::table("jckk_customer")
+            ->where("jckk_customer.is_delete","<>",1)
             ->field(["jckk_customer.*","jckk_contact.contact_name","jckk_contact.position","jckk_contact.sex","jckk_contact.mobile","jckk_contact.email","jckk_contact.qq"])
             ->where("jckk_customer.id=".$id)
             ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
@@ -80,13 +82,14 @@ class Customer extends  Model{
             $customer->contact_id = $contact_id;
             $customer->note = $data['note'];
             $customer->create_time = time();
-            $customer->save();
+            if($customer->save()){
+                $customer_log["type"] = Log::ADD_TYPE;
+                $customer_log["before_value"] = "";
+                $customer_log["after_value"] = json_encode($customer);
+                $customer_log["title"] = "添加". $data["customer_name"] ."(客户)，客户ID是". $customer->id;
+                model("log","logic")->write_log( $customer_log);
+            }
 
-            $customer_log["type"] = Log::ADD_TYPE;
-            $customer_log["before_value"] = "";
-            $customer_log["after_value"] = json_encode($customer);
-            $customer_log["title"] = "添加". $data["customer_name"] ."(客户)，客户ID是". $customer->id;
-            model("log","logic")->write_log( $customer_log);
 
             return $customer->id;
 
@@ -114,13 +117,14 @@ class Customer extends  Model{
             $customer->contact_id = $contact_id;
             $customer->note = $data['note'];
             $customer->create_time = time();
-            $customer->save();
+            if(  $customer->save()){
+                $customer_log["type"] = Log::UPDATE_TYPE;
+                $customer_log["before_value"] = $before_value;
+                $customer_log["after_value"] = json_encode($customer);
+                $customer_log["title"] = "修改". $data["customer_name"] ."(客户)，客户ID是". $customer->id;
+                model("log","logic")->write_log( $customer_log);
+            }
 
-            $customer_log["type"] = Log::UPDATE_TYPE;
-            $customer_log["before_value"] = $before_value;
-            $customer_log["after_value"] = json_encode($customer);
-            $customer_log["title"] = "修改". $data["customer_name"] ."(客户)，客户ID是". $customer->id;
-            model("log","logic")->write_log( $customer_log);
 
             return $customer->id;
 
@@ -141,9 +145,10 @@ class Customer extends  Model{
         $customer_log["before_value"] = json_encode($customer);
         $customer_log["after_value"] = "";
         $customer_log["title"] = "删除".$customer->customer_name."(客户),客户ID是".$customer->id;
-        model("log","logic")->write_log( $customer_log);
         $customer->is_delete = 1;
-        return   $customer->save();
+        if($customer->save()){
+            model("log","logic")->write_log( $customer_log);
+        }
 
     }
 
