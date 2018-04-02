@@ -54,13 +54,18 @@
                     <tr class="text-align">
 
                         <th >之前内容</th>
-                        <th>{$log.before_value}</th>
+                        <th>
+                           <?php print_r($log['before_value']);?>
+                        </th>
 
                     </tr>
                     <tr class="text-align">
 
                         <td >之后内容</td>
-                        <td>{$log.after_value}</td>
+                        <td>
+                            <?php print_r($log['after_value']);?>
+
+                        </td>
 
                     </tr>
 

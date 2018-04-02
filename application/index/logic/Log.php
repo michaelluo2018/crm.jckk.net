@@ -73,10 +73,18 @@ class Log extends Model{
 
     public function get_log($id){
         $log=  Db::table("jckk_logs")
+            ->where("jckk_logs.id",$id)
             ->field(["jckk_logs.*","jckk_user.chinese_name"])
             ->join("jckk_user","jckk_user.uid = jckk_logs.uid",'LEFT')
             ->find();
-       // $log->create_time = date("Y-m-d H:i:s",$log->create_time);
+
+        if($before_value = $log['before_value']){
+            $log['before_value'] = (array)json_decode($before_value);
+        }
+        if($after_value = $log['after_value']){
+            $log['after_value'] = (array)json_decode($after_value);
+        }
+
         return $log;
     }
 
