@@ -68,10 +68,10 @@ class Project extends Base {
     //项目删除
 
     public function  project_del($id){
-        $res = model("project","logic")->delete_project($id);
-        if($res){
-            $this->redirect("project_list");
-        }
+         model("project","logic")->delete_project($id);
+
+         $this->redirect("project_list");
+
     }
 
 

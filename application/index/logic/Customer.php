@@ -61,37 +61,39 @@ class Customer extends  Model{
                return $this->save_edit_customer($data);
             }
 
-            if($customer = $this->is_exist_customer_by_name($data['customer_name'])){
+            elseif($customer = $this->is_exist_customer_by_name($data['customer_name'])){
                 //客户存在
                 $data['customer_id'] = $customer->id;
                 //修改客户
                 return $this->save_edit_customer($data);
             }
+            else{
+                $contact_id = model("contact","logic")->save_contact($data);
 
-           $contact_id = model("contact","logic")->save_contact($data);
-
-
-            //save customer
-            $customer = model("customer",'model');
-            $customer ->customer_name = $data["customer_name"];
-            $customer->industry = $data['industry'];
-            $customer->company_nature = $data['company_nature'];
-            $customer->annual_turnover = $data['annual_turnover'];
-            $customer->customer_status_1 = $data['customer_status_1'];
-            $customer->customer_status_2 = $data['customer_status_2'];
-            $customer->contact_id = $contact_id;
-            $customer->note = $data['note'];
-            $customer->create_time = time();
-            if($customer->save()){
-                $customer_log["type"] = Log::ADD_TYPE;
-                $customer_log["before_value"] = "";
-                $customer_log["after_value"] = json_encode($customer);
-                $customer_log["title"] = "添加". $data["customer_name"] ."(客户)，客户ID是". $customer->id;
-                model("log","logic")->write_log( $customer_log);
+                //save customer
+                $customer = model("customer",'model');
+                $customer ->customer_name = $data["customer_name"];
+                $customer->industry = $data['industry'];
+                $customer->company_nature = $data['company_nature'];
+                $customer->annual_turnover = $data['annual_turnover'];
+                $customer->customer_status_1 = $data['customer_status_1'];
+                $customer->customer_status_2 = $data['customer_status_2'];
+                $customer->contact_id = $contact_id;
+                $customer->note = $data['note'];
+                $customer->create_time = time();
+                if($customer->save()){
+                    $customer_log["type"] = Log::ADD_TYPE;
+                    $customer_log["before_value"] = "";
+                    $customer_log["after_value"] = json_encode($customer);
+                    $customer_log["title"] = "添加". $data["customer_name"] ."(客户)，客户ID是". $customer->id;
+                    model("log","logic")->write_log( $customer_log);
+                }
+                return $customer->id;
             }
 
 
-            return $customer->id;
+
+
 
     }
 
@@ -117,7 +119,7 @@ class Customer extends  Model{
             $customer->contact_id = $contact_id;
             $customer->note = $data['note'];
             $customer->create_time = time();
-            if(  $customer->save()){
+            if($customer->save()){
                 $customer_log["type"] = Log::UPDATE_TYPE;
                 $customer_log["before_value"] = $before_value;
                 $customer_log["after_value"] = json_encode($customer);

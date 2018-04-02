@@ -29,6 +29,7 @@ class Project extends Model{
     public  function  save_project($data){
         //保存客户信息
         $customer_id = model("customer","logic")->save_customer($data);
+
         if(isset($data['project_id'])){
             //修改
             $project = model("project","model")->where("id",$data['project_id'])->find();

@@ -51,7 +51,7 @@ class User extends Model{
                 $user_log["title"] = "更改".$user->chinese_name ."(系统用户)信息，用户ID是".$user->uid;
                 model("log","logic")->write_log($user_log);
             }
-          
+
 
             return $user->uid;
         }
