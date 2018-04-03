@@ -11,29 +11,28 @@ require ROOT_PATH .'/extend/PHPMailer/src/SMTP.php';
 class Common{
 
     static function  send_mail($to,$title,$content,$type = "HTML"){
-
-        $email = Config::get("email");
-
+        
+        $setting = model("setting","logic")->get_setting();
 
         $mail = new PHPMailer();
         try{
             //设置邮件使用SMTP
             $mail->isSMTP();
             // 设置邮件程序以使用SMTP
-            $mail->Host = $email['server'];
+            $mail->Host = $setting['system_email_server'];
             // 设置邮件内容的编码
             $mail->CharSet='UTF-8';
             // 启用SMTP验证
             $mail->SMTPAuth = true;
             // SMTP username
-            $mail->Username = $email['user'];
+            $mail->Username =$setting['system_email'];
             // SMTP password
-            $mail->Password = $email['pwd'];
+            $mail->Password = base64_decode($setting['system_email_pwd']);
 
             // 连接的TCP端口
-            $mail->Port = $email['port'];
+            $mail->Port = $setting['system_email_port'];
             //设置发件人
-            $mail->setFrom($email['user']);
+            $mail->setFrom($setting['system_email']);
             //  添加收件人1
             $mail->addAddress($to);     // Add a recipient
 

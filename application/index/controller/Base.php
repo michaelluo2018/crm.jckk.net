@@ -20,6 +20,9 @@ class Base extends Controller{
         $this->uid = Session::get("uid");
         $user_info = model("user","logic")->get_user($this->uid);
         $this->assign("user_info",$user_info);
+        //系统设置
+        $setting = model("setting","logic")->get_setting();
+        $this->assign("setting",$setting);
 
     }
 

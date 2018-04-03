@@ -18,7 +18,10 @@
     <div class="col-lg-4 col-xlg-3 col-md-5">
         <!-- Column -->
         <div class="card">
-            <img class="card-img-top" src="__STATIC__/assets/images/background/profile-bg.jpg" alt="Card image cap">
+            {if condition="isset($setting['system_heard_img'])"}
+            <img class="card-img-top" src="{$setting['system_heard_img']}" alt="Card image cap">
+            {else/}
+            {/if}
             <div class="card-body little-profile text-center">
                 <div class="pro-img"><img src="{$user_info.heard_img}" alt="user"/></div>
                 <h3 class="m-b-0">{$user_info.chinese_name} <label class="font-10">{$user_info.post_name}</label></h3>
@@ -26,8 +29,16 @@
                 <a href="javascript:void(0)" class="m-t-10 waves-effect waves-dark btn btn-primary btn-md btn-rounded">分享名片</a>
                 <div class=" m-t-20 font-10">
                     <div class="font-20">电话：{$user_info.mobile}</div>
-                    深圳金诚互动科技有限公司<br>
-                    地址：深圳市福田区振兴路205栋商务大厦6楼
+                    {if condition="isset($setting['system_company'])"}
+                    {$setting['system_company']}
+                    {else/}
+                    {/if}
+                    <br>
+                    地址：
+                    {if condition="isset($setting['system_address'])"}
+                    {$setting['system_address']}
+                    {else/}
+                    {/if}
                 </div>
             </div>
         </div>

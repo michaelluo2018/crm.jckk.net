@@ -56,20 +56,12 @@
             <!-- Logo -->
             <!-- ============================================================== -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">
-                    <!-- Logo icon --><b>
-                    <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                    <!-- Dark Logo icon -->
-                    <img src="__STATIC__/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-                    <!-- Light Logo icon -->
-                    <img src="__STATIC__/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-                </b>
-                    <!--End Logo icon -->
-                    <!-- Logo text --><span>
-                         <!-- dark Logo text -->
-                         <img src="__STATIC__/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-                    <!-- Light Logo text -->
-                         <img src="__STATIC__/assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
+                <a class="navbar-brand" href="{:url('index/index/index')}">
+                    {if condition="isset($setting['system_logo'])"/}
+                    <img src="{$setting['system_logo']}" class="light-logo" alt="system_logo" />
+                    {else/}
+                    {/if}
+                </a>
             </div>
             <!-- ============================================================== -->
             <!-- End Logo -->
@@ -212,7 +204,12 @@
         <!-- Sidebar scroll-->
         <div class="scroll-sidebar">
             <!-- User profile -->
-            <div class="user-profile" style="background: url(assets/images/background/user-info.jpg) no-repeat;">
+            {if condition="isset($setting['system_heard_img'])"/}
+            <div class="user-profile" style="background: url({$setting['system_heard_img']}) no-repeat;">
+            {else/}
+                <div class="user-profile" style="background: url(__STATIC__/assets/images/background/user-info.jpg) no-repeat;">
+            {/if}
+
                 <!-- User profile image -->
                 <div class="profile-img"> <img src="{$user_info.heard_img}" alt="user" /> </div>
                 <!-- User profile text-->
