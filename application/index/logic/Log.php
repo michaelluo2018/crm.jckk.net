@@ -62,7 +62,7 @@ class Log extends Model{
 
     public function get_logs(){
         $logs=  Db::table("jckk_logs")
-                ->order( "id desc")
+                ->order( "jckk_logs.id desc")
                 ->field(["jckk_logs.*","jckk_user.chinese_name"])
                 ->join("jckk_user","jckk_user.uid = jckk_logs.uid",'LEFT')
                 ->paginate();

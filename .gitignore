@@ -1,4 +1,5 @@
 .idea
+.uploads
 composer.lock
 *.log
 thinkphp
