@@ -57,15 +57,15 @@
                                         <div class="col-md-12">
                                             <div class="form-group has-danger">
                                                 <label class="control-label">
-                                                   <p>Logo</p>
-                                                    {if condition="isset($settings['system_logo'])"/}
-                                                    <img src="{$settings['system_logo']}" alt="" width="200" >
+                                                   <p>Logo-icon</p>
+                                                    {if condition="isset($settings['system_logo_icon'])"/}
+                                                    <img src="{$settings['system_logo_icon']}" alt="" width="200" >
                                                     {else/}
                                                     {/if}
                                                 </label>
 
                                                 <label class="custom-file d-block">
-                                                    <input type="file"  class="custom-file-input" name="system_logo" >
+                                                    <input type="file"  class="custom-file-input" name="system_logo_icon" >
                                                     <span class="custom-file-control">点击上传图片</span>
                                                 </label>
                                                 <small class="form-control-feedback"></small>
@@ -73,7 +73,23 @@
                                         </div>
                                         <!--/span-->
 
+                                        <div class="col-md-12">
+                                            <div class="form-group has-danger">
+                                                <label class="control-label">
+                                                    <p>Logo-text</p>
+                                                    {if condition="isset($settings['system_logo_text'])"/}
+                                                    <img src="{$settings['system_logo_text']}" alt="" width="200" >
+                                                    {else/}
+                                                    {/if}
+                                                </label>
 
+                                                <label class="custom-file d-block">
+                                                    <input type="file"  class="custom-file-input" name="system_logo_text" >
+                                                    <span class="custom-file-control">点击上传图片</span>
+                                                </label>
+                                                <small class="form-control-feedback"></small>
+                                            </div>
+                                        </div>
                                         <!--/span-->
                                         <div class="col-md-12">
                                             <div class="form-group has-danger">

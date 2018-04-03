@@ -57,8 +57,12 @@
             <!-- ============================================================== -->
             <div class="navbar-header">
                 <a class="navbar-brand" href="{:url('index/index/index')}">
-                    {if condition="isset($setting['system_logo'])"/}
-                    <img src="{$setting['system_logo']}" class="light-logo" alt="system_logo" />
+                    {if condition="isset($setting['system_logo_icon'])"/}
+                    <img src="{$setting['system_logo_icon']}" class="light-logo" alt="system_logo" />
+                    {else/}
+                    {/if}
+                    {if condition="isset($setting['system_logo_text'])"/}
+                    <img src="{$setting['system_logo_text']}" class="light-logo" alt="system_logo" />
                     {else/}
                     {/if}
                 </a>
@@ -205,7 +209,7 @@
         <div class="scroll-sidebar">
             <!-- User profile -->
             {if condition="isset($setting['system_heard_img'])"/}
-            <div class="user-profile" style="background: url({$setting['system_heard_img']}) no-repeat;">
+            <div class="user-profile" style="background: url({$setting['system_login_img']}) no-repeat;">
             {else/}
                 <div class="user-profile" style="background: url(__STATIC__/assets/images/background/user-info.jpg) no-repeat;">
             {/if}
