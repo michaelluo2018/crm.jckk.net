@@ -11,7 +11,7 @@ require ROOT_PATH .'/extend/PHPMailer/src/SMTP.php';
 class Common{
 
     static function  send_mail($to,$title,$content,$type = "HTML"){
-        
+
         $setting = model("setting","logic")->get_setting();
 
         $mail = new PHPMailer();

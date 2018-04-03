@@ -38,7 +38,12 @@
 <!-- Main wrapper - style you can find in pages.scss -->
 <!-- ============================================================== -->
 <section id="wrapper">
+    {if condition="isset($setting['system_login_img'])"/}
+    <div class="login-register" style="background-image:url({$setting['system_login_img']});">
+    {else/}
     <div class="login-register" style="background-image:url(__STATIC__/assets/images/background/login-register.jpg);">
+    {/if}
+
         <div class="login-box card">
             <div class="card-body">
                 <form class="form-horizontal form-material" id="loginform" action="{:url('index/login/login_in')}" method="post">

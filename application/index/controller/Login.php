@@ -11,9 +11,12 @@ use think\Cookie;
 class Login extends Controller {
 
     public  function  login(){
-
+        if(Session::has("uid")){
+            return $this->redirect("index/index/index");
+        }
         $data = Cookie::get("login_data");
-
+        $setting = model("setting","logic")->get_setting();
+        $this->assign("setting",$setting);
         return view("login")->assign("data",$data);
     }
 
