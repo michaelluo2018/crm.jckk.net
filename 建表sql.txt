@@ -101,6 +101,15 @@ create table jckk_contact (
 
 
 
+  create table jckk_setting (
+    id int primary key auto_increment,
+    sys_key  varchar(50) comment "键",
+    sys_value varchar(200)  comment "值 ",
+    create_time int comment "加入时间"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+
+
 
 
 

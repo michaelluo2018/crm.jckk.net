@@ -88,8 +88,26 @@ class System extends Base{
 
 
     public function system_settings(){
+        $settings = model("setting","logic")->get_setting();
 
-        return view("system_settings");
+        return view("system_settings")->assign("settings",$settings);
+    }
+
+    public function setting_save(){
+
+        $datas = Request::instance()->post();
+        $files = Request::instance()->file();
+        if(isset($datas["system_email_pwd"])){
+            $datas["system_email_pwd"] = base64_encode($datas["system_email_pwd"]);
+        }
+       if($datas && !empty($datas)){
+           model("setting","logic")->save_settings($datas);
+       }
+       if($files && !empty($files)){
+           model("setting","logic")->save_settings($files,true);
+       }
+
+        return $this->redirect("system_settings");
     }
 
 

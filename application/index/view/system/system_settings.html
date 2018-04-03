@@ -16,47 +16,174 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card card-outline-info">
-                <div class="card-header">
-                    <h4 class="m-b-0 text-white">系统基本设置</h4>
+            <div class="card-body p-b-0">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs customtab2" role="tablist">
+                    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home7" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">系统设置</span></a> </li>
+                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile7" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">邮箱设置</span></a> </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home7" role="tabpanel">
+                        <div class="p-20">
+                            <form action="{:url('index/system/setting_save')}"  enctype="multipart/form-data" method="post">
+                                <div class="form-body">
+
+                                    <div class="row p-t-20">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">公司名称</label>
+                                                {if condition="isset($settings['system_company'])"/}
+                                                <input type="text"  class="form-control" placeholder="填写本公司名称" name="system_company" value="{$settings['system_company']}" required>
+                                                {else/}
+                                                <input type="text"  class="form-control" placeholder="填写本公司名称" name="system_company"  required>
+                                                {/if}
+                                                <small class="form-control-feedback"> </small> </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">公司地址</label>
+                                                {if condition="isset($settings['system_address'])"/}
+                                                <input type="text"  class="form-control" placeholder="填写本公司地址" name="system_address" value="{$settings['system_address']}"  required>
+                                                {else/}
+                                                <input type="text"  class="form-control" placeholder="填写本公司名称" name="system_address"  required>
+                                                {/if}
+                                                <small class="form-control-feedback"> </small> </div>
+                                        </div>
+
+                                        <!--/span-->
+                                        <div class="col-md-12">
+                                            <div class="form-group has-danger">
+                                                <label class="control-label">
+                                                   <p>Logo</p>
+                                                    {if condition="isset($settings['system_logo'])"/}
+                                                    <img src="{$settings['system_logo']}" alt="" width="200" >
+                                                    {else/}
+                                                    {/if}
+                                                </label>
+
+                                                <label class="custom-file d-block">
+                                                    <input type="file"  class="custom-file-input" name="system_logo" >
+                                                    <span class="custom-file-control">点击上传图片</span>
+                                                </label>
+                                                <small class="form-control-feedback"></small>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+
+
+                                        <!--/span-->
+                                        <div class="col-md-12">
+                                            <div class="form-group has-danger">
+                                                <label class="control-label">
+                                                    <p>头部背景</p>
+                                                    {if condition="isset($settings['system_heard_img'])"/}
+                                                    <img src="{$settings['system_heard_img']}" alt="" width="200">
+                                                    {else/}
+                                                    {/if}
+                                                </label>
+
+                                                <label class="custom-file d-block">
+                                                    <input type="file"  class="custom-file-input" name="system_heard_img" >
+                                                    <span class="custom-file-control">点击上传图片</span>
+                                                </label>
+                                                <small class="form-control-feedback"></small> </div>
+                                        </div>
+                                        <!--/span-->
+
+
+                                        <!--/span-->
+                                        <div class="col-md-12">
+                                            <div class="form-group has-danger">
+                                                <label class="control-label">
+                                                   <p>登陆背景</p>
+                                                    {if condition="isset($settings['system_login_img'])"/}
+                                                    <img src="{$settings['system_login_img']}" alt="" width="200">
+                                                    {else/}
+                                                    {/if}
+
+                                                </label>
+                                                <label class="custom-file d-block">
+                                                    <input type="file"  class="custom-file-input" name="system_login_img" >
+                                                    <span class="custom-file-control">点击上传图片</span>
+                                                </label>
+                                                <small class="form-control-feedback"></small> </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <!--/row-->
+
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
+                                    <button type="button" class="btn btn-inverse">重置</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="profile7" role="tabpanel">
+                        <div class="p-20">
+                            <form action="{:url('index/system/setting_save')}" method="post">
+                                <div class="form-body">
+                                    <div class="row p-t-20">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">邮箱服务</label>
+                                                {if condition="isset($settings['system_email_server'])"/}
+                                                <input type="text"  class="form-control" value="{$settings['system_email_server']}" name="system_email_server"  required>
+                                                {else/}
+                                                <input type="text"  class="form-control" placeholder="eg:smtp.163.com" name="system_email_server"  required>
+                                                {/if}
+                                                <small class="form-control-feedback"> </small> </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">邮箱端口</label>
+                                                {if condition="isset($settings['system_email_port'])"/}
+                                                <input type="text"  class="form-control" value="{$settings['system_email_port']}" name="system_email_port"  required>
+                                                {else/}
+                                                <input type="text"  class="form-control" placeholder="eg:25" name="system_email_port"  required>
+                                                {/if}
+                                                <small class="form-control-feedback"> </small> </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">发送邮箱</label>
+                                                {if condition="isset($settings['system_email'])"/}
+                                                <input type="text"  class="form-control" value="{$settings['system_email']}" name="system_email"  required>
+                                                {else/}
+                                                <input type="text"  class="form-control" placeholder="请填写邮箱" name="system_email"  required>
+                                                {/if}
+                                                <small class="form-control-feedback"> </small> </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">邮箱密码</label>
+                                                <input type="password"  class="form-control" placeholder="请填写邮箱密码" name="system_email_pwd" >
+                                                <small class="form-control-feedback"> </small> </div>
+                                        </div>
+                                    </div>
+                                    <!--/row-->
+
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
+                                    <button type="reset" class="btn btn-inverse">重置</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="card-body">
-                <form action="#">
-                    <div class="form-body">
-                        <h3 class="card-title">系统设置</h3>
-                        <hr>
-                        <div class="row p-t-20">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="control-label">系统名称</label>
-                                    <input type="text" id="firstName" class="form-control" placeholder="珠海金融投资控股有限公司" value="珠海金融投资控股有限公司">
-                                    <small class="form-control-feedback"> </small> </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-12">
-                                <div class="form-group has-danger">
-                                    <label class="control-label">Logo</label>
-                                    <label class="custom-file d-block">
-                                        <input type="file" id="file" class="custom-file-input">
-                                        <span class="custom-file-control">点击上传图片</span>
-                                    </label>
-                                    <small class="form-control-feedback"></small> </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
-
-                    </div>
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
-                        <button type="button" class="btn btn-inverse">重置</button>
-                    </div>
-                </form>
-            </div>
-
         </div>
 
     </div>
 </div>
+
 {/block}
