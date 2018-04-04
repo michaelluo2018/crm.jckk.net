@@ -118,6 +118,35 @@ class System extends Base{
 
 
 
+    public function check_user_mobile(){
+
+        $mobile = Request::instance()->get("mobile");
+        $uid = Request::instance()->get("uid");
+
+        if($mobile){
+            if(model("user","logic")->check_mobile($mobile,$uid)){
+                return 1;
+            }
+        }
+
+
+
+    }
+
+
+    public function check_user_email(){
+
+        $email = Request::instance()->get("email");
+        $uid = Request::instance()->get("uid");
+        if($email){
+            if(model("user","logic")->check_email($email,$uid)){
+               return 1;
+            }
+        }
+
+
+    }
+
 
 
 

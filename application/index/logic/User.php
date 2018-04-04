@@ -166,4 +166,38 @@ class User extends Model{
         }
     }
 
+
+    public  function  check_mobile($mobile,$uid=null){
+        if($uid){
+            return $this->where("mobile",$mobile)->where("uid","<>",$uid)->find();
+        }
+        else{
+            return $this->where("mobile",$mobile)->find();
+        }
+
+    }
+
+
+     public  function  check_email($email,$uid=null){
+
+        if($uid){
+            return $this->where("email",$email)->where("uid","<>",$uid)->find();
+        }
+        else{
+            return $this->where("email",$email)->find();
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 }
