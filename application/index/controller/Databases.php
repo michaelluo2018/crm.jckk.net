@@ -10,7 +10,10 @@ require ROOT_PATH .'/extend/DbManage.php';
 class Databases extends Base{
 
     public $DbManage;
+
     public $dir_path = ROOT_PATH .'database'.DS;
+
+
     public  function  __construct(Request $request = null)
     {
         parent::__construct($request);
@@ -40,6 +43,11 @@ class Databases extends Base{
             }
         }
         closedir($handler);
+
+        $file_page_data['lastPage'] =ceil(count($arr_file)/10);
+        $file_page_data['listRows'] =10;
+
+        $this->assign("file_page_data",$file_page_data);
         $this->assign("arr_file",$arr_file);
         $this->assign("table_infos",$table_infos);
 
