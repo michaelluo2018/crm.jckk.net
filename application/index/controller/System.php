@@ -81,6 +81,7 @@ class System extends Base{
 
     public function user_des($id){
             $user = model("user","logic")->get_user($id);
+          
             return view("member_des")->assign("user",$user);
         }
 
