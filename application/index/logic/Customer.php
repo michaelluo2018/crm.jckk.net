@@ -42,14 +42,14 @@ class Customer extends  Model{
     //检验客户是否存在
     public function is_exist_customer_by_name($customer_name){
 
-        if($customer = $this->where("customer_name",$customer_name)->find()){
+        if($customer = $this->where("customer_name",$customer_name)->where("is_delete","<>",1)->find()){
             return $customer;
         }
     }
 
     public function is_exist_customer_by_id($id){
 
-        if($customer = $this->where("id",$id)->find()){
+        if($customer = $this->where("id",$id)->where("is_delete","<>",1)->find()){
             return $customer;
         }
     }

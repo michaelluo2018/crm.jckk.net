@@ -24,8 +24,17 @@ class Customer extends Base{
         $customer_logic =   model("customer",'logic');
         $res = $customer_logic->save_customer($data);
         if($res){
-            //跳转到customer_list
-            $this->redirect("customer_list");
+            if(isset($data["customer_id"]) && !empty($data['customer_id'])){
+                //跳转到customer_list
+                $this->redirect("customer_list");
+            }
+            else{
+                $add_url = url("customer_add");
+                $list_url = url("customer_list");
+                $msg = "<div style='margin-bottom: 50px;'> <a href='".$add_url."' style='margin-right: 80px;'><button style='padding: 5px;background-color:green'>继续添加</button></a><a href='".$list_url."'><button style='padding: 5px;background-color: orange '>返回列表</button></a></div>";
+                $this->success($msg,"customer_list","","30");
+            }
+
         }
 
     }

@@ -169,10 +169,10 @@ class User extends Model{
 
     public  function  check_mobile($mobile,$uid=null){
         if($uid){
-            return $this->where("mobile",$mobile)->where("uid","<>",$uid)->find();
+            return $this->where("mobile",$mobile)->where("uid","<>",$uid)->where("is_delete","<>",1)->find();
         }
         else{
-            return $this->where("mobile",$mobile)->find();
+            return $this->where("mobile",$mobile)->where("is_delete","<>",1)->find();
         }
 
     }
@@ -181,10 +181,10 @@ class User extends Model{
      public  function  check_email($email,$uid=null){
 
         if($uid){
-            return $this->where("email",$email)->where("uid","<>",$uid)->find();
+            return $this->where("email",$email)->where("uid","<>",$uid)->where("is_delete","<>",1)->find();
         }
         else{
-            return $this->where("email",$email)->find();
+            return $this->where("email",$email)->where("is_delete","<>",1)->find();
         }
 
 
