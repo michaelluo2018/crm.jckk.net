@@ -155,4 +155,11 @@ class Customer extends  Model{
     }
 
 
+    public function  total_customer(){
+        return $this->count();
+    }
+
+
+
+
 }

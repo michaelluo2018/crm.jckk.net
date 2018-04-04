@@ -190,7 +190,7 @@
                                             <p class="text-muted">{$user_info.email}</p><a href="{:url('index/user/profile')}" class="btn btn-rounded btn-danger btn-sm">个人中心</a></div>
                                     </div>
                                 </li>
-                                <li><a href="{:url('index/index/login_out')}"><i class="fa fa-power-off"></i> 退出</a></li>
+                                <li><a href="javascript:void (0);" onclick="delete_sure('确定要退出吗？', '{:url(\'index/index/login_out\')}')"><i class="fa fa-power-off"></i> 退出</a></li>
                             </ul>
                         </div>
                     </li>
@@ -222,7 +222,7 @@
                         <div class="dropdown-divider"></div>
                         <a href="{:url('index/user/profile')}" class="dropdown-item"><i class="ti-user"></i> 个人中心</a>
                         <div class="dropdown-divider"></div>
-                        <a href="{:url('index/index/login_out')}" class="dropdown-item"><i class="fa fa-power-off"></i> 退出登陆</a>
+                        <a  href="javascript:void (0);" onclick="delete_sure('确定要退出吗？', '{:url(\'index/index/login_out\')}')" class="dropdown-item"><i class="fa fa-power-off"></i> 退出登陆</a>
                      </div>
                 </div>
             </div>
@@ -275,9 +275,9 @@
         <!-- End Sidebar scroll-->
         <!-- Bottom points-->
         <div class="sidebar-footer">
-            <!-- item--><a href="" class="link" data-toggle="tooltip" title="个人设置"><i class="ti-settings"></i></a>
-            <!-- item--><a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
-            <!-- item--><a href="login.html" class="link" data-toggle="tooltip" title="退出系统"><i class="mdi mdi-power"></i></a> </div>
+            <!-- item--><a href="{:url('index/system/system_settings')}" class="link" data-toggle="tooltip" title="系统设置"><i class="ti-settings"></i></a>
+            <!-- item--><a href="{:url('index/project/project_list')}" class="link" data-toggle="tooltip" title="项目管理"><i class="mdi mdi-gmail"></i></a>
+            <!-- item--><a href="javascript:void (0);" onclick="delete_sure('确定要退出吗？', '{:url(\'index/index/login_out\')}')" class="link" data-toggle="tooltip" title="退出系统"><i class="mdi mdi-power"></i></a> </div>
         <!-- End Bottom points-->
     </aside>
     <!-- ============================================================== -->
@@ -311,15 +311,15 @@
                         <div class="d-flex m-r-20 m-l-10 hidden-md-down">
                             <div class="chart-text m-r-10">
                                 <h6 class="m-b-0"><small>总客户</small></h6>
-                                <h4 class="m-t-0 text-info">58,356</h4></div>
+                                <h4 class="m-t-0 text-info">{$total_customer}</h4></div>
                             <div class="spark-chart">
                                 <div id="monthchart"></div>
                             </div>
                         </div>
                         <div class="d-flex m-r-20 m-l-10 hidden-md-down">
                             <div class="chart-text m-r-10">
-                                <h6 class="m-b-0"><small>新增客户</small></h6>
-                                <h4 class="m-t-0 text-primary">356</h4></div>
+                                <h6 class="m-b-0"><small>总项目</small></h6>
+                                <h4 class="m-t-0 text-primary">{$total_project}</h4></div>
                             <div class="spark-chart">
                                 <div id="lastmonthchart"></div>
                             </div>

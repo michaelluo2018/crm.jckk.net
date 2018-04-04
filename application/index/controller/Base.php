@@ -23,6 +23,12 @@ class Base extends Controller{
         //系统设置
         $setting = model("setting","logic")->get_setting();
         $this->assign("setting",$setting);
+        //总客户，总项目
+        $total_customer = model("customer","logic")->total_customer();
+        $total_project = model("project","logic")->total_project();
+        $this->assign("total_customer",$total_customer);
+        $this->assign("total_project",$total_project);
+
 
     }
 

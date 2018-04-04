@@ -1,6 +1,6 @@
 {extend name="layout"/}
 {block name="title"}
-<title>添加用户  - 用户和权限 - 系统设置 - 客户管理系统</title>
+<title>修改用户  - 用户和权限 - 系统设置 - 客户管理系统</title>
 {/block}
 {block name="js"/}
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
@@ -12,7 +12,7 @@
         <li class="breadcrumb-item"><a href="/">首页</a></li>
         <li class="breadcrumb-item">系统设置</li>
         <li class="breadcrumb-item">用户和权限</li>
-        <li class="breadcrumb-item active">添加用户</li>
+        <li class="breadcrumb-item active">修改用户</li>
     </ol>
 </div>
 {/block}
@@ -21,7 +21,7 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-header">
-                <h4 class="m-b-0 text-white">添加用户</h4>
+                <h4 class="m-b-0 text-white">修改用户</h4>
             </div>
             <div class="card-body">
                 <form action="{:url('index/user/save_user')}" method="post" enctype="multipart/form-data">

@@ -137,6 +137,9 @@ class Project extends Model{
     }
 
 
+    public function  total_project(){
+        return $this->count();
+    }
 
 
 
