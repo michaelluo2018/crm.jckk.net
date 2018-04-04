@@ -1,0 +1,140 @@
+{extend name="layout"/}
+{block name="title"/}
+<title>数据库备份 - 客户管理系统</title>
+{/block}
+{block name="js"/}
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+{/block}
+{block name="breadcrumb"/}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">工作台</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">首页</a></li>
+        <li class="breadcrumb-item go_back"><a href="javascript:void(0)">系统设置</a></li>
+        <li class="breadcrumb-item active">数据库备份</li>
+    </ol>
+</div>
+{/block}
+{block name="detail"/}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body p-b-0">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs customtab2" role="tablist">
+                    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home7" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">添加备份</span></a> </li>
+                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile7" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">还原备份</span></a> </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home7" role="tabpanel">
+                        <div class="p-20">
+                            <div class="card-body">
+                                <form action="{:url('index/databases/save_database')}" method="post" id="database_form">
+                                    <table class="table table-bordered table-hover toggle-circle" data-page-size="1000">
+                                        <thead>
+                                        <tr class="text-align">
+                                            <th data-sort-initial="true" data-toggle="true"  data-hide="phone, tablet">
+                                                <label class="custom-control custom-checkbox">
+                                                    <input id="check_all"   type="checkbox"  class="custom-control-input" >
+                                                    <span class="custom-control-indicator"></span>
+                                                </label>
+                                            </th>
+                                            <th>表名</th>
+                                            <th>数据量</th>
+                                            <th>数据大小</th>
+                                            <th>创建时间</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {volist name="table_infos" id="info"/}
+                                        <tr class="text-align">
+                                            <td data-sort-initial="true" data-toggle="true"  data-hide="phone, tablet">
+                                                <label class="custom-control custom-checkbox">
+                                                    <input name="table_name[]"   type="checkbox"  class="custom-control-input table_name"  value="{$info.Name}">
+                                                    <span class="custom-control-indicator"></span>
+                                                </label>
+                                            </td>
+                                            <td>{$info.Name}</td>
+                                            <td>{$info.Rows}</td>
+                                            <td>{$info.Data_length}</td>
+                                            <td>{$info.Create_time}</td>
+                                            <td><a href="">备份</a></td>
+                                        </tr>
+                                        {/volist}
+                                        </tbody>
+                                    </table>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
+                                        <button type="reset" class="btn btn-inverse">重置</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="profile7" role="tabpanel">
+                        <div class="p-20">
+                            <table class="table table-bordered table-hover toggle-circle" data-page-size="10">
+                                <thead>
+                                <tr class="text-align">
+                                    <th>文件名</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {volist name="arr_file" id="file"/}
+                                <tr class="text-align">
+                                    <td>{$file}</td>
+                                    <td>
+                                        <a href="{:url('index/databases/restore_database')}?file={$file}">还原</a> |
+                                        <a  href="javascript:void (0);" onclick="delete_sure('确定要删除此备份吗？','{:url(\'index/databases/delete_database\')}?file={$file}')">删除</a>
+                                    </td>
+                                </tr>
+                                {/volist}
+                                </tbody>
+                                <!--<tfoot>-->
+                                <!--<tr>-->
+                                    <!--<td colspan="14">-->
+                                        <!--<div class="text-right">-->
+                                            <!--<ul class="pagination">-->
+                                            <!--</ul>-->
+                                        <!--</div>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                                <!--</tfoot>-->
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    $("#check_all").change(function () {
+        if($(this).is(':checked')){
+           $(".table_name").each(function () {
+               $(this).prop('checked', 'checked');
+           });
+        }
+        else{
+            $(".table_name").each(function () {
+                $(this).prop('checked', false);
+            });
+        }
+    });
+
+    $("#database_form").submit(function () {
+        var data = $("input[type=checkbox]:checked").val();
+        if(!data){
+            alert("没有勾选内容！");
+            return false;
+        }
+
+    });
+</script>
+{/block}

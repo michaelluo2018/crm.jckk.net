@@ -1,5 +1,7 @@
 .idea
 .uploads
+.database
+*.sql
 composer.lock
 *.log
 thinkphp
