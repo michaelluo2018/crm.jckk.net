@@ -60,12 +60,23 @@ class Log extends Model{
     }
 
 
-    public function get_logs(){
-        $logs=  Db::table("jckk_logs")
+    public function get_logs($uid=null){
+        if($uid){
+            $logs=  Db::table("jckk_logs")
+                ->where("jckk_logs.uid",$uid)
                 ->order("jckk_logs.id","desc")
                 ->field(["jckk_logs.*","jckk_user.chinese_name"])
                 ->join("jckk_user","jckk_user.uid = jckk_logs.uid",'LEFT')
                 ->paginate();
+        }
+        else{
+            $logs=  Db::table("jckk_logs")
+                ->order("jckk_logs.id","desc")
+                ->field(["jckk_logs.*","jckk_user.chinese_name"])
+                ->join("jckk_user","jckk_user.uid = jckk_logs.uid",'LEFT')
+                ->paginate();
+        }
+
 
         return $logs;
     }

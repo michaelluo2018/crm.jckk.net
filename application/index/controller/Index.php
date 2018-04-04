@@ -7,7 +7,9 @@ class Index extends Base
 
     public function index()
     {
-        return view("index");
+        //本人操作日志
+        $my_logs = model("log","logic")->get_logs($this->uid);
+        return view("index")->assign("my_logs",$my_logs);
     }
 
     public function  login_out(){

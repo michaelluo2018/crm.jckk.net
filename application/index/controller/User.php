@@ -7,7 +7,9 @@ class User extends Base{
 
     public  function  profile(){
 
-        return view("profile");
+        //本人操作日志
+        $my_logs = model("log","logic")->get_logs($this->uid);
+        return view("profile")->assign("my_logs",$my_logs);
     }
 
 
