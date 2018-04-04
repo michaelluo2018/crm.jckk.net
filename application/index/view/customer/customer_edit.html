@@ -2,6 +2,9 @@
 {block name="title"}
 <title>添加项目 - 客户管理系统</title>
 {/block}
+{block name="js"/}
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+{/block}
 {block name="breadcrumb"}
 <div class="col-md-5 col-8 align-self-center">
     <h3 class="text-themecolor">工作台</h3>
@@ -175,7 +178,7 @@
                             <div class="col-md-4">
                                 <div class="form-group has-danger">
                                     <label class="control-label">邮箱</label>
-                                    <input type="text"  class="form-control" value="{$customer.email}" name="contact_email">
+                                    <input type="email"  class="form-control" value="{$customer.email}" name="contact_email">
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
                             <!--/span-->
@@ -183,6 +186,12 @@
                                 <div class="form-group has-danger">
                                     <label class="control-label">QQ</label>
                                     <input type="text"  class="form-control" value="{$customer.qq}" name="contact_qq">
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">微信</label>
+                                    <input type="text"  class="form-control" value="{$customer.wechat}" name="contact_wechat">
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
                             <!--/span-->
@@ -196,7 +205,14 @@
                             <!--/span-->
                         </div>
                         <!--/row-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group has-danger">
+                                    <p id="msg" style="color: red;"></p>
+                                </div>
+                            </div>
 
+                        </div>
                     </div>
                     <div class="form-actions">
                         <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
@@ -207,4 +223,30 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    $("form").submit(function () {
+        var msg = $("#msg").text();
+        if(msg){
+            return false;
+        }
+
+    });
+
+    $("input[name=contact_mobile]").change(function(){
+
+        var mobile = $(this).val();
+
+        var phone=/^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/;
+
+        if (!phone.test(mobile)) {
+            $("#msg").text("手机号格式不正确");
+        }
+
+    });
+
+
+</script>
+
 {/block}

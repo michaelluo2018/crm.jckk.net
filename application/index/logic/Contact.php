@@ -42,6 +42,7 @@ class Contact extends Model{
         $contact->sex = $data["radio_sex"]=="男"?0:1;
         $contact->email = $data["contact_email"];
         $contact->qq = $data["contact_qq"];
+        $contact->wechat = $data["contact_wechat"];
         $contact->create_time = time();
         $contact->save();
 

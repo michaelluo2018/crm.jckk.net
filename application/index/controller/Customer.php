@@ -63,7 +63,14 @@ class Customer extends Base{
 
 
 
+    public function check_customer_name(){
 
+        $name = Request::instance()->get("name");
+
+        if(model("customer","logic")->is_exist_customer_by_name($name)){
+            return 1;
+        }
+    }
 
 
 
