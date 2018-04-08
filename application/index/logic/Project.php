@@ -138,7 +138,7 @@ class Project extends Model{
 
 
     public function  total_project(){
-        return $this->count();
+        return $this->where("is_delete","<>",1)->count();
     }
 
 

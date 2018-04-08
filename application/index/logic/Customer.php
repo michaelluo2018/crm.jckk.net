@@ -156,7 +156,7 @@ class Customer extends  Model{
 
 
     public function  total_customer(){
-        return $this->count();
+        return $this->where("is_delete","<>",1)->count();
     }
 
     public function  find_by_name($name){
