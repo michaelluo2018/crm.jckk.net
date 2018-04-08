@@ -15,7 +15,7 @@
 {block name="detail"/}
 
 {volist name="customer_status" id="status"/}
-    <input type="hidden" name="{$status['key']}" value="{$status['value']}" id="{$status['key']}">
+    <input type="hidden" name="{$status['key']}" value="{$status['value']}" class="{$status['field']}" id="{$status['key']}">
 {/volist}
 
 

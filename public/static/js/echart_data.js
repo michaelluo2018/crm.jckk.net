@@ -1,6 +1,14 @@
 var dom = document.getElementById("visitor1");
 var myChart = echarts.init(dom);
 var app = {};
+var customer_status_1=document.getElementsByClassName("customer_status_1");
+var customer_status_1_length = customer_status_1.length;
+var customer_status_1_key = [];
+var customer_status_1_value = [];
+for(var i=0;i<customer_status_1_length;i++){
+    customer_status_1_key[i] =customer_status_1[i].value;
+}
+
 
 option = null;
 option = {
@@ -65,6 +73,7 @@ option = {
         orient: 'vertical',
         left: 'left',
         data: ['战略级客户','品牌级客户','核心级客户','普通级客户']
+
     },
     series : [
         {

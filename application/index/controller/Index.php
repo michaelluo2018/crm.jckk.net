@@ -24,6 +24,7 @@ class Index extends Base
 
         $customer_status = array_merge($customer_status_1,$customer_status_2,$get_contract_status,$product_demand);
         return view("index")->assign("my_logs",$my_logs)->assign("customer_status",$customer_status);
+      //  return view("index")->assign("my_logs",$my_logs)->assign("customer_status",$customer_status_1);
     }
 
     public function  login_out(){
@@ -40,6 +41,7 @@ class Index extends Base
 
         for ($i=0;$i<$num;$i++){
             $customer_status_1 = $array[$i];
+            $list[$i]['field']='customer_status_1';
             $list[$i]['key']=$customer_status_1;
             $list[$i]['value']  = model("customer","logic")->customer_count_status_1($customer_status_1);
 
@@ -56,6 +58,7 @@ class Index extends Base
 
         for ($i=0;$i<$num;$i++){
             $customer_status_2 = $array[$i];
+            $list[$i]['field']='customer_status_2';
             $list[$i]['key']=$customer_status_2;
             $list[$i]['value']  = model("customer","logic")->customer_count_status_2($customer_status_2);
 
@@ -72,6 +75,7 @@ class Index extends Base
 
         for ($i=0;$i<$num;$i++){
             $contract_status = $array[$i];
+            $list[$i]['field']='contract_status';
             $list[$i]['key']=$contract_status;
             $list[$i]['value']  = model("project","logic")->contract_count_status($contract_status);
 
@@ -88,6 +92,7 @@ class Index extends Base
 
         for ($i=0;$i<$num;$i++){
             $product_demand_1 = $array[$i];
+            $list[$i]['field']='product_demand_1';
             $list[$i]['key']=$product_demand_1;
             $list[$i]['value']  = model("project","logic")->product_demand_count_1($product_demand_1);
 
