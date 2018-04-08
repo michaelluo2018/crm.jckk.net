@@ -33,10 +33,12 @@ class Department extends Model{
 
             }
             else{
-
-                $array[$i]['department_name'] =  $data['department_name'][$i];
-                $array[$i]['sort'] = $data['listorder'][$i];
-                $array[$i]['create_time'] = time();
+                //清朝空余的
+                if(isset($data['department_name'][$i])&& !empty($data['department_name'][$i])){
+                    $array[$i]['department_name'] =  $data['department_name'][$i];
+                    $array[$i]['sort'] = $data['listorder'][$i];
+                    $array[$i]['create_time'] = time();
+                }
 
             }
         }

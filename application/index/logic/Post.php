@@ -48,12 +48,16 @@ class Post extends Model{
             }
             else{
                 //添加
-                $array[$i]['department_id'] =  $data['post_department_id'];
-                $array[$i]['post_name'] =  $data['department_name'][$i];
-                $array[$i]['sort'] = $data['listorder'][$i];
-                $array[$i]['pid'] = $data['post_pid'];
-                $array[$i]['create_time'] = time();
-                $array[$i]['path'] = $pre_path;
+                //过滤空白的
+                if(isset($data['department_name'][$i])&& !empty($data['department_name'][$i])){
+                    $array[$i]['department_id'] =  $data['post_department_id'];
+                    $array[$i]['post_name'] =  $data['department_name'][$i];
+                    $array[$i]['sort'] = $data['listorder'][$i];
+                    $array[$i]['pid'] = $data['post_pid'];
+                    $array[$i]['create_time'] = time();
+                    $array[$i]['path'] = $pre_path;
+                }
+
             }
         }
 
