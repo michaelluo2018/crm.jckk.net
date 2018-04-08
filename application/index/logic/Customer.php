@@ -173,4 +173,32 @@ class Customer extends  Model{
     }
 
 
+    public function customer_count_status_1($name){
+        $data = $this->where("customer_status_1",$name)->where("is_delete","<>",1)->count();
+        return $data;
+    }
+      public function customer_count_status_2($name){
+        $data = $this->where("customer_status_2",$name)->where("is_delete","<>",1)->count();
+        return $data;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

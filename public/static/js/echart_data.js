@@ -1,6 +1,7 @@
 var dom = document.getElementById("visitor1");
 var myChart = echarts.init(dom);
 var app = {};
+
 option = null;
 option = {
     title : {
@@ -24,11 +25,12 @@ option = {
             radius : '55%',
             center: ['50%', '60%'],
             data:[
-                {value:335, name:'潜在客户'},
-                {value:310, name:'需求客户'},
-                {value:234, name:'提案客户'},
-                {value:135, name:'签约客户'}                
+                {value:document.getElementById('潜在客户').value, name:'潜在客户'},
+                {value:document.getElementById('需求客户').value, name:'需求客户'},
+                {value:document.getElementById('提案客户').value, name:'提案客户'},
+                {value:document.getElementById('签约客户').value, name:'签约客户'}
             ],
+
             itemStyle: {
                 emphasis: {
                     shadowBlur: 10,
@@ -71,10 +73,10 @@ option = {
             radius : '55%',
             center: ['50%', '60%'],
             data:[
-                {value:335, name:'战略级客户'},
-                {value:310, name:'品牌级客户'},
-                {value:234, name:'核心级客户'},
-                {value:135, name:'普通级客户'}                
+                {value:document.getElementById('战略级客户').value, name:'战略级客户'},
+                {value:document.getElementById('品牌级客户').value, name:'品牌级客户'},
+                {value:document.getElementById('核心级客户').value, name:'核心级客户'},
+                {value:document.getElementById('普通级客户').value, name:'普通级客户'}
             ],
             itemStyle: {
                 emphasis: {
@@ -119,14 +121,14 @@ option = {
             radius : '55%',
             center: ['50%', '60%'],
             data:[
-                {value:335, name:'合约审核'},
-                {value:310, name:'合约签署'},
-                {value:234, name:'合约执行'},
-                {value:135, name:'合约完成'},
-                {value:135, name:'续约审核'},
-                {value:135, name:'续约签署'},
-                {value:135, name:'续约执行'},
-                {value:135, name:'续约完成'}                
+                {value:document.getElementById('合约审核').value, name:'合约审核'},
+                {value:document.getElementById('合约签署').value, name:'合约签署'},
+                {value:document.getElementById('合约执行').value, name:'合约执行'},
+                {value:document.getElementById('合约完成').value, name:'合约完成'},
+                {value:document.getElementById('续约审核').value, name:'续约审核'},
+                {value:document.getElementById('续约签署').value, name:'续约签署'},
+                {value:document.getElementById('续约执行').value, name:'续约执行'},
+                {value:document.getElementById('续约完成').value, name:'续约完成'}
             ],
             itemStyle: {
                 emphasis: {
@@ -171,15 +173,15 @@ option = {
             radius : '55%',
             center: ['50%', '60%'],
             data:[
-                {value:335, name:'品牌信息壁垒体系'},
-                {value:310, name:'创意策划传播'},
-                {value:234, name:'平面视觉'},
-                {value:135, name:'视频视觉'},
-                {value:135, name:'媒介资源采购'},
-                {value:135, name:'技术开发'},
-                {value:135, name:'整合营销顾问'},
-                {value:135, name:'效果营销优化'},
-                {value:135, name:'新媒体运营'}
+                {value:document.getElementById('品牌信息壁垒体系').value, name:'品牌信息壁垒体系'},
+                {value:document.getElementById('创意策划传播').value, name:'创意策划传播'},
+                {value:document.getElementById('平面视觉').value, name:'平面视觉'},
+                {value:document.getElementById('视频视觉').value, name:'视频视觉'},
+                {value:document.getElementById('媒介资源采购').value, name:'媒介资源采购'},
+                {value:document.getElementById('技术开发').value, name:'技术开发'},
+                {value:document.getElementById('整合营销顾问').value, name:'整合营销顾问'},
+                {value:document.getElementById('效果营销优化').value, name:'效果营销优化'},
+                {value:document.getElementById('新媒体运营').value, name:'新媒体运营'}
             ],
             itemStyle: {
                 emphasis: {

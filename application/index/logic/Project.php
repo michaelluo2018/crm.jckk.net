@@ -158,4 +158,32 @@ class Project extends Model{
             ->paginate();
     }
 
+
+
+    public function contract_count_status($status){
+
+        return $this->where("contract_status",$status)->where("is_delete","<>",1)->count();
+    }
+
+
+    public function product_demand_count_1($status){
+
+        return $this->where("product_demand_1",$status)->where("is_delete","<>",1)->count();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

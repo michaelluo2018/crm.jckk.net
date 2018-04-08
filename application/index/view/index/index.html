@@ -13,6 +13,11 @@
 {/block}
 {block name="detail"/}
 
+{volist name="customer_status" id="status"/}
+    <input type="hidden" name="{$status['key']}" value="{$status['value']}" id="{$status['key']}">
+{/volist}
+
+
 <div class="row">
     <!-- Column -->
     <div class="col-lg-6">
