@@ -6,17 +6,12 @@ use think\Request;
 
 class Customer extends Base{
     //客户列表
-    public function customer_list($where = null){
+    public function customer_list(){
 
-        if(!$where){
-            $data = model("customer","logic")->get_customers();
-        }
-        else{
 
-            $data = model("customer","logic")->find_by_name($where);
-        }
+        $data = model("customer","logic")->get_customers();
 
-        return  view("customer_list")->assign(["data"=>$data,"where"=>$where]);
+        return  view("customer_list")->assign("data",$data);
     }
 
     //客户添加
@@ -73,13 +68,13 @@ class Customer extends Base{
     }
 
     //客户搜索
-
-    public  function  customer_search(){
-        $name = Request::instance()->post("customer_name");
-
-        $this->redirect("customer_list",["where"=>$name]);
-
-    }
+//
+//    public  function  customer_search(){
+//        $name = Request::instance()->post("customer_name");
+//
+//        $this->redirect("customer_list",["where"=>$name]);
+//
+//    }
 
 
 
