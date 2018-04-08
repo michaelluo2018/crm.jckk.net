@@ -142,5 +142,20 @@ class Project extends Model{
     }
 
 
+    public function find_by_name($name){
+        return Db::table("jckk_project")
+            ->alias("p")
+            ->where("p.is_delete","<>",1)
+            ->where("c.customer_name","like",'%'.$name .'%')
+            ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","d.department_name"])
+            ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+            ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+            ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+            ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+            ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+            ->join("jckk_department d","d.id = eu.department_id","LEFT")
+            ->paginate();
+    }
 
 }

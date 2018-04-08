@@ -7,9 +7,16 @@ use think\Request;
 
 class Project extends Base {
     //项目列表
-    public function project_list(){
-        $projects = model("project","logic")->get_projects();
-        return  view("project_list")->assign("projects",$projects);
+    public function project_list($where = null){
+
+        if(!$where){
+            $projects = model("project","logic")->get_projects();
+        }
+        else{
+            $projects = model("project","logic")->find_by_name($where);
+        }
+
+        return  view("project_list")->assign(["projects"=>$projects,"where"=>$where]);
 
     }
 
@@ -93,6 +100,10 @@ class Project extends Base {
     //项目搜索
 
     public  function  project_search(){
+
+        $name = Request::instance()->post("project_name");
+
+        $this->redirect("project_list",["where"=>$name]);
 
     }
 
