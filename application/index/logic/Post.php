@@ -11,7 +11,7 @@ class Post extends Model{
         return $this->where(["department_id"=>$department_id,"is_delete"=>0,"pid"=>0])->order("sort asc")->select();
 
     }
-    
+
 
 
     public  function get_post_by_name_and_department($post_name,$department_id){

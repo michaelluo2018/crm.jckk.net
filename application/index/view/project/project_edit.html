@@ -24,182 +24,73 @@
             </div>
             <div class="card-body">
                 <form action="{:url('index/project/save_project')}" method="post">
-                    <input type="hidden" name="customer_id" value="{$customer.id}">
                     <input type="hidden" name="contact_id" value="{$customer.contact_id}">
                     <input type="hidden" name="project_id" value="{$project.id}">
                     <div class="form-body">
                         <h3 class="card-title">客户信息</h3>
                         <hr>
                         <div class="row p-t-20">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">客户全称</label>
-                                    <input type="text"  class="form-control" value="{$customer.customer_name}" name="customer_name" required >
+                                    <input type="text"  class="form-control customer_name" value="{$customer.customer_name}"  required autocomplete="off">
+                                    <input type="hidden"  class="form-control" value="{$customer.id}"  name="customer_id" required >
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group has-danger">
-                                    <label class="control-label">客户行业</label>
-                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="industry" required>
-                                        {volist name="data['industry']" id= "vo"}
-                                        {if condition="$vo eq $customer.industry"}
-                                        <option value="{$vo}" selected>{$vo}</option>
-                                        {else/}
-                                        <option value="{$vo}">{$vo}</option>
-                                        {/if}
-                                        {/volist}
-                                    </select>
-                                    <small class="form-control-feedback"></small> </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group has-success">
-                                    <label class="control-label">公司性质</label>
-                                    <div class="form-check">
-                                        {volist name="data['company_nature']" id="company_nature" key="k"}
-                                        <label class="custom-control custom-radio">
-                                            {if condition="$company_nature eq $customer.company_nature"}
-                                            <input id="radio{$k}" name="company_nature" value="{$company_nature}" type="radio" checked class="custom-control-input" >
-                                            {else/}
-                                            <input id="radio{$k}" name="company_nature" value="{$company_nature}" type="radio"  class="custom-control-input" >
-                                            {/if}
-                                            <span class="custom-control-indicator"></span>
-                                            <span class="custom-control-description">{$company_nature}</span>
-                                        </label>
-                                        {/volist}
-                                    </div>
-                                    <small class="form-control-feedback"></small> </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">年营业额</label>
-                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="annual_turnover" required>
-                                        {volist name="data['annual_turnover']" id="annual_turnover" }
-                                        {if condition="$annual_turnover eq $customer.annual_turnover"}
-                                        <option value="{$annual_turnover}" selected>{$annual_turnover}</option>
-                                        {else/}
-                                        <option value="{$annual_turnover}">{$annual_turnover}</option>
-                                        {/if}
-                                        {/volist}
-                                    </select>
-                                    <small class="form-control-feedback"></small>
-                                </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">客户状态一级</label>
-                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="customer_status_1" required>
-                                        {volist name="data['customer_status_1']" id="customer_status_1"}
-                                        {if condition="$customer_status_1 eq $customer.customer_status_1"}
-                                        <option value="{$customer_status_1}" selected>{$customer_status_1}</option>
-                                        {else/}
-                                        <option value="{$customer_status_1}">{$customer_status_1}</option>
-                                        {/if}
-                                        {/volist}
-                                    </select>
-                                </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">客户状态二级</label>
-                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="customer_status_2" required>
-                                        {volist name="data['customer_status_2']" id="customer_status_2"}
-                                        {if condition="$customer_status_2 eq $customer.customer_status_2"}
-                                            <option value="{$customer_status_2}" selected>{$customer_status_2}</option>
-                                        {else/}
-                                        <option value="{$customer_status_2}">{$customer_status_2}</option>
-                                        {/if}
-                                        {/volist}
-                                    </select>
-                                </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <h3 class="card-title">首要联系人信息</h3>
-                        <hr>
-                        <div class="row p-t-20">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">联系人</label>
-                                    <input type="text"  class="form-control" value="{$customer.contact_name}" name="contact_name" required>
-                                    <small class="form-control-feedback"> </small> </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-4">
-                                <div class="form-group has-danger">
-                                    <label class="control-label">职位</label>
-                                    <input type="text"  class="form-control" value="{$customer.position}" name="position" required>
-                                    <small class="form-control-feedback"> </small> </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-4">
-                                <div class="form-group has-danger">
-                                    <label class="control-label">性别</label>
-                                    <div class="form-check">
-                                        <label class="custom-control custom-radio">
-                                            {if condition="$customer.sex eq 0"}
-                                            <input id="radio1" name="radio_sex" type="radio"  class="custom-control-input" value="男" checked>
-                                            {else/}
-                                            <input id="radio1" name="radio_sex" type="radio"  class="custom-control-input" value="男" >
-                                            {/if}
-                                            <span class="custom-control-indicator"></span>
-                                            <span class="custom-control-description">男</span>
-                                        </label>
-                                        <label class="custom-control custom-radio">
-                                            {if condition="$customer.sex eq 1"}
-                                            <input id="radio1" name="radio_sex" type="radio"  class="custom-control-input" value="女" checked>
-                                            {else/}
-                                            <input id="radio1" name="radio_sex" type="radio"  class="custom-control-input" value="女" >
-                                            {/if}
-                                            <span class="custom-control-indicator"></span>
-                                            <span class="custom-control-description">女</span>
-                                        </label>
-                                    </div>
-                                    <small class="form-control-feedback"> </small> </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <div class="row p-t-20">
-                            <div class="col-md-4">
-                                <div class="form-group has-danger">
-                                    <label class="control-label">电话</label>
-                                    <input type="text"  class="form-control" value="{$customer.mobile}" name="contact_mobile" required>
-                                    <small class="form-control-feedback"> </small> </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group has-danger">
-                                    <label class="control-label">邮箱</label>
-                                    <input type="text"  class="form-control" value="{$customer.email}" name="contact_email">
-                                    <small class="form-control-feedback"> </small> </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-4">
-                                <div class="form-group has-danger">
-                                    <label class="control-label">QQ</label>
-                                    <input type="text"  class="form-control" value="{$customer.qq}" name="contact_qq">
-                                    <small class="form-control-feedback"> </small> </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-12">
-                                <div class="form-group has-danger">
-                                    <label class="control-label">备注</label>
-                                    <textarea  rows="6" class="form-control" placeholder="请填写备注" name="note">{$customer.note}</textarea>
-                                    <small class="form-control-feedback"> </small> </div>
-                            </div>
+                            <div class="col-md-12" id="customer_display" style="color: red;" >
 
-                            <!--/span-->
+                            </div>
+                            <script>
+                                $(".customer_name").bind('input propertychange', function () {
+                                    var customer_name = $(this).val();
+                                    if(!customer_name){
+                                        $('#customer_display').html("请输入...");
+                                    }
+                                    else{
+                                        $.ajax({
+                                            url: "{:url('index/project/ajax_get_customer')}",
+                                            data: {'customer_name':customer_name},
+                                            method:"get",
+                                            success:function(data){
+                                                if(data !=0){
+                                                    var customer_html = "";
+
+                                                    $.each(data,function(i,v){
+                                                        var customer_id= v.id;
+                                                        var customer_name= v.customer_name;
+
+                                                        customer_html +="<div class='customer_div' onclick=\"send_customer('"+customer_id+"','"+customer_name+"');\" >"+customer_name+"</div>";
+                                                    });
+
+                                                    $('#customer_display').html(customer_html);
+                                                }
+                                                else{
+                                                    $('#customer_display').html("没找到客户信息");
+                                                }
+                                            },
+                                            dataType: "json"
+                                        });
+                                    }
+
+                                });
+
+                                function send_customer(id,name) {
+                                    $(".customer_name").val(name);
+                                    $("input[name=customer_id]").val(id);
+                                    $("#customer_display div").hide();
+                                }
+
+                                $("form").submit(function () {
+                                    var customer_id = $("input[name=customer_id]").val();
+                                    if(!customer_id){
+                                        $("#customer_display").html("请填写正确的客户");
+                                        return false;
+                                    }
+                                });
+
+                            </script>
                         </div>
-                        <!--/row-->
+
 
 
                         <!--/row-->

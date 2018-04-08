@@ -28,7 +28,7 @@ class Project extends Model{
     //保存项目
     public  function  save_project($data){
         //保存客户信息
-        $customer_id = model("customer","logic")->save_customer($data);
+      //  $customer_id = model("customer","logic")->save_customer($data);
 
         if(isset($data['project_id'])){
             //修改
@@ -40,7 +40,7 @@ class Project extends Model{
             $project = model("project",'model');
             $project->create_time = time();
         }
-        $project->customer_id = $customer_id;
+        $project->customer_id = $data['customer_id'];
         $project->executor_uid = $data['executor_uid'];
         $project->planning_uid = $data['planning_uid'];
         $project->docking_uid = $data['docking_uid'];
@@ -56,7 +56,7 @@ class Project extends Model{
 
         if($project->save()){
             //处理日志
-            $customer_log = model("customer")->where("id",$customer_id)->find();
+            $customer_log = model("customer")->where("id",$data['customer_id'])->find();
 
             if(isset($data['project_id'])){
                 //修改

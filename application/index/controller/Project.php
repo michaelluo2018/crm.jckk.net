@@ -49,6 +49,7 @@ class Project extends Base {
     //项目保存
     public function save_project(){
         $data = Request::instance()->post();
+
         $res = model("project","logic")->save_project($data);
         if($res){
             $this->redirect("project_list");
@@ -108,7 +109,17 @@ class Project extends Base {
     }
 
 
+    public function ajax_get_customer(){
+        $customer_name = Request::instance()->get('customer_name');
+        $data = model("customer","logic")->get_customer_like_name($customer_name);
+        if($data){
+            return $data;
+        }
+        else{
+            return 0;
+        }
 
+    }
 
 
 

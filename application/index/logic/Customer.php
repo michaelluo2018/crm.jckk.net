@@ -168,5 +168,9 @@ class Customer extends  Model{
             ->paginate();
     }
 
+    public function  get_customer_like_name($name){
+        return $this->where("customer_name","like","%".$name."%")->where("is_delete","<>",1)->select();
+    }
+
 
 }
