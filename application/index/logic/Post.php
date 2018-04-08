@@ -8,9 +8,11 @@ class Post extends Model{
 
     public  function  get_posts_by_department($department_id){
 
-        return $this->where(["department_id"=>$department_id,"is_delete"=>0])->order("pid asc,sort asc")->select();
+        return $this->where(["department_id"=>$department_id,"is_delete"=>0,"pid"=>0])->order("sort asc")->select();
 
     }
+    
+
 
     public  function get_post_by_name_and_department($post_name,$department_id){
 
@@ -21,10 +23,16 @@ class Post extends Model{
     public  function  save_post($data){
         if(!isset($data['post_pid'])){
             $data['post_pid'] = 0;
+            $pre_path = 0;
+        }
+        else{
+            $p_data = model("post")->where("id",$data['post_pid'])->find();
+            $pre_path = ($p_data->path).'-'.$data['post_pid'];
         }
         $num = count($data['department_name'] );
         for ($i=0;$i<$num;$i++){
             if(isset($data['post_id'][$i])&& $data['post_id'][$i]>0){
+                //更改
                 $post = $this->where('id',$data['post_id'][$i])->find();
                 $before_value = json_encode($post);
                 $post->post_name = $data['department_name'][$i];
@@ -39,11 +47,13 @@ class Post extends Model{
 
             }
             else{
+                //添加
                 $array[$i]['department_id'] =  $data['post_department_id'];
                 $array[$i]['post_name'] =  $data['department_name'][$i];
                 $array[$i]['sort'] = $data['listorder'][$i];
                 $array[$i]['pid'] = $data['post_pid'];
                 $array[$i]['create_time'] = time();
+                $array[$i]['path'] = $pre_path;
             }
         }
 

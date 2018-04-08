@@ -9,13 +9,53 @@ class System extends Base{
     public function organization($id = null){
 
         $data= model("department","logic")->get_organization($id);
+        $data["posts"] =  self::get_post_path(self::get_list( $data['posts']));
+
         return view("organization")->assign("data",$data);
     }
 
 
+
+
+    public static function get_list($arr){
+        //$arr 所有分类列表
+        static $post_list = array() ;
+
+        foreach($arr as $u){
+
+            //看下面有没有子类
+             $post_list[] = $u;
+
+              $children = model("post")->where(["pid"=>$u->id,"is_delete"=>0,"department_id"=>$u->department_id])->order("sort asc")->select();
+
+              if($children){
+
+                  self::get_list($children);
+
+              }
+
+
+        }
+
+        return $post_list;
+    }
+
+
+    public static function get_post_path($arr){
+
+        foreach($arr as $k=>$v){
+            $arr[$k]['count']=15*count(explode('-',$v->path));
+        }
+        return $arr;
+    }
+
+
+
+
+
     public function save_department(){
        $data = Request::instance()->post();
-         //dump($data);die;
+
        model("department","logic")->save_department($data);
        $this->redirect("organization");
 

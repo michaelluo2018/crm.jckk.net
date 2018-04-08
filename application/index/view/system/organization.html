@@ -91,7 +91,7 @@
                         </div>
                         <form  action="{:url('index/system/save_post')}" method="post">
                          <input type="hidden" name="post_department_id" value="{$data['department_id']}">
-                        <table id="demo-foo-addrow-department" class="table table-bordered table-hover toggle-circle" data-page-size="20">
+                        <table  class="table table-bordered table-hover toggle-circle" data-page-size="20">
                             <thead>
                             <tr class="text-align">
                                 <th>岗位名称</th>
@@ -104,7 +104,7 @@
                             {volist name="data['posts']" id="post" }
                             <tr>
                                 <input type="hidden" name="post_id[]" value="{$post.id}" class="post_id">
-                                <td><input type="text" id="department_name" name="department_name[]" class="form-control"  value="{$post.post_name}"></td>
+                                <td style="padding-left:<?php echo $post['count'];?>px"> <input type="text" id="department_name" name="department_name[]" class="form-control"  value="{$post.post_name}"></td>
                                 <td><input type="text" id="listorder" name="listorder[]" class="form-control" value="{$post.sort}"></td>
                                 <td>
                                     <a onclick="delete_sure('删除岗位会一起删除岗位下属信息，确定要删除吗？', '{:url(\'index/system/post_del\')}?id={$post.id}&depart_id={$data[\'department_id\']}')"  href="javascript:void(0);" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></a>
