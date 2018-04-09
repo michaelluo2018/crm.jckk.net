@@ -17,313 +17,313 @@
 </div>
 {/block}
 {block name="detail"/}
-    <div class="row">
-            <div class="col-lg-5">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">部门管理</h4>
-                        <h6 class="card-subtitle"></h6>
-                        <div class="m-t-40">
-                            <div class="d-flex">
-                                <div class="mr-auto">
-                                    <div class="form-group">
-                                        <a id="demo-btn-addrow" class="btn btn-primary btn-sm" href="javascript:void(0)"><i class="icon wb-plus" aria-hidden="true"></i>添加部门</a>
-                                    </div>
-                                </div>
+<div class="row">
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">部门管理</h4>
+                <h6 class="card-subtitle"></h6>
+                <div class="m-t-40">
+                    <div class="d-flex">
+                        <div class="mr-auto">
+                            <div class="form-group">
+                                <a id="demo-btn-addrow" class="btn btn-primary btn-sm" href="javascript:void(0)"><i class="icon wb-plus" aria-hidden="true"></i>添加部门</a>
                             </div>
                         </div>
-                        <form action="{:url('index/system/save_department')}" method="post">
-                        <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" data-page-size="20">
-                            <thead>
-                            <tr class="text-align">
-                                <th>部门名称</th>
-                                <th class="w-25">排序</th>
-                                <th class="w-25">操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {if condition="$data['departments']" /}
-                            {volist name="data['departments']" id="department" }
-                                    {if condition="$department.id eq $data['department_id']"/}
-                                <tr style="background-color:#26c6da;">
-                                    {else/}
-                                <tr>
-                                    {/if}
-                                    <input type="hidden" name="depart_id[]" value="{$department.id}">
-                                    <td><input type="text" id="department_name" name="department_name[]" class="form-control" value="{$department.department_name}" required></td>
-                                    <td><input type="text" id="listorder" name="listorder[]" class="form-control" value="{$department.sort}" required></td>
-                                    <td>
-                                        <a  onclick="delete_sure('删除部门会一起删除部门下所有岗位信息，确定要删除吗？', '{:url(\'index/system/department_del\')}?id={$department.id}')"  href="javascript:void(0);" class="btn btn-sm btn-icon btn-pure btn-outline "  data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></a>
-                                        <a href="{:url('index/system/organization')}?id={$department.id}" class="btn btn-sm btn-icon btn-pure btn-outline manage_post" data-toggle="tooltip" data-original-title="岗位管理"><i class="ti-settings" aria-hidden="true"></i></a>
-                                    </td>
-                                </tr>
-                            {/volist}
-                            {else/}{/if}
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <td colspan="14">
-                                    <div class="text-right">
-                                        <button type="submit" class="btn btn-sm btn-success">保存修改</button></li>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tfoot>
-                        </table>
-                        </form>
                     </div>
                 </div>
+                <form action="{:url('index/system/save_department')}" method="post">
+                    <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" data-page-size="20">
+                        <thead>
+                        <tr class="text-align">
+                            <th>部门名称</th>
+                            <th class="w-25">排序</th>
+                            <th class="w-25">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {if condition="$data['departments']" /}
+                        {volist name="data['departments']" id="department" }
+                        {if condition="$department.id eq $data['department_id']"/}
+                        <tr style="background-color:#26c6da;">
+                            {else/}
+                        <tr>
+                            {/if}
+                            <input type="hidden" name="depart_id[]" value="{$department.id}">
+                            <td><input type="text" id="department_name" name="department_name[]" class="form-control" value="{$department.department_name}" required></td>
+                            <td><input type="text" id="listorder" name="listorder[]" class="form-control" value="{$department.sort}" required></td>
+                            <td>
+                                <a  onclick="delete_sure('删除部门会一起删除部门下所有岗位信息，确定要删除吗？', '{:url(\'index/system/department_del\')}?id={$department.id}')"  href="javascript:void(0);" class="btn btn-sm btn-icon btn-pure btn-outline "  data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></a>
+                                <a href="{:url('index/system/organization')}?id={$department.id}" class="btn btn-sm btn-icon btn-pure btn-outline manage_post" data-toggle="tooltip" data-original-title="岗位管理"><i class="ti-settings" aria-hidden="true"></i></a>
+                            </td>
+                        </tr>
+                        {/volist}
+                        {else/}{/if}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="14">
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-sm btn-success">保存修改</button></li>
+                                </div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </form>
             </div>
+        </div>
+    </div>
 
-            <div class="col-lg-7">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">岗位管理</h4>
-                        <h6 class="card-subtitle"></h6>
-                        <div class="m-t-40">
-                            <div class="d-flex">
-                                <div class="mr-auto">
-                                    <div class="form-group">
-                                        <a id="demo-btn-addrow-department" class="btn btn-primary btn-sm" href="javascript:void()"><i class="icon wb-plus" aria-hidden="true"></i>添加岗位</a>
-                                    </div>
-                                </div>
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">岗位管理</h4>
+                <h6 class="card-subtitle"></h6>
+                <div class="m-t-40">
+                    <div class="d-flex">
+                        <div class="mr-auto">
+                            <div class="form-group">
+                                <a id="demo-btn-addrow-department" class="btn btn-primary btn-sm" href="javascript:void()"><i class="icon wb-plus" aria-hidden="true"></i>添加岗位</a>
                             </div>
-                        </div>
-                        <form  action="{:url('index/system/save_post')}" method="post">
-                         <input type="hidden" name="post_department_id" value="{$data['department_id']}">
-                        <table  class="table table-bordered table-hover toggle-circle" data-page-size="20">
-                            <thead>
-                            <tr class="text-align">
-                                <th>岗位名称</th>
-                                <th>排序</th>
-                                <th>操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {if condition="$data['posts']" /}
-                            {volist name="data['posts']" id="post" }
-                            <tr>
-                                <input type="hidden" name="post_id[]" value="{$post.id}" class="post_id">
-                                <td style="padding-left:<?php echo $post['count'];?>px"> <input type="text" id="department_name" name="department_name[]" class="form-control"  value="{$post.post_name}"></td>
-                                <td><input type="text" id="listorder" name="listorder[]" class="form-control" value="{$post.sort}"></td>
-                                <td>
-                                    <a onclick="delete_sure('删除岗位会一起删除岗位下属信息，确定要删除吗？', '{:url(\'index/system/post_del\')}?id={$post.id}&depart_id={$data[\'department_id\']}')"  href="javascript:void(0);" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></a>
-                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="send_pid('{$post.id}','{$data[\'department_id\']}')" data-toggle="modal" data-target="#add-post" data-original-title="添加子岗位"><i class="ti-plus" aria-hidden="true"></i></button>
-                                    <button class="btn btn-sm btn-icon btn-pure btn-outline" data-original-title="授权"  data-toggle="modal" data-target="#add-contact"><i class="ti-settings" data-original-title="授权" data-toggle="tooltip" aria-hidden="true"></i></button>
-                                </td>
-                            </tr>
-                            {/volist}
-                            {else/}{/if}
-
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <td colspan="14">
-                                    <div class="text-right">
-                                        <button type="submit" class="btn btn-sm btn-success">保存修改</button></li>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tfoot>
-                        </table>
-                        </form>
-
-
-                        <div id="add-contact" class="modal fade in show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
-                            <div class="modal-dialog col-10">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="myModalLabel">岗位授权</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="card">
-                                            <div class="card-body p-b-0">
-                                                <ul class="nav nav-tabs customtab" role="tablist">
-                                                    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home2" role="tab" aria-expanded="true"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">客户管理</span></a> </li>
-                                                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile2" role="tab" aria-expanded="false"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">项目管理</span></a> </li>
-                                                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#messages2" role="tab" aria-expanded="false"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">用户管理</span></a> </li>
-                                                </ul>
-                                                <!-- Tab panes -->
-                                                <div class="tab-content">
-                                                    <div class="tab-pane active" id="home2" role="tabpanel" aria-expanded="true">
-                                                        <div class="p-20">
-                                                            <div class="form-group has-success">
-                                                                <div class="form-check">
-                                                                    <label class="custom-control custom-radio">
-                                                                        <input id="radio1" name="radio" type="checkbox" class="custom-control-input">
-                                                                        <span class="custom-control-indicator"></span>
-                                                                        <span class="custom-control-description">全部选择</span>
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group has-success">
-                                                                <div class="form-check">
-                                                                    <label class="custom-control custom-radio">
-                                                                        <input id="radio1" name="radio" type="checkbox" class="custom-control-input">
-                                                                        <span class="custom-control-indicator"></span>
-                                                                        <span class="custom-control-description">列表</span>
-                                                                    </label>
-
-                                                                    <label class="custom-control custom-radio">
-                                                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
-                                                                            <option value="Category 1">所有人</option>
-                                                                            <option value="Category 2" selected="selected">自己和下属</option>
-                                                                            <option value="Category 3">仅自己</option>
-                                                                            <option value="Category 4">部门所有人</option>
-                                                                        </select>
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group has-success">
-                                                                <div class="form-check">
-                                                                    <label class="custom-control custom-radio">
-                                                                        <input id="radio1" name="radio" type="checkbox" class="custom-control-input">
-                                                                        <span class="custom-control-indicator"></span>
-                                                                        <span class="custom-control-description">详情</span>
-                                                                    </label>
-
-                                                                    <label class="custom-control custom-radio">
-                                                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
-                                                                            <option value="Category 1">所有人</option>
-                                                                            <option value="Category 2" selected="selected">自己和下属</option>
-                                                                            <option value="Category 3">仅自己</option>
-                                                                            <option value="Category 4">部门所有人</option>
-                                                                        </select>
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group has-success">
-                                                                <div class="form-check">
-                                                                    <label class="custom-control custom-radio">
-                                                                        <input id="radio1" name="radio" type="checkbox" class="custom-control-input">
-                                                                        <span class="custom-control-indicator"></span>
-                                                                        <span class="custom-control-description">添加</span>
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group has-success">
-                                                                <div class="form-check">
-                                                                    <label class="custom-control custom-radio">
-                                                                        <input id="radio1" name="radio" type="checkbox" class="custom-control-input">
-                                                                        <span class="custom-control-indicator"></span>
-                                                                        <span class="custom-control-description">删除</span>
-                                                                    </label>
-
-                                                                    <label class="custom-control custom-radio">
-                                                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
-                                                                            <option value="Category 1">所有人</option>
-                                                                            <option value="Category 2" selected="selected">自己和下属</option>
-                                                                            <option value="Category 3">仅自己</option>
-                                                                            <option value="Category 4">部门所有人</option>
-                                                                        </select>
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group has-success">
-                                                                <div class="form-check">
-                                                                    <label class="custom-control custom-radio">
-                                                                        <input id="radio1" name="radio" type="checkbox" class="custom-control-input">
-                                                                        <span class="custom-control-indicator"></span>
-                                                                        <span class="custom-control-description">编辑</span>
-                                                                    </label>
-
-                                                                    <label class="custom-control custom-radio">
-                                                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
-                                                                            <option value="Category 1">所有人</option>
-                                                                            <option value="Category 2" selected="selected">自己和下属</option>
-                                                                            <option value="Category 3">仅自己</option>
-                                                                            <option value="Category 4">部门所有人</option>
-                                                                        </select>
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="tab-pane p-20" id="profile2" role="tabpanel" aria-expanded="false">同上</div>
-                                                    <div class="tab-pane p-20" id="messages2" role="tabpanel" aria-expanded="false">同上</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">保存</button>
-                                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
-                                        </div>
-                                    </div>
-                                    <!-- /.modal-content -->
-                                </div>
-                                <!-- /.modal-dialog -->
-                            </div>
-
-
-
-
-
-
-
-                        </div>
-
-
-
-
-
-                        <div id="add-post" class="modal fade in show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
-                            <div class="modal-dialog col-10">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="myModalLabel">添加子岗位</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="{:url('index/system/save_post')}" method="post">
-                                        <div class="card">
-                                            <div class="card-body p-b-0">
-                                                <input type="hidden" name="post_pid" id="child_post_pid">
-                                                <input type="hidden" name="post_department_id" id="child_post_department_id">
-                                                <!-- Tab panes -->
-                                                <div class="tab-content">
-                                                    <div class="tab-pane active" id="home2" role="tabpanel" aria-expanded="true">
-
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label class="control-label">子岗位名称</label>
-                                                                <input type="text" name="department_name[]" class="form-control" placeholder="" >
-                                                                <small class="form-control-feedback"> </small>
-                                                            </div>
-                                                        </div>
-                                                        <!--/span-->
-                                                        <div class="col-md-6">
-                                                            <div class="form-group has-danger">
-                                                                <label class="control-label">排序</label>
-                                                                <input type="text" name="listorder[]" class="form-control" placeholder="">
-                                                                <small class="form-control-feedback"></small>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-info waves-effect" >保存</button>
-                                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
-                                        </div>
-                                        </form>
-                                    </div>
-                                    <!-- /.modal-content -->
-                                </div>
-                                <!-- /.modal-dialog -->
-                            </div>
-
-
-
-
-
                         </div>
                     </div>
+                </div>
+                <form  action="{:url('index/system/save_post')}" method="post">
+                    <input type="hidden" name="post_department_id" value="{$data['department_id']}">
+                    <table id="demo-foo-addrow-department" class="table table-bordered table-hover toggle-circle" data-page-size="20">
+                        <thead>
+                        <tr class="text-align">
+                            <th>岗位名称</th>
+                            <th>排序</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {if condition="$data['posts']" /}
+                        {volist name="data['posts']" id="post" }
+                        <tr>
+                            <input type="hidden" name="post_id[]" value="{$post.id}" class="post_id">
+                            <td style="padding-left:<?php echo $post['count'];?>px"><input type="text" id="department_name" name="department_name[]" class="form-control"  value="{$post.post_name}"></td>
+                            <td><input type="text" id="listorder" name="listorder[]" class="form-control" value="{$post.sort}"></td>
+                            <td>
+                                <a onclick="delete_sure('删除岗位会一起删除岗位下属信息，确定要删除吗？', '{:url(\'index/system/post_del\')}?id={$post.id}&depart_id={$data[\'department_id\']}')"  href="javascript:void(0);" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></a>
+                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="send_pid('{$post.id}','{$data[\'department_id\']}')" data-toggle="modal" data-target="#add-post" data-original-title="添加子岗位"><i class="ti-plus" aria-hidden="true"></i></button>
+                                <button class="btn btn-sm btn-icon btn-pure btn-outline" data-original-title="授权"  data-toggle="modal" data-target="#add-contact"><i class="ti-settings" data-original-title="授权" data-toggle="tooltip" aria-hidden="true"></i></button>
+                            </td>
+                        </tr>
+                        {/volist}
+                        {else/}{/if}
+
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="14">
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-sm btn-success">保存修改</button></li>
+                                </div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </form>
+
+
+                <div id="add-contact" class="modal fade in show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+                    <div class="modal-dialog col-10">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">岗位授权</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card">
+                                    <div class="card-body p-b-0">
+                                        <ul class="nav nav-tabs customtab" role="tablist">
+                                            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home2" role="tab" aria-expanded="true"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">客户管理</span></a> </li>
+                                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile2" role="tab" aria-expanded="false"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">项目管理</span></a> </li>
+                                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#messages2" role="tab" aria-expanded="false"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">用户管理</span></a> </li>
+                                        </ul>
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="home2" role="tabpanel" aria-expanded="true">
+                                                <div class="p-20">
+                                                    <div class="form-group has-success">
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-radio">
+                                                                <input id="radio1" name="radio" type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">全部选择</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group has-success">
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-radio">
+                                                                <input id="radio1" name="radio" type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">列表</span>
+                                                            </label>
+
+                                                            <label class="custom-control custom-radio">
+                                                                <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                                                    <option value="Category 1">所有人</option>
+                                                                    <option value="Category 2" selected="selected">自己和下属</option>
+                                                                    <option value="Category 3">仅自己</option>
+                                                                    <option value="Category 4">部门所有人</option>
+                                                                </select>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group has-success">
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-radio">
+                                                                <input id="radio1" name="radio" type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">详情</span>
+                                                            </label>
+
+                                                            <label class="custom-control custom-radio">
+                                                                <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                                                    <option value="Category 1">所有人</option>
+                                                                    <option value="Category 2" selected="selected">自己和下属</option>
+                                                                    <option value="Category 3">仅自己</option>
+                                                                    <option value="Category 4">部门所有人</option>
+                                                                </select>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group has-success">
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-radio">
+                                                                <input id="radio1" name="radio" type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">添加</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group has-success">
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-radio">
+                                                                <input id="radio1" name="radio" type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">删除</span>
+                                                            </label>
+
+                                                            <label class="custom-control custom-radio">
+                                                                <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                                                    <option value="Category 1">所有人</option>
+                                                                    <option value="Category 2" selected="selected">自己和下属</option>
+                                                                    <option value="Category 3">仅自己</option>
+                                                                    <option value="Category 4">部门所有人</option>
+                                                                </select>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group has-success">
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-radio">
+                                                                <input id="radio1" name="radio" type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">编辑</span>
+                                                            </label>
+
+                                                            <label class="custom-control custom-radio">
+                                                                <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                                                    <option value="Category 1">所有人</option>
+                                                                    <option value="Category 2" selected="selected">自己和下属</option>
+                                                                    <option value="Category 3">仅自己</option>
+                                                                    <option value="Category 4">部门所有人</option>
+                                                                </select>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane p-20" id="profile2" role="tabpanel" aria-expanded="false">同上</div>
+                                            <div class="tab-pane p-20" id="messages2" role="tabpanel" aria-expanded="false">同上</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">保存</button>
+                                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+                <div id="add-post" class="modal fade in show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+                    <div class="modal-dialog col-10">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">添加子岗位</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{:url('index/system/save_post')}" method="post">
+                                    <div class="card">
+                                        <div class="card-body p-b-0">
+                                            <input type="hidden" name="post_pid" id="child_post_pid">
+                                            <input type="hidden" name="post_department_id" id="child_post_department_id">
+                                            <!-- Tab panes -->
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="home2" role="tabpanel" aria-expanded="true">
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">子岗位名称</label>
+                                                            <input type="text" name="department_name[]" class="form-control" placeholder="" >
+                                                            <small class="form-control-feedback"> </small>
+                                                        </div>
+                                                    </div>
+                                                    <!--/span-->
+                                                    <div class="col-md-6">
+                                                        <div class="form-group has-danger">
+                                                            <label class="control-label">排序</label>
+                                                            <input type="text" name="listorder[]" class="form-control" placeholder="">
+                                                            <small class="form-control-feedback"></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-info waves-effect" >保存</button>
+                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+
+
+
+
+
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
 <script>
     function send_pid(pid,depart_id) {

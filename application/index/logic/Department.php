@@ -100,13 +100,13 @@ class Department extends Model{
     public function get_organization($id = null){
         $data['departments'] = $this->get_departments();
         if($id){
-            $data['posts'] = model("post","logic")->get_posts_by_department($id);
+            $data['posts'] = model("post","logic")->get_parent_posts_by_department($id);
             $data['department_id'] = $id;
         }
         else{
             //第一个部门的岗位
             if( $data['departments']){
-                $data['posts'] = model("post","logic")->get_posts_by_department($data['departments'][0]->id);
+                $data['posts'] = model("post","logic")->get_parent_posts_by_department($data['departments'][0]->id);
                 $data['department_id'] = $data['departments'][0]->id;
             }
             else{

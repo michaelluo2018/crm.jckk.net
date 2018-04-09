@@ -8,9 +8,15 @@ class Post extends Model{
 
     public  function  get_posts_by_department($department_id){
 
-        return $this->where(["department_id"=>$department_id,"is_delete"=>0,"pid"=>0])->order("sort asc")->select();
+        return $this->where(["department_id"=>$department_id,"is_delete"=>0])->order("sort asc")->select();
 
     }
+
+      public  function  get_parent_posts_by_department($department_id){
+
+            return $this->where(["department_id"=>$department_id,"is_delete"=>0,"pid"=>0])->order("sort asc")->select();
+
+        }
 
 
 
