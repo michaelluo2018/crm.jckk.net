@@ -32,10 +32,9 @@ class Customer extends Base{
                 $this->redirect("customer_list");
             }
             else{
-                $add_url = url("customer_add");
-                $list_url = url("customer_list");
-                $msg = "<div style='margin-bottom: 50px;'> <a href='".$add_url."' style='margin-right: 80px;'><button style='padding: 5px;background-color:green'>继续添加</button></a><a href='".$list_url."'><button style='padding: 5px;background-color: orange '>返回列表</button></a></div>";
-                $this->success($msg,"customer_list","","30");
+                $data = model("customer","logic")->get_customer_entity();
+                return view("customer_success_choose")->assign("data",$data);
+
             }
 
         }
@@ -84,6 +83,9 @@ class Customer extends Base{
 
         if(model("customer","logic")->is_exist_customer_by_name($name)){
             return 1;
+        }
+        else{
+            return 0;
         }
     }
 

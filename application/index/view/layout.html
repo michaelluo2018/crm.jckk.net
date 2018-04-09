@@ -226,7 +226,7 @@
         <div class="scroll-sidebar">
             <!-- User profile -->
             {if condition="isset($setting['system_heard_img'])"/}
-            <div class="user-profile" style="background: url({$setting['system_heard_img']}) no-repeat;">
+            <div class="user-profile" style="background: url({$setting['system_heard_img']}) no-repeat; background-size: 100%;">
             {else/}
                 <div class="user-profile" style="background: url(__STATIC__/assets/images/background/user-info.jpg) no-repeat;">
             {/if}

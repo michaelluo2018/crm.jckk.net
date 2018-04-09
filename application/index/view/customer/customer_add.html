@@ -16,7 +16,8 @@
     </div>
 {/block}
 {block name="detail"}
-       <div class="row">
+
+     <div class="row">
                 <div class="col-lg-12">
                     <div class="card card-outline-info">
                         <div class="card-header">
@@ -185,7 +186,7 @@
                                     </div>
                                 </div>
                                 <div class="form-actions">
-                                    <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
+                                    <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存 </button>
                                     <button type="reset" class="btn btn-inverse">重置</button>
                                 </div>
                             </form>
@@ -194,54 +195,52 @@
                 </div>
             </div>
 
-<script>
+    <script>
 
-    $("form").submit(function () {
-            var msg = $("#msg").text();
-            if(msg){
-                return false;
-            }
-
-    });
-
-    $("input[name=contact_mobile]").change(function(){
-
-        var mobile = $(this).val();
-
-        var phone=/^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/;
-
-        if (!phone.test(mobile)) {
-            $("#msg").text("手机号格式不正确");
-        }
-
-    });
-
-    $("input[name=customer_name]").change(function(){
-
-        //客户名称是否存在
-        var customer_name = $(this).val();
-
-        $.ajax({
-            url: "{:url('index/customer/check_customer_name')}",
-            data: {name:customer_name},
-            method:"get",
-            success:function(data){
-                //写入到对应位置
-                if(data==1){
-                    $("#msg").text("客户已经存在");
+        $("form").submit(function () {
+                var msg = $("#msg").text();
+                if(msg.trim()){
+                    return false;
                 }
-            },
-            dataType: "json"
+
         });
 
-    });
+        $("input[name=contact_mobile]").change(function(){
 
+            var mobile = $(this).val();
 
+            var phone=/^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/;
 
+            if (!phone.test(mobile)) {
+                $("#msg").text("手机号格式不正确");
+            }
 
-</script>
+        });
 
+        $("input[name=customer_name]").change(function(){
 
+            //客户名称是否存在
+            var customer_name = $(this).val();
+
+            $.ajax({
+                url: "{:url('index/customer/check_customer_name')}",
+                data: {name:customer_name},
+                method:"get",
+                success:function(data){
+                    //写入到对应位置
+                    if(data==1){
+                        $("#msg").text("客户已经存在");
+                    }
+                    else{
+                        $("#msg").text(" ");
+                    }
+                },
+                dataType: "json"
+            });
+
+        });
+
+    </script>
 
 
 {/block}
