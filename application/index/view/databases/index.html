@@ -61,13 +61,13 @@
                                             <td>{$info.Rows}</td>
                                             <td>{$info.Data_length}</td>
                                             <td>{$info.Create_time}</td>
-                                            <td><a href="">备份</a></td>
+                                            <td><a href="{:url('index/databases/save_one_database')}?file={$info.Name}">备份</a></td>
                                         </tr>
                                         {/volist}
                                         </tbody>
                                     </table>
                                     <div class="form-actions">
-                                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
+                                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 备份</button>
                                         <button type="reset" class="btn btn-inverse">重置</button>
                                     </div>
                                 </form>

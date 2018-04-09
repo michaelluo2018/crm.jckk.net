@@ -11,7 +11,7 @@ class Databases extends Base{
 
     public $DbManage;
 
-    public $dir_path = ROOT_PATH  . 'database' . DS ;
+    public $dir_path = ROOT_PATH  . 'database/';
 
 
     public  function  __construct(Request $request = null)
@@ -70,6 +70,17 @@ class Databases extends Base{
             $this->DbManage->backup($tables[$i],$this->dir_path, 40000);
 
         }
+        $msg = $this->DbManage->message;
+
+        $this->success($msg,"index","","30");
+
+    }
+
+
+    public  function  save_one_database($file){
+
+        $this->DbManage->backup($file,$this->dir_path, 40000);
+
         $msg = $this->DbManage->message;
 
         $this->success($msg,"index","","30");
