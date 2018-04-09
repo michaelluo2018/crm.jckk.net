@@ -120,6 +120,8 @@ class Post extends Model{
 
         //删除岗位
         $post = $this->where("id",$id)->find();
+        $pre_path = ($post->path)."-".$post->id;
+
         $post_log["type"] = Log::DELETE_TYPE;
         $post_log["before_value"] = json_encode($post);
         $post_log["after_value"] = "";
@@ -132,7 +134,7 @@ class Post extends Model{
 
 
         //删除子岗位
-        $children_post = $this->where(["pid"=>$id,"is_delete"=>0])->select();
+        $children_post = $this->where("is_delete","<>",1)->where("path","like",$pre_path.'%')->select();
 
         if($children_post){
 
