@@ -8,10 +8,11 @@ use think\Request;
 require ROOT_PATH .'/extend/DbManage.php';
 
 class Databases extends Base{
+	
 
     public $DbManage;
 
-    public $dir_path = ROOT_PATH ."database" . DS;
+    //public $dir_path = ROOT_PATH ."/database" . DS;
 
 
     public  function  __construct(Request $request = null)
