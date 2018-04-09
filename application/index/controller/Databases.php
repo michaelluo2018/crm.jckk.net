@@ -11,7 +11,7 @@ class Databases extends Base{
 
     public $DbManage;
 
-    public $dir_path = ROOT_PATH ."database" ;
+    public $dir_path = ROOT_PATH ."database" . DS;
 
 
     public  function  __construct(Request $request = null)
@@ -34,19 +34,25 @@ class Databases extends Base{
 
         $table_infos =  $this->DbManage->getTableStatus();
         //获取所有备份
-        $handler = opendir($this->dir_path);
         $arr_file = array();
-        while(($filename = readdir($handler)) !== false){
-            if($filename != "." && $filename != "..")
-            {
-                $arr_file[] = $filename;
-            }
-        }
-        closedir($handler);
+        if(is_dir($this->dir_path)){
+            $handler = opendir($this->dir_path);
 
+            while(($filename = readdir($handler)) !== false){
+                if($filename != "." && $filename != "..")
+                {
+                    $arr_file[] = $filename;
+                }
+            }
+            closedir($handler);
+
+        }
+        else{
+            mkdir($this->dir_path);
+        }
+        $arr_file = array_reverse($arr_file);
         $file_page_data['lastPage'] =ceil(count($arr_file)/10);
         $file_page_data['listRows'] =10;
-
         $this->assign("file_page_data",$file_page_data);
         $this->assign("arr_file",$arr_file);
         $this->assign("table_infos",$table_infos);
