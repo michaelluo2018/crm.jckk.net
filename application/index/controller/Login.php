@@ -54,7 +54,7 @@ class Login extends Controller {
         $content = "<a href='".$url."'>".$cont."</a>".$url;
 
         $res = Common::send_mail($email,$title,$content);
-
+        
         if(!$res){
             //ok
             $this->success("系统已将重置密码的链接安全的发到了您的邮箱，30分钟内有效，请及时查收");

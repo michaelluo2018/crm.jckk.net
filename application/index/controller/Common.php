@@ -3,16 +3,18 @@ namespace  app\index\controller;
 
 use PHPMailer\PHPMailer\PHPMailer;
 
-use think\Config;
 
 require ROOT_PATH .'/extend/PHPMailer/src/PHPMailer.php';
 require ROOT_PATH .'/extend/PHPMailer/src/SMTP.php';
+require ROOT_PATH .'/extend/PHPMailer/src/Exception.php';
+require ROOT_PATH .'/extend/PHPMailer/src/OAuth.php';
 
 class Common{
 
     static function  send_mail($to,$title,$content,$type = "HTML"){
 
         $setting = model("setting","logic")->get_setting();
+
 
         $mail = new PHPMailer();
         try{
