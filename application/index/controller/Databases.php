@@ -36,8 +36,8 @@ class Databases extends Base{
         $table_infos =  $this->DbManage->getTableStatus();
         //获取所有备份
         $arr_file = array();
-        if(is_dir($this->dir_path)){
-            $handler = opendir($this->dir_path);
+        if(is_dir(ROOT_PATH ."/database" . DS)){
+            $handler = opendir(ROOT_PATH ."/database" . DS);
 
             while(($filename = readdir($handler)) !== false){
                 if($filename != "." && $filename != "..")
@@ -49,7 +49,7 @@ class Databases extends Base{
 
         }
         else{
-            mkdir($this->dir_path);
+            mkdir(ROOT_PATH ."/database" . DS);
         }
         $arr_file = array_reverse($arr_file);
         $file_page_data['lastPage'] =ceil(count($arr_file)/10);
@@ -74,7 +74,7 @@ class Databases extends Base{
         $num = count($tables);
 
         for($i=0;$i<$num;$i++){
-            $this->DbManage->backup($tables[$i],$this->dir_path, 40000);
+            $this->DbManage->backup($tables[$i],ROOT_PATH ."/database" . DS, 40000);
 
         }
         $msg = $this->DbManage->message;
@@ -86,7 +86,7 @@ class Databases extends Base{
 
     public  function  save_one_database($file){
 
-        $this->DbManage->backup($file,$this->dir_path, 40000);
+        $this->DbManage->backup($file,ROOT_PATH ."/database" . DS, 40000);
 
         $msg = $this->DbManage->message;
 
@@ -98,7 +98,7 @@ class Databases extends Base{
 
     public  function  restore_database($file){
 
-        $this->DbManage->restore(($this->dir_path) .$file);
+        $this->DbManage->restore((ROOT_PATH ."/database" . DS) .$file);
 
         $msg = $this->DbManage->message;
 
@@ -114,7 +114,7 @@ class Databases extends Base{
 
     public  function  delete_database($file){
 
-        Common::unlink_file(($this->dir_path) .$file);
+        Common::unlink_file((ROOT_PATH ."/database" . DS) .$file);
 
         $this->redirect("index");
     }
