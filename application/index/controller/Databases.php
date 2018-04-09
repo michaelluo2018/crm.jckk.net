@@ -11,7 +11,7 @@ class Databases extends Base{
 
     public $DbManage;
 
-    public $dir_path = ROOT_PATH  . 'database/';
+    public $dir_path = ROOT_PATH ."database" ;
 
 
     public  function  __construct(Request $request = null)
