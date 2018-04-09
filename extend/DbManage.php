@@ -32,11 +32,11 @@ class DbManage{
         set_time_limit(0);//无时间限制
         @ob_end_flush();
         // 连接数据库
-        $this->db = @mysql_connect ( $this->host, $this->username, $this->password ) or die( '<p class="dbDebug"><span class="err">Mysql Connect Error : </span>'.mysql_error().'</p>');
+        $this->db = @mysqli_connect ( $this->host, $this->username, $this->password ) or die( '<p class="dbDebug"><span class="err">Mysql Connect Error : </span>'.mysqli_error($this->db).'</p>');
         // 选择使用哪个数据库
-        mysql_select_db ( $this->database, $this->db ) or die('<p class="dbDebug"><span class="err">Mysql Connect Error:</span>'.mysql_error().'</p>');
+        mysqli_select_db (  $this->db ,$this->database ) or die('<p class="dbDebug"><span class="err">Mysql Connect Error:</span>'.mysqli_error($this->db).'</p>');
         // 数据库编码方式
-        mysql_query ( 'SET NAMES ' . $this->charset, $this->db );
+        mysqli_query ( $this->db ,'SET NAMES ' . $this->charset );
 
     }
 
@@ -44,18 +44,18 @@ class DbManage{
      * 新增查询数据库表
      */
     function getTables() {
-        $res = mysql_query ( "SHOW TABLES" );
+        $res = mysqli_query ($this->db , "SHOW TABLES" );
         $tables = array ();
-        while ( $row = mysql_fetch_array ( $res ) ) {
+        while ( $row = mysqli_fetch_array ( $res ) ) {
             $tables [] = $row [0];
         }
         return $tables;
     }
 
     function getTableStatus() {
-        $res = mysql_query ( "SHOW TABLE STATUS" );
+        $res = mysqli_query ($this->db , "SHOW TABLE STATUS" );
         $tables = array ();
-        while ( $row = mysql_fetch_array ( $res ) ) {
+        while ( $row = mysqli_fetch_array ( $res ) ) {
             $tables[]  = $row ;
         }
         return $tables;
@@ -83,7 +83,7 @@ class DbManage{
         $sql = '';
         // 只备份某个表
         if (! empty ( $tablename )) {
-            if(@mysql_num_rows(mysql_query("SHOW TABLES LIKE '".$tablename."'")) == 1) {
+            if(@mysqli_num_rows(mysqli_query($this->db ,"SHOW TABLES LIKE '".$tablename."'")) == 1) {
             } else {
                 $this->_showMsg('表-<b>' . $tablename .'</b>-不存在，请检查！',true);
                 die();
@@ -94,15 +94,15 @@ class DbManage{
             // 插入表结构信息
             $sql .= $this->_insert_table_structure ( $tablename );
             // 插入数据
-            $data = mysql_query ( "select * from " . $tablename );
+            $data = mysqli_query ( $this->db ,"select * from " . $tablename );
             // 文件名前面部分
             $filename = date ( 'YmdHis' ) . "_" . $tablename;
             // 字段数量
-            $num_fields = mysql_num_fields ( $data );
+            $num_fields = mysqli_num_fields ( $data );
             // 第几分卷
             $p = 1;
             // 循环每条记录
-            while ( $record = mysql_fetch_array ( $data ) ) {
+            while ( $record = mysqli_fetch_array ( $data ) ) {
                 // 单条记录
                 $sql .= $this->_insert_record ( $tablename, $num_fields, $record );
                 // 如果大于分卷大小，则写入文件
@@ -136,7 +136,7 @@ class DbManage{
         } else {
             $this->_showMsg('正在备份');
             // 备份全部表
-            if ($tables = mysql_query ( "show table status from " . $this->database )) {
+            if ($tables = mysqli_query ($this->db , "show table status from " . $this->database )) {
                 $this->_showMsg("读取数据库结构成功！");
             } else {
                 $this->_showMsg("读取数据库结构失败！");
@@ -147,20 +147,20 @@ class DbManage{
             // 文件名前面部分
             $filename = date ( 'YmdHis' ) . "_all";
             // 查出所有表
-            $tables = mysql_query ( 'SHOW TABLES' );
+            $tables = mysqli_query ( $this->db ,'SHOW TABLES' );
             // 第几分卷
             $p = 1;
             // 循环所有表
-            while ( $table = mysql_fetch_array ( $tables ) ) {
+            while ( $table = mysqli_fetch_array ( $tables ) ) {
                 // 获取表名
                 $tablename = $table [0];
                 // 获取表结构
                 $sql .= $this->_insert_table_structure ( $tablename );
-                $data = mysql_query ( "select * from " . $tablename );
-                $num_fields = mysql_num_fields ( $data );
+                $data = mysqli_query ( $this->db ,"select * from " . $tablename );
+                $num_fields = mysqli_num_fields ( $data );
 
                 // 循环每条记录
-                while ( $record = mysql_fetch_array ( $data ) ) {
+                while ( $record = mysqli_fetch_array ( $data ) ) {
                     // 单条记录
                     $sql .= $this->_insert_record ( $tablename, $num_fields, $record );
                     // 如果大于分卷大小，则写入文件
@@ -217,7 +217,7 @@ class DbManage{
         $value .= '--' . $this->ds;
         $value .= '-- 主机: ' . $this->host . $this->ds;
         $value .= '-- 生成日期: ' . date ( 'Y' ) . ' 年  ' . date ( 'm' ) . ' 月 ' . date ( 'd' ) . ' 日 ' . date ( 'H:i' ) . $this->ds;
-        $value .= '-- MySQL版本: ' . mysql_get_server_info () . $this->ds;
+        $value .= '-- MySQL版本: ' . mysqli_get_server_info ($this->db ) . $this->ds;
         $value .= '-- PHP 版本: ' . phpversion () . $this->ds;
         $value .= $this->ds;
         $value .= '--' . $this->ds;
@@ -243,8 +243,8 @@ class DbManage{
         // 如果存在则删除表
         $sql .= "DROP TABLE IF EXISTS `" . $table . '`' . $this->sqlEnd . $this->ds;
         // 获取详细表信息
-        $res = mysql_query ( 'SHOW CREATE TABLE `' . $table . '`' );
-        $row = mysql_fetch_array ( $res );
+        $res = mysqli_query ( $this->db ,'SHOW CREATE TABLE `' . $table . '`' );
+        $row = mysqli_fetch_array ( $res );
         $sql .= $row [1];
         $sql .= $this->sqlEnd . $this->ds;
         // 加上
@@ -271,7 +271,7 @@ class DbManage{
         $insert .= "INSERT INTO `" . $table . "` VALUES(";
         // 循环每个子段下面的内容
         for($i = 0; $i < $num_fields; $i ++) {
-            $insert .= ($comma . "'" . mysql_real_escape_string ( $record [$i] ) . "'");
+            $insert .= ($comma . "'" . mysqli_real_escape_string ( $this->db ,$record [$i] ) . "'");
             $comma = ",";
         }
         $insert .= ");" . $this->ds;
@@ -441,8 +441,8 @@ class DbManage{
 
     //插入单条sql语句
     private function _insert_into($sql){
-        if (! mysql_query ( trim ( $sql ) )) {
-            $this->message .= mysql_error ();
+        if (! mysqli_query ($this->db , trim ( $sql ) )) {
+            $this->message .= mysqli_error ($this->db);
             return false;
         }
     }
@@ -453,12 +453,12 @@ class DbManage{
 
     // 关闭数据库连接
     private function close() {
-        mysql_close ( $this->db );
+        mysqli_close ( $this->db );
     }
 
     // 锁定数据库，以免备份或导入时出错
     private function lock($tablename, $op = "WRITE") {
-        if (mysql_query ( "lock tables " . $tablename . " " . $op ))
+        if (mysqli_query ( $this->db ,"lock tables " . $tablename . " " . $op ))
             return true;
         else
             return false;
@@ -466,7 +466,7 @@ class DbManage{
 
     // 解锁
     private function unlock() {
-        if (mysql_query ( "unlock tables" )) {
+        if (mysqli_query ( $this->db ,"unlock tables" )) {
             return true;
         }else {
             return false;
@@ -475,8 +475,8 @@ class DbManage{
     // 析构
     function __destruct() {
         if($this->db){
-            mysql_query ( "unlock tables", $this->db );
-            mysql_close ( $this->db );
+            mysqli_query ($this->db , "unlock tables", $this->db );
+            mysqli_close ( $this->db );
         }
     }
 
