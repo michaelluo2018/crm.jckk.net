@@ -63,12 +63,23 @@
             <!-- ============================================================== -->
             <div class="navbar-header">
                 <a class="navbar-brand" href="{:url('index/index/index')}">
+                    <!-- Logo icon --><b>
+                    <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                    <!-- Dark Logo icon -->
+                    <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                    <!-- Light Logo icon -->
                     {if condition="isset($setting['system_logo_icon'])"/}
-                    <img src="{$setting['system_logo_icon']}" class="light-logo" alt="system_logo" />
+                    <img src="{$setting['system_logo_icon']}" alt="homepage" class="light-logo" />
                     {else/}
                     {/if}
-                    {if condition="isset($setting['system_logo_text'])"/}
-                    <img src="{$setting['system_logo_text']}" class="light-logo" alt="system_logo" />
+                </b>
+                    <!--End Logo icon -->
+                    <!-- Logo text --><span>
+                         <!-- dark Logo text -->
+                         <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                    <!-- Light Logo text -->
+                      {if condition="isset($setting['system_logo_text'])"/}
+                         <img src="{$setting['system_logo_text']}" class="light-logo" alt="homepage" /></span>
                     {else/}
                     {/if}
                 </a>
