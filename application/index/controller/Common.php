@@ -15,6 +15,7 @@ class Common{
 
         $setting = model("setting","logic")->get_setting();
 
+        $pwd =  base64_decode($setting['system_email_pwd']);
 
         $mail = new PHPMailer();
         try{
@@ -29,7 +30,7 @@ class Common{
             // SMTP username
             $mail->Username =$setting['system_email'];
             // SMTP password
-            $mail->Password = base64_decode($setting['system_email_pwd']);
+            $mail->Password = $pwd;
 
             // 连接的TCP端口
             $mail->Port = $setting['system_email_port'];
@@ -43,9 +44,7 @@ class Common{
             $mail->Subject = $title;
             $mail->Body    = $content;
           //  $mail->AltBody = '这是非HTML邮件客户端的纯文本';
-            $mail->send();
-
-
+            
         }catch (Exception $e){
             echo  'Mailer Error: ' . $mail->ErrorInfo;
         }
