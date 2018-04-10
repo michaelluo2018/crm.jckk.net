@@ -14,6 +14,7 @@ class Customer extends  Model{
             ->where("jckk_customer.is_delete","<>",1)
             ->field(["jckk_customer.*","jckk_contact.contact_name","jckk_contact.position","jckk_contact.sex","jckk_contact.mobile","jckk_contact.email","jckk_contact.qq","jckk_contact.wechat"])
             ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
+            ->order("jckk_customer.id","desc")
             ->paginate();
     }
 
