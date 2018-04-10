@@ -13,12 +13,9 @@ class Databases extends Base{
     public $DbManage;
 
 
-  //  public $dir_path = ROOT_PATH . "database" . DS;
-
 
     public  function  __construct(Request $request = null)
     {
-        parent::__construct($request);
 
         $host = Config::get("database.hostname");
         $username = Config::get("database.username");
@@ -27,6 +24,7 @@ class Databases extends Base{
         $charset = Config::get("database.charset");
         $this->DbManage = new DbManage($host, $username, $password, $database, $charset);
 
+        parent::__construct($request);
 
     }
 
@@ -37,27 +35,62 @@ class Databases extends Base{
         $table_infos =  $this->DbManage->getTableStatus();
         //获取所有备份
         $arr_file = array();
+        $files = array();
+        $path = ROOT_PATH ."database" . DS;
 
-        if(is_dir(ROOT_PATH ."database" . DS)){
-            $handler = opendir(ROOT_PATH ."/database" . DS);
+
+        if(is_dir($path)){
+            $handler = opendir($path);
 
             while(($filename = readdir($handler)) !== false){
                 if($filename != "." && $filename != "..")
                 {
-                    $arr_file[] = $filename;
+                        $arr_file[] = $filename;
                 }
             }
             closedir($handler);
-
+            $arr_file = array_reverse($arr_file);
         }
         else{
-            mkdir(ROOT_PATH ."database" . DS);
+            mkdir(ROOT_PATH ."database" . DS,0777,true);
+
         }
-        $arr_file = array_reverse($arr_file);
-        $file_page_data['lastPage'] =ceil(count($arr_file)/10);
+        $num = count($arr_file);
+
+        for ($i=0;$i<$num;$i++){
+
+            if(isset($arr_file[$i])){
+                $time = explode("_v",$arr_file[$i])[0];
+                $size = 0;
+                $j = 0;
+                for ($k=0;$k<$num;$k++){
+
+                    if(isset($arr_file[$k])){
+                        if(preg_match("/^".$time."\_v\d+\.sql$/", $arr_file[$k])){
+
+                            $j++;
+                            $size = $size + filesize($path.$arr_file[$k]);
+                            $count = $j;
+                            unset($arr_file[$k]);
+                        }
+                    }
+
+                }
+
+                $files[$i]['name'] = $time."_v1.sql";
+                $files[$i]['num'] = $count;
+                $files[$i]['size'] =$size;
+                $files[$i]['time'] = date("Y-m-d H:i:s",$time);
+            }
+
+
+        }
+
+
+        $file_page_data['lastPage'] =ceil(count($files)/10);
         $file_page_data['listRows'] =10;
         $this->assign("file_page_data",$file_page_data);
-        $this->assign("arr_file",$arr_file);
+        $this->assign("arr_file",$files);
         $this->assign("table_infos",$table_infos);
 
         return view("index");
@@ -69,43 +102,43 @@ class Databases extends Base{
 
     public  function  save_database(){
 
-        $data = Request::instance()->post();
+        $path = ROOT_PATH ."database" . DS;
+        $data = Request::instance()->post("data");
 
-        $tables = $data['table_name'];
+        $tables = explode("^^",$data);
 
-        $num = count($tables);
-
-        for($i=0;$i<$num;$i++){
-            $this->DbManage->backup($tables[$i],ROOT_PATH ."database" . DS, 40000);
-
+        $result = $this->DbManage->backup($tables,$path,1);
+        if($result!==false){
+            $result = true;
         }
-        $msg = $this->DbManage->message;
+        return $result;
 
-        $this->success($msg,"index","","30");
+
 
     }
 
 
-    public  function  save_one_database($file){
-
-        $this->DbManage->backup($file,ROOT_PATH ."database" . DS, 40000);
-
-        $msg = $this->DbManage->message;
-
-        $this->success($msg,"index","","30");
+    public  function  save_one_database(){
+         $path = ROOT_PATH ."database" . DS;
+         $data = Request::instance()->post("data");
+         $tables[0] =$data;
+         $result = $this->DbManage->backup($tables,$path,4096);
+        if($result!==false){
+            $result = true;
+        }
+        return $result;
 
     }
 
 
 
-    public  function  restore_database($file){
+    public  function  restore_database(){
+        $path = ROOT_PATH ."database" . DS;
+        $file = Request::instance()->post("data");
 
-        $this->DbManage->restore((ROOT_PATH ."database" . DS) .$file);
+        $result = $this->DbManage->restore($path .$file);
 
-        $msg = $this->DbManage->message;
-
-
-        $this->success($msg,"index","","30");
+        return $result;
 
 
     }

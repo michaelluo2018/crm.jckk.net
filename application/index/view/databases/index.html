@@ -4,6 +4,7 @@
 {/block}
 {block name="js"/}
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/layer/layer_zh-cn.js"></script>
 {/block}
 {block name="breadcrumb"/}
 <div class="col-md-5 col-8 align-self-center">
@@ -32,6 +33,9 @@
                         <div class="p-20">
                             <div class="card-body">
                                 <form action="{:url('index/databases/save_database')}" method="post" id="database_form">
+                                    <div class="form-actions" style="margin-bottom: 15px;">
+                                        <button type="button" class="btn btn-xs btn-danger back_up"> <i class=" ace-icon fa fa-database bigger-110"></i> 备份当前数据</button>
+                                    </div>
                                     <table class="table table-bordered table-hover toggle-circle" data-page-size="1000">
                                         <thead>
                                         <tr class="text-align">
@@ -58,18 +62,15 @@
                                                 </label>
                                             </td>
                                             <td>{$info.Name}</td>
-                                            <td>{$info.Rows}</td>
-                                            <td>{$info.Data_length}</td>
+                                            <td>【{$info.Rows}】条记录</td>
+                                            <td>{$info.Data_length} B</td>
                                             <td>{$info.Create_time}</td>
-                                            <td><a href="{:url('index/databases/save_one_database')}?file={$info.Name}">备份</a></td>
+                                            <td><a href="javascript:void (0);" onclick="ajax_save_database('{$info.Name}','{:url(\'index/databases/save_one_database\')}',['备份成功','备份失败'])" >备份</a></td>
                                         </tr>
                                         {/volist}
                                         </tbody>
                                     </table>
-                                    <div class="form-actions">
-                                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 备份</button>
-                                        <button type="reset" class="btn btn-inverse">重置</button>
-                                    </div>
+
                                 </form>
                             </div>
                         </div>
@@ -82,6 +83,9 @@
                                 <tr class="text-align">
                                     <th>序号</th>
                                     <th>文件名</th>
+                                    <th>卷数</th>
+                                    <th>数据大小</th>
+                                    <th>备份时间</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -89,10 +93,13 @@
                                 {volist name="arr_file" id="file" key="k"/}
                                 <tr  id="{$k}" class="<?php echo ceil($k/$file_page_data['listRows']); ?>">
                                     <td>{$k}</td>
-                                    <td>{$file}</td>
+                                    <td>{$file.name}</td>
+                                    <td>{$file.num}</td>
+                                    <td>{$file.size}</td>
+                                    <td>{$file.time}</td>
                                     <td>
-                                        <a href="{:url('index/databases/restore_database')}?file={$file}">还原</a> |
-                                        <a  href="javascript:void (0);" onclick="delete_sure('确定要删除此备份吗？','{:url(\'index/databases/delete_database\')}?file={$file}')">删除</a>
+                                        <a  href="javascript:void (0);" onclick="ajax_save_database('{$file.name}','{:url(\'index/databases/restore_database\')}',['还原成功','还原失败'])" >还原</a> |
+                                        <a  href="javascript:void (0);" onclick="delete_sure('确定要删除此备份吗？','{:url(\'index/databases/delete_database\')}?file={$file.name}')">删除</a>
                                     </td>
                                 </tr>
                                 {/volist}
@@ -109,8 +116,9 @@
                                                         <button class="btn btn-success page_button" onclick="click_button({$i})">
                                                     {else/}
                                                         <button class="btn btn-default page_button" onclick="click_button({$i})">
+
                                                     {/if}
-                                                        {$i}
+                                                         {$i}
                                                      </button>
                                                 </li>
                                                 {/for}
@@ -178,13 +186,43 @@
         }
     });
 
-    $("#database_form").submit(function () {
-        var data = $("input[type=checkbox]:checked").val();
-        if(!data){
-            alert("没有勾选内容！");
-            return false;
+
+    $(".back_up").click(function () {
+        var data = [];
+        $(".table_name:checked").each(function (i) {
+            data[i] = $(this).val();
+        });
+        data = data.join("^^");
+
+        if(!$("input:checked").val()){
+            layer.alert("没有勾选内容！");
+        }
+        else{
+            ajax_save_database(data,"{:url('index/databases/save_database')}",["备份成功","备份失败"])
+
         }
 
     });
+
+
+    function ajax_save_database(data,url,result) {
+        $.ajax({
+            url:url,
+            data:{data:data},
+            method:"post",
+            success:function (msg) {
+                if(msg){
+                    layer.alert(result[0],{icon:1,closeBtn:0},function () {
+                        parent.window.location.href = parent.window.location.href;
+                    });
+
+                }
+                else{
+                    layer.alert(result[1]);
+                }
+            },
+            dataType:"json"
+        });
+    }
 </script>
 {/block}
