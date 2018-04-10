@@ -79,7 +79,7 @@ class Databases extends Base{
 
                 $files[$i]['name'] = $time."_v1.sql";
                 $files[$i]['num'] = $count;
-                $files[$i]['size'] =$size;
+                $files[$i]['size'] =($size/1000)>1000? ($size/1000000).' MB':($size/1000). ' KB';
                 $files[$i]['time'] = date("Y-m-d H:i:s",$time);
             }
 
