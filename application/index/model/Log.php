@@ -12,6 +12,12 @@ class Log extends Model{
 
     const UPDATE_TYPE = 3; //修改
 
+    const BACK_UP = 4; //备份
+
+    const RESTORE = 5; //还原
+
+    const DELETE_BACK_FILE = 6; //删除备份文件
+
 
 
 

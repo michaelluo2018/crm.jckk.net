@@ -53,8 +53,15 @@
                                             增加
                                         {elseif condition="$log.type eq 2"/}
                                             删除
+                                        {elseif condition="$log.type eq 3"/}
+                                             修改
+                                        {elseif condition="$log.type eq 4"/}
+                                            数据库备份
+                                        {elseif condition="$log.type eq 5"/}
+                                            数据库还原
+                                        {elseif condition="$log.type eq 6"/}
+                                            删除备份文件
                                         {else/}
-                                            修改
                                         {/if}
                                     </td>
                                     <td>{$log.title}</td>

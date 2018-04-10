@@ -73,7 +73,7 @@ class DbManage{
      * @param int $size
      * @param $string $tablename
      */
-    function backup($tablename = '', $dir,$size) {
+    function backup($tablename = '', $dir,$size,$time=null) {
         $dir = $dir ? $dir : './backup/';
         // 创建目录
         if (! is_dir ( $dir )) {
@@ -81,7 +81,7 @@ class DbManage{
         }
         $size = $size ? $size : 2048;
         $sql = '';
-        $pre_filename = time();
+        $pre_filename = $time ? $time : time();
 
         $num = count($tablename);
         // 第几分卷

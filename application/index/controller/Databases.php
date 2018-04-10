@@ -4,7 +4,7 @@ namespace  app\index\controller;
 use extend\DbManage;
 use think\Config;
 use think\Request;
-
+use app\index\model\Log;
 require ROOT_PATH .'/extend/DbManage.php';
 
 class Databases extends Base{
@@ -106,11 +106,14 @@ class Databases extends Base{
         $data = Request::instance()->post("data");
 
         $tables = explode("^^",$data);
-
-        $result = $this->DbManage->backup($tables,$path,4096);
+        $time = time();
+        $result = $this->DbManage->backup($tables,$path,4096,$time);
         if($result!==false){
             $result = true;
         }
+        //记录日志
+         $this->write_database_log(Log::BACK_UP,$tables,$time);
+
         return $result;
 
 
@@ -118,14 +121,21 @@ class Databases extends Base{
     }
 
 
+
+
+
+
     public  function  save_one_database(){
          $path = ROOT_PATH ."database" . DS;
          $data = Request::instance()->post("data");
          $tables[0] =$data;
-         $result = $this->DbManage->backup($tables,$path,4096);
+         $time = time();
+         $result = $this->DbManage->backup($tables,$path,4096,$time);
         if($result!==false){
             $result = true;
         }
+        //记录日志
+        $this->write_database_log(Log::BACK_UP,$tables,$time);
         return $result;
 
     }
@@ -135,21 +145,49 @@ class Databases extends Base{
     public  function  restore_database(){
         $path = ROOT_PATH ."database" . DS;
         $file = Request::instance()->post("data");
-
-        $result = $this->DbManage->restore($path .$file);
-
+        $file_name = $path .$file;
+        $result = $this->DbManage->restore($file_name);
+        //记录日志
+        $this->write_database_log( Log::RESTORE,$file,time());
         return $result;
 
 
     }
 
 
+    public function write_database_log($type,$tables,$time){
+        $time = date('Y-m-d H:i:s',$time);
+        if($type ==  Log::BACK_UP ){
+
+            $table_log["after_value"] = json_encode($tables);
+            $table_log["title"] = $time ."备份数据库"  ;
+        }
+        elseif($type ==  Log::RESTORE ){
+
+            $table_log["after_value"] = json_encode($tables);
+            $table_log["title"] = $time ."还原了sql文件".$tables  ;
+        }
+        elseif ($type == Log::DELETE_BACK_FILE){
+
+            $table_log["after_value"] = json_encode($tables);
+            $table_log["title"] = $time ."删除了备份文件".$tables  ;
+        }
+
+        $table_log["type"] = $type;
+        $table_log["before_value"] = "";
+
+        model("log", "logic")->write_log($table_log);
+    }
 
 
 
     public  function  delete_database($file){
 
+
         Common::unlink_file((ROOT_PATH ."database" . DS) .$file);
+
+        //记录日志
+        $this->write_database_log( Log::DELETE_BACK_FILE ,$file,time());
 
         $this->redirect("index");
     }
