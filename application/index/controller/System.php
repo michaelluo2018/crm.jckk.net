@@ -9,44 +9,8 @@ class System extends Base{
     public function organization($id = null){
 
         $data= model("department","logic")->get_organization($id);
-        $data["posts"] =  self::get_post_path(self::get_list( $data['posts']));
 
         return view("organization")->assign("data",$data);
-    }
-
-
-
-
-    public static function get_list($arr){
-        //$arr 所有分类列表
-        static $post_list = array() ;
-
-        foreach($arr as $u){
-
-            //看下面有没有子类
-             $post_list[] = $u;
-
-              $children = model("post")->where(["pid"=>$u->id,"is_delete"=>0,"department_id"=>$u->department_id])->order("sort asc")->select();
-
-              if($children){
-
-                  self::get_list($children);
-
-              }
-
-
-        }
-
-        return $post_list;
-    }
-
-
-    public static function get_post_path($arr){
-
-        foreach($arr as $k=>$v){
-            $arr[$k]['count']=15*count(explode('-',$v->path));
-        }
-        return $arr;
     }
 
 
@@ -64,7 +28,6 @@ class System extends Base{
 
      public function save_post(){
            $data = Request::instance()->post();
-          // dump($data);die;
            model("post","logic")->save_post($data);
            $this->redirect("organization",["id"=>$data['post_department_id']]);
 
@@ -104,11 +67,25 @@ class System extends Base{
 
     public function ajax_get_post(){
         $department_id = Request::instance()->get("department_id");
+        $data= model("department","logic")->get_organization($department_id);
 
-       return model("post","logic")->get_posts_by_department($department_id);
+        foreach ( $data["posts"] as $k=>$post){
+            if($count = $post->count){
+                $count = ($count/15)*5;
+                $post->post_name = ($this->write_space($count)).$post->post_name;
+            }
+        }
+
+       return  $data["posts"];
     }
 
-
+    public function write_space($num){
+        $str = "";
+        for($i=0;$i<$num;$i++){
+            $str .= "&nbsp";
+        }
+        return $str;
+    }
 
     public function user_edit($id){
         $user = model("user","logic")->get_user($id);

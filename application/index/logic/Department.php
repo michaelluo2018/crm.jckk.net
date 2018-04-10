@@ -114,7 +114,42 @@ class Department extends Model{
                 $data['department_id'] = null;
             }
         }
+
+        $data["posts"] =  self::get_post_path(self::get_list( $data['posts']));
+
       return $data;
+    }
+
+    public static function get_list($arr){
+        //$arr 所有分类列表
+        static $post_list = array() ;
+
+        foreach($arr as $u){
+
+            //看下面有没有子类
+            $post_list[] = $u;
+
+            $children = model("post")->where(["pid"=>$u->id,"is_delete"=>0,"department_id"=>$u->department_id])->order("sort asc")->select();
+
+            if($children){
+
+                self::get_list($children);
+
+            }
+
+
+        }
+
+        return $post_list;
+    }
+
+
+    public static function get_post_path($arr){
+
+        foreach($arr as $k=>$v){
+            $arr[$k]['count']=15*(count(explode('-',$v->path))-1);
+        }
+        return $arr;
     }
 
 
