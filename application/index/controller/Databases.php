@@ -107,7 +107,7 @@ class Databases extends Base{
 
         $tables = explode("^^",$data);
 
-        $result = $this->DbManage->backup($tables,$path,1);
+        $result = $this->DbManage->backup($tables,$path,4096);
         if($result!==false){
             $result = true;
         }
