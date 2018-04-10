@@ -22,6 +22,12 @@ class Logs extends Base
 
     }
 
+    public function ajax_delete_logs(){
+        $day = Request::instance()->get("day");
+        $time = date("Y-m-d H:i:s",time() - $day*3600*24);
+
+       return model("log","logic")->delete_logs_by_time($time);
+    }
 
 
 }

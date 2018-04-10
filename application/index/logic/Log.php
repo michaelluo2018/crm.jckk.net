@@ -37,6 +37,7 @@ class Log extends Model{
         return Session::get("uid");
 
     }
+
    protected  function setCreateTimeAttr(){
 
         return date("Y-m-d H:i:s",time());
@@ -64,6 +65,7 @@ class Log extends Model{
         if($uid){
             $logs=  Db::table("jckk_logs")
                 ->where("jckk_logs.uid",$uid)
+                ->where("jckk_logs.is_delete","<>",1)
                 ->order("jckk_logs.id","desc")
                 ->field(["jckk_logs.*","jckk_user.chinese_name"])
                 ->join("jckk_user","jckk_user.uid = jckk_logs.uid",'LEFT')
@@ -71,6 +73,7 @@ class Log extends Model{
         }
         else{
             $logs=  Db::table("jckk_logs")
+                ->where("jckk_logs.is_delete","<>",1)
                 ->order("jckk_logs.id","desc")
                 ->field(["jckk_logs.*","jckk_user.chinese_name"])
                 ->join("jckk_user","jckk_user.uid = jckk_logs.uid",'LEFT')
@@ -100,6 +103,9 @@ class Log extends Model{
     }
 
 
+    public function delete_logs_by_time($time){
+      return  $this->where("create_time","<",$time)->update(["is_delete"=>1]);
+    }
 
 
 }
