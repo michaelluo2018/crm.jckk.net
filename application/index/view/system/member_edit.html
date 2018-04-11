@@ -247,16 +247,16 @@
 <script>
 
     $("form").submit(function () {
-        var mobile = $("input[name=mobile]").val();
-        var phone=/^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/;
+       // var mobile = $("input[name=mobile]").val();
+      //  var phone=/^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/;
 
         var  pwd1 = $("#password").val();
         var  pwd2 = $("#password_conform").val();
 
-        if (!phone.test(mobile)) {
-            $("#msg").text("手机号格式不正确");
-            return false;
-        } else {
+//        if (!phone.test(mobile)) {
+//            $("#msg").text("手机号格式不正确");
+//            return false;
+//        } else {
             if(pwd1 == pwd2){
                 var msg = $("#msg").text();
                 if(msg){
@@ -267,7 +267,7 @@
                 $("#msg").text("两次密码不一致");
                 return false;
             }
-        }
+//        }
 
 
     });
@@ -276,11 +276,11 @@
         //手机号或邮箱是否存在
         var mobile = $(this).val();
         var uid = "{$user.uid}";
-        var phone=/^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/;
+    //    var phone=/^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/;
 
-        if (!phone.test(mobile)) {
-            $("#msg").text("手机号格式不正确");
-        }
+//        if (!phone.test(mobile)) {
+//            $("#msg").text("手机号格式不正确");
+//        }
 
         $.ajax({
             url: "{:url('index/system/check_user_mobile')}",
