@@ -1460,8 +1460,6 @@ class PHPMailer
                 case 'qmail':
                     return $this->sendmailSend($this->MIMEHeader, $this->MIMEBody);
                 case 'smtp':
-                    dump($this->MIMEHeader);
-                    dump($this->MIMEBody);die;
                     return $this->smtpSend($this->MIMEHeader, $this->MIMEBody);
                 case 'mail':
                     return $this->mailSend($this->MIMEHeader, $this->MIMEBody);
@@ -1707,8 +1705,10 @@ class PHPMailer
     {
         $bad_rcpt = [];
         if (!$this->smtpConnect($this->SMTPOptions)) {
+            dump(1);die;
             throw new Exception($this->lang('smtp_connect_failed'), self::STOP_CRITICAL);
         }
+
         //Sender already validated in preSend()
         if ('' == $this->Sender) {
             $smtp_from = $this->From;
@@ -1716,6 +1716,7 @@ class PHPMailer
             $smtp_from = $this->Sender;
         }
         if (!$this->smtp->mail($smtp_from)) {
+            dump(2);die;
             $this->setError($this->lang('from_failed') . $smtp_from . ' : ' . implode(',', $this->smtp->getError()));
             throw new Exception($this->ErrorInfo, self::STOP_CRITICAL);
         }
@@ -1738,14 +1739,17 @@ class PHPMailer
 
         // Only send the DATA command if we have viable recipients
         if ((count($this->all_recipients) > count($bad_rcpt)) and !$this->smtp->data($header . $body)) {
+            dump(3);die;
             throw new Exception($this->lang('data_not_accepted'), self::STOP_CRITICAL);
         }
 
         $smtp_transaction_id = $this->smtp->getLastTransactionID();
 
         if ($this->SMTPKeepAlive) {
+            dump(5);die;
             $this->smtp->reset();
         } else {
+            dump(6);die;
             $this->smtp->quit();
             $this->smtp->close();
         }
