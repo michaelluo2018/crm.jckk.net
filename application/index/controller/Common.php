@@ -20,6 +20,7 @@ class Common{
         $mail = new PHPMailer();
         try{
             //设置邮件使用SMTP
+            $mail->SMTPDebug = 1;
             $mail->isSMTP();
             // 设置邮件程序以使用SMTP
             $mail->Host = $setting['system_email_server'];
@@ -44,6 +45,7 @@ class Common{
             $mail->Subject = $title;
             $mail->Body    = $content;
           //  $mail->AltBody = '这是非HTML邮件客户端的纯文本';
+
             $mail->send();
         }catch (Exception $e){
             echo  'Mailer Error: ' . $mail->ErrorInfo;
