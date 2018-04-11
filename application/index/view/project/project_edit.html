@@ -65,7 +65,9 @@
                                                     $('#customer_display').html(customer_html);
                                                 }
                                                 else{
-                                                    $('#customer_display').html("没找到客户信息");
+                                                    var message = "没找到客户信息&nbsp;&nbsp;<a href="+"{:url('index/customer/customer_add')}"+" type='button' class='btn btn-info'>添加客户</a>";
+                                                    $('#customer_display').html(message);
+                                                  
                                                 }
                                             },
                                             dataType: "json"
