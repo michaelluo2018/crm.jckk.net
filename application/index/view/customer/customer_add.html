@@ -4,6 +4,7 @@
 {/block}
 {block name="js"/}
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/layer/layer_zh-cn.js"></script>
 {/block}
 {block name="breadcrumb"}
     <div class="col-md-5 col-8 align-self-center">
@@ -33,7 +34,7 @@
                                             <div class="form-group">
                                                 <label class="control-label"><span class="text-danger"> * </span>客户全称</label>
                                                 <input type="text" id="" class="form-control" placeholder="请填写公司名称" name="customer_name" required >
-                                                <small class="form-control-feedback"> </small>
+                                                <small class="form-control-feedback">  <span id="msg" style="color: red;" data-data=""></span> </small>
                                             </div>
                                         </div>
                                         <!--/span-->
@@ -177,14 +178,6 @@
                                         <!--/span-->
                                     </div>
                                     <!--/row-->
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group has-danger">
-                                                <p id="msg" style="color: red;"></p>
-                                            </div>
-                                        </div>
-
-                                    </div>
                                 </div>
                                 <div class="form-actions">
                                     <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存 </button>
@@ -201,9 +194,9 @@
         $("form").submit(function () {
                 var msg = $("#msg").text();
                 if(msg.trim()){
+                    layer.alert(msg.trim());
                     return false;
                 }
-
         });
 
 //        $("input[name=contact_mobile]").change(function(){
@@ -230,7 +223,7 @@
                 success:function(data){
                     //写入到对应位置
                     if(data==1){
-                        $("#msg").text("客户已经存在");
+                        $("#msg").text(customer_name+"客户已经存在");
                     }
                     else{
                         $("#msg").text(" ");
