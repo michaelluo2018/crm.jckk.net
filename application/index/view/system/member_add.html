@@ -4,6 +4,7 @@
 {/block}
 {block name="js"/}
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/layer/layer_zh-cn.js"></script>
 {/block}
 {block name="breadcrumb"/}
 <div class="col-md-5 col-8 align-self-center">
@@ -32,14 +33,14 @@
                                 <div class="form-group">
                                     <label class="control-label"><span class="text-danger"> * </span>用户姓名</label>
                                     <input type="text" id="names" name="chinese_name" class="form-control" placeholder="中文名" required>
-                                    <small class="form-control-feedback"> </small> </div>
+                                    <small class="form-control-feedback text-danger"> </small> </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label"><span class="text-danger"> * </span>英文名</label>
                                     <input type="text" id="engnames" name="english_name"class="form-control" placeholder="英文名" required>
-                                    <small class="form-control-feedback"> </small> </div>
+                                    <small class="form-control-feedback text-danger"> </small> </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-4">
@@ -72,7 +73,7 @@
                                         <option value="{$department.id}">{$department.department_name}</option>
                                         {/volist}
                                     </select>
-                                    <small class="form-control-feedback"></small> </div>
+                                    <small class="form-control-feedback text-danger"></small> </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-4">
@@ -100,7 +101,7 @@
                                 <div class="form-group">
                                     <label class="control-label"><span class="text-danger"> * </span>手机号码</label>
                                     <input type="text" id="phone" name="mobile" class="form-control" placeholder="" required>
-                                    <small class="form-control-feedback"></small>
+                                    <small class="form-control-feedback text-danger" ></small>
                                 </div>
                             </div>
                             <!--/span-->
@@ -108,7 +109,7 @@
                                 <div class="form-group">
                                     <label class="control-label"><span class="text-danger"> * </span>微信</label>
                                     <input type="text" id="wachet" name="wechat" class="form-control" placeholder="" required>
-                                    <small class="form-control-feedback"></small>
+                                    <small class="form-control-feedback text-danger"></small>
                                 </div>
                             </div>
                             <!--/span-->
@@ -116,7 +117,7 @@
                                 <div class="form-group">
                                     <label class="control-label"><span class="text-danger"> * </span>电子邮箱</label>
                                     <input type="email" id="email" name="email" class="form-control" placeholder="" required>
-                                    <small class="form-control-feedback"></small>
+                                    <small class="form-control-feedback text-danger"></small>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -130,14 +131,14 @@
                                 <div class="form-group">
                                     <label class="control-label"><span class="text-danger"> * </span>密码</label>
                                     <input type="password" id="password" name="password" class="form-control" placeholder="" required>
-                                    <small class="form-control-feedback"></small>
+                                    <small class="form-control-feedback text-danger"></small>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label"><span class="text-danger"> * </span>确认密码</label>
                                     <input type="password" id="password_conform" name="password" class="form-control" placeholder="" required>
-                                    <small class="form-control-feedback"></small>
+                                    <small class="form-control-feedback text-danger"></small>
                                 </div>
                             </div>
                             <!--/span-->
@@ -163,7 +164,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" hidden>
                             <div class="col-md-12">
                                 <div class="form-group has-danger">
                                     <p id="msg" style="color: red;"></p>
@@ -221,82 +222,113 @@
 </script>
 
 <script>
-
+    var mobile_result;
+    var email_result;
+    var pwd_result;
     $("form").submit(function () {
-        var mobile = $("input[name=mobile]").val();
-       // var phone=/^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/;
-
-        var  pwd1 = $("#password").val();
-        var  pwd2 = $("#password_conform").val();
-
-//        if (!phone.test(mobile)) {
-//            $("#msg").text("手机号格式不正确");
-//            return false;
-//        } else {
-            if(pwd1 == pwd2){
-                var msg = $("#msg").text();
-                if(msg){
-                    return false;
-                }
-            }
-            else {
-                $("#msg").text("两次密码不一致");
-                return false;
-            }
-       // }
-
+        if(mobile_result){
+            layer.alert("手机号其他用户已使用");
+            return false;
+        }
+        if(email_result){
+            layer.alert("邮箱其他用户已使用");
+            return false;
+        }
+        if(pwd_result){
+            layer.alert("两次密码不一致");
+            return false;
+        }
 
     });
 
-    $("input[name=mobile]").change(function(){
+
+
+
+     $("input[name=mobile]").bind('input propertychange',function(){
         //手机号或邮箱是否存在
-        var mobile = $(this).val();
-
-//        var phone=/^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/;
-//
-//        if (!phone.test(mobile)) {
-//            $("#msg").text("手机号格式不正确");
-//        }
-//        else{
-            $.ajax({
-                url: "{:url('index/system/check_user_mobile')}",
-                data: {'mobile':mobile},
-                method:"get",
-                success:function(data){
-                    if(data==1){
-                        $("#msg").text("手机号已经存在");
-                    }
-                },
-                dataType: "json"
-            });
-
-      //  }
-
-
+        ajax_check_mobile($("input[name=mobile]"));
 
     });
 
-     $("input[name=email]").change(function(){
-            //手机号或邮箱是否存在
-            var email = $("input[name=email]").val();
 
-            $.ajax({
-                url: "{:url('index/system/check_user_email')}",
-                data: {'email':email},
-                method:"get",
-                success:function(data){
-                    //写入到对应位置
-                    if(data==1){
-                            $("#msg").text("邮箱已经存在");
-                        }
-                },
-                dataType: "json"
-            });
+     $("input[name=email]").bind('input propertychange',function(){
+            //手机号或邮箱是否存在
+            var email_obj = $(this);
+           ajax_check_email(email_obj);
 
         });
 
 
+    $("#password_conform").bind('input propertychange',function () {
+        check_pwd();
+    });
 
+
+    function ajax_check_mobile(mobile_obj) {
+
+        var mobile = mobile_obj.val();
+        $.ajax({
+            url: "{:url('index/system/check_user_mobile')}",
+            data: {'mobile':mobile},
+            method:"get",
+            success:function(data){
+
+                if(data==1){
+                  // layer.alert("手机号"+mobile+"已经存在");
+                    mobile_obj.parent().find('.form-control-feedback').text("手机号"+mobile+"其他用户已使用");
+                    mobile_result = 1;
+                }
+                else {
+                    mobile_obj.parent().find('.form-control-feedback').text(" ");
+                    mobile_result = 0;
+                }
+
+            },
+            dataType: "json"
+        });
+    }
+
+    function ajax_check_email(email_obj) {
+
+        var email = email_obj.val();
+        $.ajax({
+            url: "{:url('index/system/check_user_email')}",
+            data: {'email':email},
+            method:"get",
+            success:function(data){
+                //写入到对应位置
+                if(data==1){
+
+                  // layer.alert("邮箱"+email+"已经存在");
+                    email_obj.parent().find('.form-control-feedback').text("邮箱"+email+"其他用户已使用");
+                    email_result = 1;
+                }
+                else{
+                    email_obj.parent().find('.form-control-feedback').text(" ");
+                    email_result = 0;
+                }
+            },
+            dataType: "json"
+        });
+    }
+
+    function  check_pwd() {
+
+        var  pwd1 = $("#password").val();
+        var  pwd2 = $("#password_conform").val();
+
+        if(pwd1 != pwd2){
+         // layer.alert("两次密码不一致");
+            $("#password_conform").parent().find('.form-control-feedback').text("两次密码不一致");
+            pwd_result = 1;
+        }
+        else{
+            $("#password_conform").parent().find('.form-control-feedback').text(" ");
+            pwd_result = 0;
+        }
+    }
 
 </script>
+
+
 {/block}
