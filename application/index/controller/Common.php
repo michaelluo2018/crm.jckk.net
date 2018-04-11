@@ -32,7 +32,7 @@ class Common{
             // 设置邮件内容的编码
             $mail->CharSet='UTF-8';
             // 启用SMTP验证
-            $mail->SMTPAuth = true;
+            $mail->SMTPAuth = false;
             // SMTP username
             $mail->Username =$setting['system_email'];
             // SMTP password
