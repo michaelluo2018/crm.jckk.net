@@ -30,7 +30,7 @@
                             <div class="row p-t-20">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="control-label">客户全称</label>
+                                        <label class="control-label"><span class="text-danger"> * </span>客户全称</label>
                                         <input type="text"  class="form-control customer_name" placeholder="请填写公司名称"  required autocomplete="off">
                                         <input type="hidden"  class="form-control"  name="customer_id" required >
                                         <small class="form-control-feedback"> </small>
@@ -99,7 +99,7 @@
                             <div class="row">
                                 <div class="col-md-3 ">
                                     <div class="form-group">
-                                        <label>项目所在部门</label>
+                                        <label><span class="text-danger"> * </span>项目所在部门</label>
                                         <select class="form-control custom-select department"  name="executor_department_id"  required>
                                             {volist name="departments" id="dep"}
                                                 <option value="{$dep.id}">{$dep.department_name}</option>
@@ -109,7 +109,7 @@
                                 </div>
                                 <div class="col-md-3 ">
                                     <div class="form-group">
-                                        <label>项目执行人</label>
+                                        <label><span class="text-danger"> * </span>项目执行人</label>
                                         <select class="form-control custom-select executor_department_id"   required name="executor_uid" >
                                             <option value="">请选择</option>
                                         </select>
@@ -118,7 +118,7 @@
 
                                 <div class="col-md-3 ">
                                     <div class="form-group">
-                                        <label>策划部门</label>
+                                        <label><span class="text-danger"> * </span>策划部门</label>
                                         <select class="form-control custom-select department"   name="planning_department_id" required>
                                             {volist name="departments" id="dep"}
                                             <option value="{$dep.id}">{$dep.department_name}</option>
@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="col-md-3 ">
                                     <div class="form-group">
-                                        <label>策划人</label>
+                                        <label><span class="text-danger"> * </span>策划人</label>
                                         <select class="form-control custom-select planning_department_id"   required name="planning_uid">
                                             <option value="">请选择</option>
                                         </select>
@@ -139,7 +139,7 @@
                             <div class="row">
                                 <div class="col-md-3 ">
                                     <div class="form-group">
-                                        <label>对接部门</label>
+                                        <label><span class="text-danger"> * </span>对接部门</label>
                                         <select class="form-control custom-select department"   name="docking_department_id" required>
                                             {volist name="departments" id="dep"}
                                             <option value="{$dep.id}">{$dep.department_name}</option>
@@ -149,7 +149,7 @@
                                 </div>
                                 <div class="col-md-3 ">
                                     <div class="form-group">
-                                        <label>对接人</label>
+                                        <label><span class="text-danger"> * </span>对接人</label>
                                         <select class="form-control custom-select docking_department_id"   required name="docking_uid">
                                             <option value="">请选择</option>
                                         </select>
@@ -158,7 +158,7 @@
 
                                 <div class="col-md-3 ">
                                     <div class="form-group">
-                                        <label>管理部门</label>
+                                        <label><span class="text-danger"> * </span>管理部门</label>
                                         <select class="form-control custom-select department"   required name="manage_department_id">
                                             {volist name="departments" id="dep"}
                                             <option value="{$dep.id}">{$dep.department_name}</option>
@@ -168,7 +168,7 @@
                                 </div>
                                 <div class="col-md-3 ">
                                     <div class="form-group">
-                                        <label>管理人</label>
+                                        <label><span class="text-danger"> * </span>管理人</label>
                                         <select class="form-control custom-select manage_department_id"   name="manage_uid" required>
                                             <option value="">请选择</option>
                                         </select>
@@ -179,7 +179,7 @@
                             <div class="row">
                                 <div class="col-md-6 ">
                                     <div class="form-group">
-                                        <label>需求产品一级</label>
+                                        <label><span class="text-danger"> * </span>需求产品一级</label>
                                         <select class="form-control custom-select" name="product_demand_1" >
                                             {volist name="$data['product_demand']" id="product_demand" }
                                             <option value="{$product_demand}">{$product_demand}</option>
@@ -189,7 +189,7 @@
                                 </div>
                                 <div class="col-md-6 ">
                                     <div class="form-group">
-                                        <label>需求产品二级</label>
+                                        <label><span class="text-danger"> * </span>需求产品二级</label>
                                         <select class="form-control custom-select"  name="product_demand_2">
                                             <option value="">请选择</option>
                                         </select>
@@ -203,7 +203,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>合同状态</label>
+                                        <label><span class="text-danger"> * </span>合同状态</label>
                                         <select class="form-control custom-select" required name="contract_status">
                                             {volist name="data['contract_status']" id="contract_status"}
                                                 <option value="{$contract_status}">{$contract_status}</option>
@@ -214,7 +214,7 @@
                                 <!--/span-->
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>合同金额</label>
+                                        <label><span class="text-danger"> * </span>合同金额</label>
                                         <input type="text"  class="form-control" placeholder="请输入合同金额" required name="contract_amount" >
                                         <small class="form-control-feedback"> </small>
                                     </div>
@@ -224,7 +224,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>回款模式</label>
+                                        <label><span class="text-danger"> * </span>回款模式</label>
                                         <select class="form-control custom-select" required name="payment_type">
                                             {volist name="data['payment_type']" id="payment_type"}
                                             <option value="{$payment_type}">{$payment_type}</option>
@@ -235,7 +235,7 @@
                                 <!--/span-->
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>回款状态</label>
+                                        <label><span class="text-danger"> * </span>回款状态</label>
                                         <select class="form-control custom-select" required name="payment_status">
                                             {volist name="data['payment_status']" id="payment_status"}
                                                 <option value="{$payment_status}">{$payment_status}</option>
@@ -248,7 +248,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>毛利润率</label>
+                                        <label><span class="text-danger"> * </span>毛利润率</label>
                                         <input type="text"  class="form-control" placeholder="请填写毛利润率" name="rate" required>
                                         <small class="form-control-feedback"> </small>
                                     </div>
@@ -256,7 +256,7 @@
                                 <!--/span-->
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>成本支出</label>
+                                        <label><span class="text-danger"> * </span>成本支出</label>
                                         <input type="text"  class="form-control" placeholder="请填写成本支出" name="cost" required>
                                         <small class="form-control-feedback"> </small>
                                     </div>

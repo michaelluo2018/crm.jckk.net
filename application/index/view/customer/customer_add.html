@@ -31,14 +31,15 @@
                                     <div class="row p-t-20">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label">客户全称</label>
+                                                <label class="control-label"><span class="text-danger"> * </span>客户全称</label>
                                                 <input type="text" id="" class="form-control" placeholder="请填写公司名称" name="customer_name" required >
-                                                <small class="form-control-feedback"> </small> </div>
+                                                <small class="form-control-feedback"> </small>
+                                            </div>
                                         </div>
                                         <!--/span-->
                                         <div class="col-md-6">
                                             <div class="form-group has-danger">
-                                                <label class="control-label">客户行业</label>
+                                                <label class="control-label"><span class="text-danger"> * </span>客户行业</label>
                                                 <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="industry" required>
                                                     {volist name="data['industry']" id= "vo"}
                                                         <option value="{$vo}">{$vo}</option>
@@ -52,7 +53,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group has-success">
-                                                <label class="control-label">公司性质</label>
+                                                <label class="control-label"><span class="text-danger"> * </span>公司性质</label>
                                                 <div class="form-check">
                                                     {volist name="data['company_nature']" id="company_nature" key="k"}
                                                     <label class="custom-control custom-radio">
@@ -67,7 +68,7 @@
                                         <!--/span-->
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label">年营业额</label>
+                                                <label class="control-label"><span class="text-danger"> * </span>年营业额</label>
                                                 <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="annual_turnover" required>
                                                     {volist name="data['annual_turnover']" id="annual_turnover" }
                                                     <option value="{$annual_turnover}">{$annual_turnover}</option>
@@ -82,7 +83,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label">客户状态一级</label>
+                                                <label class="control-label"><span class="text-danger"> * </span>客户状态一级</label>
                                                 <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="customer_status_1" required>
                                                     {volist name="data['customer_status_1']" id="customer_status_1"}
                                                     <option value="{$customer_status_1}">{$customer_status_1}</option>
@@ -93,7 +94,7 @@
                                         <!--/span-->
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label">客户状态二级</label>
+                                                <label class="control-label"><span class="text-danger"> * </span>客户状态二级</label>
                                                 <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="customer_status_2" required>
                                                     {volist name="data['customer_status_2']" id="customer_status_2"}
                                                     <option value="{$customer_status_2}">{$customer_status_2}</option>
@@ -108,7 +109,7 @@
                                     <div class="row p-t-20">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label class="control-label">联系人</label>
+                                                <label class="control-label"><span class="text-danger"> * </span>联系人</label>
                                                 <input type="text"  class="form-control" placeholder="请填写联系人姓名" name="contact_name" required>
                                                 <small class="form-control-feedback"> </small> </div>
                                         </div>

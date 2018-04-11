@@ -32,14 +32,14 @@
                         <div class="row p-t-20">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">客户全称</label>
+                                    <label class="control-label"><span class="text-danger"> * </span>客户全称</label>
                                     <input type="text"  class="form-control" value="{$customer.customer_name}" name="customer_name" required >
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group has-danger">
-                                    <label class="control-label">客户行业</label>
+                                    <label class="control-label"><span class="text-danger"> * </span>客户行业</label>
                                     <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="industry" required>
                                         {volist name="data['industry']" id= "vo"}
                                             {if condition="$vo eq $customer.industry"}
@@ -57,7 +57,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group has-success">
-                                    <label class="control-label">公司性质</label>
+                                    <label class="control-label"><span class="text-danger"> * </span>公司性质</label>
                                     <div class="form-check">
                                         {volist name="data['company_nature']" id="company_nature" key="k"}
                                         <label class="custom-control custom-radio">
@@ -76,7 +76,7 @@
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">年营业额</label>
+                                    <label class="control-label"><span class="text-danger"> * </span>年营业额</label>
                                     <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="annual_turnover" required>
                                         {volist name="data['annual_turnover']" id="annual_turnover" }
                                             {if condition="$annual_turnover eq $customer.annual_turnover"}
@@ -95,7 +95,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">客户状态一级</label>
+                                    <label class="control-label"><span class="text-danger"> * </span>客户状态一级</label>
                                     <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="customer_status_1" required>
                                         {volist name="data['customer_status_1']" id="customer_status_1"}
                                             {if condition="$customer_status_1 eq $customer.customer_status_1"}
@@ -110,7 +110,7 @@
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">客户状态二级</label>
+                                    <label class="control-label"><span class="text-danger"> * </span>客户状态二级</label>
                                     <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="customer_status_2" required>
                                         {volist name="data['customer_status_2']" id="customer_status_2"}
                                             {if condition="$customer_status_2 eq $customer.customer_status_2"}
@@ -129,7 +129,7 @@
                         <div class="row p-t-20">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label">联系人</label>
+                                    <label class="control-label"><span class="text-danger"> * </span>联系人</label>
                                     <input type="text"  class="form-control" value="{$customer.contact_name}" name="contact_name" required>
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
