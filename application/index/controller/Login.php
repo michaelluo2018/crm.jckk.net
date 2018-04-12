@@ -49,11 +49,12 @@ class Login extends Controller {
         $email = Request::instance()->post("email");
         $title = "密码重置";
         $str = base64_encode($email."^jckk0322^".time());
-        $url = "http://localhost/index.php/index/login/reset_pwd?email=".$str;
+
+        $url = "http://".$_SERVER['HTTP_HOST']."/index.php/index/login/reset_pwd?email=".$str;
         $cont = "请点击此链接，按流程进行密码重设，如果点击无效，请将地址手工粘贴到浏览器地址栏访问：";
         $content = "<a href='".$url."'>".$cont."</a>".$url;
         $res = Common::send_mail($email,$title,$content);
-        
+
         if(!$res){
             //ok
             $this->success("系统已将重置密码的链接安全的发到了您的邮箱，30分钟内有效，请及时查收");
