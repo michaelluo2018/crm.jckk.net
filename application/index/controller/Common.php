@@ -20,19 +20,15 @@ class Common{
         $mail = new PHPMailer();
         try{
             //设置邮件使用SMTP
-            $mail->SMTPDebug = true;
+            $mail->SMTPDebug = 3;
             $mail->isSMTP();
-            if($setting['system_email_port'] == 587){
-                $mail->SMTPSecure = 'tls';
-            }
-
 
             // 设置邮件程序以使用SMTP
             $mail->Host = $setting['system_email_server'];
             // 设置邮件内容的编码
             $mail->CharSet='UTF-8';
             // 启用SMTP验证
-            $mail->SMTPAuth = false;
+            $mail->SMTPAuth = true;
             // SMTP username
             $mail->Username =$setting['system_email'];
             // SMTP password
