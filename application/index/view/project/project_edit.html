@@ -42,7 +42,7 @@
                             </div>
                             <script>
                                 $(".customer_name").bind('input propertychange', function () {
-                                    var customer_name = $(this).val();
+                                    var customer_name = $.trim($(this).val());
                                     if(!customer_name){
                                         $('#customer_display').html("请输入...");
                                     }
