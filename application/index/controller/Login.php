@@ -50,7 +50,12 @@ class Login extends Controller {
         $title = "密码重置";
         $str = base64_encode($email."^jckk0322^".time());
 
-        $url = "http://".$_SERVER['HTTP_HOST']."/index.php/index/login/reset_pwd?email=".$str;
+        $module_name=$email->module();
+        $controller_name=$email->controller();
+        $action=$email->action();
+        $active_url=$module_name.'/'.$controller_name.'/'.$action;
+
+        $url = "http://".$_SERVER['HTTP_HOST'].$active_url."?email=".$str;
         $cont = "请点击此链接，按流程进行密码重设，如果点击无效，请将地址手工粘贴到浏览器地址栏访问：";
         $content = "<a href='".$url."'>".$cont."</a>".$url;
         $res = Common::send_mail($email,$title,$content);
