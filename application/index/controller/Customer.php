@@ -66,6 +66,16 @@ class Customer extends Base{
         return view("customer_des")->assign("data",$data)->assign("customer",$customer);
     }
 
+
+   //客户项目查看
+
+    public function  customer_project($id){
+        
+        $projects = model("project","logic")->get_projects($id);
+
+        return  view("project/project_list")->assign("projects",$projects);
+    }
+
     //客户搜索
 //
 //    public  function  customer_search(){
