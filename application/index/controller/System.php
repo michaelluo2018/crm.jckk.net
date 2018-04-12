@@ -129,6 +129,19 @@ class System extends Base{
     }
 
 
+    public function ajax_setting_save(){
+
+        $data['system_theme'] = Request::instance()->post("system_theme");
+
+        model("setting","logic")->save_settings($data);
+
+        return 1;
+    }
+
+
+
+
+
     public function system_fields(){
 
         return view("system_fields");

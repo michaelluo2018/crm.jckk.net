@@ -24,7 +24,11 @@
     <!-- Custom CSS -->
     <link href="__STATIC__/css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
+    {if condition="isset($setting['system_theme'])"/}
+    <link href="{$setting['system_theme']}" id="theme" rel="stylesheet">
+    {else/}
     <link href="__STATIC__/css/colors/blue.css" id="theme" rel="stylesheet">
+    {/if}
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -69,21 +73,31 @@
                     <!-- Logo icon --><b>
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                    {if condition="isset($setting['system_logo_icon'])"/}
+                    <img src="{$setting['system_logo_icon']}" alt="homepage" class="dark-logo" />
+                    {else/}
+                    <img src="__STATIC__/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                    {/if}
                     <!-- Light Logo icon -->
                     {if condition="isset($setting['system_logo_icon'])"/}
                     <img src="{$setting['system_logo_icon']}" alt="homepage" class="light-logo" />
                     {else/}
+                    <img src="__STATIC__/assets/images/logo-icon.png" alt="homepage" class="light-logo" />
                     {/if}
                 </b>
                     <!--End Logo icon -->
                     <!-- Logo text --><span>
                          <!-- dark Logo text -->
-                         <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                      {if condition="isset($setting['system_logo_text'])"/}
+                         <img src="__STATIC__/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                      {else/}
+                        <img src="{$setting['system_logo_text']}" alt="homepage" class="dark-logo" />
+                    {/if}
                     <!-- Light Logo text -->
                       {if condition="isset($setting['system_logo_text'])"/}
                          <img src="{$setting['system_logo_text']}" class="light-logo" alt="homepage" /></span>
                     {else/}
+                    <img src="__STATIC__/assets/images/logo-text.png" alt="homepage" class="light-logo" />
                     {/if}
                 </a>
             </div>
