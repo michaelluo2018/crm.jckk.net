@@ -111,6 +111,23 @@ create table jckk_contact (
 
  
 
+ create table jckk_feedback (
+    id int primary key auto_increment,
+    name  varchar(50) comment "用户填写姓名",
+    email varchar(50)  comment "用户填写邮箱 ",
+    content text  comment "用户填写内容 ",
+    create_time int comment "加入时间"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+
+
+ create table jckk_announcement (
+    id int primary key auto_increment,
+    content text  comment "公告内容 ",
+    create_time int comment "加入时间"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+
 
 
 
