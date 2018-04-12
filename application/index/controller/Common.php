@@ -22,7 +22,10 @@ class Common{
             //设置邮件使用SMTP
             $mail->SMTPDebug = 4;
             $mail->isSMTP();
-
+            if($setting['system_email_port'] == 587){
+                $mail->SMTPSecure = 'tls';
+            }
+            
             // 设置邮件程序以使用SMTP
             $mail->Host = $setting['system_email_server'];
             // 设置邮件内容的编码
