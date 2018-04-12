@@ -70,11 +70,22 @@ class Customer extends Base{
    //客户项目查看
 
     public function  customer_project($id){
-        
-        $projects = model("project","logic")->get_projects($id);
 
-        return  view("project/project_list")->assign("projects",$projects);
+        $projects = model("project","logic")->get_projects($id);
+        $array = $projects->toArray();
+        if(empty($array['data'])){
+            $add_project_url = url("index/project/project_add");
+
+            echo "<script>  if (confirm('该客户还没有项目，去添加项目？')==true){ window.location.href='".$add_project_url." ';}else{ history.back(-1); }</script>";
+
+        }
+        else{
+            return  view("project/project_list")->assign("projects",$projects);
+        }
+
     }
+
+
 
     //客户搜索
 //
