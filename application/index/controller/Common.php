@@ -20,7 +20,7 @@ class Common{
         $mail = new PHPMailer();
         try{
             //设置邮件使用SMTP
-            $mail->SMTPDebug = 3;
+            $mail->SMTPDebug = 4;
             $mail->isSMTP();
 
             // 设置邮件程序以使用SMTP
