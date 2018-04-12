@@ -130,8 +130,9 @@ class System extends Base{
 
 
     public function ajax_setting_save(){
+        $key = ($this->uid).'system_theme';
 
-        $data['system_theme'] = Request::instance()->post("system_theme");
+        $data[$key] = Request::instance()->post("system_theme");
 
         model("setting","logic")->save_settings($data);
 

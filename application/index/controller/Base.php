@@ -22,6 +22,11 @@ class Base extends Controller{
         $this->assign("user_info",$user_info);
         //系统设置
         $setting = model("setting","logic")->get_setting();
+        $key = ($this->uid).'system_theme';
+        if(isset($setting[$key])){
+            $setting['system_theme'] = $setting[$key];
+        }
+
         $this->assign("setting",$setting);
         //总客户，总项目
         $total_customer = model("customer","logic")->total_customer();
