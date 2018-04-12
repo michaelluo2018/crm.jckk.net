@@ -53,7 +53,7 @@ class Login extends Controller {
         $cont = "请点击此链接，按流程进行密码重设，如果点击无效，请将地址手工粘贴到浏览器地址栏访问：";
         $content = "<a href='".$url."'>".$cont."</a>".$url;
         $res = Common::send_mail($email,$title,$content);
-       // dump($res);die;
+        
         if(!$res){
             //ok
             $this->success("系统已将重置密码的链接安全的发到了您的邮箱，30分钟内有效，请及时查收");
