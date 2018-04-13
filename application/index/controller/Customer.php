@@ -27,14 +27,6 @@ class Customer extends Base{
 
 
 
-    //删除回收站
-
-    public function customer_del_true($id){
-
-        model("customer","logic")->delete_customer_true($id);
-
-        $this->redirect("customer_recycle");
-    }
 
 
     //还原客户
@@ -95,17 +87,37 @@ class Customer extends Base{
 
     public function  customer_del($id){
 
-     $result = model("customer","logic")->delete_customer($id);
-      if($result){
-          echo "<script> alert(\" ".$result."\"); history.back(-1);</script>";
-      }
-      else{
+         $result = model("customer","logic")->delete_customer($id);
+          if($result){
+              echo "<script> alert(\" ".$result."\"); history.back(-1);</script>";
+          }
+          else{
 
-          $this->redirect("customer_list");
-      }
-
+              $this->redirect("customer_list");
+          }
 
     }
+
+
+    //删除回收站
+
+    public function customer_del_true($id){
+
+        $result =  model("customer","logic")->delete_customer_true($id);
+
+        if($result){
+            echo "<script> alert(\" ".$result."\"); history.back(-1);</script>";
+        }
+        else{
+            $this->redirect("customer_recycle");
+        }
+    }
+
+
+
+
+
+
     //客户信息查看
 
     public function  customer_des($id){
@@ -129,6 +141,24 @@ class Customer extends Base{
         }
         else{
             return  view("project/project_list")->assign("projects",$projects);
+        }
+
+    }
+
+
+   //客户项目查看
+
+    public function  customer_project_recycle($id){
+
+        $projects = model("project","logic")->project_recycle($id);
+        $array = $projects->toArray();
+        if(empty($array['data'])){
+
+            echo "<script> alert(\"该客户没有删除的项目\"); history.back(-1);</script>";
+
+        }
+        else{
+            return  view("project/project_recycle")->assign("projects",$projects);
         }
 
     }

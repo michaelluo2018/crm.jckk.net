@@ -16,6 +16,20 @@ class Project extends Base {
 
     }
 
+     //项目回收站
+    public function project_recycle(){
+
+
+        $projects = model("project","logic")->project_recycle();
+
+        return  view("project_recycle")->assign("projects",$projects);
+
+    }
+
+
+
+
+
     //项目添加
     public function project_add(){
 
@@ -69,6 +83,8 @@ class Project extends Base {
         $users = model("user","logic")->get_department_users($departments[0]->id);
         return view("project_edit")->assign(["data"=>$data,"project"=>$project,"departments"=>$departments,"users"=>$users]);
     }
+
+
     //项目删除
 
     public function  project_del($id){
@@ -77,6 +93,36 @@ class Project extends Base {
          $this->redirect("project_list");
 
     }
+
+
+    //项目彻底删除
+
+    public function  project_del_true($id){
+
+         model("project","logic")->project_del_true($id);
+
+         $this->redirect("project_recycle");
+
+    }
+
+    //项目还原
+
+    public function  project_back($id){
+
+         $result = model("project","logic")->project_back($id);
+
+         if($result){
+
+             echo "<script> alert(\" ".$result." \"); history.back(-1);</script>";
+         }
+         else{
+             $this->redirect("project_list");
+         }
+
+
+    }
+
+
 
 
 

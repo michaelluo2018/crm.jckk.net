@@ -66,6 +66,10 @@
                                             数据库还原
                                         {elseif condition="$log.type eq 6"/}
                                             删除备份文件
+                                        {elseif condition="$log.type eq 7"/}
+                                            删除回收站
+                                        {elseif condition="$log.type eq 8"/}
+                                            还原回收站
                                         {else/}
                                         {/if}
                                     </td>

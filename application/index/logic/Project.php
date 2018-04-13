@@ -39,20 +39,20 @@ class Project extends Model{
             $project = model("project",'model');
             $project->create_time = time();
         }
-        $project->project_name = $data['project_name'];
-        $project->customer_id = $data['customer_id'];
-        $project->executor_uid = $data['executor_uid'];
-        $project->planning_uid = $data['planning_uid'];
-        $project->docking_uid = $data['docking_uid'];
-        $project->manage_uid = $data['manage_uid'];
-        $project->product_demand_1 = $data['product_demand_1'];
-        $project->product_demand_2 = $data['product_demand_2'];
-        $project->contract_status = $data['contract_status'];
-        $project->contract_amount = $data['contract_amount'];
-        $project->payment_type = $data['payment_type'];
-        $project->payment_status = $data['payment_status'];
-        $project->rate = $data['rate'];
-        $project->cost = $data['cost'];
+        $project->project_name =trim($data['project_name']);
+        $project->customer_id = trim($data['customer_id']);
+        $project->executor_uid = trim($data['executor_uid']);
+        $project->planning_uid = trim($data['planning_uid']);
+        $project->docking_uid = trim($data['docking_uid']);
+        $project->manage_uid = trim($data['manage_uid']);
+        $project->product_demand_1 = trim($data['product_demand_1']);
+        $project->product_demand_2 = trim($data['product_demand_2']);
+        $project->contract_status = trim($data['contract_status']);
+        $project->contract_amount = trim($data['contract_amount']);
+        $project->payment_type = trim($data['payment_type']);
+        $project->payment_status = trim($data['payment_status']);
+        $project->rate = trim($data['rate']);
+        $project->cost = trim($data['cost']);
 
         if($project->save()){
             //处理日志
@@ -122,6 +122,47 @@ class Project extends Model{
 
 
 
+    //获取项目列表
+    public function project_recycle($customer_id = null){
+        if($customer_id){
+            return Db::table("jckk_project")
+                ->alias("p")
+                ->where("p.is_delete",1)
+                ->where("p.customer_id",$customer_id)
+                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","d.department_name"])
+                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                ->order("p.id","desc")
+                ->paginate();
+        }
+        else{
+            return Db::table("jckk_project")
+                ->alias("p")
+                ->where("p.is_delete",1)
+                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","d.department_name"])
+                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                ->order("p.id","desc")
+                ->paginate();
+        }
+
+    }
+
+
+
+
+
+
     public function get_projects_name($customer_id ){
 
             return $this->where("customer_id",$customer_id)->where("is_delete","<>",1)->select();
@@ -157,6 +198,8 @@ class Project extends Model{
             ->find();
     }
 
+
+
     //删除
     public function  delete_project($id){
         $project = $this->where("id",$id)->find();
@@ -178,12 +221,37 @@ class Project extends Model{
     }
 
 
+
+    //彻底删除
+    public function  project_del_true($id){
+
+        $project = $this->where("id",$id)->find();
+        $customer = model("customer")->where("id",$project->customer_id)->find();
+
+        //添加日志
+        $project_log["type"] = Log::DELETE_TRUE;
+
+        $project_log["before_value"] = json_encode($project);
+        $project_log["after_value"] = "";
+        $project_log["title"] = "彻底删除".$customer->customer_name."(客户)的项目,项目ID是".$project->id;
+
+        if($project->delete()){
+            model("log","logic")->write_log( $project_log);
+        }
+
+
+
+    }
+
+
+
     public function  total_project(){
         return $this->where("is_delete","<>",1)->count();
     }
 
 
     public function find_by_name($name){
+
         return Db::table("jckk_project")
             ->alias("p")
             ->where("p.is_delete","<>",1)
@@ -218,6 +286,7 @@ class Project extends Model{
 
     public  function  check_exist_project_name($project_name,$customer_id,$project_id =null){
 
+        $project_name = trim($project_name);
         if($project_id){
             return $this->where("project_name",$project_name)
                 ->where("customer_id",$customer_id)
@@ -225,6 +294,7 @@ class Project extends Model{
                 ->where("is_delete","<>",1)->count();
         }
         else{
+
             return $this->where("project_name",$project_name)->where("customer_id",$customer_id)->where("is_delete","<>",1)->count();
         }
 
@@ -232,8 +302,35 @@ class Project extends Model{
     }
 
 
+    //还原项目
+    public function project_back($id){
+
+        $project = $this->where("id",$id)->find();
+        //检查是否已有同名项目
+
+       if( $this->check_exist_project_name($project->project_name,$project->customer_id)){
+
+           return "该客户已经有同名项目，还原失败!";
+       }
+       else{
+
+           $customer = model("customer")->where("id",$project->customer_id)->find();
+
+           //添加日志
+           $project_log["type"] = Log::BACK_DELETE;
+
+           $project_log["before_value"] = json_encode($project);
+
+           $project_log["title"] = "还原".$customer->customer_name."(客户)的项目,项目ID是".$project->id;
+           $project->is_delete = 0;
+           if($project->save()){
+               $project_log["after_value"] = json_encode($project);
+               model("log","logic")->write_log( $project_log);
+           }
+       }
 
 
+    }
 
 
 

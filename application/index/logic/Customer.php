@@ -209,6 +209,11 @@ class Customer extends  Model{
     public  function delete_customer_true($id)
     {
 
+            //查看回收站是否还有该客户项目
+        $projects = model("project","logic")->project_recycle($id);
+        $array = $projects->toArray();
+        if(empty($array['data'])) {
+
             $customer = $this->where("id", $id)->find();
 
             //添加日志
@@ -222,7 +227,11 @@ class Customer extends  Model{
                 model("log", "logic")->write_log($customer_log);
             }
 
+        }
+        else{
 
+            return "回收站还有该客户项目存在，不能删除！";
+        }
     }
 
 
