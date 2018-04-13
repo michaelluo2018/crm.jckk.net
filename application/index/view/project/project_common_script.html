@@ -109,15 +109,27 @@
                 success:function(data){
                     if(data !=0){
                         var customer_html = "";
-
+                        var array = [];
                         $.each(data,function(i,v){
                             var customer_id= v.id;
                             var customer_name= v.customer_name;
-
+                            array[customer_id] = customer_name;
                             customer_html +="<div class='customer_div' onclick=\"send_customer('"+customer_id+"','"+customer_name+"');\" >"+customer_name+"</div>";
                         });
 
                         $('#customer_display').html(customer_html);
+
+                        //如果输入值
+                        for(var i in array){
+                            if(array[i]== $.trim($(".customer_name").val())){
+
+                                $("input[name=customer_id]").val(i);
+
+                                $("#customer_display div").hide();
+                            }
+                        }
+                        
+
                     }
                     else{
                         var message = "没找到客户信息&nbsp;&nbsp;<a href="+"{:url('index/customer/customer_add')}"+" type='button' class='btn btn-info'>添加客户</a>";
