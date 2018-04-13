@@ -178,7 +178,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label><span class="text-danger"> * </span>合同金额</label>
-                                        <input type="text"  class="form-control" placeholder="请输入合同金额" required name="contract_amount" >
+                                        <input type="text"  class="form-control check_content_num" placeholder="请输入合同金额" required name="contract_amount" >
                                         <small class="form-control-feedback"> </small>
                                     </div>
                                 </div>
@@ -212,7 +212,10 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label><span class="text-danger"> * </span>毛利润率</label>
-                                        <input type="text"  class="form-control" placeholder="请填写毛利润率" name="rate" required>
+                                        <div class="input-group">
+                                            <input type="text"  class="form-control check_content_num" placeholder="请填写毛利润率" name="rate" required>
+                                            <span class="input-group-addon">%</span>
+                                        </div>
                                         <small class="form-control-feedback"> </small>
                                     </div>
                                 </div>
@@ -220,7 +223,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label><span class="text-danger"> * </span>成本支出</label>
-                                        <input type="text"  class="form-control" placeholder="请填写成本支出" name="cost" required>
+                                        <input type="text"  class="form-control check_content_num" placeholder="请填写成本支出" name="cost" required>
                                         <small class="form-control-feedback"> </small>
                                     </div>
                                 </div>

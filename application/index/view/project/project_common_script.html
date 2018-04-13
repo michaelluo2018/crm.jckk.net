@@ -128,7 +128,7 @@
                                 $("#customer_display div").hide();
                             }
                         }
-                        
+
 
                     }
                     else{
@@ -279,6 +279,40 @@
     });
 
 
+    //几个输入框检查,只能是数字和.
+
+    function check_content_num(data,obj) {
+
+        var _this_data = $.trim(data);
+
+        var patt_1 = /^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$/;
+        var patt_2 = /^[1-9]\d*|0$/;
+
+        patt_1.lastIndex = 0;
+
+        var res1 = patt_1.test(_this_data);
+
+        patt_2.lastIndex = 0;
+
+        var res2 = patt_2.test(_this_data);
+
+        if(!res1 && !res2){
+           if(obj){
+               obj.val(" ");
+           }
+           return 1;
+        }
+    }
+
+    $(".check_content_num").change(function () {
+
+        if(check_content_num($(this).val(),$(this))){
+
+            layer.alert("请输入正确格式");
+        }
+
+
+    });
 
 
 
@@ -299,6 +333,26 @@
                 layer.alert("请确保同一客户项目名称重复！");
 
                 return false;
+            }
+            else{
+                var i = 0;
+                $(".check_content_num").each(function () {
+
+                    if(check_content_num($(this).val())){
+
+                        layer.alert("请输入正确格式");
+
+                    }
+                    else{
+                        i++;
+                    }
+
+                });
+
+                if(i< $(".check_content_num").length){
+                    layer.alert("请输入正确格式");
+                    return false;
+                }
             }
         }
     });
