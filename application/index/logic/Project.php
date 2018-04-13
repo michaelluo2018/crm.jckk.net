@@ -28,19 +28,28 @@ class Project extends Model{
     //保存项目
     public  function  save_project($data){
         //保存客户信息
-
+        $project_name = trim($data['project_name']);
+        $customer_id = trim($data['customer_id']);
         if(isset($data['project_id'])){
             //修改
             $project = model("project","model")->where("id",$data['project_id'])->find();
             $before_value = json_encode($project);
         }
         else{
-            //添加
-            $project = model("project",'model');
-            $project->create_time = time();
+            //查看回收站有没有同名项目
+            if($project =model("project","model")->where(["project_name"=>$project_name , "customer_id"=>$customer_id , "is_delete"=>1])->find()){
+
+                $before_value = json_encode($project);
+            }
+            else{
+                //添加
+                $project = model("project",'model');
+                $project->create_time = time();
+            }
+
         }
-        $project->project_name =trim($data['project_name']);
-        $project->customer_id = trim($data['customer_id']);
+        $project->project_name =$project_name;
+        $project->customer_id = $customer_id;
         $project->executor_uid = trim($data['executor_uid']);
         $project->planning_uid = trim($data['planning_uid']);
         $project->docking_uid = trim($data['docking_uid']);
@@ -53,6 +62,7 @@ class Project extends Model{
         $project->payment_status = trim($data['payment_status']);
         $project->rate = trim($data['rate']);
         $project->cost = trim($data['cost']);
+        $project->is_delete = 0;
 
         if($project->save()){
             //处理日志
@@ -161,23 +171,12 @@ class Project extends Model{
 
 
 
-
-
     public function get_projects_name($customer_id ){
 
             return $this->where("customer_id",$customer_id)->where("is_delete","<>",1)->select();
 
 
     }
-
-
-
-
-
-
-
-
-
 
 
 

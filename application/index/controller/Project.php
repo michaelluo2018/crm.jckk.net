@@ -116,7 +116,7 @@ class Project extends Base {
              echo "<script> alert(\" ".$result." \"); history.back(-1);</script>";
          }
          else{
-             $this->redirect("project_list");
+             $this->redirect("project_recycle");
          }
 
 

@@ -145,8 +145,8 @@
 
         var project_id = $.trim($("input[name=project_id]").val());
 
-
         var data_customer_id = $.trim($("input[name=customer_id]").val());
+
 
         if(!data_customer_id){
 
@@ -164,7 +164,7 @@
                 data:{customer_id:data_customer_id,project_name:input_project_name,project_id:project_id},
                 success:function (data) {
                     if(data == 1){
-                        layer.alert("客户"+data_customer_id+"已经存在其他项目名为"+input_project_name+"的项目");
+                        layer.alert("本客户已经存在其他项目名为"+input_project_name+"的项目");
                         $(".project_name").val(" ");
                     }
                 },

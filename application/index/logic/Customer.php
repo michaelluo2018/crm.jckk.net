@@ -93,6 +93,7 @@ class Customer extends  Model{
                 $customer->customer_status_2 = $data['customer_status_2'];
                 $customer->contact_id = $contact_id;
                 $customer->note = $data['note'];
+                $customer->is_delete = 0;
                 $customer->create_time = time();
                 if($customer->save()){
                     $customer_log["type"] = Log::ADD_TYPE;
@@ -123,14 +124,15 @@ class Customer extends  Model{
                 $before_value = json_encode($customer);
             }
             //save customer
-            $customer ->customer_name = $data["customer_name"];
-            $customer->industry = $data['industry'];
-            $customer->company_nature = $data['company_nature'];
-            $customer->annual_turnover = $data['annual_turnover'];
-            $customer->customer_status_1 = $data['customer_status_1'];
-            $customer->customer_status_2 = $data['customer_status_2'];
+            $customer ->customer_name = trim($data["customer_name"]);
+            $customer->industry = trim($data['industry']);
+            $customer->company_nature = trim($data['company_nature']);
+            $customer->annual_turnover = trim($data['annual_turnover']);
+            $customer->customer_status_1 = trim($data['customer_status_1']);
+            $customer->customer_status_2 = trim($data['customer_status_2']);
             $customer->contact_id = $contact_id;
-            $customer->note = $data['note'];
+            $customer->note = trim($data['note']);
+            $customer->is_delete = 0;
             $customer->create_time = time();
             if($customer->save()){
                 $customer_log["type"] = Log::UPDATE_TYPE;
