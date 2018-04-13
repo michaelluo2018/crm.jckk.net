@@ -1,0 +1,97 @@
+{extend name="layout"/}
+{block name="title"/}
+<title>客户列表 - 客户管理 - 客户管理系统</title>
+{/block}
+{block name="breadcrumb"/}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">工作台</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">首页</a></li>
+        <li class="breadcrumb-item active">客户列表</li>
+    </ol>
+</div>
+{/block}
+{block name="detail"/}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">客户回收站</h4>
+                <h6 class="card-subtitle"></h6>
+                <div class="m-t-40">
+                    <div class="d-flex">
+                        <div class="mr-auto">
+                            <div class="form-group">
+                                <a  class="btn btn-primary btn-sm" href="{:url('index/customer/customer_add')}">
+                                    <i class="ace-icon fa fa-plus " aria-hidden="true"> </i> 添加客户
+                                </a>
+                                <a  class="btn btn-info btn-sm" href="{:url('index/customer/customer_list')}">
+                                    <i class="ace-icon fa fa-list" aria-hidden="true"></i> 客户列表
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ml-auto">
+                            <div class="form-group">
+                                <form  method="post" id="find_form">
+                                    <input id="demo-input-search2" type="text" placeholder="搜索客户" name="customer_name" autocomplete="off" required>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" data-page-size="20">
+                    <thead>
+                    <tr>
+                        <th  data-toggle="true"  data-hide="phone, tablet">序号</th>
+                        <th>客户全称</th>
+                        <th>客户类别</th>
+                        <th>客户状态</th>
+                        <th data-hide="phone">联系人</th>
+                        <!--<th data-hide="phone, tablet">职位</th>-->
+                        <!--<th data-hide="phone, tablet">性别</th>-->
+                        <th data-hide="phone">电话</th>
+                        <!--<th data-hide="phone, tablet">电子邮箱</th>-->
+                        <!--<th data-hide="phone, tablet">QQ</th>-->
+                        <th data-hide="phone, tablet">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="data" id="vo" key="k"}
+                    <tr>
+                        <td>{$k}</td>
+                        <td>{$vo.customer_name}</td>
+                        <td>{$vo.customer_status_1}</td>
+                        <td>{$vo.customer_status_2}</td>
+                        <td><span class="label label-table label-success">{$vo.contact_name}</span></td>
+                        <!--<td>{$vo.position}</td>-->
+                        <!--<td>{$vo.sex==0?"男":"女"}</td>-->
+                        <td>{$vo.mobile}</td>
+                        <!--<td>{$vo.email}</td>-->
+                        <!--<td>{$vo.qq}</td>-->
+                        <td>
+                            <a href="javascript:void (0);" onclick="delete_sure('客户信息是重要信息，确定要彻底删除吗？', '{:url(\'index/index/customer/customer_del_true\')}?id={$vo.id}')" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="彻底删除"><i class="ti-close" aria-hidden="true"></i></a>
+                            <a href="{:url('index/index/customer/customer_back')}?id={$vo.id}" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="还原"><i class="ti-pencil" aria-hidden="true"></i></a>
+                            <a href="{:url('index/index/customer/customer_des')}?id={$vo.id}" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="11">
+                            <div class="text-right">
+                                <ul class="pagination">
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{/block}

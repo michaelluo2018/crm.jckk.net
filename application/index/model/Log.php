@@ -18,6 +18,10 @@ class Log extends Model{
 
     const DELETE_BACK_FILE = 6; //删除备份文件
 
+    const DELETE_TRUE = 7; //删除回收站
+
+    const BACK_DELETE = 8; //还原回收站
+
 
 
 

@@ -14,6 +14,47 @@ class Customer extends Base{
         return  view("customer_list")->assign("data",$data);
     }
 
+
+
+
+    public function customer_recycle(){
+
+
+        $data = model("customer","logic")->get_customers_recycle();
+
+        return  view("customer_recycle")->assign("data",$data);
+    }
+
+
+
+    //删除回收站
+
+    public function customer_del_true($id){
+
+        model("customer","logic")->delete_customer_true($id);
+
+        $this->redirect("customer_recycle");
+    }
+
+
+    //还原客户
+    public function customer_back($id){
+
+        $result = model("customer","logic")->customer_back($id);
+
+        if(!$result){
+            $this->redirect("customer_recycle");
+        }
+        else{
+            echo "<script>alert(\" " .$result." \"); history.back(-1);</script>";
+        }
+
+    }
+
+
+
+
+
     //客户添加
     public function customer_add(){
 
@@ -87,14 +128,6 @@ class Customer extends Base{
 
 
 
-    //客户搜索
-//
-//    public  function  customer_search(){
-//        $name = Request::instance()->post("customer_name");
-//
-//        $this->redirect("customer_list",["where"=>$name]);
-//
-//    }
 
 
 

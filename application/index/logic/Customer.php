@@ -18,6 +18,18 @@ class Customer extends  Model{
             ->paginate();
     }
 
+     public function get_customers_recycle(){
+        return Db::table("jckk_customer")
+            ->where("jckk_customer.is_delete",1)
+            ->field(["jckk_customer.*","jckk_contact.contact_name","jckk_contact.position","jckk_contact.sex","jckk_contact.mobile","jckk_contact.email","jckk_contact.qq","jckk_contact.wechat"])
+            ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
+            ->order("jckk_customer.id","desc")
+            ->paginate();
+    }
+
+
+
+
 
     //获取一条客户信息
     public function get_customer_by_id($id){
@@ -154,6 +166,57 @@ class Customer extends  Model{
         }
 
     }
+
+      //还原客户
+    public  function customer_back($id)
+    {
+        $customer = $this->where("id",$id)->find();
+
+        if($this->is_exist_customer_by_name($customer->customer_name)){
+            return $customer->customer_name ."已经存在，请勿重复";
+        }
+        else{
+            //添加日志
+            $customer_log["type"] = Log::BACK_DELETE;
+
+            $customer_log["before_value"] = json_encode($customer);
+
+            $customer_log["title"] = "还原".$customer->customer_name."(客户),客户ID是".$customer->id;
+            $customer->is_delete = 0;
+            if($customer->save()){
+
+                $customer_log["after_value"] = json_encode($customer);
+                model("log","logic")->write_log( $customer_log);
+            }
+            return ;
+        }
+
+
+    }
+
+
+
+    //删除回收站客户
+    public  function delete_customer_true($id)
+    {
+        $customer = $this->where("id",$id)->find();
+
+        //添加日志
+        $customer_log["type"] = Log::DELETE_TRUE;
+
+        $customer_log["before_value"] = json_encode($customer);
+        $customer_log["after_value"] = "";
+        $customer_log["title"] = "彻底删除".$customer->customer_name."(客户),客户ID是".$customer->id;
+
+        if($customer->delete()){
+            model("log","logic")->write_log( $customer_log);
+        }
+
+    }
+
+
+
+
 
 
     public function  total_customer(){
