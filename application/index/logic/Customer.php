@@ -60,6 +60,20 @@ class Customer extends  Model{
         }
     }
 
+       //检验客户是否存在
+    public function is_exist_customer_by_name_recycle($customer_name){
+
+        if($customer = $this->where("customer_name",$customer_name)->where("is_delete",1)->find()){
+            return $customer;
+        }
+    }
+
+
+
+
+
+
+
     public function is_exist_customer_by_id($id){
 
         if($customer = $this->where("id",$id)->where("is_delete","<>",1)->find()){
@@ -74,7 +88,7 @@ class Customer extends  Model{
                return $this->save_edit_customer($data);
             }
 
-            elseif($customer = $this->is_exist_customer_by_name($data['customer_name'])){
+            elseif($customer = $this->is_exist_customer_by_name($data['customer_name']) || $customer = $this->is_exist_customer_by_name_recycle($data['customer_name'])){
                 //客户存在
                 $data['customer_id'] = $customer->id;
                 //修改客户
