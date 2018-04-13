@@ -1,0 +1,294 @@
+
+<?php if(isset($project)){ ?>
+        <script>
+            var executor_uid = "{$project.executor_uid}";
+            var planning_uid = "{$project.planning_uid}";
+            var docking_uid = "{$project.docking_uid}";
+            var manage_uid = "{$project.manage_uid}";
+            var demand_2 = "{$project.product_demand_2}";
+
+        </script>
+<?php }else{ ?>
+        <script>
+            var executor_uid = "";
+            var planning_uid = "";
+            var docking_uid = "";
+            var manage_uid = "";
+            var demand_2 = "";
+        </script>
+<?php } ?>
+
+
+<script>
+    //部门和负责人
+    $(".department").each(function () {
+        var name = $(this).attr("name");
+        var department_id = $(this).val();
+        //获取department_id下所有用户
+        $.ajax({
+            url: "{:url('index/index/project/ajax_get_user')}",
+            data: {'department_id':department_id},
+            method:"get",
+            success:function(data){
+                //写入到对应位置
+                var option_html = "";
+                $.each(data,function(i,v){
+                    option_html+="<option value='"+v.uid+"'>"+v.chinese_name+"</option>"
+                })
+                $('.'+ name +'').html(option_html);
+                //默认选中
+                if(executor_uid){
+                    if($('.'+ name +'').attr("name") == "executor_uid" ){
+                        $('.'+ name +'').val(executor_uid);
+                    }
+                }
+                if(planning_uid){
+                    if ($('.'+ name +'').attr("name") == "planning_uid"){
+                        $('.'+ name +'').val(planning_uid);
+                    }
+                }
+                if(docking_uid){
+                    if ($('.'+ name +'').attr("name") == "docking_uid"){
+                        $('.'+ name +'').val(docking_uid);
+                    }
+                }
+
+                if(manage_uid){
+
+                    if ($('.'+ name +'').attr("name") == "manage_uid"){
+                        $('.'+ name +'').val(manage_uid);
+                    }
+                }
+
+            },
+            dataType: "json"
+        });
+    });
+
+
+
+    //产品需求二级
+    var first_demand_1 =  $("select[name=product_demand_1]").val();
+    $.ajax({
+        url: "{:url('index/index/project/ajax_get_demand2')}",
+        data: {'demand_value':first_demand_1},
+        method:"get",
+        success:function(data){
+            //写入到对应位置
+            var option_html = "";
+            $.each(data,function(i,v){
+                option_html+="<option value='"+v+"'>"+v+"</option>"
+            })
+            $("select[name=product_demand_2]").html(option_html);
+
+            if(demand_2){
+                $("select[name=product_demand_2]").val(demand_2);
+            }
+
+        },
+        dataType: "json"
+    });
+
+</script>
+
+
+
+<script>
+
+    //客户全称
+    $(".customer_name").bind('input propertychange', function () {
+        var customer_name = $.trim($(this).val());
+        if(!customer_name){
+            $('#customer_display').html("请输入...");
+        }
+        else{
+            $.ajax({
+                url: "{:url('index/project/ajax_get_customer')}",
+                data: {'customer_name':customer_name},
+                method:"get",
+                success:function(data){
+                    if(data !=0){
+                        var customer_html = "";
+
+                        $.each(data,function(i,v){
+                            var customer_id= v.id;
+                            var customer_name= v.customer_name;
+
+                            customer_html +="<div class='customer_div' onclick=\"send_customer('"+customer_id+"','"+customer_name+"');\" >"+customer_name+"</div>";
+                        });
+
+                        $('#customer_display').html(customer_html);
+                    }
+                    else{
+                        var message = "没找到客户信息&nbsp;&nbsp;<a href="+"{:url('index/customer/customer_add')}"+" type='button' class='btn btn-info'>添加客户</a>";
+                        $('#customer_display').html(message);
+
+                    }
+                },
+                dataType: "json"
+            });
+        }
+
+    });
+
+    function send_customer(id,name) {
+        $(".customer_name").val(name);
+        $("input[name=customer_id]").val(id);
+        $("#customer_display div").hide();
+    }
+
+
+    //项目名称变化，检查是否已经存在,还要看有没有project_id
+
+    $(".project_name").change(function () {
+
+
+        var project_id = $.trim($("input[name=project_id]").val());
+
+
+        var data_customer_id = $.trim($("input[name=customer_id]").val());
+
+        if(!data_customer_id){
+
+            layer.alert("请先正确填写客户全称再填写项目名称！");
+            $(this).val(" ");
+        }
+        else{
+            var input_project_name = $.trim($(this).val());
+
+            //ajax
+
+            $.ajax({
+                url:"{:url('index/project/ajax_check_project_name')}",
+                method:'post',
+                data:{customer_id:data_customer_id,project_name:input_project_name,project_id:project_id},
+                success:function (data) {
+                    if(data == 1){
+                        layer.alert("客户"+data_customer_id+"已经存在其他项目名为"+input_project_name+"的项目");
+                        $(".project_name").val(" ");
+                    }
+                },
+                dataType:'json'
+            });
+        }
+
+
+
+    });
+
+
+    //查看客户所有项目
+
+    $(".customer_project_button").click(function () {
+
+         var customer_id = $.trim($("input[name=customer_id]").val());
+
+         if(!customer_id){
+             layer.alert("请先确保正确填写客户名称");
+         }
+         else{
+             var customer_name = $.trim($("input[name=customer_name]").val());
+             //获取客户的所有项目名称
+             $.ajax({
+                 url:"{:url('index/project/ajax_get_customer_project_name')}",
+                 method:'post',
+                 data:{customer_id:customer_id},
+                 success:function(data){
+                        if(data.length){
+                            var project_name_html = "<div style='padding: 20px;'>";
+                            $.each(data,function (i,v) {
+                                project_name_html += "<button class='btn btn-info' style='margin-left: 10px;margin-bottom: 10px;'>"+v.project_name+"</button>";
+                            });
+                            project_name_html +="</div>";
+                            layer.open({
+                                type: 1,
+                                shade: false,
+                                skin: 'layui-layer-demo',
+                                area: ['500px', '300px'],
+                                title: "本客户的所有项目",
+                                content: project_name_html
+
+                            });
+                        }
+                        else{
+                            layer.alert("该客户还没有项目");
+                        }
+
+                 },
+                 dataType:"json"
+             });
+         }
+
+    });
+
+
+
+
+
+    //部门变化
+    $(".department").change(function () {
+        var name = $(this).attr("name");
+        var department_id = $(this).val();
+        //获取department_id下所有用户
+        $.ajax({
+            url: "{:url('index/index/project/ajax_get_user')}",
+            data: {'department_id':department_id},
+            method:"get",
+            success:function(data){
+                //写入到对应位置
+                var option_html = "";
+                $.each(data,function(i,v){
+                    option_html+="<option value='"+v.uid+"'>"+v.chinese_name+"</option>"
+                })
+                $('.'+ name +'').html(option_html);
+            },
+            dataType: "json"
+        });
+
+    });
+
+    //一级需求变化
+    $("select[name=product_demand_1]").change(function(){
+        var demand_value = $(this).val();
+        $.ajax({
+            url: "{:url('index/index/project/ajax_get_demand2')}",
+            data: {'demand_value':demand_value},
+            method:"get",
+            success:function(data){
+                //写入到对应位置
+                var option_html = "";
+                $.each(data,function(i,v){
+                    option_html+="<option value='"+v+"'>"+v+"</option>"
+                })
+                $("select[name=product_demand_2]").html(option_html);
+            },
+            dataType: "json"
+        });
+    });
+
+
+
+
+
+    $("form").submit(function () {
+
+        var customer_id = $.trim($("input[name=customer_id]").val());
+
+        var project_name = $.trim($("input[name=project_name]").val());
+
+        if(!customer_id){
+
+            layer.alert("请填写系统已存在的客户！");
+            return false;
+        }
+        else{
+            if(!project_name){
+
+                layer.alert("请确保同一客户项目名称重复！");
+
+                return false;
+            }
+        }
+    });
+
+</script>

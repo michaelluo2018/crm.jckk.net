@@ -61,13 +61,13 @@ class Project extends Base {
     public function  project_edit($id){
         //获得一条项目信息
         $project = model("project","logic")->get_project($id);
-        $customer = model("customer","logic")->get_customer_by_id($project['customer_id']);
+
         $data = model("project","logic")->get_project_total_entity();
         //所有部门
         $departments = model("department","logic")->get_departments();
         //获取第一个部门下面所有user
         $users = model("user","logic")->get_department_users($departments[0]->id);
-        return view("project_edit")->assign(["data"=>$data,"project"=>$project,"customer"=>$customer,"departments"=>$departments,"users"=>$users]);
+        return view("project_edit")->assign(["data"=>$data,"project"=>$project,"departments"=>$departments,"users"=>$users]);
     }
     //项目删除
 
@@ -94,15 +94,7 @@ class Project extends Base {
         return view("project_des")->assign(["data"=>$data,"project"=>$project,"customer"=>$customer,"departments"=>$departments,"users"=>$users]);
     }
 
-    //项目搜索
-//
-//    public  function  project_search(){
-//
-//        $name = Request::instance()->post("customer_name");
-//
-//        $this->redirect("project_list",["where"=>$name]);
-//
-//    }
+
 
 
     public function ajax_get_customer(){
@@ -118,8 +110,31 @@ class Project extends Base {
     }
 
 
+    public function ajax_get_customer_project_name(){
 
+        $customer_id =Request::instance()->post("customer_id");
 
+        $data = model("project","logic")->get_projects_name($customer_id);
+
+        return $data;
+
+    }
+
+    public  function ajax_check_project_name(){
+
+        $customer_id = Request::instance()->post("customer_id");
+
+        $project_name = Request::instance()->post("project_name");
+
+        $project_id = Request::instance()->post("project_id");
+
+       if(model("project","logic")->check_exist_project_name($project_name,$customer_id,$project_id)){
+           return 1;
+       }
+       else{
+           return 0;
+       }
+    }
 
 
 

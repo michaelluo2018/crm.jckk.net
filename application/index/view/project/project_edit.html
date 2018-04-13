@@ -2,16 +2,14 @@
 {block name="title"/}
 <title>添加项目 - 客户管理系统</title>
 {/block}
-{block name="js"/}
-<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-{/block}
+
 {block name="breadcrumb"/}
 <div class="col-md-5 col-8 align-self-center">
     <h3 class="text-themecolor">工作台</h3>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">首页</a></li>
         <li class="breadcrumb-item go_back">项目管理</li>
-        <li class="breadcrumb-item active">添加项目</li>
+        <li class="breadcrumb-item active">修改项目</li>
     </ol>
 </div>
 {/block}
@@ -20,11 +18,11 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-header">
-                <h4 class="m-b-0 text-white">添加项目</h4>
+                <h4 class="m-b-0 text-white">修改项目</h4>
             </div>
             <div class="card-body">
                 <form action="{:url('index/project/save_project')}" method="post">
-                    <input type="hidden" name="contact_id" value="{$customer.contact_id}">
+
                     <input type="hidden" name="project_id" value="{$project.id}">
                     <div class="form-body">
                         <h3 class="card-title">客户信息</h3>
@@ -33,71 +31,33 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label"><span class="text-danger"> * </span>客户全称</label>
-                                    <input type="text"  class="form-control customer_name" value="{$customer.customer_name}"  required autocomplete="off">
-                                    <input type="hidden"  class="form-control" value="{$customer.id}"  name="customer_id" required >
+                                    <input type="text"  class="form-control customer_name" value="{$project.customer_name}"  required autocomplete="off">
+                                    <input type="hidden"  class="form-control" value="{$project.customer_id}"  name="customer_id" required >
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
                             <div class="col-md-12" id="customer_display" style="color: red;" >
 
                             </div>
-                            <script>
-                                $(".customer_name").bind('input propertychange', function () {
-                                    var customer_name = $.trim($(this).val());
-                                    if(!customer_name){
-                                        $('#customer_display').html("请输入...");
-                                    }
-                                    else{
-                                        $.ajax({
-                                            url: "{:url('index/project/ajax_get_customer')}",
-                                            data: {'customer_name':customer_name},
-                                            method:"get",
-                                            success:function(data){
-                                                if(data !=0){
-                                                    var customer_html = "";
 
-                                                    $.each(data,function(i,v){
-                                                        var customer_id= v.id;
-                                                        var customer_name= v.customer_name;
-
-                                                        customer_html +="<div class='customer_div' onclick=\"send_customer('"+customer_id+"','"+customer_name+"');\" >"+customer_name+"</div>";
-                                                    });
-
-                                                    $('#customer_display').html(customer_html);
-                                                }
-                                                else{
-                                                    var message = "没找到客户信息&nbsp;&nbsp;<a href="+"{:url('index/customer/customer_add')}"+" type='button' class='btn btn-info'>添加客户</a>";
-                                                    $('#customer_display').html(message);
-
-                                                }
-                                            },
-                                            dataType: "json"
-                                        });
-                                    }
-
-                                });
-
-                                function send_customer(id,name) {
-                                    $(".customer_name").val(name);
-                                    $("input[name=customer_id]").val(id);
-                                    $("#customer_display div").hide();
-                                }
-
-                                $("form").submit(function () {
-                                    var customer_id = $("input[name=customer_id]").val();
-                                    if(!customer_id){
-                                        $("#customer_display").html("请填写正确的客户");
-                                        return false;
-                                    }
-                                });
-
-                            </script>
                         </div>
 
 
 
                         <!--/row-->
-                        <h3 class="box-title m-t-40">项目信息</h3>
+                        <h3 class="box-title m-t-40">项目信息   <button type="button" class="btn btn-info customer_project_button"   >查看客户所有项目</button></h3>
+                        <div class="row p-t-20">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>项目名称 </label>
+                                    <input type="text"  class="form-control project_name" value="{$project.project_name}" name="project_name" required autocomplete="off">
+                                    <small class="form-control-feedback" hidden> </small>
+                                </div>
+                            </div>
+
+                        </div>
                         <hr>
+
+
                         <div class="row">
                             <div class="col-md-3 ">
                                 <div class="form-group">
@@ -311,101 +271,6 @@
         </div>
     </div>
 </div>
-<script>
-    //部门和负责人
-    $(".department").each(function () {
-        var name = $(this).attr("name");
-        var department_id = $(this).val();
-        //获取department_id下所有用户
-        $.ajax({
-            url: "{:url('index/index/project/ajax_get_user')}",
-            data: {'department_id':department_id},
-            method:"get",
-            success:function(data){
-                //写入到对应位置
-                var option_html = "";
-                $.each(data,function(i,v){
-                    option_html+="<option value='"+v.uid+"'>"+v.chinese_name+"</option>"
-                })
-                $('.'+ name +'').html(option_html);
-                //默认选中
-                var executor_uid = "{$project.executor_uid}";
-                var planning_uid = "{$project.planning_uid}";
-                var docking_uid = "{$project.docking_uid}";
-                var manage_uid = "{$project.manage_uid}";
-                if($('.'+ name +'').attr("name") == "executor_uid" ){
-                    $('.'+ name +'').val(executor_uid);
-                }
-               if ($('.'+ name +'').attr("name") == "planning_uid"){
-                   $('.'+ name +'').val(planning_uid);
-                }
-                if ($('.'+ name +'').attr("name") == "docking_uid"){
-                    $('.'+ name +'').val(docking_uid);
-                }
-                if ($('.'+ name +'').attr("name") == "manage_uid"){
-                    $('.'+ name +'').val(manage_uid);
-                }
-            },
-            dataType: "json"
-        });
-    });
 
-    $(".department").change(function () {
-        var name = $(this).attr("name");
-        var department_id = $(this).val();
-        //获取department_id下所有用户
-        $.ajax({
-            url: "{:url('index/index/project/ajax_get_user')}",
-            data: {'department_id':department_id},
-            method:"get",
-            success:function(data){
-                //写入到对应位置
-                var option_html = "";
-                $.each(data,function(i,v){
-                    option_html+="<option value='"+v.uid+"'>"+v.chinese_name+"</option>"
-                })
-                $('.'+ name +'').html(option_html);
-            },
-            dataType: "json"
-        });
-
-    });
-
-    //产品需求二级
-    var first_demand_1 =  $("select[name=product_demand_1]").val();
-    $.ajax({
-        url: "{:url('index/index/project/ajax_get_demand2')}",
-        data: {'demand_value':first_demand_1},
-        method:"get",
-        success:function(data){
-            //写入到对应位置
-            var option_html = "";
-            $.each(data,function(i,v){
-                option_html+="<option value='"+v+"'>"+v+"</option>"
-            })
-            $("select[name=product_demand_2]").html(option_html);
-            var demand_2 = "{$project.product_demand_2}";
-            $("select[name=product_demand_2]").val(demand_2);
-        },
-        dataType: "json"
-    });
-
-    $("select[name=product_demand_1]").change(function(){
-        var demand_value = $(this).val();
-        $.ajax({
-            url: "{:url('index/index/project/ajax_get_demand2')}",
-            data: {'demand_value':demand_value},
-            method:"get",
-            success:function(data){
-                //写入到对应位置
-                var option_html = "";
-                $.each(data,function(i,v){
-                    option_html+="<option value='"+v+"'>"+v+"</option>"
-                })
-                $("select[name=product_demand_2]").html(option_html);
-            },
-            dataType: "json"
-        });
-    });
-</script>
+{include file="project/project_common_script"/}
 {/block}

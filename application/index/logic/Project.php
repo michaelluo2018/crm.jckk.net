@@ -28,7 +28,6 @@ class Project extends Model{
     //保存项目
     public  function  save_project($data){
         //保存客户信息
-      //  $customer_id = model("customer","logic")->save_customer($data);
 
         if(isset($data['project_id'])){
             //修改
@@ -40,6 +39,7 @@ class Project extends Model{
             $project = model("project",'model');
             $project->create_time = time();
         }
+        $project->project_name = $data['project_name'];
         $project->customer_id = $data['customer_id'];
         $project->executor_uid = $data['executor_uid'];
         $project->planning_uid = $data['planning_uid'];
@@ -120,6 +120,27 @@ class Project extends Model{
 
     }
 
+
+
+    public function get_projects_name($customer_id ){
+
+            return $this->where("customer_id",$customer_id)->where("is_delete","<>",1)->select();
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     //获取一条
     public function get_project($id){
         return Db::table("jckk_project")
@@ -195,7 +216,20 @@ class Project extends Model{
 
 
 
+    public  function  check_exist_project_name($project_name,$customer_id,$project_id =null){
 
+        if($project_id){
+            return $this->where("project_name",$project_name)
+                ->where("customer_id",$customer_id)
+                ->where("project_id","<>",$project_id)
+                ->where("is_delete","<>",1)->count();
+        }
+        else{
+            return $this->where("project_name",$project_name)->where("customer_id",$customer_id)->where("is_delete","<>",1)->count();
+        }
+
+
+    }
 
 
 

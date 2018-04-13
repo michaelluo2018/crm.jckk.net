@@ -2,9 +2,7 @@
 {block name="title"/}
     <title>添加项目 - 客户管理系统</title>
 {/block}
-{block name="js"/}
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-{/block}
+
 {block name="breadcrumb"/}
     <div class="col-md-5 col-8 align-self-center">
                     <h3 class="text-themecolor">工作台</h3>
@@ -39,64 +37,28 @@
                                 <div class="col-md-12" id="customer_display" style="color: red;" >
 
                                 </div>
-                                <script>
-                                    $(".customer_name").bind('input propertychange', function () {
-                                        var customer_name = $.trim($(this).val());
-                                        if(!customer_name){
-                                            $('#customer_display').html("请输入...");
-                                        }
-                                        else{
-                                            $.ajax({
-                                                url: "{:url('index/project/ajax_get_customer')}",
-                                                data: {'customer_name':customer_name},
-                                                method:"get",
-                                                success:function(data){
-                                                    if(data !=0){
-                                                        var customer_html = "";
 
-                                                        $.each(data,function(i,v){
-                                                            var customer_id= v.id;
-                                                            var customer_name= v.customer_name;
-
-                                                            customer_html +="<div class='customer_div' onclick=\"send_customer('"+customer_id+"','"+customer_name+"');\" >"+customer_name+"</div>";
-                                                        });
-
-                                                        $('#customer_display').html(customer_html);
-                                                    }
-                                                    else{
-                                                        var message = "没找到客户信息&nbsp;&nbsp;<a href="+"{:url('index/customer/customer_add')}"+" type='button' class='btn btn-info'>添加客户</a>";
-                                                        $('#customer_display').html(message);
-                                                    }
-                                                },
-                                                dataType: "json"
-                                            });
-                                        }
-
-                                    });
-
-                                    function send_customer(id,name) {
-                                        $(".customer_name").val(name);
-                                        $("input[name=customer_id]").val(id);
-                                        $("#customer_display div").hide();
-                                    }
-
-                                    $("form").submit(function () {
-                                        var customer_id = $("input[name=customer_id]").val();
-                                        if(!customer_id){
-                                            $("#customer_display").html("请填写正确的客户");
-                                            return false;
-                                        }
-                                    });
-
-                                </script>
                             </div>
                             <!--/row-->
 
 
 
                             <!--/row-->
-                            <h3 class="box-title m-t-40">项目信息</h3>
+                            <h3 class="box-title m-t-40">项目信息   <button type="button" class="btn btn-info customer_project_button"   >查看客户所有项目</button> </h3>
+                            <div class="row p-t-20">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label class="control-label"><span class="text-danger"> * </span>项目名称 </label>
+                                        <input type="text"  class="form-control project_name" placeholder="请填写项目名称" name="project_name" required autocomplete="off">
+                                        <small class="form-control-feedback" hidden> </small>
+                                    </div>
+                                </div>
+
+                            </div>
                             <hr>
+
+
+
                             <div class="row">
                                 <div class="col-md-3 ">
                                     <div class="form-group">
@@ -276,82 +238,6 @@
             </div>
         </div>
     </div>
-    <script>
 
-        //部门和负责人
-        $(".department").each(function () {
-            var name = $(this).attr("name");
-            var department_id = $(this).val();
-            //获取department_id下所有用户
-            $.ajax({
-                url: "{:url('index/project/ajax_get_user')}",
-                data: {'department_id':department_id},
-                method:"get",
-                success:function(data){
-                    //写入到对应位置
-                    var option_html = "";
-                    $.each(data,function(i,v){
-                        option_html+="<option value='"+v.uid+"'>"+v.chinese_name+"</option>"
-                    })
-                    $('.'+ name +'').html(option_html);
-                },
-                dataType: "json"
-            });
-        });
-
-        $(".department").change(function () {
-            var name = $(this).attr("name");
-            var department_id = $(this).val();
-           //获取department_id下所有用户
-            $.ajax({
-                url: "{:url('index/project/ajax_get_user')}",
-                data: {'department_id':department_id},
-                method:"get",
-                success:function(data){
-                   //写入到对应位置
-                    var option_html = "";
-                    $.each(data,function(i,v){
-                        option_html+="<option value='"+v.uid+"'>"+v.chinese_name+"</option>"
-                    })
-                    $('.'+ name +'').html(option_html);
-                },
-                dataType: "json"
-            });
-
-        });
-        //产品需求二级
-        var first_demand_1 =  $("select[name=product_demand_1]").val();
-        $.ajax({
-            url: "{:url('index/project/ajax_get_demand2')}",
-            data: {'demand_value':first_demand_1},
-            method:"get",
-            success:function(data){
-                //写入到对应位置
-                var option_html = "";
-                $.each(data,function(i,v){
-                    option_html+="<option value='"+v+"'>"+v+"</option>"
-                })
-                $("select[name=product_demand_2]").html(option_html);
-            },
-            dataType: "json"
-        });
-
-        $("select[name=product_demand_1]").change(function(){
-            var demand_value = $(this).val();
-            $.ajax({
-                url: "{:url('index/project/ajax_get_demand2')}",
-                data: {'demand_value':demand_value},
-                method:"get",
-                success:function(data){
-                    //写入到对应位置
-                    var option_html = "";
-                    $.each(data,function(i,v){
-                        option_html+="<option value='"+v+"'>"+v+"</option>"
-                    })
-                    $("select[name=product_demand_2]").html(option_html);
-                },
-                dataType: "json"
-            });
-        });
-    </script>
+    {include file="project/project_common_script"/}
  {/block}
