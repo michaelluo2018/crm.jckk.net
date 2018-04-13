@@ -94,9 +94,16 @@ class Customer extends Base{
     //客户删除
 
     public function  customer_del($id){
-      model("customer","logic")->delete_customer($id);
 
-       $this->redirect("customer_list");
+     $result = model("customer","logic")->delete_customer($id);
+      if($result){
+          echo "<script> alert(\" ".$result."\"); history.back(-1);</script>";
+      }
+      else{
+
+          $this->redirect("customer_list");
+      }
+
 
     }
     //客户信息查看

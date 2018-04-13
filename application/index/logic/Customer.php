@@ -152,17 +152,26 @@ class Customer extends  Model{
     //删除客户
     public  function delete_customer($id)
     {
-        $customer = $this->where("id",$id)->find();
+        //检测客户是否有项目
+        $projects = model("project","logic")->get_projects($id);
+        $array = $projects->toArray();
+        if(empty($array['data'])) {
+                $customer = $this->where("id",$id)->find();
 
-        //添加日志
-        $customer_log["type"] = Log::DELETE_TYPE;
+                //添加日志
+                $customer_log["type"] = Log::DELETE_TYPE;
 
-        $customer_log["before_value"] = json_encode($customer);
-        $customer_log["after_value"] = "";
-        $customer_log["title"] = "删除".$customer->customer_name."(客户),客户ID是".$customer->id;
-        $customer->is_delete = 1;
-        if($customer->save()){
-            model("log","logic")->write_log( $customer_log);
+                $customer_log["before_value"] = json_encode($customer);
+                $customer_log["after_value"] = "";
+                $customer_log["title"] = "删除".$customer->customer_name."(客户),客户ID是".$customer->id;
+                $customer->is_delete = 1;
+                if($customer->save()){
+                    model("log","logic")->write_log( $customer_log);
+                }
+         }
+        else{
+
+                return "该客户还有项目存在，不能删除！";
         }
 
     }
@@ -199,18 +208,20 @@ class Customer extends  Model{
     //删除回收站客户
     public  function delete_customer_true($id)
     {
-        $customer = $this->where("id",$id)->find();
 
-        //添加日志
-        $customer_log["type"] = Log::DELETE_TRUE;
+            $customer = $this->where("id", $id)->find();
 
-        $customer_log["before_value"] = json_encode($customer);
-        $customer_log["after_value"] = "";
-        $customer_log["title"] = "彻底删除".$customer->customer_name."(客户),客户ID是".$customer->id;
+            //添加日志
+            $customer_log["type"] = Log::DELETE_TRUE;
 
-        if($customer->delete()){
-            model("log","logic")->write_log( $customer_log);
-        }
+            $customer_log["before_value"] = json_encode($customer);
+            $customer_log["after_value"] = "";
+            $customer_log["title"] = "彻底删除" . $customer->customer_name . "(客户),客户ID是" . $customer->id;
+
+            if ($customer->delete()) {
+                model("log", "logic")->write_log($customer_log);
+            }
+
 
     }
 
