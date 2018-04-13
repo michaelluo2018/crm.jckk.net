@@ -83,16 +83,23 @@ class Customer extends  Model{
 
     //添加客户
     public function save_customer($data){
+
             if(isset($data['customer_id'])){
                 //修改客户
                return $this->save_edit_customer($data);
             }
-
-            elseif($customer = $this->is_exist_customer_by_name($data['customer_name']) || $customer = $this->is_exist_customer_by_name_recycle($data['customer_name'])){
+            elseif($customer = $this->is_exist_customer_by_name(trim($data['customer_name']))) {
                 //客户存在
                 $data['customer_id'] = $customer->id;
                 //修改客户
                 return $this->save_edit_customer($data);
+            }
+            elseif ( $customer = $this->is_exist_customer_by_name_recycle(trim($data['customer_name']))){
+                //客户存在于回收站
+                $data['customer_id'] = $customer->id;
+
+                //修改客户
+                return $this->save_edit_customer($data,$customer);
             }
             else{
                 $contact_id = model("contact","logic")->save_contact($data);
@@ -126,17 +133,23 @@ class Customer extends  Model{
     }
 
     //修改客户
-    public function save_edit_customer($data){
+    public function save_edit_customer($data,$recycle = null){
 
             $contact_id = model("contact","logic")->save_contact($data);
 
-            if(!$customer = $this->is_exist_customer_by_id($data['customer_id'])){
-                //客户不存在
-               return "customer not exist";
+            if($recycle){
+                $customer = $recycle;
+                $before_value = json_encode($recycle);
             }
             else{
-                $before_value = json_encode($customer);
+                if(!$customer = $this->is_exist_customer_by_id($data['customer_id'])){
+                    return ;
+                }
+                else{
+                    $before_value = json_encode($customer);
+                }
             }
+
             //save customer
             $customer ->customer_name = trim($data["customer_name"]);
             $customer->industry = trim($data['industry']);
