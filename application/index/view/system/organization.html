@@ -107,7 +107,7 @@
                             <td>
                                 <a onclick="delete_sure('删除岗位会一起删除岗位下属信息，确定要删除吗？', '{:url(\'index/system/post_del\')}?id={$post.id}&depart_id={$data[\'department_id\']}')"  href="javascript:void(0);" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></a>
                                 <button  class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="send_pid('{$post.id}','{$data[\'department_id\']}')" data-toggle="modal" data-target="#add-post" data-original-title="添加子岗位" data-toggle="tooltip"><i class="ti-plus" data-original-title="添加子岗位" data-toggle="tooltip" aria-hidden="true"></i></button>
-                                <button class="btn btn-sm btn-icon btn-pure btn-outline" data-original-title="授权"  data-toggle="modal" data-target="#add-contact"><i class="ti-settings" data-original-title="授权" data-toggle="tooltip" aria-hidden="true"></i></button>
+                                <!--<button class="btn btn-sm btn-icon btn-pure btn-outline" data-original-title="授权"  data-toggle="modal" data-target="#add-contact"><i class="ti-settings" data-original-title="授权" data-toggle="tooltip" aria-hidden="true"></i></button>-->
                             </td>
                         </tr>
                         {/volist}
