@@ -72,14 +72,8 @@ option = {
             type: 'pie',
             radius : '55%',
             center: ['50%', '60%'],
-            // data:[
-            //     {value:document.getElementById('潜在客户').value, name:'潜在客户'},
-            //     {value:document.getElementById('需求客户').value, name:'需求客户'},
-            //     {value:document.getElementById('提案客户').value, name:'提案客户'},
-            //     {value:document.getElementById('签约客户').value, name:'签约客户'}
-            // ],
-            data:customer_status_1_value,
 
+            data:customer_status_1_value,
             itemStyle: {
                 emphasis: {
                     shadowBlur: 10,
@@ -123,12 +117,6 @@ option = {
             type: 'pie',
             radius : '55%',
             center: ['50%', '60%'],
-            // data:[
-            //     {value:document.getElementById('战略级客户').value, name:'战略级客户'},
-            //     {value:document.getElementById('品牌级客户').value, name:'品牌级客户'},
-            //     {value:document.getElementById('核心级客户').value, name:'核心级客户'},
-            //     {value:document.getElementById('普通级客户').value, name:'普通级客户'}
-            // ],
             data:customer_status_2_value,
             itemStyle: {
                 emphasis: {
