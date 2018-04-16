@@ -112,8 +112,54 @@ $(window).on('load', function() {
 		//add it
 		footable.appendRow(newRow);
 	});
-	
-	addrow_department.footable().on('click', '.delete-row-btn', function() {
+
+
+
+    var addrow_menu = $('#demo-foo-addrow-menu');
+    // Add Row Button
+    $('#demo-btn-addrow-menu').click(function() {
+        //get the footable object
+        var footable = addrow_menu.data('footable');
+
+        //build up the row we are wanting to add
+        var newRow = '<tr>'
+            +'<td><input type="text" id="menu_name" name="title[]" class="form-control" placeholder="" value="" required></td>'
+            +'<td><input type="text" id="menu_url" name="url[]" class="form-control" placeholder="" value="" ></td>'
+            +'<td><input type="text" id="menu_order" name="menu_order[]" class="form-control" placeholder="" value="" required></td>'
+            +'<td><button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button></td></tr>';
+
+        //add it
+        footable.appendRow(newRow);
+    });
+
+    addrow_menu.footable().on('click', '.delete-row-btn', function() {
+
+        //get the footable object
+        var footable = addrow_menu.data('footable');
+
+        //get the row we are wanting to delete
+        var row = $(this).parents('tr:first');
+
+        //delete the row
+        footable.removeRow(row);
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    addrow_department.footable().on('click', '.delete-row-btn', function() {
 
 		//get the footable object
 		var footable = addrow_department.data('footable');
@@ -124,4 +170,10 @@ $(window).on('load', function() {
 		//delete the row
 		footable.removeRow(row);
 	});
+
+
+
+
+
+
 });
