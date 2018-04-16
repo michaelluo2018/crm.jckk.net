@@ -219,7 +219,14 @@
                     <!-- Profile -->
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{$user_info.heard_img}" alt="{$user_info.chinese_name}" class="profile-pic" /></a>
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                            {if condition="$user_info['heard_img']"/}
+                            <img src="{$user_info.heard_img}" alt="{$user_info.chinese_name}" class="profile-pic" />
+                            {else/}
+                            <img src="__STATIC__/assets/images/users/1.jpg" alt="user" class="profile-pic" />
+                            {/if}
+                        </a>
                         <div class="dropdown-menu dropdown-menu-right scale-up">
                             <ul class="dropdown-user">
                                 <li>
@@ -255,7 +262,11 @@
             {/if}
 
                 <!-- User profile image -->
-                <div class="profile-img"> <img src="{$user_info.heard_img}" alt="user" /> </div>
+                {if condition="$user_info['heard_img']"/}
+                    <div class="profile-img"> <img src="{$user_info.heard_img}" alt="user" /> </div>
+                {else/}
+                    <div class="profile-img"> <img src="__STATIC__/assets/images/users/profile.png" alt="user" /> </div>
+                {/if}
                 <!-- User profile text-->
                 <div class="profile-text"> <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{$user_info.chinese_name}</a>
                     <div class="dropdown-menu animated flipInY">
@@ -285,12 +296,13 @@
                             <li><a href="system_authority.html" class="has-arrow" aria-expanded="true">用户和权限</a>
                                 <ul>
                                     <li><a href="{:url('index/system/organization')}">组织架构管理</a></li>
-                                    <li style="display:none"><a href="{:url('index/system/organization_add')}">添加组织架构</a></li>
                                     <li><a href="{:url('index/system/member')}">用户管理</a>
-                                    <li style="display:none"><a href="{:url('index/system/member_add')}">添加用户</a></li>
+                                    <!--<li><a href="{:url('index/menu/index')}">菜单管理</a>-->
+
                                     </li>
                                 </ul>
                             </li>
+
                             <!--<li><a href="{:url('index/system/system_fields')}">自定义字段设置</a></li>-->
                             <li><a href="{:url('index/system/system_settings')}">系统基本设置</a></li>
                             <li><a href="{:url('index/logs/index')}">系统日志</a></li>

@@ -44,7 +44,14 @@
                         <div class="profiletimeline">
                             {volist name="my_logs" id="log" /}
                             <div class="sl-item">
-                                <div class="sl-left"> <img src="{$user_info.heard_img}" alt="user" class="img-circle"> </div>
+                                <div class="sl-left">
+                                    {if condition="$user_info['heard_img']"/}
+                                    <img src="{$user_info.heard_img}" alt="user" class="img-circle">
+                                    {else/}
+                                    <img src="__STATIC__/assets/images/users/1.jpg" alt="user" class="img-circle">
+                                    {/if}
+
+                                </div>
                                 <div class="sl-right">
                                     <div>{$user_info.chinese_name} <span class="sl-date">{$log.create_time}</span> <span class="sl-date">IP：{$log.ip}</span>
                                         <p>{$log.title}</p>
