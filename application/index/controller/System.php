@@ -12,6 +12,8 @@ class System extends Base{
 
         $data= model("department","logic")->get_organization($id);
 
+        $menus= model("menu","logic")->get_menus();
+        $this->assign("menus",$menus);
         return view("organization")->assign("data",$data);
     }
 

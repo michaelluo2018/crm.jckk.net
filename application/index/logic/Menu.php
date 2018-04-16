@@ -48,7 +48,7 @@ class Menu extends Model{
     public static function get_menu_path($arr){
 
         foreach($arr as $k=>$v){
-            $arr[$k]['count']=15*(count(explode('-',$v->path))-1);
+            $arr[$k]['count']=25*(count(explode('-',$v->path))-1);
         }
         return $arr;
     }
@@ -170,15 +170,15 @@ class Menu extends Model{
                 $before_value = $v;
                 $v->is_delete = 1;
                 if( $v->save()){
-                    $child_delete_menu_log["type"] = Log::DELETE_TYPE;
-                    $child_delete_menu_log["before_value"] = json_encode($before_value);
-                    $child_delete_menu_log["after_value"] = "";
-                    $child_delete_menu_log["title"] = "删除".$v->title."(菜单),ID是".$v->id;
-                    model("log","logic")->write_log( $child_delete_menu_log);
+                    $child_delete_menu_log[$k]["type"] = Log::DELETE_TYPE;
+                    $child_delete_menu_log[$k]["before_value"] = json_encode($before_value);
+                    $child_delete_menu_log[$k]["after_value"] = "";
+                    $child_delete_menu_log[$k]["title"] = "删除".$v->title."(菜单),ID是".$v->id;
+
                 }
 
             }
-
+            model("log","logic")->write_log( $child_delete_menu_log,true);
 
         }
     }

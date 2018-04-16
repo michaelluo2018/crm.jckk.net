@@ -14,6 +14,7 @@
     </ol>
 </div>
 {/block}
+
 {block name="detail"/}
 <div class="row">
     <div class="col-lg-5">
@@ -31,7 +32,7 @@
                     </div>
                 </div>
                 <form action="{:url('index/system/save_department')}" method="post">
-                    <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" data-page-size="20">
+                    <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" >
                         <thead>
                         <tr class="text-align">
                             <th>部门名称</th>
@@ -89,7 +90,7 @@
                 </div>
                 <form  action="{:url('index/system/save_post')}" method="post">
                     <input type="hidden" name="post_department_id" value="{$data['department_id']}">
-                    <table id="demo-foo-addrow-department" class="table table-bordered table-hover toggle-circle" data-page-size="20">
+                    <table id="demo-foo-addrow-department" class="table table-bordered table-hover toggle-circle" >
                         <thead>
                         <tr class="text-align">
                             <th>岗位名称</th>
@@ -108,7 +109,7 @@
                                 <a onclick="delete_sure('删除岗位会一起删除岗位下属信息，确定要删除吗？', '{:url(\'index/system/post_del\')}?id={$post.id}&depart_id={$data[\'department_id\']}')"  href="javascript:void(0);" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></a>
 
                                 <button type="button"  class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="send_pid('{$post.id}','{$data[\'department_id\']}')" data-toggle="modal" data-target="#add-post" ><i class="ti-plus" data-original-title="添加子岗位" data-toggle="tooltip" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline"   data-toggle="modal" data-target="#add-contact"><i class="ti-settings" data-original-title="授权" data-toggle="tooltip" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline"  onclick="send_post('{$post.id}')" data-toggle="modal" data-target="#add-contact"><i class="ti-settings" data-original-title="授权" data-toggle="tooltip" aria-hidden="true"></i></button>
 
                             </td>
                         </tr>
@@ -129,137 +130,101 @@
                 </form>
 
 
-                <div id="add-contact" class="modal fade in show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
-                    <div class="modal-dialog col-10">
+                <div id="add-contact" class="modal fade in show " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+                    <div class=" modal-dialog col-10">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4 class="modal-title" id="myModalLabel">岗位授权</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                                <div class="card">
-                                    <div class="card-body p-b-0">
-                                        <ul class="nav nav-tabs customtab" role="tablist">
-                                            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home2" role="tab" aria-expanded="true"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">客户管理</span></a> </li>
-                                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile2" role="tab" aria-expanded="false"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">项目管理</span></a> </li>
-                                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#messages2" role="tab" aria-expanded="false"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">用户管理</span></a> </li>
-                                        </ul>
-                                        <!-- Tab panes -->
-                                        <div class="tab-content">
-                                            <div class="tab-pane active" id="home2" role="tabpanel" aria-expanded="true">
-                                                <div class="p-20">
-                                                    <div class="form-group has-success">
-                                                        <div class="form-check">
-                                                            <label class="custom-control custom-radio">
-                                                                <input id="radio1" name="radio" type="checkbox" class="custom-control-input">
-                                                                <span class="custom-control-indicator"></span>
-                                                                <span class="custom-control-description">全部选择</span>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group has-success">
-                                                        <div class="form-check">
-                                                            <label class="custom-control custom-radio">
-                                                                <input id="radio1" name="radio" type="checkbox" class="custom-control-input">
-                                                                <span class="custom-control-indicator"></span>
-                                                                <span class="custom-control-description">列表</span>
-                                                            </label>
-
-                                                            <label class="custom-control custom-radio">
-                                                                <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
-                                                                    <option value="Category 1">所有人</option>
-                                                                    <option value="Category 2" selected="selected">自己和下属</option>
-                                                                    <option value="Category 3">仅自己</option>
-                                                                    <option value="Category 4">部门所有人</option>
-                                                                </select>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group has-success">
-                                                        <div class="form-check">
-                                                            <label class="custom-control custom-radio">
-                                                                <input id="radio1" name="radio" type="checkbox" class="custom-control-input">
-                                                                <span class="custom-control-indicator"></span>
-                                                                <span class="custom-control-description">详情</span>
-                                                            </label>
-
-                                                            <label class="custom-control custom-radio">
-                                                                <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
-                                                                    <option value="Category 1">所有人</option>
-                                                                    <option value="Category 2" selected="selected">自己和下属</option>
-                                                                    <option value="Category 3">仅自己</option>
-                                                                    <option value="Category 4">部门所有人</option>
-                                                                </select>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group has-success">
-                                                        <div class="form-check">
-                                                            <label class="custom-control custom-radio">
-                                                                <input id="radio1" name="radio" type="checkbox" class="custom-control-input">
-                                                                <span class="custom-control-indicator"></span>
-                                                                <span class="custom-control-description">添加</span>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group has-success">
-                                                        <div class="form-check">
-                                                            <label class="custom-control custom-radio">
-                                                                <input id="radio1" name="radio" type="checkbox" class="custom-control-input">
-                                                                <span class="custom-control-indicator"></span>
-                                                                <span class="custom-control-description">删除</span>
-                                                            </label>
-
-                                                            <label class="custom-control custom-radio">
-                                                                <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
-                                                                    <option value="Category 1">所有人</option>
-                                                                    <option value="Category 2" selected="selected">自己和下属</option>
-                                                                    <option value="Category 3">仅自己</option>
-                                                                    <option value="Category 4">部门所有人</option>
-                                                                </select>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group has-success">
-                                                        <div class="form-check">
-                                                            <label class="custom-control custom-radio">
-                                                                <input id="radio1" name="radio" type="checkbox" class="custom-control-input">
-                                                                <span class="custom-control-indicator"></span>
-                                                                <span class="custom-control-description">编辑</span>
-                                                            </label>
-
-                                                            <label class="custom-control custom-radio">
-                                                                <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
-                                                                    <option value="Category 1">所有人</option>
-                                                                    <option value="Category 2" selected="selected">自己和下属</option>
-                                                                    <option value="Category 3">仅自己</option>
-                                                                    <option value="Category 4">部门所有人</option>
-                                                                </select>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane p-20" id="profile2" role="tabpanel" aria-expanded="false">同上</div>
-                                            <div class="tab-pane p-20" id="messages2" role="tabpanel" aria-expanded="false">同上</div>
+                                <form action="">
+                                    <div class="form-group has-success">
+                                        <div class="form-check">
+                                            <label class="custom-control custom-checkbox">
+                                                <input id="check_all"  type="checkbox" class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">全部选择</span>
+                                            </label>
                                         </div>
                                     </div>
-                                </div>
+                                    <input type="hidden" name="post_id" id="post_pid">
+                                    <table  class="table table-bordered table-hover toggle-circle">
+                                        <thead>
+                                        <tr class="text-align">
+                                            <th>菜单</th>
+                                            <th>增加</th>
+                                            <th>删除</th>
+                                            <th>修改</th>
+                                            <th>查看</th>
+                                            <th>范围</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {volist name="menus" id="menu" }
+                                        <tr>
+                                            <input type="hidden" name="menu_id[]" value="{$menu.id}" class="menu_id">
+                                            <td>{$menu.title}</td>
+                                            <td>
+                                                <label class="custom-control custom-checkbox">
+                                                    <input  type="checkbox" name="pre_add[]" value="{$menu.id}" class="custom-control-input table_name" >
+                                                    <span class="custom-control-indicator"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <label class="custom-control custom-checkbox">
+                                                    <input  type="checkbox" name="pre_delete[]" value="{$menu.id}" class="custom-control-input table_name" >
+                                                    <span class="custom-control-indicator"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <label class="custom-control custom-checkbox">
+                                                    <input  type="checkbox" name="pre_update[]" value="{$menu.id}" class="custom-control-input table_name" >
+                                                    <span class="custom-control-indicator"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <label class="custom-control custom-checkbox">
+                                                    <input  type="checkbox" name="pre_des[]" value="{$menu.id}" class="custom-control-input table_name" >
+                                                    <span class="custom-control-indicator"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <select class="form-control custom-select" name="range[]" tabindex="1">
+                                                    <option value="1">所有人</option>
+                                                    <option value="2" >自己和下属</option>
+                                                    <option value="3">仅自己</option>
+                                                    <option value="4">部门所有人</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        {/volist}
+
+                                    </table>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">保存</button>
                                     <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
                                 </div>
+                                </form>
                             </div>
                             <!-- /.modal-content -->
                         </div>
                         <!-- /.modal-dialog -->
                     </div>
-
-
-
-
-
-
+                    <script>
+                        $("#check_all").change(function () {
+                            if($(this).is(':checked')){
+                                $(".table_name").each(function () {
+                                    $(this).prop('checked', 'checked');
+                                });
+                            }
+                            else{
+                                $(".table_name").each(function () {
+                                    $(this).prop('checked', false);
+                                });
+                            }
+                        });
+                    </script>
 
                 </div>
 
@@ -331,4 +296,16 @@
         $("#child_post_department_id").val(depart_id);
     }
 </script>
+<script>
+    function send_post(pid) {
+        $("#post_pid").val(pid);
+    }
+
+</script>
+
+
+
+
+
+
 {/block}

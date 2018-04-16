@@ -50,7 +50,19 @@ class Log extends Model{
     public function  write_log($data,$is_all = false){
 
         if($is_all){
-              $this->saveAll($data);
+
+               $sql = "insert into jckk_logs(model,action,type,before_value,after_value,ip,uid,title,is_delete,create_time) values ";
+               $i=0;
+              foreach($data as $k=>$v){
+
+                  if($i>0){
+                      $sql .=",";
+                  }
+                  $sql .= "('".request()->controller()."','".request()->action()."',".$v['type'].",'".$v['before_value']."','".$v['after_value']."','".request()->ip()."',".Session::get("uid").",'".$v['title']."',0,'".date("Y-m-d H:i:s",time())."')";
+                  $i++;
+              }
+              $sql .=";";
+             $this->query($sql);
 
         }
         else{
