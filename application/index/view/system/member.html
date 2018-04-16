@@ -62,9 +62,9 @@
                         <td>{$user.qq}</td>
                         <td>{$user.wechat}</td>
                         <td>
-                            <a href="javascript:void(0);" onclick="delete_sure('确定要删除吗？', '{:url(\'index/user/user_del\')}?id={$user.uid}')"  class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></a>
-                            <a href="{:url('index/system/user_edit')}?id={$user.uid}" class="btn btn-sm btn-icon btn-pure btn-outline" data-toggle="tooltip" data-original-title="修改"><i class="ti-pencil" aria-hidden="true"></i></a>
-                            <a href="{:url('index/system/user_des')}?id={$user.uid}" class="btn btn-sm btn-icon btn-pure btn-outline" data-toggle="tooltip" data-original-title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
+                            <a href="javascript:void(0);" onclick="delete_sure('确定要删除吗？', '{:url(\'index/user/user_del\')}?id={$user.uid}')"  class="btn btn-sm btn-icon btn-pure btn-outline " title="删除"><i class="ti-close" aria-hidden="true"></i></a>
+                            <a href="{:url('index/system/user_edit')}?id={$user.uid}" class="btn btn-sm btn-icon btn-pure btn-outline" title="修改"><i class="ti-pencil" aria-hidden="true"></i></a>
+                            <a href="{:url('index/system/user_des')}?id={$user.uid}" class="btn btn-sm btn-icon btn-pure btn-outline" title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
                         </td>
                     </tr>
                     {/volist}
