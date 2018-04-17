@@ -28,35 +28,52 @@ class System extends Base{
 
 
     public function save_department(){
-       $data = Request::instance()->post();
+        if(!$this->check_post_menu_permission("update_operate")){
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
+        }
+        else {
+            $data = Request::instance()->post();
 
-       model("department","logic")->save_department($data);
-       $this->redirect("organization");
-
+            model("department", "logic")->save_department($data);
+            $this->redirect("organization");
+        }
     }
 
 
-     public function save_post(){
-           $data = Request::instance()->post();
-           model("post","logic")->save_post($data);
-           $this->redirect("organization",["id"=>$data['post_department_id']]);
+     public function save_post()
+     {
+         if (!$this->check_post_menu_permission("update_operate")) {
+             echo "<script> alert('没有权限！');history.back(-1);</script>";
+         } else {
+             $data = Request::instance()->post();
+             model("post", "logic")->save_post($data);
+             $this->redirect("organization", ["id" => $data['post_department_id']]);
 
-        }
-
+         }
+     }
 
     //部门删除
     public function department_del($id){
-
-        model('department','logic')->delete_department($id);
-        $this->redirect("organization");
+        if(!$this->check_post_menu_permission("delete_operate")){
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
+        }
+        else {
+            model('department', 'logic')->delete_department($id);
+            $this->redirect("organization");
+        }
     }
 
 
     //岗位删除
     public function post_del($id,$depart_id){
+        if(!$this->check_post_menu_permission("delete_operate")){
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
+        }
+        else {
 
-        model('post','logic')->delete_post($id);
-        $this->redirect("organization",["id"=>$depart_id]);
+            model('post', 'logic')->delete_post($id);
+            $this->redirect("organization", ["id" => $depart_id]);
+        }
     }
 
 
@@ -69,10 +86,15 @@ class System extends Base{
 
 
     public function member_add(){
-        //部门
-        $departments = model('department','logic')->get_departments();
+        if(!$this->check_post_menu_permission("add_operate")){
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
+        }
+        else {
+            //部门
+            $departments = model('department', 'logic')->get_departments();
 
-        return view("member_add")->assign("departments",$departments);
+            return view("member_add")->assign("departments", $departments);
+        }
     }
 
     public function ajax_get_post(){
@@ -98,13 +120,20 @@ class System extends Base{
     }
 
     public function user_edit($id){
-        $user = model("user","logic")->get_user($id);
-        $departments = model('department','logic')->get_departments();
-        return view("member_edit")->assign("departments",$departments)->assign("user",$user);
+
+        if(!$this->check_post_menu_permission("update_operate")){
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
+        }
+        else {
+            $user = model("user", "logic")->get_user($id);
+            $departments = model('department', 'logic')->get_departments();
+            return view("member_edit")->assign("departments", $departments)->assign("user", $user);
+        }
     }
 
 
     public function user_des($id){
+
             $user = model("user","logic")->get_user($id);
 
             return view("member_des")->assign("user",$user);
@@ -121,19 +150,24 @@ class System extends Base{
 
     public function setting_save(){
 
-        $datas = Request::instance()->post();
-        $files = Request::instance()->file();
-        if(isset($datas["system_email_pwd"])){
-            $datas["system_email_pwd"] = base64_encode($datas["system_email_pwd"]);
+        if(!$this->check_post_menu_permission("update_operate")){
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
         }
-       if($datas && !empty($datas)){
-           model("setting","logic")->save_settings($datas);
-       }
-       if($files && !empty($files)){
-           model("setting","logic")->save_settings($files,true);
-       }
+        else {
+            $datas = Request::instance()->post();
+            $files = Request::instance()->file();
+            if (isset($datas["system_email_pwd"])) {
+                $datas["system_email_pwd"] = base64_encode($datas["system_email_pwd"]);
+            }
+            if ($datas && !empty($datas)) {
+                model("setting", "logic")->save_settings($datas);
+            }
+            if ($files && !empty($files)) {
+                model("setting", "logic")->save_settings($files, true);
+            }
 
-        return $this->redirect("system_settings");
+            return $this->redirect("system_settings");
+        }
     }
 
 

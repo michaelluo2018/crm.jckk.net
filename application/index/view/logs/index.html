@@ -32,7 +32,7 @@
                                 </div>
                             </div>
                             <div class="form-actions" style="margin-bottom: 15px;">
-                                <button type="button" class="btn  btn-info " onclick="delete_logs(1);"> <i class=" ace-icon fa fa-close "></i> 删除7天之前日志</button>
+                                <button type="button" class="btn  btn-info " onclick="delete_logs(7);"> <i class=" ace-icon fa fa-close "></i> 删除7天之前日志</button>
                                 <button type="button" class="btn  btn-danger " onclick="delete_logs(30)"> <i class=" ace-icon fa fa-close"></i> 删除30天之前日志</button>
                             </div>
                             <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" >
@@ -110,11 +110,16 @@
 
     function ajax_delete_log(day) {
         $.ajax({
-            url:"{:url('index/logs/ajax_delete_logs')}",
+            url:"{:url('index/logs/ajax_delete_logs')}?mid={$mid}",
             method:"get",
             data:{day:day},
-            success:function () {
-                parent.window.location.href = parent.window.location.href;
+            success:function (data) {
+                if(data){
+                    layer.alert(data);
+                }else {
+                    parent.window.location.href = parent.window.location.href;
+                }
+
             },
             dataType:"json"
         })

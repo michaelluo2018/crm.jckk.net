@@ -93,7 +93,7 @@
                 </div>
                 <div class="tab-pane" id="settings" role="tabpanel">
                     <div class="card-body">
-                        <form class="form-horizontal form-material" action="{:url('index/user/save_user')}" method="post" enctype="multipart/form-data">
+                        <form class="form-horizontal form-material" action="{:url('index/user/save_user')}?mid={$mid}" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="uid" value="{$user_info.uid}">
                             <div class="form-group">
                                 <label class="col-md-12"><span class="text-danger"> * </span>姓名</label>
