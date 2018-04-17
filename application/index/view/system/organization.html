@@ -110,7 +110,6 @@
 
                                 <button type="button"  class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="send_pid('{$post.id}','{$data[\'department_id\']}')" data-toggle="modal" data-target="#add-post" ><i class="ti-plus" data-original-title="添加子岗位" data-toggle="tooltip" aria-hidden="true"></i></button>
                                 <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline"  onclick="send_post('{$post.id}')" data-toggle="modal" data-target="#add-contact"><i class="ti-settings" data-original-title="授权" data-toggle="tooltip" aria-hidden="true"></i></button>
-
                             </td>
                         </tr>
                         {/volist}
@@ -161,36 +160,36 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {volist name="menus" id="menu" }
+                                        {volist name="organization_menus" id="organization_menu"}
                                         <tr>
-                                            <input type="hidden" name="menu_id[]" value="{$menu.id}" class="menu_id">
-                                            <td>{$menu.title}</td>
+                                            <input type="hidden" name="menu_id[]" value="{$organization_menu.id}" class="menu_id">
+                                            <td>{$organization_menu.title}</td>
                                             <td>
                                                 <label class="custom-control custom-checkbox">
-                                                    <input  type="checkbox" name="pre_add[{$menu.id}]" value="1" class="custom-control-input table_name add_{$menu.id}" >
+                                                    <input  type="checkbox" name="pre_add[{$organization_menu.id}]"  class="custom-control-input table_name add_{$organization_menu.id}" >
                                                     <span class="custom-control-indicator"></span>
                                                 </label>
                                             </td>
                                             <td>
                                                 <label class="custom-control custom-checkbox">
-                                                    <input  type="checkbox" name="pre_delete[{$menu.id}]" value="1" class="custom-control-input table_name delete_{$menu.id}" >
+                                                    <input  type="checkbox" name="pre_delete[{$organization_menu.id}]"  class="custom-control-input table_name delete_{$organization_menu.id}" >
                                                     <span class="custom-control-indicator"></span>
                                                 </label>
                                             </td>
                                             <td>
                                                 <label class="custom-control custom-checkbox">
-                                                    <input  type="checkbox" name="pre_update[{$menu.id}]" value="1" class="custom-control-input table_name update_{$menu.id}" >
+                                                    <input  type="checkbox" name="pre_update[{$organization_menu.id}]"  class="custom-control-input table_name update_{$organization_menu.id}" >
                                                     <span class="custom-control-indicator"></span>
                                                 </label>
                                             </td>
                                             <td>
                                                 <label class="custom-control custom-checkbox">
-                                                    <input  type="checkbox" name="pre_des[{$menu.id}]" value="1" class="custom-control-input table_name des_{$menu.id}" >
+                                                    <input  type="checkbox" name="pre_des[{$organization_menu.id}]" class="custom-control-input table_name des_{$organization_menu.id}" >
                                                     <span class="custom-control-indicator"></span>
                                                 </label>
                                             </td>
                                             <td>
-                                                <select class="form-control custom-select select_name range_{$menu.id}" name="permission_range[{$menu.id}]" tabindex="1">
+                                                <select class="form-control custom-select select_name range_{$organization_menu.id}" name="permission_range[{$organization_menu.id}]" tabindex="1">
                                                     {volist name="permission_range" id="range"/}
                                                     <option value="{$range}">{$range}</option>
                                                     {/volist}

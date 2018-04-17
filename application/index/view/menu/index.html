@@ -43,16 +43,16 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {if condition="$menus" /}
-                        {volist name="menus" id="menu" }
+                        {if condition="$index_menus" /}
+                        {volist name="index_menus" id="index_menu" }
                         <tr>
-                            <input type="hidden" name="menu_id[]" value="{$menu.id}" class="menu_id">
-                            <td style="padding-left:<?php echo $menu['count'];?>px"><input type="text" id="menu_name" name="title[]" class="form-control"  value="{$menu.title}" required></td>
-                            <td><input type="text" id="menu_url" name="url[]" class="form-control" value="{$menu.url}"></td>
-                            <td><input type="text" id="menu_order" name="menu_order[]" class="form-control" value="{$menu.menu_order}" required></td>
+                            <input type="hidden" name="menu_id[]" value="{$index_menu.id}" class="menu_id">
+                            <td style="padding-left:<?php echo $index_menu['count'];?>px"><input type="text" id="menu_name" name="title[]" class="form-control"  value="{$index_menu.title}" required></td>
+                            <td><input type="text" id="menu_url" name="url[]" class="form-control" value="{$index_menu.url}"></td>
+                            <td><input type="text" id="menu_order" name="menu_order[]" class="form-control" value="{$index_menu.menu_order}" required></td>
                             <td>
-                                <a onclick="delete_sure('删除菜单会一起删除子菜单信息，确定要删除吗？', '{:url(\'index/menu/menu_del\')}?id={$menu.id}')"  href="javascript:void(0);" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></a>
-                                <button type="button"  class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="send_pid('{$menu.id}')" data-toggle="modal" data-target="#add-menu" ><i class="ti-plus" data-original-title="添加子菜单" data-toggle="tooltip" aria-hidden="true"></i></button>
+                                <a onclick="delete_sure('删除菜单会一起删除子菜单信息，确定要删除吗？', '{:url(\'index/menu/menu_del\')}?id={$index_menu.id}')"  href="javascript:void(0);" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></a>
+                                <button type="button"  class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="send_pid('{$index_menu.id}')" data-toggle="modal" data-target="#add-menu" ><i class="ti-plus" data-original-title="添加子菜单" data-toggle="tooltip" aria-hidden="true"></i></button>
                             </td>
                         </tr>
                         {/volist}

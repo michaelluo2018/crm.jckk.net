@@ -12,11 +12,11 @@ class System extends Base{
 
         $data= model("department","logic")->get_organization($id);
 
-        $menus= model("menu","logic")->get_menus();
+        $organization_menus= $this->all_menus;
 
         $permission_range = Config::get("permission_range");
 
-        $this->assign("menus",$menus);
+        $this->assign("organization_menus",$organization_menus);
 
         $this->assign("permission_range",$permission_range);
 

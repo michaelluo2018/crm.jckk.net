@@ -7,8 +7,11 @@ class Menu extends Base{
 
 
     public function index(){
-        $menus= model("menu","logic")->get_menus();
-        $this->assign("menus",$menus);
+
+        $index_menus= $this->all_menus;
+
+        $this->assign("index_menus",$index_menus);
+
         return view("index");
     }
 

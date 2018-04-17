@@ -10,45 +10,43 @@ class PostPermission extends  Model{
 
 
     public  function save_permission($data){
+       // dump($data);
         $pid=$data['post_id'];
         $num = count($data['menu_id'] );
 
         for ($i=0;$i<$num;$i++){
             $mid = $data['menu_id'][$i];
+
             if(isset($data['pre_add'][$mid])){
-                $add_operate = $data['pre_add'][$mid];
+
+                $add_operate = 1;
             }
             else{
                 $add_operate = 0;
             }
             if(isset($data['pre_delete'][$mid])){
-                $delete_operate = $data['pre_delete'][$mid];
+                $delete_operate = 1;
             }
             else{
                 $delete_operate = 0;
             }
 
             if(isset($data['pre_update'][$mid])){
-                $update_operate = $data['pre_update'][$mid];
+                $update_operate = 1;
             }
             else{
                 $update_operate = 0;
             }
 
-            if(isset($data['permission_range'][$mid])){
-                $permission_range = $data['permission_range'][$mid];
-            }
-            else{
-                $permission_range = 0;
-            }
-
             if(isset($data['pre_des'][$mid])){
-                $desc_operate = $data['pre_des'][$mid];
+                $desc_operate = 1;
             }
             else{
                 $desc_operate = 0;
             }
 
+            $permission_range = $data['permission_range'][$mid];
+          
             if( $post_permission = $this->where('pid',$pid)->where('mid',$mid)->find()){
                 //更改
                 $before_value = json_encode($post_permission);
@@ -84,6 +82,7 @@ class PostPermission extends  Model{
                 $array[$i]['create_time'] = time();
 
             }
+
         }
 
         if(isset( $update_post_log)){
@@ -142,7 +141,6 @@ class PostPermission extends  Model{
 
 
     }
-
 
 
 

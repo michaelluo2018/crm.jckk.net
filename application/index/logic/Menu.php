@@ -9,6 +9,7 @@ class Menu extends Model{
 
 
     public function get_menu_by_pid($pid){
+
         return $this->where("pid",$pid)->where("is_delete","<>",1)->order("menu_order asc")->select();
     }
 
@@ -20,6 +21,10 @@ class Menu extends Model{
 
         return $menus;
     }
+
+
+
+
 
     public static function get_list($arr){
         //$arr 所有分类列表

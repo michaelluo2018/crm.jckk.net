@@ -279,49 +279,25 @@
             </div>
             <!-- End User profile text-->
             <!-- Sidebar navigation-->
-            <nav class="sidebar-nav">
-                <ul id="sidebarnav">
-                    <li> <a class="has-arrow waves-effect waves-dark" href="{:url('index/index/index')}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">工作台 </span></a>
-                        <!-- <ul aria-expanded="false" class="collapse" style="display:none">
-                            <li><a href="../minisidebar/index.html">简报</a></li>
-                            <li><a href="../horizontal/index2.html">指标</a></li>
-                            <li><a href="../dark/index3.html">仪表盘</a></li>
-                            <li><a href="../material-rtl/index4.html">工作圈</a></li>
-                            <li><a href="javascript:angular">消息提醒</a></li>
-                        </ul> -->
-                    </li>
-                    <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="true"><i class="mdi mdi-laptop-windows"></i><span class="hide-menu">系统设置</span></a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li><a href="{:url('index/user/profile')}">个人中心</a></li>
-                            <li><a href="system_authority.html" class="has-arrow" aria-expanded="true">用户和权限</a>
-                                <ul>
-                                    <li><a href="{:url('index/system/organization')}">组织架构管理</a></li>
-                                    <li><a href="{:url('index/system/member')}">用户管理</a>
-                                    <li><a href="{:url('index/menu/index')}">菜单管理</a>
 
-                                    </li>
-                                </ul>
+
+                <nav class="sidebar-nav">
+                    <ul>
+                        {volist name="base_menus['menus']" id="base_menu"/}
+                        {if condition="$base_menu.url"/}
+                            <li style="padding-left:<?php echo $base_menu['count'];?>px">
+                                <a href="{:url($base_menu.url)}">{$base_menu.title}</a>
                             </li>
+                         {else/}
+                            <li style="padding-left:<?php echo $base_menu['count'];?>px">
+                                <a href="#" >{$base_menu.title}</a>
+                            </li>
+                        {/if}
+                        {/volist}
+                    </ul>
+                </nav>
 
-                            <!--<li><a href="{:url('index/system/system_fields')}">自定义字段设置</a></li>-->
-                            <li><a href="{:url('index/system/system_settings')}">系统基本设置</a></li>
-                            <li><a href="{:url('index/logs/index')}">系统日志</a></li>
-                            <li><a href="{:url('index/databases/index')}">数据库备份</a></li>
-                        </ul>
-                    </li>
-                    <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="true"><i class="mdi mdi-account-circle"></i><span class="hide-menu">客户和项目</span></a>
-                        <ul aria-expanded="false" class="collapse">
 
-                            <li><a href="{:url('index/customer/customer_list')}">客户管理</a></li>
-                            <li style="display:none"><a href="{:url('index/customer/customer_add')}">添加客户</a></li>
-                            <li style="display:none"><a href="{:url('index/customer/customer_des')}">客户详情</a></li>
-                            <li><a href="{:url('index/project/project_list')}">项目管理</a></li>
-                            <li style="display:none"><a href="{:url('index/project/project_add')}">添加项目</a></li>
-                            <li style="display:none"><a href="{:url('index/project/project_des')}">项目详情</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
             <!-- End Sidebar navigation -->
         </div>
         <!-- End Sidebar scroll-->

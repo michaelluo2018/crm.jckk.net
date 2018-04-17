@@ -8,6 +8,9 @@ use think\Session;
 
 class Base extends Controller{
     protected $uid;
+    protected $post_id;
+    protected $all_menus=null;
+    protected $user_menus=null;
 
     function __construct(Request $request = null)
     {
@@ -19,6 +22,7 @@ class Base extends Controller{
         }
         $this->uid = Session::get("uid");
         $user_info = model("user","logic")->get_user($this->uid);
+
         $this->assign("user_info",$user_info);
         //系统设置
         $setting = model("setting","logic")->get_setting();
@@ -26,8 +30,14 @@ class Base extends Controller{
         if(isset($setting[$key])){
             $setting['system_theme'] = $setting[$key];
         }
-
         $this->assign("setting",$setting);
+
+        $this->post_id = $user_info['post_id'];
+        $this->all_menus = model("menu","logic")->get_menus();
+
+        $this->user_menus = $this->get_user_menus();
+
+        $this->assign("base_menus",$this->user_menus);
         //总客户，总项目
         $total_customer = model("customer","logic")->total_customer();
         $total_project = model("project","logic")->total_project();
@@ -76,6 +86,36 @@ class Base extends Controller{
                  return true;
             }
         }
+
+    }
+
+
+
+    public function get_user_menus(){
+
+        $menus_all=  $this->all_menus;
+
+        $array["menus"] = [];
+        $array["permission"] = [];
+        foreach ($menus_all as $k=>$v){
+            $mid = $v->id;
+            $post_permission = model("post_permission")->where("pid", $this->post_id)->where("mid",$mid)->find();
+
+            if($post_permission){
+                if($post_permission->add_operate==0 && $post_permission->delete_operate==0 && $post_permission->update_operate==0 && $post_permission->desc_operate==0){
+
+                }
+                else{
+                    $array["menus"][$k] = $v;
+                    $array["menus"][$k]["count"] = $menus_all[$k]['count'];
+                    $array["permission"][$k] = $post_permission;
+                }
+            }
+
+        }
+
+        return $array;
+
 
     }
 
