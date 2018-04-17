@@ -45,10 +45,9 @@ class Base extends Controller{
         $this->assign("total_customer",$total_customer);
         $this->assign("total_project",$total_project);
 
-
-        //菜单权限
         $this->menu_id = Request::instance()->get("mid");
 
+        $this->assign("mid",$this->menu_id);
 
     }
 
@@ -109,10 +108,7 @@ class Base extends Controller{
             $post_permission = model("post_permission")->where("pid", $this->post_id)->where("mid",$mid)->find();
 
             if($post_permission){
-                if($post_permission->add_operate==0 && $post_permission->delete_operate==0 && $post_permission->update_operate==0 && $post_permission->desc_operate==0){
-
-                }
-                else{
+                if($post_permission->desc_operate==1){
                     $array[$k] = $v;
                     $permissions[$mid] = $post_permission;
                 }

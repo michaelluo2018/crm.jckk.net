@@ -100,6 +100,7 @@ class Customer extends Base{
     //客户删除
 
     public function  customer_del($id){
+
         if(!$this->check_post_menu_permission("delete_operate")){
             echo "<script> alert('没有权限！');history.back(-1);</script>";
         }
@@ -141,14 +142,11 @@ class Customer extends Base{
 
     public function  customer_des($id){
 
-        if(!$this->check_post_menu_permission("desc_operate")){
-            echo "<script> alert('没有权限！');history.back(-1);</script>";
-        }
-        else {
+
             $data = model("customer", "logic")->get_customer_entity();
             $customer = model("customer", "logic")->get_customer_by_id($id);
             return view("customer_des")->assign("data", $data)->assign("customer", $customer);
-        }
+
 
     }
 

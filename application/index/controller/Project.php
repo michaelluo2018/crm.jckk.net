@@ -33,6 +33,7 @@ class Project extends Base {
     //项目添加
     public function project_add(){
 
+
         if(!$this->check_post_menu_permission("add_operate")){
             echo "<script> alert('没有权限！');history.back(-1);</script>";
         }
@@ -147,10 +148,7 @@ class Project extends Base {
 
     public function  project_des($id){
 
-        if(!$this->check_post_menu_permission("desc_operate")){
-            echo "<script> alert('没有权限！');history.back(-1);</script>";
-        }
-        else {
+
             //获得一条项目信息
             $project = model("project", "logic")->get_project($id);
             $customer = model("customer", "logic")->get_customer_by_id($project['customer_id']);
@@ -160,7 +158,7 @@ class Project extends Base {
             //获取第一个部门下面所有user
             $users = model("user", "logic")->get_department_users($departments[0]->id);
             return view("project_des")->assign(["data" => $data, "project" => $project, "customer" => $customer, "departments" => $departments, "users" => $users]);
-        }
+
     }
 
 
