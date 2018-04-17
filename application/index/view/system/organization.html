@@ -299,6 +299,7 @@
     //岗位权限
     function send_post(pid) {
         $("#post_pid").val(pid);
+        $("#check_all").prop('checked', false);
         //获取岗位的所有权限
         $.ajax({
             url:"{:url('index/post_permission/ajax_get_post_permission')}",
