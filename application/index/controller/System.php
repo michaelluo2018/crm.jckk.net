@@ -13,7 +13,13 @@ class System extends Base{
         $data= model("department","logic")->get_organization($id);
 
         $menus= model("menu","logic")->get_menus();
+
+        $permission_range = Config::get("permission_range");
+
         $this->assign("menus",$menus);
+
+        $this->assign("permission_range",$permission_range);
+
         return view("organization")->assign("data",$data);
     }
 

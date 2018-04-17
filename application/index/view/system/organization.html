@@ -138,7 +138,7 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                                <form action="">
+                                <form action="{:url('index/post_permission/save_permission')}" method="post">
                                     <div class="form-group has-success">
                                         <div class="form-check">
                                             <label class="custom-control custom-checkbox">
@@ -167,34 +167,34 @@
                                             <td>{$menu.title}</td>
                                             <td>
                                                 <label class="custom-control custom-checkbox">
-                                                    <input  type="checkbox" name="pre_add[]" value="{$menu.id}" class="custom-control-input table_name" >
+                                                    <input  type="checkbox" name="pre_add[{$menu.id}]" value="1" class="custom-control-input table_name add_{$menu.id}" >
                                                     <span class="custom-control-indicator"></span>
                                                 </label>
                                             </td>
                                             <td>
                                                 <label class="custom-control custom-checkbox">
-                                                    <input  type="checkbox" name="pre_delete[]" value="{$menu.id}" class="custom-control-input table_name" >
+                                                    <input  type="checkbox" name="pre_delete[{$menu.id}]" value="1" class="custom-control-input table_name delete_{$menu.id}" >
                                                     <span class="custom-control-indicator"></span>
                                                 </label>
                                             </td>
                                             <td>
                                                 <label class="custom-control custom-checkbox">
-                                                    <input  type="checkbox" name="pre_update[]" value="{$menu.id}" class="custom-control-input table_name" >
+                                                    <input  type="checkbox" name="pre_update[{$menu.id}]" value="1" class="custom-control-input table_name update_{$menu.id}" >
                                                     <span class="custom-control-indicator"></span>
                                                 </label>
                                             </td>
                                             <td>
                                                 <label class="custom-control custom-checkbox">
-                                                    <input  type="checkbox" name="pre_des[]" value="{$menu.id}" class="custom-control-input table_name" >
+                                                    <input  type="checkbox" name="pre_des[{$menu.id}]" value="1" class="custom-control-input table_name des_{$menu.id}" >
                                                     <span class="custom-control-indicator"></span>
                                                 </label>
                                             </td>
                                             <td>
-                                                <select class="form-control custom-select" name="range[]" tabindex="1">
-                                                    <option value="1">所有人</option>
-                                                    <option value="2" >自己和下属</option>
-                                                    <option value="3">仅自己</option>
-                                                    <option value="4">部门所有人</option>
+                                                <select class="form-control custom-select select_name range_{$menu.id}" name="permission_range[{$menu.id}]" tabindex="1">
+                                                    {volist name="permission_range" id="range"/}
+                                                    <option value="{$range}">{$range}</option>
+                                                    {/volist}
+
                                                 </select>
                                             </td>
                                         </tr>
@@ -202,7 +202,7 @@
 
                                     </table>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">保存</button>
+                                    <button type="submit" class="btn btn-info waves-effect ">保存</button>
                                     <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
                                 </div>
                                 </form>
@@ -297,8 +297,71 @@
     }
 </script>
 <script>
+    //岗位权限
     function send_post(pid) {
         $("#post_pid").val(pid);
+        //获取岗位的所有权限
+        $.ajax({
+            url:"{:url('index/post_permission/ajax_get_post_permission')}",
+            data:{pid:pid},
+            method:'post',
+            success:function(data){
+                if(data == 0){
+                    $(".table_name").each(function () {
+                        $(this).prop('checked', false);
+                    });
+                    $(".select_name").each(function () {
+                        $(this).attr("tabindex",1);
+                    });
+                }
+                else{
+                    $.each(data,function (i,v) {
+                        var mid = v.mid;
+                        var add_name = "add_"+mid ;
+                        var delete_name = "delete_"+mid ;
+                        var pre_update = "update_"+mid;
+                        var pre_des = "des_"+mid ;
+                        var permission_range = "range_"+mid;
+
+                        if(v.add_operate == 1){
+                            $("."+add_name+" ").prop("checked","checked");
+                        }
+                        else{
+                            $("."+add_name+" ").prop("checked",false);
+                        }
+
+                        if(v.delete_operate == 1){
+                            $("."+delete_name+" ").prop("checked","checked");
+                        }
+                        else{
+                            $("."+delete_name+" ").prop("checked",false);
+                        }
+
+                        if(v.update_operate == 1){
+                            $("."+pre_update+" ").prop("checked","checked");
+                        }
+                        else{
+                            $("."+pre_update+" ").prop("checked",false);
+                        }
+
+                        if(v.desc_operate == 1){
+                            $("."+pre_des+" ").prop("checked","checked");
+                        }
+                        else{
+                            $("."+pre_des+" ").prop("checked",false);
+                        }
+
+                        if(v.permission_range){
+                            $("."+permission_range+" ").val(v.permission_range);
+                        }
+
+
+                    })
+                }
+
+            },
+            dataType:'json'
+        });
     }
 
 </script>

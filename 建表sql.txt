@@ -132,4 +132,18 @@ create table jckk_contact (
 
 
 
+ create table jckk_post_permission (
+    id int primary key auto_increment,
+    pid int comment "post_id",
+    mid int comment "menu_id",
+    add_operate int default 0 comment "添加权限，默认没有权限",
+    delete_operate int default 0 comment "删除权限，默认没有权限",
+    update_operate int default 0 comment "更新权限，默认没有权限",
+    desc_operate int default 0 comment "查看权限，默认没有权限",
+    permission_range varchar(50) comment "范围权限",
+    create_time int comment "加入时间"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+
+
 
