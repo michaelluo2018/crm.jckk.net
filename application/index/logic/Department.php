@@ -147,7 +147,7 @@ class Department extends Model{
     public static function get_post_path($arr){
 
         foreach($arr as $k=>$v){
-            $arr[$k]['count']=15*(count(explode('-',$v->path))-1);
+            $arr[$k]['count']=25*(count(explode('-',$v->path))-1);
         }
         return $arr;
     }

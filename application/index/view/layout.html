@@ -285,18 +285,32 @@
                     <ul>
                         {volist name="base_menus['menus']" id="base_menu"/}
                         {if condition="$base_menu.url"/}
-                            <li style="padding-left:<?php echo $base_menu['count'];?>px">
-                                <a href="{:url($base_menu.url)}">{$base_menu.title}</a>
+
+                            <li>
+                                <a href="{:url($base_menu.url)}" class="waves-effect {$base_menu.pid}">{$base_menu.title}</a>
                             </li>
                          {else/}
-                            <li style="padding-left:<?php echo $base_menu['count'];?>px">
-                                <a href="#" >{$base_menu.title}</a>
+
+                            <li>
+                                <a href="#"  onclick="show_hide_menu('{$base_menu.id}')"  class="has-arrow  active {$base_menu.pid}" id="{$base_menu.id}">{$base_menu.title}</a>
                             </li>
                         {/if}
                         {/volist}
                     </ul>
                 </nav>
-
+                <script>
+                    function show_hide_menu(id) {
+                        var obj_menu = $("#"+id+" ");
+                        if(obj_menu.hasClass("active")){
+                           $("."+id+" ").hide();
+                            obj_menu.removeClass("active");
+                        }
+                        else{
+                            $("."+id+" ").show();
+                            obj_menu.addClass("active");
+                        }
+                    }
+                </script>
 
             <!-- End Sidebar navigation -->
         </div>

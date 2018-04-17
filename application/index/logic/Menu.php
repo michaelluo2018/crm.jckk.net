@@ -23,9 +23,6 @@ class Menu extends Model{
     }
 
 
-
-
-
     public static function get_list($arr){
         //$arr 所有分类列表
         static $menu_list = array() ;

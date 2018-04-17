@@ -95,8 +95,10 @@ class Base extends Controller{
 
         $menus_all=  $this->all_menus;
 
-        $array["menus"] = [];
-        $array["permission"] = [];
+        $list = array(); //存放登陆用户岗位的菜单
+        $array = array(); //存放登陆用户岗位的菜单
+        $permissions = array(); //存放登陆用户岗位的菜单权限，下标是菜单id
+
         foreach ($menus_all as $k=>$v){
             $mid = $v->id;
             $post_permission = model("post_permission")->where("pid", $this->post_id)->where("mid",$mid)->find();
@@ -106,15 +108,15 @@ class Base extends Controller{
 
                 }
                 else{
-                    $array["menus"][$k] = $v;
-                    $array["menus"][$k]["count"] = $menus_all[$k]['count'];
-                    $array["permission"][$k] = $post_permission;
+                    $array[$k] = $v;
+                    $permissions[$mid] = $post_permission;
                 }
             }
 
         }
-
-        return $array;
+        $list['menus'] = $array;
+        $list['permission'] = $permissions;
+        return $list;
 
 
     }
