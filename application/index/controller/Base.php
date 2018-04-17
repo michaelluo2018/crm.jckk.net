@@ -11,6 +11,7 @@ class Base extends Controller{
     protected $post_id;
     protected $all_menus=null;
     protected $user_menus=null;
+    protected $menu_id=null;
 
     function __construct(Request $request = null)
     {
@@ -43,6 +44,10 @@ class Base extends Controller{
         $total_project = model("project","logic")->total_project();
         $this->assign("total_customer",$total_customer);
         $this->assign("total_project",$total_project);
+
+
+        //菜单权限
+        $this->menu_id = Request::instance()->get("mid");
 
 
     }
@@ -120,6 +125,19 @@ class Base extends Controller{
 
 
     }
+
+
+    public function  check_post_menu_permission($operate_type){
+        $menus = $this->user_menus;
+        $permission = $menus['permission'];
+        if(isset($permission[$this->menu_id])){
+            if($permission[$this->menu_id]->$operate_type){
+                return true;
+            }
+        }
+    }
+
+
 
 
 }

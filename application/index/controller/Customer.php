@@ -50,8 +50,14 @@ class Customer extends Base{
     //客户添加
     public function customer_add(){
 
-       $data = model("customer","logic")->get_customer_entity();
-        return view("customer_add")->assign("data",$data);
+        if(!$this->check_post_menu_permission("add_operate")){
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
+         }
+         else{
+             $data = model("customer","logic")->get_customer_entity();
+             return view("customer_add")->assign("data",$data);
+         }
+
     }
 
     //保存客户
@@ -79,22 +85,35 @@ class Customer extends Base{
     //客户修改
 
     public function  customer_edit($id){
-        $data = model("customer","logic")->get_customer_entity();
-        $customer = model("customer","logic")->get_customer_by_id($id);
-        return view("customer_edit")->assign("data",$data)->assign("customer",$customer);
+        if(!$this->check_post_menu_permission("update_operate")){
+
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
+        }
+        else{
+            $data = model("customer","logic")->get_customer_entity();
+            $customer = model("customer","logic")->get_customer_by_id($id);
+            return view("customer_edit")->assign("data",$data)->assign("customer",$customer);
+        }
+
+
     }
     //客户删除
 
     public function  customer_del($id){
+        if(!$this->check_post_menu_permission("delete_operate")){
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
+        }
+        else{
+            $result = model("customer","logic")->delete_customer($id);
+            if($result){
+                echo "<script> alert(\" ".$result."\"); history.back(-1);</script>";
+            }
+            else{
 
-         $result = model("customer","logic")->delete_customer($id);
-          if($result){
-              echo "<script> alert(\" ".$result."\"); history.back(-1);</script>";
-          }
-          else{
+                $this->redirect("customer_list");
+            }
+        }
 
-              $this->redirect("customer_list");
-          }
 
     }
 
@@ -121,9 +140,16 @@ class Customer extends Base{
     //客户信息查看
 
     public function  customer_des($id){
-        $data = model("customer","logic")->get_customer_entity();
-        $customer = model("customer","logic")->get_customer_by_id($id);
-        return view("customer_des")->assign("data",$data)->assign("customer",$customer);
+
+        if(!$this->check_post_menu_permission("desc_operate")){
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
+        }
+        else {
+            $data = model("customer", "logic")->get_customer_entity();
+            $customer = model("customer", "logic")->get_customer_by_id($id);
+            return view("customer_des")->assign("data", $data)->assign("customer", $customer);
+        }
+
     }
 
 

@@ -33,13 +33,19 @@ class Project extends Base {
     //项目添加
     public function project_add(){
 
-        $data = model("project","logic")->get_project_total_entity();
-        //所有部门
-        $departments = model("department","logic")->get_departments();
-        //获取第一个部门下面所有user
-        $users = model("user","logic")->get_department_users($departments[0]->id);
+        if(!$this->check_post_menu_permission("add_operate")){
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
+        }
+        else {
 
-        return view("project_add")->assign("data",$data)->assign("departments",$departments)->assign("users",$users);
+            $data = model("project", "logic")->get_project_total_entity();
+            //所有部门
+            $departments = model("department", "logic")->get_departments();
+            //获取第一个部门下面所有user
+            $users = model("user", "logic")->get_department_users($departments[0]->id);
+
+            return view("project_add")->assign("data", $data)->assign("departments", $departments)->assign("users", $users);
+        }
     }
 
 
@@ -73,24 +79,35 @@ class Project extends Base {
     //项目修改
 
     public function  project_edit($id){
-        //获得一条项目信息
-        $project = model("project","logic")->get_project($id);
 
-        $data = model("project","logic")->get_project_total_entity();
-        //所有部门
-        $departments = model("department","logic")->get_departments();
-        //获取第一个部门下面所有user
-        $users = model("user","logic")->get_department_users($departments[0]->id);
-        return view("project_edit")->assign(["data"=>$data,"project"=>$project,"departments"=>$departments,"users"=>$users]);
+        if(!$this->check_post_menu_permission("update_operate")){
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
+        }
+        else {
+            //获得一条项目信息
+            $project = model("project", "logic")->get_project($id);
+
+            $data = model("project", "logic")->get_project_total_entity();
+            //所有部门
+            $departments = model("department", "logic")->get_departments();
+            //获取第一个部门下面所有user
+            $users = model("user", "logic")->get_department_users($departments[0]->id);
+            return view("project_edit")->assign(["data" => $data, "project" => $project, "departments" => $departments, "users" => $users]);
+        }
     }
 
 
     //项目删除
 
     public function  project_del($id){
-         model("project","logic")->delete_project($id);
+        if(!$this->check_post_menu_permission("delete_operate")){
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
+        }
+        else {
+            model("project", "logic")->delete_project($id);
 
-         $this->redirect("project_list");
+            $this->redirect("project_list");
+        }
 
     }
 
@@ -129,15 +146,21 @@ class Project extends Base {
     //项目信息查看
 
     public function  project_des($id){
-        //获得一条项目信息
-        $project = model("project","logic")->get_project($id);
-        $customer = model("customer","logic")->get_customer_by_id($project['customer_id']);
-        $data = model("project","logic")->get_project_total_entity();
-        //所有部门
-        $departments = model("department","logic")->get_departments();
-        //获取第一个部门下面所有user
-        $users = model("user","logic")->get_department_users($departments[0]->id);
-        return view("project_des")->assign(["data"=>$data,"project"=>$project,"customer"=>$customer,"departments"=>$departments,"users"=>$users]);
+
+        if(!$this->check_post_menu_permission("desc_operate")){
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
+        }
+        else {
+            //获得一条项目信息
+            $project = model("project", "logic")->get_project($id);
+            $customer = model("customer", "logic")->get_customer_by_id($project['customer_id']);
+            $data = model("project", "logic")->get_project_total_entity();
+            //所有部门
+            $departments = model("department", "logic")->get_departments();
+            //获取第一个部门下面所有user
+            $users = model("user", "logic")->get_department_users($departments[0]->id);
+            return view("project_des")->assign(["data" => $data, "project" => $project, "customer" => $customer, "departments" => $departments, "users" => $users]);
+        }
     }
 
 

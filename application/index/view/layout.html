@@ -287,7 +287,7 @@
                         {if condition="$base_menu.url"/}
 
                             <li style="padding-left:<?php echo $base_menu['count'];?>px">
-                                <a href="{:url($base_menu.url)}" class="waves-effect {$base_menu.pid}" id="{$base_menu.id}">{$base_menu.title}  </a>
+                                <a href="{:url($base_menu.url)}?mid={$base_menu.id}" class="waves-effect {$base_menu.pid}" id="{$base_menu.id}">{$base_menu.title}  </a>
                             </li>
                          {else/}
 
