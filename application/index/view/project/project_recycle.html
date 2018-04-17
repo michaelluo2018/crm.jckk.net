@@ -23,10 +23,10 @@
                     <div class="d-flex">
                         <div class="mr-auto">
                             <div class="form-group">
-                                <a  class="btn btn-primary btn-sm" href="{:url('index/project/project_add')}">
+                                <a  class="btn btn-primary btn-sm" href="{:url('index/project/project_add')}?mid={$mid}">
                                     <i class="ace-icon fa fa-plus" aria-hidden="true"></i> 添加项目
                                 </a>
-                                <a  class="btn btn-info btn-sm" href="{:url('index/project/project_list')}">
+                                <a  class="btn btn-info btn-sm" href="{:url('index/project/project_list')}?mid={$mid}">
                                     <i class="ace-icon fa fa-list" aria-hidden="true"></i> 项目列表
                                 </a>
                             </div>
@@ -81,8 +81,8 @@
                         <td>{$project.payment_type}</td>
                         <td>{$project.payment_status}</td>
                         <td>
-                            <a href="javascript:void (0);" onclick="delete_sure('确定要彻底删除此项目吗？','{:url(\'index/project/project_del_true\')}?id={$project.id}')" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="彻底删除"><i class="ti-close" aria-hidden="true"></i></a>
-                            <a href="{:url('index/project/project_back')}?id={$project.id}" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="还原"><i class="ti-pencil" aria-hidden="true"></i></a>
+                            <a href="javascript:void (0);" onclick="delete_sure('确定要彻底删除此项目吗？','{:url(\'index/project/project_del_true\')}?id={$project.id}&mid={$mid}')" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="彻底删除"><i class="ti-close" aria-hidden="true"></i></a>
+                            <a href="{:url('index/project/project_back')}?id={$project.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="还原"><i class="ti-pencil" aria-hidden="true"></i></a>
                             <a href="{:url('index/project/project_des')}?id={$project.id}" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
                         </td>
                     </tr>

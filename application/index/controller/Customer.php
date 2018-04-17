@@ -31,16 +31,19 @@ class Customer extends Base{
 
     //还原客户
     public function customer_back($id){
-
-        $result = model("customer","logic")->customer_back($id);
-
-        if(!$result){
-            $this->redirect("customer_recycle");
+        if (!$this->check_post_menu_permission("update_operate")) {
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
         }
-        else{
-            echo "<script>alert(\" " .$result." \"); history.back(-1);</script>";
-        }
+        else {
 
+            $result = model("customer", "logic")->customer_back($id);
+
+            if (!$result) {
+                $this->redirect("customer_recycle");
+            } else {
+                echo "<script>alert(\" " . $result . " \"); history.back(-1);</script>";
+            }
+        }
     }
 
 
@@ -123,13 +126,18 @@ class Customer extends Base{
 
     public function customer_del_true($id){
 
-        $result =  model("customer","logic")->delete_customer_true($id);
-
-        if($result){
-            echo "<script> alert(\" ".$result."\"); history.back(-1);</script>";
+        if (!$this->check_post_menu_permission("delete_operate")) {
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
         }
-        else{
-            $this->redirect("customer_recycle");
+        else {
+
+            $result = model("customer", "logic")->delete_customer_true($id);
+
+            if ($result) {
+                echo "<script> alert(\" " . $result . "\"); history.back(-1);</script>";
+            } else {
+                $this->redirect("customer_recycle");
+            }
         }
     }
 

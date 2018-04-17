@@ -115,28 +115,36 @@ class Project extends Base {
 
     //项目彻底删除
 
-    public function  project_del_true($id){
+    public function  project_del_true($id)
+    {
+        if (!$this->check_post_menu_permission("delete_operate")) {
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
+        }
+        else{
+            model("project", "logic")->project_del_true($id);
 
-         model("project","logic")->project_del_true($id);
-
-         $this->redirect("project_recycle");
+            $this->redirect("project_recycle");
+         }
 
     }
 
     //项目还原
 
     public function  project_back($id){
+        if (!$this->check_post_menu_permission("update_operate")) {
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
+        }
+        else {
 
-         $result = model("project","logic")->project_back($id);
+            $result = model("project", "logic")->project_back($id);
 
-         if($result){
+            if ($result) {
 
-             echo "<script> alert(\" ".$result." \"); history.back(-1);</script>";
-         }
-         else{
-             $this->redirect("project_recycle");
-         }
-
+                echo "<script> alert(\" " . $result . " \"); history.back(-1);</script>";
+            } else {
+                $this->redirect("project_recycle");
+            }
+        }
 
     }
 
