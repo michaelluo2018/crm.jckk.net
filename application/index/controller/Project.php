@@ -59,7 +59,7 @@ class Project extends Base {
             echo "<script> alert('没有权限！');history.back(-1);</script>";
         }
         else {
-
+            
             $data = model("project", "logic")->get_project_total_entity();
             //所有部门
             $departments = model("department", "logic")->get_departments();
