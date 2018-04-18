@@ -4,6 +4,8 @@ use think\Model;
 use think\Config;
 use think\Db;
 use app\index\model\Log;
+use think\Session;
+
 class Customer extends  Model{
 
     protected $table="jckk_customer";
@@ -12,8 +14,9 @@ class Customer extends  Model{
     public function get_customers(){
         return Db::table("jckk_customer")
             ->where("jckk_customer.is_delete","<>",1)
-            ->field(["jckk_customer.*","jckk_contact.contact_name","jckk_contact.position","jckk_contact.sex","jckk_contact.mobile","jckk_contact.email","jckk_contact.qq","jckk_contact.wechat"])
+            ->field(["jckk_customer.*","jckk_user.chinese_name","jckk_contact.contact_name","jckk_contact.position","jckk_contact.sex","jckk_contact.mobile","jckk_contact.email","jckk_contact.qq","jckk_contact.wechat"])
             ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
+            ->join("jckk_user","jckk_user.uid = jckk_customer.create_uid","LEFT")
             ->order("jckk_customer.id","desc")
             ->paginate();
     }
@@ -21,8 +24,9 @@ class Customer extends  Model{
      public function get_customers_recycle(){
         return Db::table("jckk_customer")
             ->where("jckk_customer.is_delete",1)
-            ->field(["jckk_customer.*","jckk_contact.contact_name","jckk_contact.position","jckk_contact.sex","jckk_contact.mobile","jckk_contact.email","jckk_contact.qq","jckk_contact.wechat"])
+            ->field(["jckk_customer.*","jckk_user.chinese_name","jckk_contact.contact_name","jckk_contact.position","jckk_contact.sex","jckk_contact.mobile","jckk_contact.email","jckk_contact.qq","jckk_contact.wechat"])
             ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
+            ->join("jckk_user","jckk_user.uid = jckk_customer.create_uid","LEFT")
             ->order("jckk_customer.id","desc")
             ->paginate();
     }
@@ -116,6 +120,7 @@ class Customer extends  Model{
                 $customer->note = $data['note'];
                 $customer->is_delete = 0;
                 $customer->create_time = time();
+                $customer->create_uid = Session::get("uid");
                 if($customer->save()){
                     $customer_log["type"] = Log::ADD_TYPE;
                     $customer_log["before_value"] = "";
@@ -160,7 +165,7 @@ class Customer extends  Model{
             $customer->contact_id = $contact_id;
             $customer->note = trim($data['note']);
             $customer->is_delete = 0;
-            $customer->create_time = time();
+
             if($customer->save()){
                 $customer_log["type"] = Log::UPDATE_TYPE;
                 $customer_log["before_value"] = $before_value;

@@ -4,6 +4,8 @@ use think\Model;
 use think\Config;
 use think\Db;
 use app\index\model\Log;
+use think\Session;
+
 class Project extends Model{
 
     protected $table="jckk_project";
@@ -45,6 +47,7 @@ class Project extends Model{
                 //添加
                 $project = model("project",'model');
                 $project->create_time = time();
+                $project->create_uid = Session::get("uid");
             }
 
         }
@@ -102,12 +105,13 @@ class Project extends Model{
                 ->where("p.is_delete","<>",1)
                 ->where("p.customer_id",$customer_id)
                 ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
-                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","d.department_name"])
+                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
                 ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
                 ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
                 ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
                 ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
                 ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                 ->join("jckk_department d","d.id = eu.department_id","LEFT")
                 ->order("p.id","desc")
                 ->paginate();
@@ -117,12 +121,13 @@ class Project extends Model{
                 ->alias("p")
                 ->where("p.is_delete","<>",1)
                 ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
-                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","d.department_name"])
+                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
                 ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
                 ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
                 ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
                 ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
                 ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                 ->join("jckk_department d","d.id = eu.department_id","LEFT")
                 ->order("p.id","desc")
                 ->paginate();
@@ -140,12 +145,13 @@ class Project extends Model{
                 ->where("p.is_delete",1)
                 ->where("p.customer_id",$customer_id)
                 ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
-                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","d.department_name"])
+                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
                 ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
                 ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
                 ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
                 ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
                 ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                 ->join("jckk_department d","d.id = eu.department_id","LEFT")
                 ->order("p.id","desc")
                 ->paginate();
@@ -155,12 +161,13 @@ class Project extends Model{
                 ->alias("p")
                 ->where("p.is_delete",1)
                 ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
-                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","d.department_name"])
+                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
                 ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
                 ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
                 ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
                 ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
                 ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                 ->join("jckk_department d","d.id = eu.department_id","LEFT")
                 ->order("p.id","desc")
                 ->paginate();
