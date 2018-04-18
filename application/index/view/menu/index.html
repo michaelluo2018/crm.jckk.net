@@ -26,12 +26,16 @@
                     <div class="d-flex">
                         <div class="mr-auto">
                             <div class="form-group">
+                                {if condition="$add_operate"/}
                                 <a id="demo-btn-addrow-menu" class="btn btn-primary btn-sm" href="javascript:void(0)"><i class="icon wb-plus" aria-hidden="true"></i>添加菜单</a>
+                                {else/}
+                                <button type="button" onclick="alert('你没有权限！')" class="btn btn-primary btn-sm" ><i class="icon wb-plus" aria-hidden="true"></i>添加菜单</button>
+                                {/if}
                             </div>
                         </div>
                     </div>
                 </div>
-                <form  action="{:url('index/menu/save_menu')}" method="post">
+                <form  action="{:url('index/menu/save_menu')}?mid={$mid}" method="post">
 
                     <table id="demo-foo-addrow-menu" class="table table-bordered table-hover toggle-circle" data-page-size="20">
                         <thead>
@@ -51,8 +55,16 @@
                             <td><input type="text" id="menu_url" name="url[]" class="form-control" value="{$index_menu.url}"></td>
                             <td><input type="text" id="menu_order" name="menu_order[]" class="form-control" value="{$index_menu.menu_order}" required></td>
                             <td>
+                                {if condition="$delete_operate"/}
                                 <a onclick="delete_sure('删除菜单会一起删除子菜单信息，确定要删除吗？', '{:url(\'index/menu/menu_del\')}?id={$index_menu.id}')"  href="javascript:void(0);" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></a>
+                                {else/}
+                                <button type="button" onclick="alert('你没有权限!')"  class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
+                                {/if}
+                                {if condition="$add_operate"/}
                                 <button type="button"  class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="send_pid('{$index_menu.id}')" data-toggle="modal" data-target="#add-menu" ><i class="ti-plus" data-original-title="添加子菜单" data-toggle="tooltip" aria-hidden="true"></i></button>
+                                {else/}
+                                <button type="button"  class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="alert('你没有权限！')"  ><i class="ti-plus" data-original-title="添加子菜单" data-toggle="tooltip" aria-hidden="true"></i></button>
+                                {/if}
                             </td>
                         </tr>
                         {/volist}
@@ -63,7 +75,11 @@
                         <tr>
                             <td colspan="14">
                                 <div class="text-right">
+                                    {if condition="$delete_operate"/}
                                     <button type="submit" class="btn btn-sm btn-success">保存修改</button></li>
+                                    {else/}
+                                    <button type="button" onclick="alert('你没有权限！')" class="btn btn-sm btn-success">保存修改</button></li>
+                                    {/if}
                                 </div>
                             </td>
                         </tr>
@@ -80,7 +96,7 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                                <form action="{:url('index/menu/save_menu')}" method="post">
+                                <form action="{:url('index/menu/save_menu')}?mid={$mid}" method="post">
                                     <div class="card">
                                         <div class="card-body p-b-0">
                                             <input type="hidden" name="pid" id="child_menu_pid">

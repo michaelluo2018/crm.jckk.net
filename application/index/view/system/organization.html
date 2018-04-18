@@ -266,7 +266,7 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                                <form action="{:url('index/system/save_post')}" method="post">
+                                <form action="{:url('index/system/save_post')}?mid={$mid}" method="post">
                                     <div class="card">
                                         <div class="card-body p-b-0">
                                             <input type="hidden" name="post_pid" id="child_post_pid">
