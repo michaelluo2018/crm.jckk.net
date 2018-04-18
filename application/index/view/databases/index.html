@@ -29,7 +29,7 @@
                     <div class="tab-pane active" id="home7" role="tabpanel">
                         <div class="p-20">
                             <div class="card-body">
-                                <form action="{:url('index/databases/save_database')}" method="post" id="database_form">
+                                <form action="{:url('index/databases/save_database')}?mid={$mid}" method="post" id="database_form">
                                     <div class="form-actions" style="margin-bottom: 15px;">
                                         <button type="button" class="btn  btn-danger back_up"> <i class=" ace-icon fa fa-database bigger-110"></i> 备份当前数据</button>
                                     </div>
@@ -98,7 +98,7 @@
                                     <td>{$file.time}</td>
                                     <td>
                                         <a  href="javascript:void (0);" onclick="ajax_save_database('{$file.name}','{:url(\'index/databases/restore_database\')}',['还原成功','还原失败'])" >还原</a> |
-                                        <a  href="javascript:void (0);" onclick="delete_sure('确定要删除此备份吗？','{:url(\'index/databases/delete_database\')}?file={$file.name}')">删除</a>
+                                        <a  href="javascript:void (0);" onclick="delete_sure('确定要删除此备份吗？','{:url(\'index/databases/delete_database\')}?file={$file.name}&mid={$mid}')">删除</a>
                                     </td>
                                 </tr>
                                 {/volist}

@@ -30,8 +30,11 @@ class Databases extends Base{
 
 
 
-    public  function  index(){
-
+    public  function  index($mid=null){
+        if($mid){
+            $this->menu_id = $mid;
+            $this->assign("mid",$this->menu_id);
+        }
         $table_infos =  $this->DbManage->getTableStatus();
         //获取所有备份
         $arr_file = array();
@@ -181,15 +184,20 @@ class Databases extends Base{
 
 
 
-    public  function  delete_database($file){
+    public  function  delete_database($file)
+    {
 
+        if (!$this->check_post_menu_permission("delete_operate")) {
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
+        }
+        else{
+            Common::unlink_file((ROOT_PATH . "database" . DS) . $file);
 
-        Common::unlink_file((ROOT_PATH ."database" . DS) .$file);
+            //记录日志
+            $this->write_database_log(Log::DELETE_BACK_FILE, $file, time());
 
-        //记录日志
-        $this->write_database_log( Log::DELETE_BACK_FILE ,$file,time());
-
-        $this->redirect("index");
+            $this->redirect("index", ["mid" => $this->menu_id]);
+        }
     }
 
 
