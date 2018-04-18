@@ -49,11 +49,8 @@ class Base extends Controller{
         $this->assign("total_project",$total_project);
 
         $this->menu_id = Request::instance()->get("mid");
-
         $this->assign("mid",$this->menu_id);
         $this->assign("customer_mid",$this->get_mid_by_url("index/customer/customer_list"));
-
-
 
 
     }
@@ -187,7 +184,7 @@ class Base extends Controller{
     }
 
     public function get_mid_by_url($url){
-       $id =  model("menu")->where("url","like",$url)->column("id");
+       $id =  model("menu")->where("url","like",'%'.$url.'%')->column("id");
        return $id[0];
     }
 
