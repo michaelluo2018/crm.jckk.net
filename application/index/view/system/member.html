@@ -24,7 +24,7 @@
                     <div class="d-flex">
                         <div class="mr-auto">
                             <div class="form-group">
-                                <a id="demo-btn-addrow" class="btn btn-primary btn-sm" href="member_add.html?mid={$mid}"><i class="icon wb-plus" aria-hidden="true"></i>添加用户</a>
+                                <a  class="btn btn-primary btn-sm" href="member_add.html?mid={$mid}"><i class="icon wb-plus" aria-hidden="true"></i>添加用户</a>
                             </div>
                         </div>
                         <div class="ml-auto">
@@ -64,7 +64,7 @@
                         <td>
                             <a href="javascript:void(0);" onclick="delete_sure('确定要删除吗？', '{:url(\'index/user/user_del\')}?id={$user.uid}&mid={$mid}')"  class="btn btn-sm btn-icon btn-pure btn-outline " title="删除"><i class="ti-close" aria-hidden="true"></i></a>
                             <a href="{:url('index/system/user_edit')}?id={$user.uid}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline" title="修改"><i class="ti-pencil" aria-hidden="true"></i></a>
-                            <a href="{:url('index/system/user_des')}?id={$user.uid}" class="btn btn-sm btn-icon btn-pure btn-outline" title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
+                            <a href="{:url('index/system/user_des')}?id={$user.uid}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline" title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
                         </td>
                     </tr>
                     {/volist}

@@ -156,7 +156,11 @@ class System extends Base{
 
 
 
-    public function system_settings(){
+    public function system_settings($mid =null){
+        if($mid){
+            $this->menu_id = $mid;
+            $this->assign("mid",$this->menu_id);
+        }
         $settings = model("setting","logic")->get_setting();
 
         return view("system_settings")->assign("settings",$settings);
@@ -180,7 +184,7 @@ class System extends Base{
                 model("setting", "logic")->save_settings($files, true);
             }
 
-            return $this->redirect("system_settings");
+            return $this->redirect("system_settings",["mid"=>$this->menu_id]);
         }
     }
 
