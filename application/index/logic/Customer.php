@@ -11,24 +11,53 @@ class Customer extends  Model{
     protected $table="jckk_customer";
 
     //获取所有客户
-    public function get_customers(){
-        return Db::table("jckk_customer")
-            ->where("jckk_customer.is_delete","<>",1)
-            ->field(["jckk_customer.*","jckk_user.chinese_name","jckk_contact.contact_name","jckk_contact.position","jckk_contact.sex","jckk_contact.mobile","jckk_contact.email","jckk_contact.qq","jckk_contact.wechat"])
-            ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
-            ->join("jckk_user","jckk_user.uid = jckk_customer.create_uid","LEFT")
-            ->order("jckk_customer.id","desc")
-            ->paginate();
+    public function get_customers($create_uids = null){
+
+        if($create_uids){
+            return Db::table("jckk_customer")
+                ->where("jckk_customer.is_delete","<>",1)
+                ->whereIn("jckk_customer.create_uid",$create_uids)
+                ->field(["jckk_customer.*","jckk_user.chinese_name","jckk_contact.contact_name","jckk_contact.position","jckk_contact.sex","jckk_contact.mobile","jckk_contact.email","jckk_contact.qq","jckk_contact.wechat"])
+                ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
+                ->join("jckk_user","jckk_user.uid = jckk_customer.create_uid","LEFT")
+                ->order("jckk_customer.id","desc")
+                ->paginate();
+        }
+        else{
+            return Db::table("jckk_customer")
+                ->where("jckk_customer.is_delete","<>",1)
+                ->field(["jckk_customer.*","jckk_user.chinese_name","jckk_contact.contact_name","jckk_contact.position","jckk_contact.sex","jckk_contact.mobile","jckk_contact.email","jckk_contact.qq","jckk_contact.wechat"])
+                ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
+                ->join("jckk_user","jckk_user.uid = jckk_customer.create_uid","LEFT")
+                ->order("jckk_customer.id","desc")
+                ->paginate();
+        }
+
     }
 
-     public function get_customers_recycle(){
-        return Db::table("jckk_customer")
-            ->where("jckk_customer.is_delete",1)
-            ->field(["jckk_customer.*","jckk_user.chinese_name","jckk_contact.contact_name","jckk_contact.position","jckk_contact.sex","jckk_contact.mobile","jckk_contact.email","jckk_contact.qq","jckk_contact.wechat"])
-            ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
-            ->join("jckk_user","jckk_user.uid = jckk_customer.create_uid","LEFT")
-            ->order("jckk_customer.id","desc")
-            ->paginate();
+     public function get_customers_recycle($create_uids = null){
+
+        if($create_uids){
+            return Db::table("jckk_customer")
+                ->where("jckk_customer.is_delete",1)
+                ->whereIn("jckk_customer.create_uid",$create_uids)
+                ->field(["jckk_customer.*","jckk_user.chinese_name","jckk_contact.contact_name","jckk_contact.position","jckk_contact.sex","jckk_contact.mobile","jckk_contact.email","jckk_contact.qq","jckk_contact.wechat"])
+                ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
+                ->join("jckk_user","jckk_user.uid = jckk_customer.create_uid","LEFT")
+                ->order("jckk_customer.id","desc")
+                ->paginate();
+        }
+        else{
+            return Db::table("jckk_customer")
+                ->where("jckk_customer.is_delete",1)
+                ->field(["jckk_customer.*","jckk_user.chinese_name","jckk_contact.contact_name","jckk_contact.position","jckk_contact.sex","jckk_contact.mobile","jckk_contact.email","jckk_contact.qq","jckk_contact.wechat"])
+                ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
+                ->join("jckk_user","jckk_user.uid = jckk_customer.create_uid","LEFT")
+                ->order("jckk_customer.id","desc")
+                ->paginate();
+        }
+
+
     }
 
 

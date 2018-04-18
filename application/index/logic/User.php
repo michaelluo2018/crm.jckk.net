@@ -96,7 +96,7 @@ class User extends Model{
 
         $users=  Db::table("jckk_user")
             ->where("jckk_user.is_delete","<>",1)
-            ->field(["jckk_user.*","jckk_department.department_name","jckk_post.post_name"])
+            ->field(["jckk_user.*","jckk_department.department_name","jckk_post.post_name","jckk_post.path as post_path"])
             ->join("jckk_department","jckk_department.id = jckk_user.department_id",'LEFT')
             ->join("jckk_post","jckk_post.id=jckk_user.post_id",'LEFT')
             ->order("jckk_user.uid","desc")
@@ -110,7 +110,7 @@ class User extends Model{
 
         $user=  Db::table("jckk_user")
             ->where("jckk_user.uid",$id)
-            ->field(["jckk_user.*","jckk_department.department_name","jckk_post.post_name"])
+            ->field(["jckk_user.*","jckk_department.department_name","jckk_post.post_name","jckk_post.path as post_path"])
             ->join("jckk_department","jckk_department.id = jckk_user.department_id",'LEFT')
             ->join("jckk_post","jckk_post.id=jckk_user.post_id",'LEFT')
             ->find();

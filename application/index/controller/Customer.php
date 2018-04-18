@@ -12,7 +12,18 @@ class Customer extends Base{
             $this->menu_id = $mid;
             $this->assign("mid",$this->menu_id);
         }
-        $data = model("customer","logic")->get_customers();
+
+        $create_uids = $this->check_post_menu_range_permission();
+
+
+        if($create_uids == "all"){
+            $data = model("customer","logic")->get_customers();
+        }
+
+        else{
+            $data = model("customer","logic")->get_customers($create_uids);
+        }
+
 
         return  view("customer_list")->assign("data",$data);
     }
@@ -22,8 +33,15 @@ class Customer extends Base{
 
     public function customer_recycle(){
 
+        $create_uids = $this->check_post_menu_range_permission();
 
-        $data = model("customer","logic")->get_customers_recycle();
+        if($create_uids == "all") {
+
+            $data = model("customer", "logic")->get_customers_recycle();
+        }
+        else{
+            $data = model("customer", "logic")->get_customers_recycle($create_uids);
+        }
 
         return  view("customer_recycle")->assign("data",$data);
     }
