@@ -7,9 +7,12 @@ use think\Request;
 
 class Project extends Base {
     //项目列表
-    public function project_list(){
+    public function project_list($mid=null){
 
-
+        if($mid){
+            $this->menu_id = $mid;
+            $this->assign("mid",$this->menu_id);
+        }
         $projects = model("project","logic")->get_projects();
 
         return  view("project_list")->assign("projects",$projects);
@@ -17,8 +20,11 @@ class Project extends Base {
     }
 
      //项目回收站
-    public function project_recycle(){
-
+    public function project_recycle($mid=null){
+        if($mid){
+            $this->menu_id = $mid;
+            $this->assign("mid",$this->menu_id);
+        }
 
         $projects = model("project","logic")->project_recycle();
 
@@ -69,7 +75,7 @@ class Project extends Base {
 
         $res = model("project","logic")->save_project($data);
         if($res){
-            $this->redirect("project_list");
+            $this->redirect("project_list",["mid"=>$this->menu_id]);
         }
     }
 
@@ -107,7 +113,7 @@ class Project extends Base {
         else {
             model("project", "logic")->delete_project($id);
 
-            $this->redirect("project_list");
+            $this->redirect("project_list",["mid"=>$this->menu_id]);
         }
 
     }
@@ -123,7 +129,7 @@ class Project extends Base {
         else{
             model("project", "logic")->project_del_true($id);
 
-            $this->redirect("project_recycle");
+            $this->redirect("project_recycle",["mid"=>$this->menu_id]);
          }
 
     }
@@ -142,7 +148,7 @@ class Project extends Base {
 
                 echo "<script> alert(\" " . $result . " \"); history.back(-1);</script>";
             } else {
-                $this->redirect("project_recycle");
+                $this->redirect("project_recycle",["mid"=>$this->menu_id]);
             }
         }
 

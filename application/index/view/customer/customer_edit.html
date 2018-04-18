@@ -21,7 +21,7 @@
                 <h4 class="m-b-0 text-white">修改客户</h4>
             </div>
             <div class="card-body">
-                <form action="{:url('index/index/customer/save_customer')}" method="post">
+                <form action="{:url('index/index/customer/save_customer')}?mid={$mid}" method="post">
                     <input type="hidden" name="customer_id" value="{$customer.id}">
                     <input type="hidden" name="contact_id" value="{$customer.contact_id}">
                     <div class="form-body">
