@@ -163,7 +163,7 @@
                                         {volist name="organization_menus" id="organization_menu"}
                                         <tr>
                                             <input type="hidden" name="menu_id[]" value="{$organization_menu.id}" class="menu_id">
-                                            <td>{$organization_menu.title}</td>
+                                            <td style="padding-left:<?php echo $organization_menu['count'];?>px;"><span style="margin-left:10px;"></span>{$organization_menu.title}</td>
                                             <td>
                                                 <label class="custom-control custom-checkbox">
                                                     <input  type="checkbox" name="pre_add[{$organization_menu.id}]"  class="custom-control-input table_name add_{$organization_menu.id}" >

@@ -285,18 +285,18 @@
                     <ul>
                         {volist name="base_menus['menus']" id="base_menu"/}
                         {if condition="$base_menu.url"/}
-                            <li style="padding-left:<?php echo $base_menu['count'];?>px;" class="waves-effect  {$base_menu.pid}" id="{$base_menu.id}">
+                            <li style="padding-left:<?php echo $base_menu['count'];?>px;" class="hide-menu {$base_menu.pid}" id="{$base_menu.id}">
                                 {if condition="$mid eq $base_menu.id "/}
-                                        <a href="{:url($base_menu.url)}?mid={$base_menu.id}" style="color: #26c6da" >{$base_menu.title}  </a>
+                                    <a href="{:url($base_menu.url)}?mid={$base_menu.id}"  style="color: #26c6da" >{$base_menu.title}  </a>
                                 {else/}
-                                    <a href="{:url($base_menu.url)}?mid={$base_menu.id}"  >{$base_menu.title}  </a>
+                                    <a href="{:url($base_menu.url)}?mid={$base_menu.id}"> {$base_menu.title}  </a>
                                 {/if}
                             </li>
                          {else/}
 
-                            <li class="active  {$base_menu.pid}" id="{$base_menu.id}" style="padding-left:<?php echo $base_menu['count'];?>px;">
-                                <a href="javascript:void (0);"  onclick="show_hide_menu('{$base_menu.id}')"  class="has-arrow" >
-                                  {$base_menu.title}
+                            <li class="active hide-menu {$base_menu.pid}" id="{$base_menu.id}" style="padding-left:<?php echo $base_menu['count'];?>px;">
+                                <a href="javascript:void (0);"  onclick="show_hide_menu('{$base_menu.id}')"  class="has-arrow">
+                                   {$base_menu.title}
                                 </a>
                             </li>
                         {/if}
