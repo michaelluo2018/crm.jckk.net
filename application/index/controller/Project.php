@@ -13,7 +13,15 @@ class Project extends Base {
             $this->menu_id = $mid;
             $this->assign("mid",$this->menu_id);
         }
-        $projects = model("project","logic")->get_projects();
+
+        $create_uids = $this->check_post_menu_range_permission();
+
+        if($create_uids == "all") {
+
+            $projects = model("project", "logic")->get_projects();
+        }else{
+            $projects = model("project", "logic")->get_projects("",$create_uids);
+        }
 
         return  view("project_list")->assign("projects",$projects);
 
@@ -25,8 +33,15 @@ class Project extends Base {
             $this->menu_id = $mid;
             $this->assign("mid",$this->menu_id);
         }
+        $create_uids = $this->check_post_menu_range_permission();
 
-        $projects = model("project","logic")->project_recycle();
+        if($create_uids == "all") {
+
+            $projects = model("project", "logic")->project_recycle();
+
+        }else{
+            $projects = model("project", "logic")->project_recycle("",$create_uids);
+        }
 
         return  view("project_recycle")->assign("projects",$projects);
 
