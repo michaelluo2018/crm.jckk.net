@@ -26,12 +26,16 @@
                     <div class="d-flex">
                         <div class="mr-auto">
                             <div class="form-group">
+                                {if condition="$add_operate"/}
                                 <a id="demo-btn-addrow" class="btn btn-primary btn-sm" href="javascript:void(0)"><i class="icon wb-plus" aria-hidden="true"></i>添加部门</a>
+                                {else/}
+                                <button  class="btn btn-primary btn-sm"  onclick="alert('你没有权限！')"><i class="icon wb-plus" aria-hidden="true"></i>添加部门</button>
+                                {/if}
                             </div>
                         </div>
                     </div>
                 </div>
-                <form action="{:url('index/system/save_department')}" method="post">
+                <form action="{:url('index/system/save_department')}?mid={$mid}" method="post">
                     <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" >
                         <thead>
                         <tr class="text-align">
@@ -52,7 +56,11 @@
                             <td><input type="text" id="department_name" name="department_name[]" class="form-control" value="{$department.department_name}" required></td>
                             <td><input type="text" id="listorder" name="listorder[]" class="form-control" value="{$department.sort}" required></td>
                             <td>
+                                {if condition="$delete_operate"/}
                                 <a  onclick="delete_sure('删除部门会一起删除部门下所有岗位信息，确定要删除吗？', '{:url(\'index/system/department_del\')}?id={$department.id}')"  href="javascript:void(0);" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip"  data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></a>
+                                {else/}
+                                <button type="button"  class="btn btn-sm btn-icon btn-pure btn-outline" onclick="alert('你没有权限！');" data-toggle="tooltip"  data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
+                                {/if}
                                 <a href="{:url('index/system/organization')}?id={$department.id}" class="btn btn-sm btn-icon btn-pure btn-outline manage_post" data-toggle="tooltip" data-original-title="岗位管理"><i class="ti-settings" aria-hidden="true"></i></a>
                             </td>
                         </tr>
@@ -63,7 +71,11 @@
                         <tr>
                             <td colspan="14">
                                 <div class="text-right">
+                                    {if condition="$update_operate"/}
                                     <button type="submit" class="btn btn-sm btn-success">保存修改</button></li>
+                                    {else/}
+                                    <button type="button" class="btn btn-sm btn-success" onclick="alert('你没有权限！');">保存修改</button></li>
+                                    {/if}
                                 </div>
                             </td>
                         </tr>
@@ -83,12 +95,16 @@
                     <div class="d-flex">
                         <div class="mr-auto">
                             <div class="form-group">
+                                {if condition="$add_operate"/}
                                 <a id="demo-btn-addrow-department" class="btn btn-primary btn-sm" href="javascript:void()"><i class="icon wb-plus" aria-hidden="true"></i>添加岗位</a>
+                                {else/}
+                                <button type="button" class="btn btn-primary btn-sm" onclick="alert('你没有权限!')"><i class="icon wb-plus" aria-hidden="true"></i>添加岗位</button>
+                                {/if}
                             </div>
                         </div>
                     </div>
                 </div>
-                <form  action="{:url('index/system/save_post')}" method="post">
+                <form  action="{:url('index/system/save_post')}?mid={$mid}" method="post">
                     <input type="hidden" name="post_department_id" value="{$data['department_id']}">
                     <table id="demo-foo-addrow-department" class="table table-bordered table-hover toggle-circle" >
                         <thead>
@@ -106,9 +122,16 @@
                             <td style="padding-left:<?php echo $post['count'];?>px"><input type="text" id="department_name" name="department_name[]" class="form-control"  value="{$post.post_name}"></td>
                             <td><input type="text" id="listorder" name="listorder[]" class="form-control" value="{$post.sort}"></td>
                             <td>
+                                {if condition="$delete_operate"/}
                                 <a onclick="delete_sure('删除岗位会一起删除岗位下属信息，确定要删除吗？', '{:url(\'index/system/post_del\')}?id={$post.id}&depart_id={$data[\'department_id\']}')"  href="javascript:void(0);" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></a>
-
+                                {else/}
+                                <button type="button" onclick="alert('你没有权限!')"  class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
+                                {/if}
+                                {if condition="$add_operate"/}
                                 <button type="button"  class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="send_pid('{$post.id}','{$data[\'department_id\']}')" data-toggle="modal" data-target="#add-post" ><i class="ti-plus" data-original-title="添加子岗位" data-toggle="tooltip" aria-hidden="true"></i></button>
+                                {else/}
+                                <button type="button"  class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="alert('你没有权限！')"  ><i class="ti-plus" data-original-title="添加子岗位" data-toggle="tooltip" aria-hidden="true"></i></button>
+                                {/if}
                                 <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline"  onclick="send_post('{$post.id}')" data-toggle="modal" data-target="#add-contact"><i class="ti-settings" data-original-title="授权" data-toggle="tooltip" aria-hidden="true"></i></button>
                             </td>
                         </tr>
@@ -120,7 +143,11 @@
                         <tr>
                             <td colspan="14">
                                 <div class="text-right">
+                                    {if condition="$update_operate"/}
                                     <button type="submit" class="btn btn-sm btn-success">保存修改</button></li>
+                                    {else/}
+                                    <button type="button" class="btn btn-sm btn-success" onclick="alert('你没有权限！')">保存修改</button></li>
+                                    {/if}
                                 </div>
                             </td>
                         </tr>

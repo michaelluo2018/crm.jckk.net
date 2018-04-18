@@ -8,7 +8,12 @@ use think\Request;
 
 class System extends Base{
 
-    public function organization($id = null){
+    public function organization($id = null,$mid=null){
+
+        if($mid){
+            $this->menu_id = $mid;
+            $this->assign("mid",$this->menu_id);
+        }
 
         $data= model("department","logic")->get_organization($id);
 
@@ -19,6 +24,15 @@ class System extends Base{
         $this->assign("organization_menus",$organization_menus);
 
         $this->assign("permission_range",$permission_range);
+
+        //权限问题：部门和岗位添加，修改，删除
+        $update_operate = $this->check_post_menu_permission("update_operate");
+        $add_operate = $this->check_post_menu_permission("add_operate");
+        $delete_operate = $this->check_post_menu_permission("delete_operate");
+
+        $this->assign("update_operate",$update_operate);
+        $this->assign("add_operate",$add_operate);
+        $this->assign("delete_operate",$delete_operate);
 
         return view("organization")->assign("data",$data);
     }
@@ -35,7 +49,7 @@ class System extends Base{
             $data = Request::instance()->post();
 
             model("department", "logic")->save_department($data);
-            $this->redirect("organization");
+            $this->redirect("organization",["mid"=>$this->menu_id]);
         }
     }
 
@@ -47,7 +61,7 @@ class System extends Base{
          } else {
              $data = Request::instance()->post();
              model("post", "logic")->save_post($data);
-             $this->redirect("organization", ["id" => $data['post_department_id']]);
+             $this->redirect("organization", ["id" => $data['post_department_id'],"mid"=>$this->menu_id]);
 
          }
      }
