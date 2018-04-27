@@ -2,7 +2,9 @@
 {block name="title"/}
     <title>添加项目 - 客户管理系统</title>
 {/block}
+{block name="css"/}
 
+{/block}
 {block name="breadcrumb"/}
     <div class="col-md-5 col-8 align-self-center">
                     <h3 class="text-themecolor">工作台</h3>
@@ -26,7 +28,7 @@
                             <h3 class="card-title">客户信息</h3>
                             <hr>
                             <div class="row p-t-20">
-                                <div class="col-md-12">
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label class="control-label"><span class="text-danger"> * </span>客户全称</label>
                                         <input type="text"  class="form-control customer_name" placeholder="请填写公司名称"  required autocomplete="off">
@@ -55,10 +57,19 @@
                                 </div>
 
                             </div>
+
+
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label class="control-label">签约公司名称</label>
+                                        <input type="text"  class="form-control" placeholder="签约公司名称" name="company_name">
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
+                            </div>
                             <hr>
-
-
-
                             <div class="row">
                                 <div class="col-md-3 ">
                                     <div class="form-group">
@@ -184,6 +195,9 @@
                                 </div>
                                 <!--/span-->
                             </div>
+
+
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -195,20 +209,33 @@
                                         </select>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row pay_type_money">
                                 <!--/span-->
+                                <div class="col-md-6" >
+                                    <div class="form-group">
+                                        <label><span class="text-danger"> * </span>月回款金额</label>
+                                        <input type="text"  class="form-control " placeholder="请输入月回款金额" required name="month_money" >
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
+
+                                <!--/span-->
+                            </div>
+
+
+
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label><span class="text-danger"> * </span>回款状态</label>
                                         <select class="form-control custom-select" required name="payment_status">
                                             {volist name="data['payment_status']" id="payment_status"}
-                                                <option value="{$payment_status}">{$payment_status}</option>
+                                            <option value="{$payment_status}">{$payment_status}</option>
                                             {/volist}
                                         </select>
                                     </div>
                                 </div>
-                                <!--/span-->
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label><span class="text-danger"> * </span>毛利润率</label>
@@ -219,6 +246,9 @@
                                         <small class="form-control-feedback"> </small>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
+
                                 <!--/span-->
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -228,9 +258,15 @@
                                     </div>
                                 </div>
                                 <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>成本支出备注</label>
+                                        <input type="text"  class="form-control" placeholder="请填写成本支出备注" name="cost_note" >
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="row">
-                            </div>
+
                             <div class="form-actions">
                                 <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
                                 <button type="reset" class="btn btn-inverse">重置</button>

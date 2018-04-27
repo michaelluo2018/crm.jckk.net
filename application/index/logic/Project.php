@@ -51,6 +51,17 @@ class Project extends Model{
             }
 
         }
+
+        $project->month_money = null;
+        $project->quarter_money1 = null;
+        $project->quarter_money2 = null;
+        $project->quarter_money3 = null;
+        $project->quarter_money4 = null;
+        $project->project_money1 = null;
+        $project->project_money2 = null;
+        $project->project_money3 = null;
+
+
         $project->project_name =$project_name;
         $project->customer_id = $customer_id;
         $project->executor_uid = trim($data['executor_uid']);
@@ -65,7 +76,36 @@ class Project extends Model{
         $project->payment_status = trim($data['payment_status']);
         $project->rate = trim($data['rate']);
         $project->cost = trim($data['cost']);
+        $project->cost_note = trim($data['cost_note']);
+        $project->company_name = trim($data['company_name']);
         $project->is_delete = 0;
+
+        if(isset($data['month_money'])){
+            $project->month_money =$data['month_money'];
+        }
+        if(isset($data['quarter_money1'])){
+            $project->quarter_money1 =$data['quarter_money1'];
+        }
+        if(isset($data['quarter_money2'])){
+            $project->quarter_money2 =$data['quarter_money2'];
+        }
+        if(isset($data['quarter_money3'])){
+            $project->quarter_money3 =$data['quarter_money3'];
+        }
+        if(isset($data['quarter_money4'])){
+            $project->quarter_money4 =$data['quarter_money4'];
+        }
+
+        if(isset($data['project_money1'])){
+            $project->project_money1 =$data['project_money1'];
+        }
+
+        if(isset($data['project_money2'])){
+            $project->project_money2 =$data['project_money2'];
+        }
+        if(isset($data['project_money3'])){
+            $project->project_money3 =$data['project_money3'];
+        }
 
         if($project->save()){
             //处理日志
