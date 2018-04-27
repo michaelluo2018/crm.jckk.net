@@ -22,7 +22,7 @@
     <!--This page css - Morris CSS -->
     <link href="__STATIC__/assets/plugins/c3-master/c3.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="__STATIC__/css/style.css" rel="stylesheet">
+    <link href="__STATIC__/css/style.css?t=1" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     {if condition="isset($setting['system_theme'])"/}
     <link href="{$setting['system_theme']}" id="theme" rel="stylesheet">
@@ -263,7 +263,7 @@
 
                 <!-- User profile image -->
                 {if condition="$user_info['heard_img']"/}
-                    <div class="profile-img"> <img src="{$user_info.heard_img}" alt="user" /> </div>
+                    <div class="profile-img"> <img src="{$user_info.heard_img}" alt="user" width="100%"/> </div>
                 {else/}
                     <div class="profile-img"> <img src="__STATIC__/assets/images/users/profile.png" alt="user" /> </div>
                 {/if}
