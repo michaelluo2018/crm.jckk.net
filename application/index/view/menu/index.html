@@ -56,7 +56,7 @@
                             <td><input type="text" id="menu_order" name="menu_order[]" class="form-control" value="{$index_menu.menu_order}" required></td>
                             <td>
                                 {if condition="$delete_operate"/}
-                                <a onclick="delete_sure('删除菜单会一起删除子菜单信息，确定要删除吗？', '{:url(\'index/menu/menu_del\')}?id={$index_menu.id}')"  href="javascript:void(0);" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></a>
+                                <a onclick="delete_sure('删除菜单会一起删除子菜单信息，确定要删除吗？', '{:url(\'index/menu/menu_del\')}?id={$index_menu.id}&mid={$mid}')"  href="javascript:void(0);" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></a>
                                 {else/}
                                 <button type="button" onclick="alert('你没有权限!')"  class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
                                 {/if}
