@@ -4,9 +4,9 @@
                         <div class="form-group">
                                 <label><span class="text-danger"> * </span>月回款金额</label>
                                 {if condition="isset($project)"/}
-                                <input type="text"  class="form-control " value="{$project.month_money}" required name="month_money" >
+                                <input type="text"  class="form-control check_content_num" value="{$project.month_money}" required name="month_money" >
                                 {else/}
-                                <input type="text"  class="form-control " placeholder="请输入月回款金额" required name="month_money" >
+                                <input type="text"  class="form-control check_content_num" placeholder="请输入月回款金额" required name="month_money" >
                                 {/if}
                                 <small class="form-control-feedback"> </small>
                         </div>
@@ -19,9 +19,9 @@
                                 <div class="form-group">
                                         <label><span class="text-danger"> * </span>第一季度回款金额</label>
                                         {if condition="isset($project)"/}
-                                        <input type="text"  class="form-control " value="{$project.quarter_money1}" required name="quarter_money1" >
+                                        <input type="text"  class="form-control check_content_num" value="{$project.quarter_money1}" required name="quarter_money1" >
                                         {else/}
-                                        <input type="text"  class="form-control " placeholder="请输入第一季度回款金额" required name="quarter_money1" >
+                                        <input type="text"  class="form-control check_content_num" placeholder="请输入第一季度回款金额" required name="quarter_money1" >
                                         {/if}
                                         <small class="form-control-feedback"> </small>
                                 </div>
@@ -30,9 +30,9 @@
                                 <div class="form-group">
                                         <label><span class="text-danger"> * </span>第二季度回款金额</label>
                                         {if condition="isset($project)"/}
-                                        <input type="text"  class="form-control " value="{$project.quarter_money2}" required name="quarter_money2" >
+                                        <input type="text"  class="form-control check_content_num" value="{$project.quarter_money2}" required name="quarter_money2" >
                                         {else/}
-                                        <input type="text"  class="form-control " placeholder="请输入第二季度回款金额" required name="quarter_money2" >
+                                        <input type="text"  class="form-control check_content_num" placeholder="请输入第二季度回款金额" required name="quarter_money2" >
                                         {/if}
 
                                         <small class="form-control-feedback"> </small>
@@ -42,9 +42,9 @@
                                 <div class="form-group">
                                         <label><span class="text-danger"> * </span>第三季度回款金额</label>
                                         {if condition="isset($project)"/}
-                                        <input type="text"  class="form-control " value="{$project.quarter_money3}" required name="quarter_money3" >
+                                        <input type="text"  class="form-control check_content_num" value="{$project.quarter_money3}" required name="quarter_money3" >
                                         {else/}
-                                        <input type="text"  class="form-control " placeholder="请输入第三季度回款金额" required  name="quarter_money3" >
+                                        <input type="text"  class="form-control check_content_num" placeholder="请输入第三季度回款金额" required  name="quarter_money3" >
                                         {/if}
 
                                         <small class="form-control-feedback"> </small>
@@ -54,9 +54,9 @@
                                 <div class="form-group">
                                         <label><span class="text-danger"> * </span>第四季度回款金额</label>
                                         {if condition="isset($project)"/}
-                                        <input type="text"  class="form-control " value="{$project.quarter_money4}" required name="quarter_money4" >
+                                        <input type="text"  class="form-control check_content_num" value="{$project.quarter_money4}" required name="quarter_money4" >
                                         {else/}
-                                        <input type="text"  class="form-control " placeholder="请输入第四季度回款金额" required name="quarter_money4" >
+                                        <input type="text"  class="form-control check_content_num" placeholder="请输入第四季度回款金额" required name="quarter_money4" >
                                         {/if}
 
                                         <small class="form-control-feedback"> </small>
@@ -72,9 +72,9 @@
                                 <div class="form-group">
                                         <label><span class="text-danger"> * </span>首付款金额</label>
                                         {if condition="isset($project)"/}
-                                        <input type="text"  class="form-control " value="{$project.project_money1}" required name="project_money1" >
+                                        <input type="text"  class="form-control check_content_num" value="{$project.project_money1}" required name="project_money1" >
                                         {else/}
-                                        <input type="text"  class="form-control" placeholder="请输入首付款金额" required name="project_money1" >
+                                        <input type="text"  class="form-control check_content_num" placeholder="请输入首付款金额" required name="project_money1" >
                                         {/if}
 
                                         <small class="form-control-feedback"> </small>
@@ -84,9 +84,9 @@
                                 <div class="form-group">
                                         <label><span class="text-danger"> * </span>尾款金额</label>
                                         {if condition="isset($project)"/}
-                                        <input type="text"  class="form-control " value="{$project.project_money2}" required name="project_money2" >
+                                        <input type="text"  class="form-control check_content_num " value="{$project.project_money2}" required name="project_money2" >
                                         {else/}
-                                        <input type="text"  class="form-control" placeholder="请输入尾款金额" required name="project_money2" >
+                                        <input type="text"  class="form-control check_content_num" placeholder="请输入尾款金额" required name="project_money2" >
                                         {/if}
 
                                         <small class="form-control-feedback"> </small>
@@ -94,11 +94,11 @@
                         </div>
                         <div class="col-md-4 ">
                                 <div class="form-group">
-                                        <label>其他</label>
+                                        <label>其他金额</label>
                                         {if condition="isset($project)"/}
-                                        <input type="text"  class="form-control " value="{$project.project_money3}" required name="project_money3" >
+                                        <input type="text"  class="form-control check_content_num" value="{$project.project_money3}" required name="project_money3" >
                                         {else/}
-                                        <input type="text"  class="form-control" placeholder="请输入其他金额"  name="project_money3" >
+                                        <input type="text"  class="form-control check_content_num" placeholder="请输入其他金额"  name="project_money3" >
                                         {/if}
                                         <small class="form-control-feedback"> </small>
                                 </div>
@@ -444,7 +444,7 @@
             }
             else{
                 var i = 0;
-                $(".check_content_num").each(function () {
+                $("form .check_content_num").each(function () {
 
                     if(check_content_num($(this).val())){
 
@@ -457,7 +457,7 @@
 
                 });
 
-                if(i< $(".check_content_num").length){
+                if(i< $("form .check_content_num").length){
                     layer.alert("请输入正确格式");
                     return false;
                 }
@@ -482,6 +482,17 @@
         if(payment_type == "项目结算"){
             $(".pay_type_money").html(project_pay);
         }
+
+        $(".check_content_num").change(function () {
+
+            if(check_content_num($(this).val(),$(this))){
+
+                layer.alert("请输入正确格式");
+            }
+
+
+        });
+
     });
 
 </script>
