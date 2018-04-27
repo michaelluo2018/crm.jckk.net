@@ -158,7 +158,7 @@ class Project extends Model{
                     ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                     ->join("jckk_department d","d.id = eu.department_id","LEFT")
                     ->order("p.id","desc")
-                    ->paginate();
+                    ->select();
             }
             else{
                 return Db::table("jckk_project")
@@ -175,7 +175,7 @@ class Project extends Model{
                     ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                     ->join("jckk_department d","d.id = eu.department_id","LEFT")
                     ->order("p.id","desc")
-                    ->paginate();
+                    ->select();
             }
 
         }
@@ -196,7 +196,7 @@ class Project extends Model{
                     ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                     ->join("jckk_department d","d.id = eu.department_id","LEFT")
                     ->order("p.id","desc")
-                    ->paginate();
+                    ->select();
             }
             else{
                 return Db::table("jckk_project")
@@ -212,7 +212,7 @@ class Project extends Model{
                     ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                     ->join("jckk_department d","d.id = eu.department_id","LEFT")
                     ->order("p.id","desc")
-                    ->paginate();
+                    ->select();
             }
 
         }
@@ -240,7 +240,7 @@ class Project extends Model{
                     ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                     ->join("jckk_department d","d.id = eu.department_id","LEFT")
                     ->order("p.id","desc")
-                    ->paginate();
+                    ->select();
             }
             else{
                 return Db::table("jckk_project")
@@ -257,7 +257,7 @@ class Project extends Model{
                     ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                     ->join("jckk_department d","d.id = eu.department_id","LEFT")
                     ->order("p.id","desc")
-                    ->paginate();
+                    ->select();
             }
 
         }
@@ -278,7 +278,7 @@ class Project extends Model{
                     ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                     ->join("jckk_department d","d.id = eu.department_id","LEFT")
                     ->order("p.id","desc")
-                    ->paginate();
+                    ->select();
             }
             else{
                 return Db::table("jckk_project")
@@ -294,7 +294,7 @@ class Project extends Model{
                     ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                     ->join("jckk_department d","d.id = eu.department_id","LEFT")
                     ->order("p.id","desc")
-                    ->paginate();
+                    ->select();
             }
 
         }
@@ -396,7 +396,7 @@ class Project extends Model{
             ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
             ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
             ->join("jckk_department d","d.id = eu.department_id","LEFT")
-            ->paginate();
+            ->select();
     }
 
 

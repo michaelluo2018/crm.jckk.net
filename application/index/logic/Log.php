@@ -89,7 +89,7 @@ class Log extends Model{
                 ->order("jckk_logs.id","desc")
                 ->field(["jckk_logs.*","jckk_user.chinese_name"])
                 ->join("jckk_user","jckk_user.uid = jckk_logs.uid",'LEFT')
-                ->paginate();
+                ->select();
         }
 
 
