@@ -38,6 +38,7 @@ class Base extends Controller{
         $this->user_info = $user_info;
 
         $this->all_menus = model("menu","logic")->get_menus();
+        
 
         $this->user_menus = $this->get_user_menus();
 
@@ -104,12 +105,55 @@ class Base extends Controller{
 
 
 
+//    public function get_user_menus(){
+//
+//        $menus_all=  $this->all_menus;
+//
+//        $list = array(); //存放登陆用户岗位的菜单
+//        $array = array(); //存放登陆用户岗位的菜单
+//        $permissions = array(); //存放登陆用户岗位的菜单权限，下标是菜单id
+//
+//        foreach ($menus_all as $k=>$v){
+//            $mid = $v->id;
+//            $post_permission = model("post_permission")->where("pid", $this->post_id)->where("mid",$mid)->find();
+//
+//            if($post_permission){
+//                if($post_permission->desc_operate==1){
+//                    $array[$k] = $v;
+//                    $permissions[$mid] = $post_permission;
+//                }
+//            }
+//
+//        }
+//        $list['menus'] = $array;
+//        $list['permission'] = $permissions;
+//        return $list;
+//
+//
+//    }
+
     public function get_user_menus(){
 
+
+        $menus = model("menu","logic")->get_menu_by_pid(0,true);
+
+        foreach ($menus as $mk=>$mv){
+            $child_pid1 = $mv['id'];
+            $menus[$mk]['child'] = model("menu","logic")->get_menu_by_pid($child_pid1,true);
+            foreach ( $menus[$mk]['child'] as $mck=>$mcv){
+                $child_pid2 = $mcv['id'];
+                $menus[$mk]['child'][$mck]['child'] = model("menu","logic")->get_menu_by_pid($child_pid2,true);
+            }
+        }
+
+        return $menus;
+
+
+    }
+
+    public  function  get_menu_permission(){
         $menus_all=  $this->all_menus;
 
-        $list = array(); //存放登陆用户岗位的菜单
-        $array = array(); //存放登陆用户岗位的菜单
         $permissions = array(); //存放登陆用户岗位的菜单权限，下标是菜单id
 
         foreach ($menus_all as $k=>$v){
@@ -118,23 +162,19 @@ class Base extends Controller{
 
             if($post_permission){
                 if($post_permission->desc_operate==1){
-                    $array[$k] = $v;
                     $permissions[$mid] = $post_permission;
                 }
             }
 
         }
-        $list['menus'] = $array;
-        $list['permission'] = $permissions;
-        return $list;
 
+        return $permissions;
 
     }
 
-
     public function  check_post_menu_permission($operate_type){
-        $menus = $this->user_menus;
-        $permission = $menus['permission'];
+
+        $permission = $this->get_menu_permission();
         if(isset($permission[$this->menu_id])){
             if($permission[$this->menu_id]->$operate_type){
                 return true;
@@ -144,8 +184,7 @@ class Base extends Controller{
 
     public function  check_post_menu_range_permission(){
 
-        $menus = $this->user_menus;
-        $permission = $menus['permission'];
+        $permission =$this->get_menu_permission();
         $uid_array = null;
         if(isset($permission[$this->menu_id])){
            $range = $permission[$this->menu_id]->permission_range;

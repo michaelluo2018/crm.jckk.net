@@ -287,44 +287,70 @@
             <!-- End User profile text-->
             <!-- Sidebar navigation-->
 
+
                 <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        {volist name="base_menus" id="base_menu"/}
-                        {if condition="$base_menu['child']"/}
-                        <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="true">
-                                <i class="mdi mdi-laptop-windows"></i><span class="hide-menu">{$base_menu['title']}</span>
-                            </a>
-                            <ul aria-expanded="false" class="collapse">
-                                {volist name="base_menu['child']" id="menu_child1"/}
-                                {if condition="$menu_child1['child']"/}
-                                <li><a href="#" class="has-arrow" aria-expanded="true">{$menu_child1['title']}</a>
-                                    <ul>
-                                        {volist name="menu_child1['child']" id="menu_child2"/}
-                                        <li><a href="{:url($menu_child2['url'])}?mid={$menu_child1['id']}">{$menu_child2['title']}</a></li>
-                                        {/volist}
-                                    </ul>
-                                </li>
+                    <ul>
+                        {volist name="base_menus['menus']" id="base_menu"/}
+                        {if condition="$base_menu.url"/}
+                            <li style="padding-left:<?php echo $base_menu['count'];?>px;" class="hide-menu {$base_menu.pid}" id="{$base_menu.id}">
+                                {if condition="$mid eq $base_menu.id "/}
+                                    <a href="{:url($base_menu.url)}?mid={$base_menu.id}"  style="color: #26c6da" >{$base_menu.title}  </a>
                                 {else/}
-                                <li><a href="{:url($menu_child1['url'])}?mid={$menu_child1['id']}">{$menu_child1['title']}</a></li>
+                                    <a href="{:url($base_menu.url)}?mid={$base_menu.id}"> {$base_menu.title}  </a>
                                 {/if}
+                            </li>
+                         {else/}
 
-                                {/volist}
-                            </ul>
-
-                        </li>
-                        {else/}
-                        <li>
-                            <a class=" waves-effect waves-dark" href="{:url($base_menu['url'])}?mid={$base_menu['id']}" aria-expanded="false">
-                                <i class="mdi mdi-gauge"></i><span class="hide-menu">{$base_menu['title']} </span>
-                            </a>
-
-                        </li>
+                            <li class="active hide-menu {$base_menu.pid}" id="{$base_menu.id}" style="padding-left:<?php echo $base_menu['count'];?>px;">
+                                <a href="javascript:void (0);"  onclick="show_hide_menu('{$base_menu.id}')"  class="has-arrow">
+                                   {$base_menu.title}
+                                </a>
+                            </li>
                         {/if}
                         {/volist}
                     </ul>
                 </nav>
+                <script>
+                    function show_hide_menu(id) {
+                        var obj_menu = $("#"+id+" ");
+                        var obj_child1 =  $("."+id+" ");
+                        if(obj_menu.hasClass("active")){
 
+                            //获取所有子菜单的子菜单
+                            obj_child1.each(function () {
+                                var obj_child2 = $(this);
+                                obj_child2.removeClass("active");
+                                var obj_child3 =$("."+ $(this).attr("id")+" ");
+                                obj_child3.hide() ;
+                                //第三级别子集
+                                obj_child3.each(function () {
+                                    var obj_child4 = $(this);
+                                    obj_child4.removeClass("active");
+                                    var obj_child5 =$("."+ $(this).attr("id")+" ");
+                                    obj_child5.hide() ;
+
+                                });
+
+                            });
+
+                            obj_child1.hide();
+                            obj_menu.removeClass("active");
+                        }
+                        else{
+
+                            //获取所有子菜单的子菜单
+                            obj_child1.each(function () {
+                                var obj_child2 = $(this);
+                                obj_child2.show() ;
+                            });
+                            obj_child1.show();
+
+                            obj_menu.addClass("active");
+                        }
+                    }
+
+
+                </script>
 
             <!-- End Sidebar navigation -->
         </div>

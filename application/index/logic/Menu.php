@@ -8,9 +8,16 @@ class Menu extends Model{
     protected $table="jckk_menu";
 
 
-    public function get_menu_by_pid($pid){
+    public function get_menu_by_pid($pid,$toArray=null){
+        if($toArray){
+            $result = $this->where("pid",$pid)->where("is_delete","<>",1)->order("menu_order asc")->select();
+            return collection($result)->toArray();
+        }
+        else{
+            return $this->where("pid",$pid)->where("is_delete","<>",1)->order("menu_order asc")->select();
+        }
 
-        return $this->where("pid",$pid)->where("is_delete","<>",1)->order("menu_order asc")->select();
+
     }
 
     public function get_menus(){
