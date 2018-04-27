@@ -5319,7 +5319,8 @@ use profile section
     transform: scale3d(1, 1, 0.5); } }
     .user-profile .profile-img img {
       width: 100%;
-      border-radius: 100%; }
+      /*border-radius: 100%;*/
+    }
   .user-profile .profile-text {
     padding: 5px 0px;
     position: relative; }
