@@ -222,7 +222,7 @@
                         <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                             {if condition="$user_info['heard_img']"/}
-                            <div style="width: 50px;height: 50px;">
+                            <div style="width: 55px;height: 55px; border-radius: 100%;overflow: hidden;">
                                 <img src="{$user_info.heard_img}" alt="{$user_info.chinese_name}" class="profile-pic" />
                             </div>
 
@@ -267,7 +267,7 @@
                 <!-- User profile image -->
                 {if condition="$user_info['heard_img']"/}
                     <div class="profile-img">
-                        <div style="width: 50px;height: 50px;">
+                        <div style="width: 50px;height: 50px; border-radius:100%;overflow: hidden">
                             <img src="{$user_info.heard_img}" alt="user" width="100%"/>
                         </div>
                     </div>
