@@ -52,7 +52,12 @@ class Base extends Controller{
         $this->assign("mid",$this->menu_id);
         $this->assign("customer_mid",$this->get_mid_by_url("index/customer/customer_list"));
 
+        //检测链接是否有权限展示
 
+        if(!$this->get_desc_by_url(request()->module().'/'.request()->controller().'/'.request()->action())){
+//            echo "<script>alert('没有权限！'); </script>";
+            $this->redirect("/");
+        }
     }
 
     protected function login($uid){
@@ -185,7 +190,24 @@ class Base extends Controller{
 
     public function get_mid_by_url($url){
        $id =  model("menu")->where("url","like",'%'.$url.'%')->column("id");
-       return $id[0];
+       if($id){
+           return $id[0];
+       }
+
+    }
+
+    public function get_desc_by_url($url){
+        $mid = $this->get_mid_by_url($url);
+        if($mid){
+            $post_permission = model("post_permission")->where("pid", $this->post_id)->where("mid",$mid)->column("desc_operate");
+            if($post_permission && $post_permission[0]){
+                return true;
+            }
+        }
+        else{
+            return true;
+        }
+
     }
 
 

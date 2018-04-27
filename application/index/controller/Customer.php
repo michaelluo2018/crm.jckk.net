@@ -5,16 +5,20 @@ use think\Request;
 
 
 class Customer extends Base{
-    //客户列表
-    public function customer_list($mid=null){
 
-        if($mid){
-            $this->menu_id = $mid;
-            $this->assign("mid",$this->menu_id);
-        }
+    public function __construct(Request $request = null)
+    {
+        parent::__construct($request);
+        $mid = $this->get_mid_by_url("index/customer/customer_list");
+        $this->menu_id = $mid;
+        $this->assign("mid",$this->menu_id);
+    }
+
+
+    //客户列表
+    public function customer_list(){
 
         $create_uids = $this->check_post_menu_range_permission();
-
 
         if($create_uids == "all"){
             $data = model("customer","logic")->get_customers();
@@ -92,7 +96,7 @@ class Customer extends Base{
         if($res){
             if(isset($data["customer_id"]) && !empty($data['customer_id'])){
                 //跳转到customer_list
-                $this->redirect("customer_list",["mid"=>$this->menu_id]);
+                $this->redirect("customer_list");
             }
             else{
                 $data = model("customer","logic")->get_customer_entity();
@@ -135,7 +139,7 @@ class Customer extends Base{
             }
             else{
 
-                $this->redirect("customer_list",["mid"=>$this->menu_id]);
+                $this->redirect("customer_list");
             }
         }
 

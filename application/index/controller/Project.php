@@ -6,13 +6,18 @@ use think\Config;
 use think\Request;
 
 class Project extends Base {
-    //项目列表
-    public function project_list($mid=null){
 
-        if($mid){
-            $this->menu_id = $mid;
-            $this->assign("mid",$this->menu_id);
-        }
+    public function __construct(Request $request = null)
+    {
+        parent::__construct($request);
+        $mid = $this->get_mid_by_url("index/project/project_list");
+        $this->menu_id = $mid;
+        $this->assign("mid",$this->menu_id);
+
+    }
+
+    //项目列表
+    public function project_list(){
 
         $create_uids = $this->check_post_menu_range_permission();
 
@@ -28,11 +33,8 @@ class Project extends Base {
     }
 
      //项目回收站
-    public function project_recycle($mid=null){
-        if($mid){
-            $this->menu_id = $mid;
-            $this->assign("mid",$this->menu_id);
-        }
+    public function project_recycle(){
+
         $create_uids = $this->check_post_menu_range_permission();
 
         if($create_uids == "all") {
@@ -90,7 +92,7 @@ class Project extends Base {
 
         $res = model("project","logic")->save_project($data);
         if($res){
-            $this->redirect("project_list",["mid"=>$this->menu_id]);
+            $this->redirect("project_list");
         }
     }
 
@@ -128,7 +130,7 @@ class Project extends Base {
         else {
             model("project", "logic")->delete_project($id);
 
-            $this->redirect("project_list",["mid"=>$this->menu_id]);
+            $this->redirect("project_list");
         }
 
     }
@@ -144,7 +146,7 @@ class Project extends Base {
         else{
             model("project", "logic")->project_del_true($id);
 
-            $this->redirect("project_recycle",["mid"=>$this->menu_id]);
+            $this->redirect("project_recycle");
          }
 
     }
