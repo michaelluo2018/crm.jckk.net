@@ -47,6 +47,7 @@
                                 <thead>
                                 <tr class="text-align">
                                     <th  data-toggle="true"  data-hide="phone, tablet">序号</th>
+                                    <th>编号</th>
                                     <th>客户全称</th>
                                     <th>项目名称</th>
                                     <th>客户类别</th>
@@ -68,6 +69,7 @@
                                 {volist name="projects" id="project" key="k"}
                                 <tr>
                                     <td>{$k}</td>
+                                    <td>P-{$project.create_time|date="Ymd",###}-{$project.id}</td>
                                     <td>{$project.customer_name}</td>
                                     <td>{$project.project_name}</td>
                                     <td>{$project.customer_status_1}</td>

@@ -44,6 +44,7 @@
                         <thead>
                         <tr>
                             <th  data-toggle="true"  data-hide="phone, tablet">序号</th>
+                            <th>编号</th>
                             <th>客户全称</th>
                             <th>客户类别</th>
                             <th>客户状态</th>
@@ -61,6 +62,7 @@
                         {volist name="data" id="vo" key="k"}
                             <tr>
                                 <td>{$k}</td>
+                                <td>C-{$vo.create_time|date="Ymd",###}-{$vo.id}</td>
                                 <td>{$vo.customer_name}</td>
                                 <td>{$vo.customer_status_1}</td>
                                 <td>{$vo.customer_status_2}</td>

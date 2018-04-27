@@ -217,7 +217,7 @@ class Customer extends  Model{
     {
         //检测客户是否有项目
         $projects = model("project","logic")->get_projects($id);
-        $array = $projects->toArray();
+        $array = collection($projects)->toArray();
         if(empty($array['data'])) {
                 $customer = $this->where("id",$id)->find();
 
