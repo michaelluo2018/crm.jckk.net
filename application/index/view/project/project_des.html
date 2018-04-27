@@ -8,7 +8,7 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">首页</a></li>
         <li class="breadcrumb-item go_back">客户和项目</li>
-        <li class="breadcrumb-item active">添加项目</li>
+        <li class="breadcrumb-item active">项目详情</li>
     </ol>
 </div>
 {/block}
@@ -17,7 +17,7 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-header">
-                <h4 class="m-b-0 text-white">添加项目</h4>
+                <h4 class="m-b-0 text-white">项目详情</h4>
             </div>
             <div class="card-body">
                 <form>
@@ -174,6 +174,26 @@
 
                         <!--/row-->
                         <h3 class="box-title m-t-40">项目信息</h3>
+                        <div class="row p-t-20">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label class="control-label">项目名称 </label>
+                                    <input type="text"  class="form-control project_name" value="{$project.project_name}" name="project_name" disabled>
+                                    <small class="form-control-feedback" hidden> </small>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label class="control-label">签约公司名称</label>
+                                    <input type="text"  class="form-control" value="{$project.company_name}" name="company_name" disabled>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
                         <hr>
                         <div class="row">
                             <div class="col-md-3 ">
@@ -319,7 +339,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>合同金额</label>
-                                    <input type="text"  class="form-control" value="{$project.contract_amount}" disabled name="contract_amount" >
+                                    <input type="text"  class="form-control check_content_num" value="{$project.contract_amount}" disabled name="contract_amount" >
                                     <small class="form-control-feedback"> </small>
                                 </div>
                             </div>
@@ -341,11 +361,85 @@
                                     </select>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="row pay_type_money">
+                            {if condition="$project.payment_type eq '月付'"/}
+                            <div class="col-md-6" >
+                                <div class="form-group">
+                                    <label>月回款金额</label>
+                                    <input type="text"  class="form-control " value="{$project.month_money}" disabled name="month_money" >
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            {elseif condition="$project.payment_type eq '季度付'"/}
+                            <div class="col-md-12  row ">
+                                <div class="col-md-3 ">
+                                    <div class="form-group">
+                                        <label>第一季度回款金额</label>
+                                        <input type="text"  class="form-control check_content_num" value="{$project.quarter_money1}" disabled name="quarter_money1" >
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 ">
+                                    <div class="form-group">
+                                        <label>第二季度回款金额</label>
+                                        <input type="text"  class="form-control check_content_num" value="{$project.quarter_money2}" disabled name="quarter_money2" >
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 ">
+                                    <div class="form-group">
+                                        <label>第三季度回款金额</label>
+                                        <input type="text"  class="form-control check_content_num" value="{$project.quarter_money3}" disabled  name="quarter_money3" >
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 ">
+                                    <div class="form-group">
+                                        <label>第四季度回款金额</label>
+                                        <input type="text"  class="form-control check_content_num" value="{$project.quarter_money4}" disabled name="quarter_money4" >
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
+                            </div>
+                            {else/}
+                            <div class="col-md-12  row ">
+                                <div class="col-md-4 ">
+                                    <div class="form-group">
+                                        <label>首付款金额</label>
+                                        <input type="text"  class="form-control check_content_num" value="{$project.project_money1}" disabled name="project_money1" >
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <div class="form-group">
+                                        <label>尾款金额</label>
+                                        <input type="text"  class="form-control check_content_num" value="{$project.project_money2}" disabled name="project_money2" >
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <div class="form-group">
+                                        <label>其他金额</label>
+                                        <input type="text"  class="form-control check_content_num" value="{$project.project_money3}"  name="project_money3" disabled>
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
+                            </div>
+                            {/if}
+
+
                             <!--/span-->
+                        </div>
+
+
+
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>回款状态</label>
-                                    <select class="form-control custom-select" disabled name="payment_status">
+                                    <select class="form-control custom-select" required name="payment_status" disabled>
                                         {volist name="data['payment_status']" id="payment_status"}
                                         {if condition="$payment_status eq $project.payment_status"/}
                                         <option value="{$payment_status}" selected>{$payment_status}</option>
@@ -356,27 +450,35 @@
                                     </select>
                                 </div>
                             </div>
-                            <!--/span-->
-                        </div>
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>毛利润率</label>
-                                    <input type="text"  class="form-control" value="{$project.rate}" name="rate" disabled>
+                                    <div class="input-group">
+                                        <input type="text"  class="form-control check_content_num" value="{$project.rate}" name="rate" disabled>
+                                        <span class="input-group-addon">%</span>
+                                    </div>
                                     <small class="form-control-feedback"> </small>
                                 </div>
                             </div>
                             <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>成本支出</label>
-                                    <input type="text"  class="form-control" value="{$project.cost}"  name="cost" disabled>
-                                    <small class="form-control-feedback"> </small>
-                                </div>
-                            </div>
+
                             <!--/span-->
                         </div>
                         <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>成本支出</label>
+                                    <input type="text"  class="form-control check_content_num" value="{$project.cost}"  name="cost" disabled>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>成本支出备注</label>
+                                    <input type="text"  class="form-control " value="{$project.cost_note}" name="cost_note" disabled>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
                         </div>
                         <!--<div class="form-actions">-->
                             <!--<a href="{:url('index/project/project_edit')}?id={$project.id}" class="btn btn-inverse">修改</a>-->
