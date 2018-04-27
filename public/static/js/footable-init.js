@@ -124,6 +124,7 @@ $(window).on('load', function() {
         //build up the row we are wanting to add
         var newRow = '<tr>'
             +'<td><input type="text" id="menu_name" name="title[]" class="form-control" placeholder="" value="" required></td>'
+            +'<td><input type="text" id="menu_icon" name="icon[]" class="form-control" placeholder="" value="" required><br/><small>预留样式：mdi-laptop-windows,mdi-gauge,mdi-account-circle</small></td>'
             +'<td><input type="text" id="menu_url" name="url[]" class="form-control" placeholder="" value="" ></td>'
             +'<td><input type="text" id="menu_order" name="menu_order[]" class="form-control" placeholder="" value="" required></td>'
             +'<td><button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button></td></tr>';

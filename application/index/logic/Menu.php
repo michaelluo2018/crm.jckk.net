@@ -79,6 +79,7 @@ class Menu extends Model{
                 $menu = $this->where('id',$data['menu_id'][$i])->find();
                 $before_value = json_encode($menu);
                 $menu->title = $data['title'][$i];
+                $menu->icon = $data['icon'][$i];
                 $menu->url = $data['url'][$i];
                 $menu->menu_order = $data['menu_order'][$i];
                 if( $menu->save()){
@@ -98,6 +99,7 @@ class Menu extends Model{
                     $array[$i]['url'] =  $data['url'][$i];
                     $array[$i]['menu_order'] = $data['menu_order'][$i];
                     $array[$i]['pid'] = $data['pid'];
+                    $array[$i]['icon'] = $data['icon'][$i];
                     $array[$i]['create_time'] = time();
                     $array[$i]['path'] = $pre_path;
                 }

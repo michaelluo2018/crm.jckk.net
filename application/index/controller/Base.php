@@ -38,7 +38,7 @@ class Base extends Controller{
         $this->user_info = $user_info;
 
         $this->all_menus = model("menu","logic")->get_menus();
-        
+
 
         $this->user_menus = $this->get_user_menus();
 

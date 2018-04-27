@@ -41,6 +41,7 @@
                         <thead>
                         <tr class="text-align">
                             <th>菜单名称</th>
+                            <th>样式名称</th>
                             <th>链接</th>
                             <th>排序</th>
                             <th>操作</th>
@@ -52,6 +53,10 @@
                         <tr>
                             <input type="hidden" name="menu_id[]" value="{$index_menu.id}" class="menu_id">
                             <td style="padding-left:<?php echo $index_menu['count'];?>px"><input type="text" id="menu_name" name="title[]" class="form-control"  value="{$index_menu.title}" required></td>
+                            <td>
+                                <input type="text" id="menu_icon" name="icon[]" class="form-control" value="{$index_menu.icon}"><br/>
+                                <small>预留样式：mdi-laptop-windows,mdi-gauge,mdi-account-circle</small>
+                            </td>
                             <td><input type="text" id="menu_url" name="url[]" class="form-control" value="{$index_menu.url}"></td>
                             <td><input type="text" id="menu_order" name="menu_order[]" class="form-control" value="{$index_menu.menu_order}" required></td>
                             <td>
