@@ -1709,7 +1709,8 @@ File: scss
     .topbar .top-navbar .navbar-nav > .nav-item.show {
       background: rgba(0, 0, 0, 0.05); }
   .topbar .profile-pic {
-    width: 30px;
+    /*width: 30px;*/
+    width:100%;
     border-radius: 100%; }
   .topbar .dropdown-menu {
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
@@ -5264,7 +5265,8 @@ use profile section
     width: 50px;
     margin-left: 30px;
     padding: 35px 0;
-    border-radius: 100%; }
+    border-radius: 100%;
+  }
     .user-profile .profile-img::before {
       -webkit-animation: 2.5s blow 0s linear infinite;
       animation: 2.5s blow 0s linear infinite;
@@ -6220,7 +6222,8 @@ File: scss
 .little-profile .pro-img {
   padding-bottom: 20px;
   margin: 0 auto;
-  width: 120px;
+  width: 128px;
+  height: 128px;
 }
   .little-profile .pro-img img {
     width: 100%;

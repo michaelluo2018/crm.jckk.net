@@ -222,7 +222,10 @@
                         <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                             {if condition="$user_info['heard_img']"/}
-                            <img src="{$user_info.heard_img}" alt="{$user_info.chinese_name}" class="profile-pic" />
+                            <div style="width: 50px;height: 50px;">
+                                <img src="{$user_info.heard_img}" alt="{$user_info.chinese_name}" class="profile-pic" />
+                            </div>
+
                             {else/}
                             <img src="__STATIC__/assets/images/users/1.jpg" alt="user" class="profile-pic" />
                             {/if}
@@ -263,7 +266,11 @@
 
                 <!-- User profile image -->
                 {if condition="$user_info['heard_img']"/}
-                    <div class="profile-img"> <img src="{$user_info.heard_img}" alt="user" width="100%"/> </div>
+                    <div class="profile-img">
+                        <div style="width: 50px;height: 50px;">
+                            <img src="{$user_info.heard_img}" alt="user" width="100%"/>
+                        </div>
+                    </div>
                 {else/}
                     <div class="profile-img"> <img src="__STATIC__/assets/images/users/profile.png" alt="user" /> </div>
                 {/if}
