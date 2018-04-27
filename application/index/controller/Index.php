@@ -23,8 +23,12 @@ class Index extends Base
         $product_demand = $this->get_product_demand();
 
         $customer_status = array_merge($customer_status_1,$customer_status_2,$get_contract_status,$product_demand);
+        if(! $this->menu_id){
+            $this->menu_id = $this->get_mid_by_url("index/index/index");
+            $this->assign("mid",$this->menu_id);
+        }
         return view("index")->assign("my_logs",$my_logs)->assign("customer_status",$customer_status);
-      //  return view("index")->assign("my_logs",$my_logs)->assign("customer_status",$customer_status_1);
+
     }
 
     public function  login_out(){
