@@ -220,15 +220,13 @@
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                            {if condition="$user_info['heard_img']"/}
                             <div style="width: 55px;height: 55px; border-radius: 100%;overflow: hidden;">
-                                <img src="{$user_info.heard_img}" alt="{$user_info.chinese_name}" class="profile-pic" />
+                                {if condition="$user_info['heard_img']"/}
+                                    <img src="{$user_info.heard_img}" alt="{$user_info.chinese_name}" class="profile-pic" />
+                                {else/}
+                                     <img src="__STATIC__/assets/images/users/1.jpg" alt="user" class="profile-pic" />
+                                {/if}
                             </div>
-
-                            {else/}
-                            <img src="__STATIC__/assets/images/users/1.jpg" alt="user" class="profile-pic" />
-                            {/if}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right scale-up">
                             <ul class="dropdown-user">
@@ -272,7 +270,11 @@
                         </div>
                     </div>
                 {else/}
-                    <div class="profile-img"> <img src="__STATIC__/assets/images/users/profile.png" alt="user" /> </div>
+                    <div class="profile-img">
+                        <div style="width: 50px;height: 50px; border-radius:100%;overflow: hidden">
+                            <img src="__STATIC__/assets/images/users/profile.png" alt="user" width="100%"/>
+                        </div>
+                    </div>
                 {/if}
                 <!-- User profile text-->
                 <div class="profile-text"> <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{$user_info.chinese_name}</a>
