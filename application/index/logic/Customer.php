@@ -67,7 +67,7 @@ class Customer extends  Model{
     //获取一条客户信息
     public function get_customer_by_id($id){
         return Db::table("jckk_customer")
-            ->where("jckk_customer.is_delete","<>",1)
+//            ->where("jckk_customer.is_delete","<>",1)
             ->field(["jckk_customer.*","jckk_contact.contact_name","jckk_contact.position","jckk_contact.sex","jckk_contact.mobile","jckk_contact.email","jckk_contact.qq","jckk_contact.wechat"])
             ->where("jckk_customer.id=".$id)
             ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
