@@ -43,7 +43,7 @@
                     <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" data-page-size="20">
                         <thead>
                         <tr>
-                            <th>序号</th>
+                            <!--<th>序号</th>-->
                             <th>编号</th>
                             <th>客户全称</th>
                             <th>客户类别</th>
@@ -61,7 +61,7 @@
                         <tbody>
                         {volist name="data" id="vo" key="k"}
                             <tr>
-                                <td>{$k}</td>
+                                <!--<td>{$k}</td>-->
                                 <td>C{$vo.create_time|date="Ymd",###}-{$vo.id}</td>
                                 <td>{$vo.customer_name}</td>
                                 <td>{$vo.customer_status_1}</td>
