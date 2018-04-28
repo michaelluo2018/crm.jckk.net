@@ -189,7 +189,7 @@ class Customer extends Base{
     public function  customer_project($id){
 
         $projects = model("project","logic")->get_projects($id);
-        $array = $projects->toArray();
+        $array =collection($projects)->toArray();
         if(empty($array['data'])){
             $add_project_url = url("index/project/project_add");
 
