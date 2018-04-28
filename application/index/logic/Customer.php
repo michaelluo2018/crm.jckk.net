@@ -218,7 +218,7 @@ class Customer extends  Model{
         //检测客户是否有项目
         $projects = model("project","logic")->get_projects($id);
         $array = collection($projects)->toArray();
-        if(empty($array['data'])) {
+        if(empty($array)) {
                 $customer = $this->where("id",$id)->find();
 
                 //添加日志
@@ -274,8 +274,8 @@ class Customer extends  Model{
 
             //查看回收站是否还有该客户项目
         $projects = model("project","logic")->project_recycle($id);
-        $array = $projects->toArray();
-        if(empty($array['data'])) {
+        $array =collection($projects)->toArray();
+        if(empty($array)) {
 
             $customer = $this->where("id", $id)->find();
 
