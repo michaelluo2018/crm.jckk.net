@@ -52,7 +52,7 @@ class Databases extends Base{
                 }
             }
             closedir($handler);
-            $arr_file = array_reverse($arr_file);
+            array_multisort($arr_file,SORT_DESC );
         }
         else{
             mkdir(ROOT_PATH ."database" . DS,0777,true);
