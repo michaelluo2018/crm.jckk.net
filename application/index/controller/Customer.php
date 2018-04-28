@@ -190,7 +190,8 @@ class Customer extends Base{
 
         $projects = model("project","logic")->get_projects($id);
         $array =collection($projects)->toArray();
-        if(empty($array['data'])){
+
+        if(empty($array)){
             $add_project_url = url("index/project/project_add");
 
             echo "<script>  if (confirm('该客户还没有项目，去添加项目？')==true){ window.location.href='".$add_project_url." ';}else{ history.back(-1); }</script>";
@@ -208,8 +209,8 @@ class Customer extends Base{
     public function  customer_project_recycle($id){
 
         $projects = model("project","logic")->project_recycle($id);
-        $array = $projects->toArray();
-        if(empty($array['data'])){
+        $array =collection($projects)->toArray();
+        if(empty($array)){
 
             echo "<script> alert(\"该客户没有删除的项目\"); history.back(-1);</script>";
 
