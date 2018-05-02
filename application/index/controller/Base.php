@@ -59,6 +59,9 @@ class Base extends Controller{
 //            echo "<script>alert('没有权限！'); </script>";
             $this->redirect("/");
         }
+        //公告
+        $announcements = model("announcement","logic")->get_announcement();
+        $this->assign("announcements",$announcements);
     }
 
     protected function login($uid){

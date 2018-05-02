@@ -27,9 +27,6 @@ class Index extends Base
             $this->menu_id = $this->get_mid_by_url("index/index/index");
             $this->assign("mid",$this->menu_id);
         }
-        //公告
-        $announcements = model("announcement","logic")->get_announcement();
-        $this->assign("announcements",$announcements);
         return view("index")->assign("my_logs",$my_logs)->assign("customer_status",$customer_status);
 
     }
