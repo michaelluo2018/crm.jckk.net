@@ -1,0 +1,82 @@
+{extend name="layout"/}
+{block name="title"}
+<title>公告列表 - 客户管理系统</title>
+{/block}
+{block name="breadcrumb"/}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">工作台</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">首页</a></li>
+        <li class="breadcrumb-item active">公告列表</li>
+    </ol>
+</div>
+{/block}
+
+{block name="detail"/}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">公告列表</h4>
+                <h6 class="card-subtitle"></h6>
+                <div class="m-t-40">
+                    <div class="d-flex">
+                        <div class="mr-auto">
+                            <div class="form-group">
+                                <a  class="btn btn-primary btn-sm" href="{:url('index/announcement/announcement_add')}?mid={$mid}">
+                                    <i class="ace-icon fa fa-plus" aria-hidden="true"></i> 添加公告
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ml-auto">
+                            <div class="form-group">
+                                <form  method="post" id="find_form">
+
+                                    <input id="demo-input-search2" type="text" placeholder="搜索公告"  autocomplete="off" required>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" data-page-size="20">
+                    <thead>
+                    <tr class="text-align">
+                        <th>序号</th>
+                        <th>标题</th>
+                        <th>创建者</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="announcements" id="announcement" key="k"}
+                    <tr>
+                        <td>{$k}</td>
+                        <td>{$announcement.title}</td>
+                        <td>{$announcement.chinese_name}</td>
+                        <td>
+                            <a href="javascript:void (0);" onclick="delete_sure('确定要删除此公告吗？','{:url(\'index/announcement/announcement_del\')}?id={$announcement.id}&mid={$mid}')" class="btn btn-sm btn-icon btn-pure btn-outline " title="删除"><i class="ti-close" aria-hidden="true"></i></a>
+                            <a href="{:url('index/announcement/announcement_edit')}?id={$announcement.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="修改"><i class="ti-pencil" aria-hidden="true"></i></a>
+                            <a href="{:url('index/announcement/announcement_des')}?id={$announcement.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="14">
+                            <div class="text-right">
+                                <ul class="pagination">
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+{/block}

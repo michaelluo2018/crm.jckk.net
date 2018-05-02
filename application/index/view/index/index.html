@@ -14,6 +14,16 @@
 {/block}
 {block name="detail"/}
 
+<div>
+    <marquee direction="up" scrollamount="2" height="120">
+        {volist name="announcements" id="announcement"/}
+        <h4>{$announcement.title}</h4>
+        <p>{$announcement.content}</p>
+        {/volist}
+    </marquee>
+</div>
+
+
 {volist name="customer_status" id="status"/}
     <input type="hidden" name="{$status['key']}" value="{$status['value']}" class="{$status['field']}" id="{$status['key']}">
 {/volist}
