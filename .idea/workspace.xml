@@ -2,52 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52bd9cb4-fc9b-4b77-aaf2-8b0e198d5b49" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173525_jckk_contact_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173525_jckk_customer_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173525_jckk_department_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173525_jckk_logs_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173525_jckk_post_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173525_jckk_project_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173525_jckk_setting_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173525_jckk_user_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173925_jckk_contact_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173925_jckk_customer_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173925_jckk_department_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173925_jckk_logs_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173925_jckk_post_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173925_jckk_project_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173925_jckk_setting_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173925_jckk_user_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173940_jckk_contact_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173940_jckk_customer_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173940_jckk_department_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173940_jckk_logs_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173940_jckk_post_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173940_jckk_project_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173940_jckk_setting_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403173940_jckk_user_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403174020_jckk_contact_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403174020_jckk_customer_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403174020_jckk_department_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403174020_jckk_logs_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403174020_jckk_post_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403174020_jckk_project_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403174020_jckk_setting_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403174020_jckk_user_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403174051_jckk_contact_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403174051_jckk_customer_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403174051_jckk_department_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403174051_jckk_logs_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403174051_jckk_post_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403174051_jckk_project_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403174051_jckk_setting_v1.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/database/20180403174051_jckk_user_v1.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/database.php" afterPath="$PROJECT_DIR$/application/database.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/controller/Announcement.php" afterPath="$PROJECT_DIR$/application/index/controller/Announcement.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/controller/Base.php" afterPath="$PROJECT_DIR$/application/index/controller/Base.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/announcement/announcement_des.html" afterPath="$PROJECT_DIR$/application/index/view/announcement/announcement_des.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/announcement/announcement_edit.html" afterPath="$PROJECT_DIR$/application/index/view/announcement/announcement_edit.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/index/index.html" afterPath="$PROJECT_DIR$/application/index/view/index/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -70,7 +24,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="database.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/database.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="324">
@@ -110,40 +64,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Base.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/index/controller/Base.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-189">
-              <caret line="62" column="75" lean-forward="false" selection-start-line="62" selection-start-column="75" selection-end-line="62" selection-end-column="75" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/index/view/index/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="37" column="6" lean-forward="false" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
+            <state relative-caret-position="351">
+              <caret line="27" column="47" lean-forward="false" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
               <folding>
-                <marker date="1525249055276" expanded="true" signature="1150:1156" ph="..." />
-                <marker date="1525249055276" expanded="true" signature="1359:2233" ph="..." />
-                <marker date="1525249055276" expanded="true" signature="1406:1590" ph="..." />
-                <marker date="1525249055276" expanded="true" signature="1433:1579" ph="..." />
-                <marker date="1525249055276" expanded="true" signature="1469:1564" ph="..." />
-                <marker date="1525249055276" expanded="false" signature="1513:1538" ph="..." />
-                <marker date="1525249055276" expanded="true" signature="1618:1802" ph="..." />
-                <marker date="1525249055276" expanded="true" signature="1645:1791" ph="..." />
-                <marker date="1525249055276" expanded="true" signature="1681:1776" ph="..." />
-                <marker date="1525249055276" expanded="false" signature="1725:1750" ph="..." />
-                <marker date="1525249055276" expanded="true" signature="1830:2014" ph="..." />
-                <marker date="1525249055276" expanded="true" signature="1857:2003" ph="..." />
-                <marker date="1525249055276" expanded="true" signature="1893:1988" ph="..." />
-                <marker date="1525249055276" expanded="false" signature="1937:1962" ph="..." />
-                <marker date="1525249055276" expanded="true" signature="2042:2226" ph="..." />
-                <marker date="1525249055276" expanded="true" signature="2069:2215" ph="..." />
-                <marker date="1525249055276" expanded="true" signature="2105:2200" ph="..." />
-                <marker date="1525249055276" expanded="false" signature="2149:2174" ph="..." />
+                <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+                <marker date="1525249348191" expanded="false" signature="1144:1169" ph="..." />
+                <marker date="1525249348191" expanded="false" signature="1356:1381" ph="..." />
+                <marker date="1525249348191" expanded="false" signature="1568:1593" ph="..." />
+                <marker date="1525249348191" expanded="false" signature="1780:1805" ph="..." />
               </folding>
             </state>
           </provider>
@@ -159,7 +90,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scroll_announcement.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="scroll_announcement.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/index/view/index/scroll_announcement.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="162">
@@ -178,13 +109,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/application/index/view/index/scroll_announcement.html" />
-        <option value="$PROJECT_DIR$/application/index/view/index/index.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/application/index/controller/Base.php" />
         <option value="$PROJECT_DIR$/application/index/controller/Announcement.php" />
         <option value="$PROJECT_DIR$/application/index/view/announcement/announcement_des.html" />
         <option value="$PROJECT_DIR$/application/index/view/announcement/announcement_edit.html" />
         <option value="$PROJECT_DIR$/application/database.php" />
+        <option value="$PROJECT_DIR$/application/index/view/index/index.html" />
       </list>
     </option>
   </component>
@@ -377,17 +308,18 @@
       <option name="presentableId" value="Default" />
       <updated>1525244015438</updated>
       <workItem from="1525244016891" duration="75000" />
-      <workItem from="1525245966698" duration="3271000" />
+      <workItem from="1525245966698" duration="3389000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3346000" />
+    <option name="totallyTimeSpent" value="3464000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -489,65 +421,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/announcement/announcement_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1053">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/index/scroll_announcement.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/index/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="37" column="6" lean-forward="false" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
-          <folding>
-            <marker date="1525249055276" expanded="true" signature="1150:1156" ph="..." />
-            <marker date="1525249055276" expanded="true" signature="1359:2233" ph="..." />
-            <marker date="1525249055276" expanded="true" signature="1406:1590" ph="..." />
-            <marker date="1525249055276" expanded="true" signature="1433:1579" ph="..." />
-            <marker date="1525249055276" expanded="true" signature="1469:1564" ph="..." />
-            <marker date="1525249055276" expanded="false" signature="1513:1538" ph="..." />
-            <marker date="1525249055276" expanded="true" signature="1618:1802" ph="..." />
-            <marker date="1525249055276" expanded="true" signature="1645:1791" ph="..." />
-            <marker date="1525249055276" expanded="true" signature="1681:1776" ph="..." />
-            <marker date="1525249055276" expanded="false" signature="1725:1750" ph="..." />
-            <marker date="1525249055276" expanded="true" signature="1830:2014" ph="..." />
-            <marker date="1525249055276" expanded="true" signature="1857:2003" ph="..." />
-            <marker date="1525249055276" expanded="true" signature="1893:1988" ph="..." />
-            <marker date="1525249055276" expanded="false" signature="1937:1962" ph="..." />
-            <marker date="1525249055276" expanded="true" signature="2042:2226" ph="..." />
-            <marker date="1525249055276" expanded="true" signature="2069:2215" ph="..." />
-            <marker date="1525249055276" expanded="true" signature="2105:2200" ph="..." />
-            <marker date="1525249055276" expanded="false" signature="2149:2174" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/controller/Base.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-189">
-          <caret line="62" column="75" lean-forward="false" selection-start-line="62" selection-start-column="75" selection-end-line="62" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/index/controller/Announcement.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -576,6 +449,52 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="20" column="9" lean-forward="false" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/controller/Base.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1269">
+          <caret line="62" column="75" lean-forward="false" selection-start-line="62" selection-start-column="75" selection-end-line="62" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/announcement/announcement_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1053">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/index/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="27" column="47" lean-forward="false" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+            <marker date="1525249348191" expanded="false" signature="1144:1169" ph="..." />
+            <marker date="1525249348191" expanded="false" signature="1356:1381" ph="..." />
+            <marker date="1525249348191" expanded="false" signature="1568:1593" ph="..." />
+            <marker date="1525249348191" expanded="false" signature="1780:1805" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/index/scroll_announcement.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding />
         </state>
       </provider>
