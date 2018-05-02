@@ -1,0 +1,172 @@
+{extend name="layout"/}
+{block name="title"}
+<title>菜单管理 - 用户和权限 - 系统设置 - 客户管理系</title>
+{/block}
+
+{block name="breadcrumb"/}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">工作台</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">首页</a></li>
+        <li class="breadcrumb-item">系统设置</li>
+        <li class="breadcrumb-item">用户和权限</li>
+        <li class="breadcrumb-item active">菜单管理</li>
+    </ol>
+</div>
+{/block}
+{block name="detail"/}
+<div class="row">
+
+    <div class="col-lg-11">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">菜单管理</h4>
+                <h6 class="card-subtitle"></h6>
+                <div class="m-t-40">
+                    <div class="d-flex">
+                        <div class="mr-auto">
+                            <div class="form-group">
+                                {if condition="$add_operate"/}
+                                <a id="demo-btn-addrow-menu" class="btn btn-primary btn-sm" href="javascript:void(0)"><i class="icon wb-plus" aria-hidden="true"></i>添加菜单</a>
+                                {else/}
+                                <button type="button" onclick="alert('你没有权限！')" class="btn btn-primary btn-sm" ><i class="icon wb-plus" aria-hidden="true"></i>添加菜单</button>
+                                {/if}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form  action="{:url('index/menu/save_menu')}?mid={$mid}" method="post">
+
+                    <table id="demo-foo-addrow-menu" class="table table-bordered table-hover toggle-circle" data-page-size="20">
+                        <thead>
+                        <tr class="text-align">
+                            <th>菜单名称</th>
+                            <th>样式名称</th>
+                            <th>链接</th>
+                            <th>排序</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {if condition="$index_menus" /}
+                        {volist name="index_menus" id="index_menu" }
+                        <tr>
+                            <input type="hidden" name="menu_id[]" value="{$index_menu.id}" class="menu_id">
+                            <td style="padding-left:<?php echo $index_menu['count'];?>px"><input type="text" id="menu_name" name="title[]" class="form-control"  value="{$index_menu.title}" required></td>
+                            <td>
+                                <input type="text" id="menu_icon" name="icon[]" class="form-control" value="{$index_menu.icon}"><br/>
+                                <small>预留样式：mdi-laptop-windows,mdi-gauge,mdi-account-circle</small>
+                            </td>
+                            <td><input type="text" id="menu_url" name="url[]" class="form-control" value="{$index_menu.url}"></td>
+                            <td><input type="text" id="menu_order" name="menu_order[]" class="form-control" value="{$index_menu.menu_order}" required></td>
+                            <td>
+                                {if condition="$delete_operate"/}
+                                <a onclick="delete_sure('删除菜单会一起删除子菜单信息，确定要删除吗？', '{:url(\'index/menu/menu_del\')}?id={$index_menu.id}&mid={$mid}')"  href="javascript:void(0);" class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></a>
+                                {else/}
+                                <button type="button" onclick="alert('你没有权限!')"  class="btn btn-sm btn-icon btn-pure btn-outline " data-toggle="tooltip" data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
+                                {/if}
+                                {if condition="$add_operate"/}
+                                <button type="button"  class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="send_pid('{$index_menu.id}')" data-toggle="modal" data-target="#add-menu" ><i class="ti-plus" data-original-title="添加子菜单" data-toggle="tooltip" aria-hidden="true"></i></button>
+                                {else/}
+                                <button type="button"  class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="alert('你没有权限！')"  ><i class="ti-plus" data-original-title="添加子菜单" data-toggle="tooltip" aria-hidden="true"></i></button>
+                                {/if}
+                            </td>
+                        </tr>
+                        {/volist}
+                        {else/}{/if}
+
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="14">
+                                <div class="text-right">
+                                    {if condition="$delete_operate"/}
+                                    <button type="submit" class="btn btn-sm btn-success">保存修改</button></li>
+                                    {else/}
+                                    <button type="button" onclick="alert('你没有权限！')" class="btn btn-sm btn-success">保存修改</button></li>
+                                    {/if}
+                                </div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </form>
+
+
+                <div id="add-menu" class="modal fade in show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+                    <div class="modal-dialog col-10">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">添加子菜单</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{:url('index/menu/save_menu')}?mid={$mid}" method="post">
+                                    <div class="card">
+                                        <div class="card-body p-b-0">
+                                            <input type="hidden" name="pid" id="child_menu_pid">
+                                            <!-- Tab panes -->
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="home2" role="tabpanel" aria-expanded="true">
+
+                                                    <div class="col-md-10">
+                                                        <div class="form-group">
+                                                            <label class="control-label">子菜单名称</label>
+                                                            <input type="text" name="title[]" class="form-control" placeholder="" >
+                                                            <small class="form-control-feedback"> </small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        <div class="form-group">
+                                                            <label class="control-label">图标</label>
+                                                            <input type="text" name="icon[]" class="form-control"  >
+                                                            <small class="form-control-feedback">预留样式：mdi-laptop-windows,mdi-gauge,mdi-account-circle </small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        <div class="form-group">
+                                                            <label class="control-label">链接</label>
+                                                            <input type="text" name="url[]" class="form-control" placeholder="" >
+                                                            <small class="form-control-feedback"> </small>
+                                                        </div>
+                                                    </div>
+                                                    <!--/span-->
+                                                    <div class="col-md-10">
+                                                        <div class="form-group has-danger">
+                                                            <label class="control-label">排序</label>
+                                                            <input type="text" name="menu_order[]" class="form-control" placeholder="">
+                                                            <small class="form-control-feedback"></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-info waves-effect" >保存</button>
+                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function send_pid(pid) {
+        $("#child_menu_pid").val(pid);
+    }
+</script>
+
+{/block}

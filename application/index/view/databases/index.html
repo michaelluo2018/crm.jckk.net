@@ -1,0 +1,227 @@
+{extend name="layout"/}
+{block name="title"/}
+<title>数据库备份 - 客户管理系统</title>
+{/block}
+
+{block name="breadcrumb"/}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">工作台</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">首页</a></li>
+        <li class="breadcrumb-item go_back">系统设置</li>
+        <li class="breadcrumb-item active">数据库备份</li>
+    </ol>
+</div>
+{/block}
+{block name="detail"/}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body p-b-0">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs customtab2" role="tablist">
+                    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home7" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">添加备份</span></a> </li>
+                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile7" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">还原备份</span></a> </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home7" role="tabpanel">
+                        <div class="p-20">
+                            <div class="card-body">
+                                <form action="{:url('index/databases/save_database')}?mid={$mid}" method="post" id="database_form">
+                                    <div class="form-actions" style="margin-bottom: 15px;">
+                                        <button type="button" class="btn  btn-danger back_up"> <i class=" ace-icon fa fa-database bigger-110"></i> 备份当前数据</button>
+                                    </div>
+                                    <table class="table table-bordered table-hover toggle-circle" data-page-size="1000">
+                                        <thead>
+                                        <tr class="text-align">
+                                            <th data-sort-initial="true" data-toggle="true"  data-hide="phone, tablet">
+                                                <label class="custom-control custom-checkbox">
+                                                    <input id="check_all"   type="checkbox"  class="custom-control-input" >
+                                                    <span class="custom-control-indicator"></span>
+                                                </label>
+                                            </th>
+                                            <th>表名</th>
+                                            <th>数据量</th>
+                                            <th>数据大小</th>
+                                            <th>创建时间</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {volist name="table_infos" id="info"/}
+                                        <tr class="text-align">
+                                            <td data-sort-initial="true" data-toggle="true"  data-hide="phone, tablet">
+                                                <label class="custom-control custom-checkbox">
+                                                    <input name="table_name[]"   type="checkbox"  class="custom-control-input table_name"  value="{$info.Name}">
+                                                    <span class="custom-control-indicator"></span>
+                                                </label>
+                                            </td>
+                                            <td>{$info.Name}</td>
+                                            <td>【{$info.Rows}】条记录</td>
+                                            <td>
+                                                {$info.Data_length/1000} KB
+                                            </td>
+                                            <td>{$info.Create_time}</td>
+                                            <td><a href="javascript:void (0);" onclick="ajax_save_database('{$info.Name}','{:url(\'index/databases/save_one_database\')}',['备份成功','备份失败'])" >备份</a></td>
+                                        </tr>
+                                        {/volist}
+                                        </tbody>
+                                    </table>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="profile7" role="tabpanel">
+                        <div class="p-20">
+                            <table class="table table-bordered table-hover toggle-circle"  id="restore_table">
+                                <thead>
+                                <tr class="text-align">
+                                    <th>序号</th>
+                                    <th>文件名</th>
+                                    <th>卷数</th>
+                                    <th>数据大小</th>
+                                    <th>备份时间</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {volist name="arr_file" id="file" key="k"/}
+                                <tr  id="{$k}" class="<?php echo ceil($k/$file_page_data['listRows']); ?>">
+                                    <td>{$k}</td>
+                                    <td>{$file.name}</td>
+                                    <td>{$file.num}</td>
+                                    <td>{$file.size}</td>
+                                    <td>{$file.time}</td>
+                                    <td>
+                                        <a  href="javascript:void (0);" onclick="ajax_save_database('{$file.name}','{:url(\'index/databases/restore_database\')}',['还原成功','还原失败'])" >还原</a> |
+                                        <a  href="javascript:void (0);" onclick="delete_sure('确定要删除此备份吗？','{:url(\'index/databases/delete_database\')}?file={$file.name}&mid={$mid}')">删除</a>
+                                    </td>
+                                </tr>
+                                {/volist}
+                                </tbody>
+
+                                <tfoot>
+                                <tr>
+                                    <td colspan="14" >
+                                        <div class="text-right">
+                                            <ul class="pagination">
+                                                {for start="1" end="$file_page_data['lastPage']+1"}
+                                                <li  style="width:45px;">
+                                                    {if condition="$i eq 1" /}
+                                                        <button class="btn btn-success page_button" onclick="click_button({$i})">
+                                                    {else/}
+                                                        <button class="btn btn-default page_button" onclick="click_button({$i})">
+
+                                                    {/if}
+                                                         {$i}
+                                                     </button>
+                                                </li>
+                                                {/for}
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    var listRows = "{$file_page_data['listRows']}";
+    $("#restore_table tr").each(function () {
+        var _id = $(this).attr("id");
+        if(_id - listRows >0){
+            $(this).hide();
+        }
+    });
+
+
+    function click_button(i) {
+
+        $(".page_button").removeClass("btn-success");
+
+        $(".page_button").eq(i-1).addClass("btn-success");
+
+
+
+        $("."+i+" ").show();
+        for(var n=0;n<i;n++){
+            $("."+n+" ").hide();
+        }
+
+        for(var m=listRows;m>i;m--){
+                $("."+m+" ").hide();
+        }
+
+    }
+
+
+
+</script>
+
+
+
+<script>
+    $("#check_all").change(function () {
+        if($(this).is(':checked')){
+           $(".table_name").each(function () {
+               $(this).prop('checked', 'checked');
+           });
+        }
+        else{
+            $(".table_name").each(function () {
+                $(this).prop('checked', false);
+            });
+        }
+    });
+
+
+    $(".back_up").click(function () {
+        var data = [];
+        $(".table_name:checked").each(function (i) {
+            data[i] = $(this).val();
+        });
+        data = data.join("^^");
+
+        if(!$("input:checked").val()){
+            layer.alert("没有勾选内容！");
+        }
+        else{
+            ajax_save_database(data,"{:url('index/databases/save_database')}",["备份成功","备份失败"])
+
+        }
+
+    });
+
+
+    function ajax_save_database(data,url,result) {
+        $.ajax({
+            url:url,
+            data:{data:data},
+            method:"post",
+            success:function (msg) {
+                if(msg){
+                    layer.alert(result[0],{icon:1,closeBtn:0},function () {
+                        parent.window.location.href = parent.window.location.href;
+                    });
+
+                }
+                else{
+                    layer.alert(result[1]);
+                }
+            },
+            dataType:"json"
+        });
+    }
+</script>
+{/block}

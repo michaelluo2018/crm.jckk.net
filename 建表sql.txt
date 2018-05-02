@@ -1,0 +1,149 @@
+create database jckk_crm character set utf8 collate utf8_general_ci;
+use jckk_crm;
+create table jckk_customer (
+id int primary key auto_increment,
+name varchar(100) comment "客户全称",
+industry varchar(50) comment "行业",
+customer_status_1 varchar(50) comment "客户状态1",
+customer_status_2 varchar(50) comment "客户状态2",
+company_nature varchar(20) comment "公司性质",
+annual_turnover varchar(50) comment "年营业额",
+contact_id varchar(50) comment "首要联系人",
+note text comment "备注",
+create_time int comment "加入时间"
+)ENGINE=MYISAM DEFAULT CHARSET=utf8;
+create table jckk_contact (
+  id int primary key auto_increment,
+  name varchar(50) comment "姓名",
+  position  varchar(50) comment "职位",
+  sex ENUM('0','1') comment "性别，0为男",
+  mobile varchar(20) comment "电话",
+  email varchar(50) comment "邮箱",
+  qq varchar(20) comment "QQ",
+  create_time int comment "加入时间"
+  )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+
+  create table jckk_project (
+    id int primary key auto_increment,
+    customer_id int(10) comment "客户id",
+    executor_uid int(10) comment "项目执行人",
+    planning_uid int(10) comment "策划人",
+    docking_uid int(10) comment "对接人",
+    manage_uid int(10) comment "管理人",
+    product_demand_1 varchar(50) comment "需求产品一级",
+    product_demand_2 varchar(50) comment "需求产品二级",
+    contract_status varchar(30) comment "合同状态 ",
+    contract_amount varchar(30) comment "合同金额 ",
+    payment_type varchar(50) comment "回款模式 ",
+    payment_status varchar(50) comment "回款状态 ",
+    rate varchar(50) comment "毛利率 ",
+    cost varchar(50) comment "成本支出 ",
+    create_time int comment "加入时间"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+
+
+  create table jckk_user (
+    uid int primary key auto_increment,
+    chinese_name varchar(50) comment "中文名字",
+    english_name varchar(50) comment "英文名字",
+    sex ENUM('0','1') comment "性别,0为男",
+    department_id  int  comment "所在部门 ",
+    post_id  int  comment "岗位名称 ",
+    address  varchar(200)  comment "地址 ",
+    mobile  varchar(20)  comment "手机号 ",
+    wechat  varchar(20)  comment "微信号 ",
+    email  varchar(30)  comment "电子邮箱 ",
+    qq  varchar(30)  comment "qq ",
+    heard_img  varchar(100)  comment "头像 ",
+    introduction  text  comment "个人简介 ",
+    password  varchar(50)  comment "密码 ",
+    create_time int comment "加入时间"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+
+  create table jckk_department (
+    id int primary key auto_increment,
+    department_name varchar(50) comment "部门名称",
+    sort  int(10)  comment "排序 ",
+    create_time int comment "加入时间"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+
+
+  create table jckk_post (
+    id int primary key auto_increment,
+    post_name varchar(50) comment "岗位名称",
+    department_id  int(10)  comment "所属部门 ",
+    pid  int(10) default 0   comment "上级post_id ",
+    sort  int(10)    comment "排序",
+    create_time int comment "加入时间"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+
+
+
+
+  create table jckk_logs (
+    id int primary key auto_increment,
+    model  varchar(50) comment "模块",
+    action varchar(50)  comment "方法 ",
+    type int(10)  comment "类型，（增加 1，删除2，修改3） ",
+    before_value  text    comment "之前值 ",
+    after_value  text    comment "现值",
+    title  varchar(100)    comment "标题",
+    ip  varchar(30)    comment "ip",
+    uid  int(10)    comment "操作人",
+    create_time int comment "加入时间"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+
+
+
+  create table jckk_setting (
+    id int primary key auto_increment,
+    sys_key  varchar(50) comment "键",
+    sys_value varchar(200)  comment "值 ",
+    create_time int comment "加入时间"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+
+ 
+
+ create table jckk_feedback (
+    id int primary key auto_increment,
+    name  varchar(50) comment "用户填写姓名",
+    email varchar(50)  comment "用户填写邮箱 ",
+    title varchar(200)  comment "用户填写标题 ",
+    content text  comment "用户填写内容 ",
+    create_time int comment "加入时间"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+
+
+ create table jckk_announcement (
+    id int primary key auto_increment,
+    title varchar(200)  comment "标题 ",
+    content text  comment "公告内容 ",
+    create_time int comment "加入时间"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+
+
+
+ create table jckk_post_permission (
+    id int primary key auto_increment,
+    pid int comment "post_id",
+    mid int comment "menu_id",
+    add_operate int default 0 comment "添加权限，默认没有权限",
+    delete_operate int default 0 comment "删除权限，默认没有权限",
+    update_operate int default 0 comment "更新权限，默认没有权限",
+    desc_operate int default 0 comment "查看权限，默认没有权限",
+    permission_range varchar(50) comment "范围权限",
+    create_time int comment "加入时间"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+
+
+

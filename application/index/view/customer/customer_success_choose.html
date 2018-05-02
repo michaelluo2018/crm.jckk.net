@@ -1,0 +1,267 @@
+
+{extend name="layout"/}
+{block name="title"}
+<title>添加项目 - 客户管理系统</title>
+{/block}
+
+{block name="breadcrumb"}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">工作台</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">首页</a></li>
+        <li class="breadcrumb-item go_back">客户和项目</li>
+        <li class="breadcrumb-item active">添加客户</li>
+    </ol>
+</div>
+{/block}
+{block name="detail"}
+<div class="card-body">
+    <div style="opacity: 0.3">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-outline-info">
+                    <div class="card-header">
+                        <h4 class="m-b-0 text-white">添加客户</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="{:url('index/index/customer/save_customer')}?mid={$mid}" method="post">
+                            <div class="form-body">
+                                <h3 class="card-title">客户信息</h3>
+                                <hr>
+                                <div class="row p-t-20">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">客户全称</label>
+                                            <input type="text" id="" class="form-control" placeholder="请填写公司名称" name="customer_name" required >
+                                            <small class="form-control-feedback"> </small> </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">客户行业</label>
+                                            <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="industry" required>
+                                                {volist name="data['industry']" id= "vo"}
+                                                <option value="{$vo}">{$vo}</option>
+                                                {/volist}
+                                            </select>
+                                            <small class="form-control-feedback"></small> </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group has-success">
+                                            <label class="control-label">公司性质</label>
+                                            <div class="form-check">
+                                                {volist name="data['company_nature']" id="company_nature" key="k"}
+                                                <label class="custom-control custom-radio">
+                                                    <input id="radio{$k}" name="company_nature" value="{$company_nature}" type="radio" checked class="custom-control-input" >
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-description">{$company_nature}</span>
+                                                </label>
+                                                {/volist}
+                                            </div>
+                                            <small class="form-control-feedback"></small> </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">年营业额</label>
+                                            <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="annual_turnover" required>
+                                                {volist name="data['annual_turnover']" id="annual_turnover" }
+                                                <option value="{$annual_turnover}">{$annual_turnover}</option>
+                                                {/volist}
+                                            </select>
+                                            <small class="form-control-feedback"></small>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">客户状态一级</label>
+                                            <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="customer_status_1" required>
+                                                {volist name="data['customer_status_1']" id="customer_status_1"}
+                                                <option value="{$customer_status_1}">{$customer_status_1}</option>
+                                                {/volist}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">客户状态二级</label>
+                                            <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="customer_status_2" required>
+                                                {volist name="data['customer_status_2']" id="customer_status_2"}
+                                                <option value="{$customer_status_2}">{$customer_status_2}</option>
+                                                {/volist}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <h3 class="card-title">首要联系人信息</h3>
+                                <hr>
+                                <div class="row p-t-20">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">联系人</label>
+                                            <input type="text"  class="form-control" placeholder="请填写联系人姓名" name="contact_name" required>
+                                            <small class="form-control-feedback"> </small> </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-4">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">职位</label>
+                                            <input type="text"  class="form-control" placeholder="请填写联系人职位" name="position" >
+                                            <small class="form-control-feedback"> </small> </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-4">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">性别</label>
+                                            <div class="form-check">
+                                                <label class="custom-control custom-radio">
+                                                    <input id="radio1" name="radio_sex" type="radio" checked class="custom-control-input" value="男">
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-description">男</span>
+                                                </label>
+                                                <label class="custom-control custom-radio">
+                                                    <input id="radio2" name="radio_sex" type="radio" class="custom-control-input" value="女">
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-description">女</span>
+                                                </label>
+                                            </div>
+                                            <small class="form-control-feedback"> </small> </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <div class="row p-t-20">
+                                    <div class="col-md-4">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">电话</label>
+                                            <input type="text"  class="form-control" placeholder="请填写联系人电话" name="contact_mobile" >
+                                            <small class="form-control-feedback"> </small> </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">邮箱</label>
+                                            <input type="email"  class="form-control" placeholder="请填写联系人邮箱" name="contact_email">
+                                            <small class="form-control-feedback"> </small> </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-4">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">QQ</label>
+                                            <input type="text"  class="form-control" placeholder="请填写联系人QQ" name="contact_qq">
+                                            <small class="form-control-feedback"> </small> </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">微信</label>
+                                            <input type="text"  class="form-control" placeholder="请填写联系人微信" name="contact_wechat">
+                                            <small class="form-control-feedback"> </small> </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-12">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">备注</label>
+                                            <textarea  rows="6" class="form-control" placeholder="请填写备注" name="note"></textarea>
+                                            <small class="form-control-feedback"> </small> </div>
+                                    </div>
+
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group has-danger">
+                                            <p id="msg" style="color: red;"></p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存 </button>
+                                <button type="reset" class="btn btn-inverse">重置</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="position: fixed; top: 20%;left: 25%; z-index: 999999;width: 50%;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">提示</h4>
+                    <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
+                </div>
+                <div class="modal-body">
+                    <h4>恭喜您添加成功</h4>
+                </div>
+                <div class="modal-footer">
+                    <a href="{:url('index/customer/customer_list')}?mid={$mid}"  style='margin-right: 30px;'>
+                        <button class="btn btn-info">返回列表</button>
+                    </a>
+                    <a href="{:url('index/customer/customer_add')}?mid={$mid}">
+                        <button class="btn btn-success">继续添加</button>
+                    </a>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+    </div>
+
+    <script>
+
+        $("form").submit(function () {
+            var msg = $("#msg").text();
+            if(msg){
+                return false;
+            }
+
+        });
+
+//        $("input[name=contact_mobile]").change(function(){
+//
+//            var mobile = $(this).val();
+//
+//            var phone=/^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/;
+//
+//            if (!phone.test(mobile)) {
+//                $("#msg").text("手机号格式不正确");
+//            }
+//
+//        });
+
+        $("input[name=customer_name]").change(function(){
+
+            //客户名称是否存在
+            var customer_name = $(this).val();
+
+            $.ajax({
+                url: "{:url('index/customer/check_customer_name')}",
+                data: {name:customer_name},
+                method:"get",
+                success:function(data){
+                    //写入到对应位置
+                    if(data==1){
+                        $("#msg").text("客户已经存在");
+                    }
+                },
+                dataType: "json"
+            });
+
+        });
+
+    </script>
+</div>
+{/block}

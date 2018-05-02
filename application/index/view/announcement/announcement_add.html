@@ -1,0 +1,62 @@
+{extend name="layout"/}
+{block name="title"/}
+<title>添加公告 - 客户管理系统</title>
+{/block}
+{block name="css"/}
+
+{/block}
+{block name="breadcrumb"/}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">工作台</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">首页</a></li>
+        <li class="breadcrumb-item go_back">系统设置</li>
+        <li class="breadcrumb-item active">添加公告</li>
+    </ol>
+</div>
+{/block}
+{block name="detail"/}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-outline-info">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white">添加公告</h4>
+            </div>
+            <div class="card-body">
+                <form action="{:url('index/announcement/save_announcement')}?mid={$mid}" method="post">
+                    <div class="form-body">
+
+                        <div class="row">
+                            <!--/span-->
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    <label><span class="text-danger"> * </span>标题</label>
+                                    <input type="text"  class="form-control" placeholder="请填写标题" name="title" required>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <div class="row">
+                            <!--/span-->
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    <label><span class="text-danger"> * </span>内容</label>
+                                    <textarea  class="form-control"  name="content"  rows="10" required></textarea>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
+                            <button type="reset" class="btn btn-inverse">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{/block}

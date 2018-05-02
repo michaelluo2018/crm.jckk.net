@@ -1,0 +1,498 @@
+<div style="display: none">
+        <div id="month_pay">
+                <div class="col-md-6" >
+                        <div class="form-group">
+                                <label><span class="text-danger"> * </span>月回款金额</label>
+                                {if condition="isset($project)"/}
+                                <input type="text"  class="form-control check_content_num" value="{$project.month_money}" required name="month_money" >
+                                {else/}
+                                <input type="text"  class="form-control check_content_num" placeholder="请输入月回款金额" required name="month_money" >
+                                {/if}
+                                <small class="form-control-feedback"> </small>
+                        </div>
+                </div>
+        </div>
+
+        <div id="quarter_pay">
+                <div class="col-md-12  row ">
+                        <div class="col-md-3 ">
+                                <div class="form-group">
+                                        <label><span class="text-danger"> * </span>第一季度回款金额</label>
+                                        {if condition="isset($project)"/}
+                                        <input type="text"  class="form-control check_content_num" value="{$project.quarter_money1}" required name="quarter_money1" >
+                                        {else/}
+                                        <input type="text"  class="form-control check_content_num" placeholder="请输入第一季度回款金额" required name="quarter_money1" >
+                                        {/if}
+                                        <small class="form-control-feedback"> </small>
+                                </div>
+                        </div>
+                        <div class="col-md-3 ">
+                                <div class="form-group">
+                                        <label><span class="text-danger"> * </span>第二季度回款金额</label>
+                                        {if condition="isset($project)"/}
+                                        <input type="text"  class="form-control check_content_num" value="{$project.quarter_money2}" required name="quarter_money2" >
+                                        {else/}
+                                        <input type="text"  class="form-control check_content_num" placeholder="请输入第二季度回款金额" required name="quarter_money2" >
+                                        {/if}
+
+                                        <small class="form-control-feedback"> </small>
+                                </div>
+                        </div>
+                        <div class="col-md-3 ">
+                                <div class="form-group">
+                                        <label><span class="text-danger"> * </span>第三季度回款金额</label>
+                                        {if condition="isset($project)"/}
+                                        <input type="text"  class="form-control check_content_num" value="{$project.quarter_money3}" required name="quarter_money3" >
+                                        {else/}
+                                        <input type="text"  class="form-control check_content_num" placeholder="请输入第三季度回款金额" required  name="quarter_money3" >
+                                        {/if}
+
+                                        <small class="form-control-feedback"> </small>
+                                </div>
+                        </div>
+                        <div class="col-md-3 ">
+                                <div class="form-group">
+                                        <label><span class="text-danger"> * </span>第四季度回款金额</label>
+                                        {if condition="isset($project)"/}
+                                        <input type="text"  class="form-control check_content_num" value="{$project.quarter_money4}" required name="quarter_money4" >
+                                        {else/}
+                                        <input type="text"  class="form-control check_content_num" placeholder="请输入第四季度回款金额" required name="quarter_money4" >
+                                        {/if}
+
+                                        <small class="form-control-feedback"> </small>
+                                </div>
+                        </div>
+                </div>
+        </div>
+
+
+        <div id="project_pay">
+                <div class="col-md-12  row ">
+                        <div class="col-md-4 ">
+                                <div class="form-group">
+                                        <label><span class="text-danger"> * </span>首付款金额</label>
+                                        {if condition="isset($project)"/}
+                                        <input type="text"  class="form-control check_content_num" value="{$project.project_money1}" required name="project_money1" >
+                                        {else/}
+                                        <input type="text"  class="form-control check_content_num" placeholder="请输入首付款金额" required name="project_money1" >
+                                        {/if}
+
+                                        <small class="form-control-feedback"> </small>
+                                </div>
+                        </div>
+                        <div class="col-md-4 ">
+                                <div class="form-group">
+                                        <label><span class="text-danger"> * </span>尾款金额</label>
+                                        {if condition="isset($project)"/}
+                                        <input type="text"  class="form-control check_content_num " value="{$project.project_money2}" required name="project_money2" >
+                                        {else/}
+                                        <input type="text"  class="form-control check_content_num" placeholder="请输入尾款金额" required name="project_money2" >
+                                        {/if}
+
+                                        <small class="form-control-feedback"> </small>
+                                </div>
+                        </div>
+                        <div class="col-md-4 ">
+                                <div class="form-group">
+                                        <label>其他金额</label>
+                                        {if condition="isset($project)"/}
+                                        <input type="text"  class="form-control check_content_num" value="{$project.project_money3}" required name="project_money3" >
+                                        {else/}
+                                        <input type="text"  class="form-control check_content_num" placeholder="请输入其他金额"  name="project_money3" >
+                                        {/if}
+                                        <small class="form-control-feedback"> </small>
+                                </div>
+                        </div>
+                </div>
+        </div>
+
+</div>
+<?php if(isset($project)){ ?>
+        <script>
+            var executor_uid = "{$project.executor_uid}";
+            var planning_uid = "{$project.planning_uid}";
+            var docking_uid = "{$project.docking_uid}";
+            var manage_uid = "{$project.manage_uid}";
+            var demand_2 = "{$project.product_demand_2}";
+
+        </script>
+<?php }else{ ?>
+        <script>
+            var executor_uid = "";
+            var planning_uid = "";
+            var docking_uid = "";
+            var manage_uid = "";
+            var demand_2 = "";
+        </script>
+<?php } ?>
+
+
+<script>
+    //部门和负责人
+    $(".department").each(function () {
+        var name = $(this).attr("name");
+        var department_id = $(this).val();
+        //获取department_id下所有用户
+        $.ajax({
+            url: "{:url('index/index/project/ajax_get_user')}",
+            data: {'department_id':department_id},
+            method:"get",
+            success:function(data){
+                //写入到对应位置
+                var option_html = "";
+                $.each(data,function(i,v){
+                    option_html+="<option value='"+v.uid+"'>"+v.chinese_name+"</option>"
+                })
+                $('.'+ name +'').html(option_html);
+                //默认选中
+                if(executor_uid){
+                    if($('.'+ name +'').attr("name") == "executor_uid" ){
+                        $('.'+ name +'').val(executor_uid);
+                    }
+                }
+                if(planning_uid){
+                    if ($('.'+ name +'').attr("name") == "planning_uid"){
+                        $('.'+ name +'').val(planning_uid);
+                    }
+                }
+                if(docking_uid){
+                    if ($('.'+ name +'').attr("name") == "docking_uid"){
+                        $('.'+ name +'').val(docking_uid);
+                    }
+                }
+
+                if(manage_uid){
+
+                    if ($('.'+ name +'').attr("name") == "manage_uid"){
+                        $('.'+ name +'').val(manage_uid);
+                    }
+                }
+
+            },
+            dataType: "json"
+        });
+    });
+
+
+
+    //产品需求二级
+    var first_demand_1 =  $("select[name=product_demand_1]").val();
+    $.ajax({
+        url: "{:url('index/index/project/ajax_get_demand2')}",
+        data: {'demand_value':first_demand_1},
+        method:"get",
+        success:function(data){
+            //写入到对应位置
+            var option_html = "";
+            $.each(data,function(i,v){
+                option_html+="<option value='"+v+"'>"+v+"</option>"
+            })
+            $("select[name=product_demand_2]").html(option_html);
+
+            if(demand_2){
+                $("select[name=product_demand_2]").val(demand_2);
+            }
+
+        },
+        dataType: "json"
+    });
+
+</script>
+
+
+
+<script>
+
+    //客户全称
+    $(".customer_name").bind('input propertychange', function () {
+        var customer_name = $.trim($(this).val());
+        if(!customer_name){
+            $('#customer_display').html("请输入...");
+        }
+        else{
+            $.ajax({
+                url: "{:url('index/project/ajax_get_customer')}",
+                data: {'customer_name':customer_name},
+                method:"get",
+                success:function(data){
+                    if(data !=0){
+                        var customer_html = "";
+                        var array = [];
+                        $.each(data,function(i,v){
+                            var customer_id= v.id;
+                            var customer_name= v.customer_name;
+                            array[customer_id] = customer_name;
+                            customer_html +="<div class='customer_div' onclick=\"send_customer('"+customer_id+"','"+customer_name+"');\" >"+customer_name+"</div>";
+                        });
+
+                        $('#customer_display').html(customer_html);
+
+                        //如果输入值
+                        for(var i in array){
+                            if(array[i]== $.trim($(".customer_name").val())){
+
+                                $("input[name=customer_id]").val(i);
+
+                                $("#customer_display div").hide();
+                            }
+                        }
+
+
+                    }
+                    else{
+                        var message = "没找到客户信息&nbsp;&nbsp;<a href="+"{:url('index/customer/customer_add')}?mid={$customer_mid}"+" type='button' class='btn btn-info'>添加客户</a>";
+                        $('#customer_display').html(message);
+
+                    }
+                },
+                dataType: "json"
+            });
+        }
+
+    });
+
+    function send_customer(id,name) {
+        $(".customer_name").val(name);
+        $("input[name=customer_id]").val(id);
+        $("#customer_display div").hide();
+    }
+
+
+    //项目名称变化，检查是否已经存在,还要看有没有project_id
+
+    $(".project_name").change(function () {
+
+
+        var project_id = $.trim($("input[name=project_id]").val());
+
+        var data_customer_id = $.trim($("input[name=customer_id]").val());
+
+
+        if(!data_customer_id){
+
+            layer.alert("请先正确填写客户全称再填写项目名称！");
+            $(this).val(" ");
+        }
+        else{
+            var input_project_name = $.trim($(this).val());
+
+            //ajax
+
+            $.ajax({
+                url:"{:url('index/project/ajax_check_project_name')}",
+                method:'post',
+                data:{customer_id:data_customer_id,project_name:input_project_name,project_id:project_id},
+                success:function (data) {
+                    if(data == 1){
+                        layer.alert("本客户已经存在其他项目名为"+input_project_name+"的项目");
+                        $(".project_name").val(" ");
+                    }
+                },
+                dataType:'json'
+            });
+        }
+
+
+
+    });
+
+
+    //查看客户所有项目
+
+    $(".customer_project_button").click(function () {
+
+         var customer_id = $.trim($("input[name=customer_id]").val());
+
+         if(!customer_id){
+             layer.alert("请先确保正确填写客户名称");
+         }
+         else{
+             var customer_name = $.trim($("input[name=customer_name]").val());
+             //获取客户的所有项目名称
+             $.ajax({
+                 url:"{:url('index/project/ajax_get_customer_project_name')}",
+                 method:'post',
+                 data:{customer_id:customer_id},
+                 success:function(data){
+                        if(data.length){
+                            var project_name_html = "<div style='padding: 20px;'>";
+                            $.each(data,function (i,v) {
+                                project_name_html += "<button class='btn btn-info' style='margin-left: 10px;margin-bottom: 10px;'>"+v.project_name+"</button>";
+                            });
+                            project_name_html +="</div>";
+                            layer.open({
+                                type: 1,
+                                shade: false,
+                                skin: 'layui-layer-demo',
+                                area: ['500px', '300px'],
+                                title: "本客户的所有项目",
+                                content: project_name_html
+
+                            });
+                        }
+                        else{
+                            layer.alert("该客户还没有项目");
+                        }
+
+                 },
+                 dataType:"json"
+             });
+         }
+
+    });
+
+
+
+
+
+    //部门变化
+    $(".department").change(function () {
+        var name = $(this).attr("name");
+        var department_id = $(this).val();
+        //获取department_id下所有用户
+        $.ajax({
+            url: "{:url('index/index/project/ajax_get_user')}",
+            data: {'department_id':department_id},
+            method:"get",
+            success:function(data){
+                //写入到对应位置
+                var option_html = "";
+                $.each(data,function(i,v){
+                    option_html+="<option value='"+v.uid+"'>"+v.chinese_name+"</option>"
+                })
+                $('.'+ name +'').html(option_html);
+            },
+            dataType: "json"
+        });
+
+    });
+
+    //一级需求变化
+    $("select[name=product_demand_1]").change(function(){
+        var demand_value = $(this).val();
+        $.ajax({
+            url: "{:url('index/index/project/ajax_get_demand2')}",
+            data: {'demand_value':demand_value},
+            method:"get",
+            success:function(data){
+                //写入到对应位置
+                var option_html = "";
+                $.each(data,function(i,v){
+                    option_html+="<option value='"+v+"'>"+v+"</option>"
+                })
+                $("select[name=product_demand_2]").html(option_html);
+            },
+            dataType: "json"
+        });
+    });
+
+
+    //几个输入框检查,只能是数字和.
+
+    function check_content_num(data,obj) {
+
+        var _this_data = $.trim(data);
+
+        var patt_1 = /^([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$/;
+        var patt_2 = /^([1-9]\d*|0)$/;
+
+        patt_1.lastIndex = 0;
+
+        var res1 = patt_1.test(_this_data);
+
+        patt_2.lastIndex = 0;
+
+        var res2 = patt_2.test(_this_data);
+
+        if(!res1 && !res2){
+           if(obj){
+               obj.val(" ");
+           }
+           return 1;
+        }
+    }
+
+    $(".check_content_num").change(function () {
+
+        if(check_content_num($(this).val(),$(this))){
+
+            layer.alert("请输入正确格式");
+        }
+
+
+    });
+
+
+
+    $("form").submit(function () {
+
+        var customer_id = $.trim($("input[name=customer_id]").val());
+
+        var project_name = $.trim($("input[name=project_name]").val());
+
+        if(!customer_id){
+
+            layer.alert("请填写系统已存在的客户！");
+            return false;
+        }
+        else{
+            if(!project_name){
+
+                layer.alert("请确保同一客户项目名称重复！");
+
+                return false;
+            }
+            else{
+                var i = 0;
+                $("form .check_content_num").each(function () {
+
+                    if(check_content_num($(this).val())){
+
+                        layer.alert("请输入正确格式");
+
+                    }
+                    else{
+                        i++;
+                    }
+
+                });
+
+                if(i< $("form .check_content_num").length){
+                    layer.alert("请输入正确格式");
+                    return false;
+                }
+            }
+        }
+    });
+
+    $("select[name=payment_type]").change(function(){
+        var payment_type = $(this).val();
+        var month_pay = $("#month_pay").html();
+        var quarter_pay = $("#quarter_pay").html();
+        var project_pay = $("#project_pay").html();
+
+
+       if(payment_type == "月付"){
+                $(".pay_type_money").html(month_pay);
+
+       }
+        if(payment_type == "季度付"){
+            $(".pay_type_money").html(quarter_pay);
+        }
+        if(payment_type == "项目结算"){
+            $(".pay_type_money").html(project_pay);
+        }
+
+        $(".check_content_num").change(function () {
+
+            if(check_content_num($(this).val(),$(this))){
+
+                layer.alert("请输入正确格式");
+            }
+
+
+        });
+
+    });
+
+</script>

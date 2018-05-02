@@ -1,0 +1,365 @@
+{extend name="layout"/}
+{block name="title"/}
+<title>添加项目 - 客户管理系统</title>
+{/block}
+
+{block name="breadcrumb"/}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">工作台</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">首页</a></li>
+        <li class="breadcrumb-item go_back">客户和项目</li>
+        <li class="breadcrumb-item active">修改项目</li>
+    </ol>
+</div>
+{/block}
+{block name="detail"/}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-outline-info">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white">修改项目</h4>
+            </div>
+            <div class="card-body">
+                <form action="{:url('index/project/save_project')}?mid={$mid}" method="post">
+
+                    <input type="hidden" name="project_id" value="{$project.id}">
+                    <div class="form-body">
+                        <h3 class="card-title">客户信息</h3>
+                        <hr>
+                        <div class="row p-t-20">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>客户全称</label>
+                                    <input type="text"  class="form-control customer_name" value="{$project.customer_name}"  required autocomplete="off">
+                                    <input type="hidden"  class="form-control" value="{$project.customer_id}"  name="customer_id" required >
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                            <div class="col-md-12" id="customer_display" style="color: red;" >
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!--/row-->
+                        <h3 class="box-title m-t-40">项目信息   <button type="button" class="btn btn-info customer_project_button"   >查看客户所有项目</button></h3>
+                        <div class="row p-t-20">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>项目名称 </label>
+                                    <input type="text"  class="form-control project_name" value="{$project.project_name}" name="project_name" required autocomplete="off">
+                                    <small class="form-control-feedback" hidden> </small>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label class="control-label">签约公司名称</label>
+                                    <input type="text"  class="form-control"  value="{$project.company_name}"  name="company_name">
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <div class="form-group">
+                                    <label><span class="text-danger"> * </span>项目所在部门</label>
+                                    <select class="form-control custom-select department"  name="executor_department_id"  required>
+                                        {volist name="departments" id="dep"}
+                                        {if condition="$dep.id eq $project.e_d_id"/}
+                                        <option value="{$dep.id}" selected>{$dep.department_name}</option>
+                                        {else/}
+                                        <option value="{$dep.id}">{$dep.department_name}</option>
+                                        {/if}
+                                        {/volist}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 ">
+                                <div class="form-group">
+                                    <label><span class="text-danger"> * </span>项目执行人</label>
+                                    <select class="form-control custom-select executor_department_id"   required name="executor_uid" >
+                                        <option value="">请选择</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 ">
+                                <div class="form-group">
+                                    <label><span class="text-danger"> * </span>策划部门</label>
+                                    <select class="form-control custom-select department"   name="planning_department_id" required>
+                                        {volist name="departments" id="dep"}
+                                            {if condition="$dep.id eq $project.p_d_id"/}
+                                                <option value="{$dep.id}" selected>{$dep.department_name}</option>
+                                            {else/}
+                                                 <option value="{$dep.id}">{$dep.department_name}</option>
+                                            {/if}
+                                        {/volist}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 ">
+                                <div class="form-group">
+                                    <label><span class="text-danger"> * </span>策划人</label>
+                                    <select class="form-control custom-select planning_department_id"   required name="planning_uid">
+                                        <option value="">请选择</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <div class="form-group">
+                                    <label><span class="text-danger"> * </span>对接部门</label>
+                                    <select class="form-control custom-select department"   name="docking_department_id" required>
+                                        {volist name="departments" id="dep"}
+                                            {if condition="$dep.id eq $project.d_d_id"/}
+                                            <option value="{$dep.id}" selected>{$dep.department_name}</option>
+                                            {else/}
+                                            <option value="{$dep.id}">{$dep.department_name}</option>
+                                            {/if}
+                                        {/volist}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 ">
+                                <div class="form-group">
+                                    <label><span class="text-danger"> * </span>对接人</label>
+                                    <select class="form-control custom-select docking_department_id"   required name="docking_uid">
+                                        <option value="">请选择</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 ">
+                                <div class="form-group">
+                                    <label><span class="text-danger"> * </span>管理部门</label>
+                                    <select class="form-control custom-select department"   required name="manage_department_id">
+                                        {volist name="departments" id="dep"}
+                                            {if condition="$dep.id eq $project.m_d_id"/}
+                                                <option value="{$dep.id}" selected>{$dep.department_name}</option>
+                                            {else/}
+                                                 <option value="{$dep.id}">{$dep.department_name}</option>
+                                            {/if}
+                                        {/volist}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 ">
+                                <div class="form-group">
+                                    <label><span class="text-danger"> * </span>管理人</label>
+                                    <select class="form-control custom-select manage_department_id"   name="manage_uid" required>
+                                        <option value="">请选择</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 ">
+                                <div class="form-group">
+                                    <label><span class="text-danger"> * </span>需求产品一级</label>
+                                    <select class="form-control custom-select" name="product_demand_1" >
+                                        {volist name="$data['product_demand']" id="product_demand" }
+                                        {if condition="$product_demand eq $project.product_demand_1"/}
+                                            <option value="{$product_demand}" selected>{$product_demand}</option>
+                                        {else/}
+                                            <option value="{$product_demand}">{$product_demand}</option>
+                                        {/if}
+                                        {/volist}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="form-group">
+                                    <label><span class="text-danger"> * </span>需求产品二级</label>
+                                    <select class="form-control custom-select"  name="product_demand_2">
+                                        <option value="">请选择</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+
+                        <h3 class="box-title m-t-40">合同信息</h3>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label><span class="text-danger"> * </span>合同状态</label>
+                                    <select class="form-control custom-select" required name="contract_status">
+                                        {volist name="data['contract_status']" id="contract_status"}
+                                            {if condition="$contract_status eq $project.contract_status" /}
+                                                <option value="{$contract_status}" selected>{$contract_status}</option>
+                                            {else/}
+                                                <option value="{$contract_status}" >{$contract_status}</option>
+                                            {/if}
+                                        {/volist}
+                                    </select>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label><span class="text-danger"> * </span>合同金额</label>
+                                    <input type="text"  class="form-control check_content_num" value="{$project.contract_amount}" required name="contract_amount" >
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label><span class="text-danger"> * </span>回款模式</label>
+                                    <select class="form-control custom-select" required name="payment_type">
+                                        {volist name="data['payment_type']" id="payment_type"}
+                                            {if condition="$payment_type eq $project.payment_type"/}
+                                                <option value="{$payment_type}" selected>{$payment_type}</option>
+                                            {else/}
+                                                <option value="{$payment_type}">{$payment_type}</option>
+                                            {/if}
+
+                                        {/volist}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row pay_type_money">
+                            {if condition="$project.payment_type eq '月付'"/}
+                                <div class="col-md-6" >
+                                    <div class="form-group">
+                                        <label><span class="text-danger"> * </span>月回款金额</label>
+                                        <input type="text"  class="form-control check_content_num" value="{$project.month_money}" required name="month_money" >
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
+                            {elseif condition="$project.payment_type eq '季度付'"/}
+                                <div class="col-md-12  row ">
+                                <div class="col-md-3 ">
+                                    <div class="form-group">
+                                        <label><span class="text-danger"> * </span>第一季度回款金额</label>
+                                        <input type="text"  class="form-control check_content_num" value="{$project.quarter_money1}" required name="quarter_money1" >
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 ">
+                                    <div class="form-group">
+                                        <label><span class="text-danger"> * </span>第二季度回款金额</label>
+                                        <input type="text"  class="form-control check_content_num" value="{$project.quarter_money2}" required name="quarter_money2" >
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 ">
+                                    <div class="form-group">
+                                        <label><span class="text-danger"> * </span>第三季度回款金额</label>
+                                        <input type="text"  class="form-control check_content_num" value="{$project.quarter_money3}" required  name="quarter_money3" >
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 ">
+                                    <div class="form-group">
+                                        <label><span class="text-danger"> * </span>第四季度回款金额</label>
+                                        <input type="text"  class="form-control check_content_num" value="{$project.quarter_money4}" required name="quarter_money4" >
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
+                            </div>
+                            {else/}
+                                <div class="col-md-12  row ">
+                                <div class="col-md-4 ">
+                                    <div class="form-group">
+                                        <label><span class="text-danger"> * </span>首付款金额</label>
+                                        <input type="text"  class="form-control check_content_num" value="{$project.project_money1}" required name="project_money1" >
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <div class="form-group">
+                                        <label><span class="text-danger"> * </span>尾款金额</label>
+                                        <input type="text"  class="form-control check_content_num" value="{$project.project_money2}" required name="project_money2" >
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <div class="form-group">
+                                        <label>其他金额</label>
+                                        <input type="text"  class="form-control check_content_num" value="{$project.project_money3}"  name="project_money3" >
+                                        <small class="form-control-feedback"> </small>
+                                    </div>
+                                </div>
+                            </div>
+                            {/if}
+
+
+                            <!--/span-->
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label><span class="text-danger"> * </span>回款状态</label>
+                                    <select class="form-control custom-select" required name="payment_status">
+                                        {volist name="data['payment_status']" id="payment_status"}
+                                        {if condition="$payment_status eq $project.payment_status"/}
+                                        <option value="{$payment_status}" selected>{$payment_status}</option>
+                                        {else/}
+                                        <option value="{$payment_status}">{$payment_status}</option>
+                                        {/if}
+                                        {/volist}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label><span class="text-danger"> * </span>毛利润率</label>
+                                    <div class="input-group">
+                                        <input type="text"  class="form-control check_content_num" value="{$project.rate}" name="rate" required>
+                                        <span class="input-group-addon">%</span>
+                                    </div>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <!--/span-->
+
+                            <!--/span-->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label><span class="text-danger"> * </span>成本支出</label>
+                                    <input type="text"  class="form-control check_content_num" value="{$project.cost}"  name="cost" required>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>成本支出备注</label>
+                                    <input type="text"  class="form-control " value="{$project.cost_note}" name="cost_note" >
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
+                            <button type="reset" class="btn btn-inverse">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file="project/project_common_script"/}
+{/block}
