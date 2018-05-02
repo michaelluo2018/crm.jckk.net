@@ -47,6 +47,7 @@ class Announcement extends  Base{
 
     public  function  announcement_list(){
 
+
         return view("announcement_list");
 
     }
@@ -76,6 +77,7 @@ class Announcement extends  Base{
     public  function  announcement_des($id){
 
         $announcement = model("announcement","logic")->get_announcement_by_id($id);
+
 
         $this->assign("des_announcement",$announcement);
 

@@ -61,7 +61,6 @@ class Base extends Controller{
         }
         //公告
         $announcements = model("announcement","logic")->get_announcement();
-
         $this->assign("announcements",$announcements);
     }
 

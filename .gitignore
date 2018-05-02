@@ -1,0 +1,8 @@
+.idea
+.public/uploads
+.database
+*.sql
+composer.lock
+*.log
+thinkphp
+application/database.php
