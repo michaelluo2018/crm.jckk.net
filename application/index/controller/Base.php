@@ -236,7 +236,7 @@ class Base extends Controller{
     }
 
     public function get_mid_by_url($url){
-       $id =  model("menu")->where("url","like",'%'.$url.'%')->column("id");
+       $id =  model("menu")->where("url","like",'%'.$url.'%')->where("is_delete","<>",1)->column("id");
        if($id){
            return $id[0];
        }
