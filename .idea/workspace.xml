@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52bd9cb4-fc9b-4b77-aaf2-8b0e198d5b49" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/controller/Base.php" afterPath="$PROJECT_DIR$/application/index/controller/Base.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/system/organization.html" afterPath="$PROJECT_DIR$/application/index/view/system/organization.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,21 +27,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Base.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/index/controller/Base.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="246" column="36" lean-forward="false" selection-start-line="246" selection-start-column="22" selection-end-line="246" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Menu.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/index/controller/Menu.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="586">
               <caret line="53" column="47" lean-forward="false" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="organization.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/index/view/system/organization.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2390">
+              <caret line="393" column="11" lean-forward="true" selection-start-line="393" selection-start-column="11" selection-end-line="393" selection-end-column="11" />
+              <folding>
+                <element signature="n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PostPermission.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/index/controller/PostPermission.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="284">
+              <caret line="20" column="46" lean-forward="false" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -104,6 +115,9 @@
       <find>mdi-me</find>
       <find>mdi-mess</find>
       <find>delete_menu</find>
+      <find>send_post</find>
+      <find>ajax_get_post_permission</find>
+      <find>table_name</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -125,7 +139,6 @@
         <option value="$PROJECT_DIR$/application/index/controller/Book.php" />
         <option value="$PROJECT_DIR$/application/index/view/book/book.html" />
         <option value="$PROJECT_DIR$/application/index/logic/User.php" />
-        <option value="$PROJECT_DIR$/application/index/view/system/organization.html" />
         <option value="$PROJECT_DIR$/application/index/controller/Announcement.php" />
         <option value="$PROJECT_DIR$/application/index/controller/System.php" />
         <option value="$PROJECT_DIR$/application/index/view/layout.html" />
@@ -135,6 +148,7 @@
         <option value="$PROJECT_DIR$/application/index/view/feedback/feedback_des.html" />
         <option value="$PROJECT_DIR$/application/index/logic/Menu.php" />
         <option value="$PROJECT_DIR$/application/index/controller/Base.php" />
+        <option value="$PROJECT_DIR$/application/index/view/system/organization.html" />
       </list>
     </option>
   </component>
@@ -455,12 +469,12 @@
       <updated>1525244015438</updated>
       <workItem from="1525244016891" duration="75000" />
       <workItem from="1525245966698" duration="8803000" />
-      <workItem from="1525310765085" duration="15836000" />
+      <workItem from="1525310765085" duration="16778000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24714000" />
+    <option name="totallyTimeSpent" value="25656000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1936" height="1056" extended-state="0" />
@@ -755,14 +769,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/system/organization.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="63" column="106" lean-forward="false" selection-start-line="63" selection-start-column="106" selection-end-line="63" selection-end-column="106" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/index/controller/Project.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -840,14 +846,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/controller/Menu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="586">
-          <caret line="53" column="47" lean-forward="false" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/index/logic/Menu.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="799">
@@ -869,9 +867,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/index/controller/Base.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="246" column="36" lean-forward="false" selection-start-line="246" selection-start-column="22" selection-end-line="246" selection-end-column="36" />
+        <state relative-caret-position="329">
+          <caret line="241" column="8" lean-forward="true" selection-start-line="241" selection-start-column="8" selection-end-line="241" selection-end-column="8" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/controller/Menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="586">
+          <caret line="53" column="47" lean-forward="false" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/controller/PostPermission.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="20" column="46" lean-forward="false" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/system/organization.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2390">
+          <caret line="393" column="11" lean-forward="true" selection-start-line="393" selection-start-column="11" selection-end-line="393" selection-end-column="11" />
+          <folding>
+            <element signature="n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

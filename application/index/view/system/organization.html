@@ -342,6 +342,9 @@
                     });
                 }
                 else{
+                    $(".table_name").each(function () {
+                        $(this).prop('checked', false);
+                    });
                     $.each(data,function (i,v) {
                         var mid = v.mid;
                         var add_name = "add_"+mid ;
