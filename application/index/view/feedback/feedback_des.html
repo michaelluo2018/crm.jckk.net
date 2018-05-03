@@ -1,0 +1,41 @@
+{extend name="layout"/}
+{block name="title"}
+<title>反馈详情 - 客户管理系统</title>
+{/block}
+
+{block name="breadcrumb"/}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">反馈详情</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">首页</a></li>
+        <li class="breadcrumb-item active">反馈详情</li>
+    </ol>
+</div>
+{/block}
+{block name="detail"/}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-outline-info">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white">反馈详情</h4>
+            </div>
+            <div class="card-body">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="exampleInputname1" name="name" value="{$feedback.name}" disabled> </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" value="{$feedback.email}" name="email" disabled>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" value="{$feedback.title}" name="title" disabled>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="exampleTextarea" rows="10" name="content"  disabled >{$feedback.content}</textarea>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{/block}

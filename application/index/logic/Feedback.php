@@ -1,5 +1,6 @@
 <?php
 namespace  app\index\logic;
+use think\Db;
 use think\Model;
 use app\index\model\Log;
 
@@ -23,6 +24,19 @@ class Feedback extends  Model{
 
     }
 
+
+    public  function  get_feedbacks(){
+
+        return Db::table("jckk_feedback")
+            ->field(["jckk_feedback.*","jckk_user.chinese_name"])
+            ->join("jckk_user","jckk_user.uid=jckk_feedback.create_uid")
+            ->paginate();
+    }
+
+    public  function  get_feedback($id){
+
+        return $this->where("id",$id)->find();
+    }
 
 
 

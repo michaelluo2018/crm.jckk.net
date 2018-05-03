@@ -1,0 +1,74 @@
+{extend name="layout"/}
+{block name="title"}
+<title>意见反馈 - 客户管理系统</title>
+{/block}
+{block name="css"}
+<style>
+
+    #tp_paginate span {padding:8px}
+    #tp_paginate li {padding:8px;}
+</style>
+{/block}
+{block name="breadcrumb"/}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">意见反馈</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">首页</a></li>
+        <li class="breadcrumb-item active">意见反馈</li>
+    </ol>
+</div>
+{/block}
+{block name="detail"/}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">意见反馈</h4>
+                <h6 class="card-subtitle"></h6>
+                <table  class="table table-bordered table-hover toggle-circle">
+                    <thead>
+                    <tr class="text-align">
+                        <th>序号</th>
+                        <th>姓名</th>
+                        <th>邮箱</th>
+                        <th>标题</th>
+                        <th>创建者</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="feedbacks" id="feedback" key="k"}
+
+                    <tr>
+                        <td>{$k}</td>
+                        <td >{$feedback.name}</td>
+                        <td >{$feedback.email}</td>
+                        <td >{$feedback.title}</td>
+                        <td >{$feedback.chinese_name}</td>
+                        <td >{$feedback.create_time|date="Y-m-d H:i:s",###}</td>
+
+                        <td>
+                            <a href="{:url('index/feedback/feedback_des')}?id={$feedback.id }&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+
+                    {/volist}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="14">
+                            <div id="tp_paginate">
+                                {$feedbacks->render()}
+                            </div>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+{/block}

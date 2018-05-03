@@ -240,21 +240,6 @@ class System extends Base{
     }
 
 
-    public  function  feedback(){
-
-        if(Cookie::has("feedback".$this->uid)){
-            $msg = "您10分钟内已经添加过意见反馈";
-        }
-        else{
-            $data = Request::instance()->post();
-            Cookie::set("feedback".$this->uid,$data,600);
-            model("feedback","logic")->save_feedback($data);
-            $msg = "我们已经收到您的反馈，谢谢！";
-        }
-
-
-        echo "<script>alert(\" ".$msg."\"); history.back(-1);</script>";
-    }
 
 
 
