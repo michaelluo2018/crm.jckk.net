@@ -16,12 +16,14 @@ class Base extends Controller{
 
     function __construct(Request $request = null)
     {
+
         parent::__construct($request);
         if(!$this->is_login()){
             if(!$this->is_remember_me()){
                 $this->redirect("login/login");
             }
         }
+
         $this->uid = Session::get("uid");
         $user_info = model("user","logic")->get_user($this->uid);
         $this->assign("user_info",$user_info);
@@ -54,14 +56,17 @@ class Base extends Controller{
         $this->assign("customer_mid",$this->get_mid_by_url("index/customer/customer_list"));
 
         //检测链接是否有权限展示
-
-        if(!$this->get_desc_by_url(request()->module().'/'.request()->controller().'/'.request()->action())){
-//            echo "<script>alert('没有权限！'); </script>";
-            $this->redirect("/");
+        $uri = request()->module().'/'.request()->controller().'/'.request()->action();
+        if(strtolower($uri) != "index/index/index"){
+            if(!$this->get_desc_by_url($uri)){
+                $this->redirect("/");
+            }
         }
+
         //公告
         $announcements = model("announcement","logic")->get_announcement();
         $this->assign("announcements",$announcements);
+      
     }
 
     protected function login($uid){
