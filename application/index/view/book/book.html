@@ -1,0 +1,80 @@
+{extend name="layout"/}
+{block name="title"}
+<title>通讯录 - 客户管理系统</title>
+{/block}
+{block name="css"}
+<style>
+
+    #tp_paginate span {padding:8px}
+    #tp_paginate li {padding:8px;}
+</style>
+{/block}
+{block name="breadcrumb"/}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">通讯录</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">首页</a></li>
+        <li class="breadcrumb-item active">通讯录</li>
+    </ol>
+</div>
+{/block}
+{block name="detail"/}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">通讯录</h4>
+                <h6 class="card-subtitle"></h6>
+                <table  class="table table-bordered table-hover toggle-circle">
+                    <thead>
+                    <tr class="text-align">
+                        <th>序号</th>
+                        <th>部门</th>
+                        <th>中文名</th>
+                        <th>英文名</th>
+                        <th>职位名称</th>
+                        <th>手机</th>
+                        <th>QQ</th>
+                        <th>微信</th>
+                        <th>邮箱</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="books" id="book" key="k"}
+
+                    <tr>
+                        <td>{$k}</td>
+                        <td >{$book['department_name']}</td>
+                        <td>{$book['chinese_name']}</td>
+                        <td>{$book["english_name"]}</td>
+                        <td>{$book["post_name"]}</td>
+                        <td>{$book["mobile"]}</td>
+                        <td>{$book["qq"]}</td>
+                        <td>{$book["wechat"]}</td>
+                        <td>{$book["email"]}</td>
+
+                        <td>
+                            <a href="{:url('index/system/user_des')}?id={$book['uid'] }&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+
+                    {/volist}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="14">
+                            <div id="tp_paginate">
+                               {$books->render()}
+                            </div>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+{/block}

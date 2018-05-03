@@ -2,186 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52bd9cb4-fc9b-4b77-aaf2-8b0e198d5b49" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/20180402/d5d18be366a6fe1cce76e4cd8484e22a.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/20180403/0dc007195a075596ad6f2be5eb5f8bc0.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/20180403/257b39627d05594cb87d49547fa3dcfb.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/20180403/25dc32a7cd3815fa145df5cca6241c1c.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/20180403/3796e98ce588446cdfbe48ae00cb3963.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/20180403/61bdbffb6f194398a1deb63b42c6cfcd.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/20180403/639f2b91d4601a6f77cdfa03af06d465.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/20180403/cb53cbf73bd25f9194372f295e13740b.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/20180403/d5026769ee240e382df088a84a49f803.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/20180403/dd81696329e345b34858c350e9676e8a.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/20180404/1ac01911a845a788d0e07e4bef18e1b3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/20180409/a7606f8b99558bb86294438cf955ffcd.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/.htaccess" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/CONTRIBUTING.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/LICENSE.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/base.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/codecov.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/composer.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/console.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/convention.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/helper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/lang/zh-cn.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/App.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Build.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Cache.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Collection.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Config.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Console.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Controller.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Cookie.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Db.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Debug.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Env.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Error.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Exception.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/File.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Hook.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Lang.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Loader.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Log.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Model.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Paginator.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Process.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Request.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Response.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Route.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Session.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Template.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Url.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/Validate.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/View.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/cache/Driver.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/cache/driver/File.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/cache/driver/Lite.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/cache/driver/Memcache.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/cache/driver/Memcached.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/cache/driver/Redis.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/cache/driver/Sqlite.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/cache/driver/Wincache.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/cache/driver/Xcache.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/config/driver/Ini.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/config/driver/Json.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/config/driver/Xml.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/Command.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/Input.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/Output.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/bin/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/bin/hiddeninput.exe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/command/Build.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/command/Clear.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/command/Help.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/command/Lists.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/command/Make.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/command/make/Controller.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/command/make/Model.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/command/make/stubs/controller.plain.stub" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/command/make/stubs/controller.stub" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/command/make/stubs/model.stub" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/command/optimize/Autoload.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/command/optimize/Config.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/command/optimize/Route.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/command/optimize/Schema.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/input/Argument.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/input/Definition.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/input/Option.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/output/Ask.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/output/Descriptor.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/output/Formatter.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/output/Question.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/output/descriptor/Console.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/output/driver/Buffer.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/output/driver/Console.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/output/driver/Nothing.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/output/formatter/Stack.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/output/formatter/Style.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/output/question/Choice.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/console/output/question/Confirmation.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/controller/Rest.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/controller/Yar.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/db/Builder.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/db/Connection.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/db/Query.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/db/builder/Mysql.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/db/builder/Pgsql.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/db/builder/Sqlite.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/db/builder/Sqlsrv.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/db/connector/Mysql.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/db/connector/Pgsql.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/db/connector/Sqlite.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/db/connector/Sqlsrv.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/db/connector/pgsql.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/db/exception/BindParamException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/db/exception/DataNotFoundException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/db/exception/ModelNotFoundException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/debug/Console.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/debug/Html.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/exception/ClassNotFoundException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/exception/DbException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/exception/ErrorException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/exception/Handle.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/exception/HttpException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/exception/HttpResponseException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/exception/PDOException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/exception/RouteNotFoundException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/exception/TemplateNotFoundException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/exception/ThrowableError.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/exception/ValidateException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/log/driver/File.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/log/driver/Socket.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/log/driver/Test.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/model/Collection.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/model/Merge.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/model/Pivot.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/model/Relation.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/model/relation/BelongsTo.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/model/relation/BelongsToMany.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/model/relation/HasMany.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/model/relation/HasManyThrough.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/model/relation/HasOne.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/model/relation/MorphMany.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/model/relation/MorphOne.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/model/relation/MorphTo.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/model/relation/OneToOne.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/paginator/driver/Bootstrap.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/process/Builder.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/process/Utils.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/process/exception/Failed.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/process/exception/Timeout.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/process/pipes/Pipes.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/process/pipes/Unix.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/process/pipes/Windows.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/response/Json.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/response/Jsonp.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/response/Redirect.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/response/View.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/response/Xml.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/session/driver/Memcache.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/session/driver/Memcached.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/session/driver/Redis.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/template/TagLib.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/template/driver/File.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/template/taglib/Cx.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/view/driver/Php.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/think/view/driver/Think.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/traits/controller/Jump.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/traits/model/SoftDelete.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/library/traits/think/Instance.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/phpunit.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/start.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/tpl/default_index.tpl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/tpl/dispatch_jump.tpl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/tpl/page_trace.tpl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thinkphp/tpl/think_exception.tpl" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/index/controller/Book.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/index/view/book/book.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/logic/User.php" afterPath="$PROJECT_DIR$/application/index/logic/User.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/index/index.html" afterPath="$PROJECT_DIR$/application/index/view/index/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -196,90 +22,93 @@
       <file leaf-file-name="Announcement.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/index/controller/Announcement.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+            <state relative-caret-position="432">
+              <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/database.php">
+      <file leaf-file-name="Base.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/index/controller/Base.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="28" column="28" lean-forward="false" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+            <state relative-caret-position="2619">
+              <caret line="100" column="73" lean-forward="false" selection-start-line="100" selection-start-column="73" selection-end-line="100" selection-end-column="73" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="announcement_des.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/index/view/announcement/announcement_des.html">
+      <file leaf-file-name="Book.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/index/controller/Book.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+            <state relative-caret-position="567">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="announcement_edit.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/index/view/announcement/announcement_edit.html">
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/index/logic/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="announcement_list.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/index/view/announcement/announcement_list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1053">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/index/view/index/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="27" column="47" lean-forward="false" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
+            <state relative-caret-position="371">
+              <caret line="202" column="51" lean-forward="false" selection-start-line="202" selection-start-column="51" selection-end-line="202" selection-end-column="51" />
               <folding>
-                <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-                <marker date="1525249348191" expanded="false" signature="1144:1169" ph="..." />
-                <marker date="1525249348191" expanded="false" signature="1356:1381" ph="..." />
-                <marker date="1525249348191" expanded="false" signature="1568:1593" ph="..." />
-                <marker date="1525249348191" expanded="false" signature="1780:1805" ph="..." />
+                <element signature="e#2346#2426#0#PHP" expanded="false" />
+                <element signature="e#2433#2731#0#PHP" expanded="false" />
+                <element signature="e#2738#3244#0#PHP" expanded="false" />
+                <element signature="e#3251#3702#0#PHP" expanded="false" />
+                <element signature="e#3709#4236#0#PHP" expanded="false" />
+                <element signature="e#4243#4694#0#PHP" expanded="false" />
+                <element signature="e#4700#4907#0#PHP" expanded="false" />
+                <element signature="e#4913#5109#0#PHP" expanded="false" />
+                <element signature="e#5116#5421#0#PHP" expanded="false" />
+                <element signature="e#5429#5730#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="book.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/index/view/book/book.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="270">
+              <caret line="58" column="65" lean-forward="false" selection-start-line="58" selection-start-column="65" selection-end-line="58" selection-end-column="65" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scroll_announcement.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/index/view/index/scroll_announcement.html">
+      <file leaf-file-name="member_des.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/index/view/system/member_des.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="14" column="74" lean-forward="false" selection-start-line="14" selection-start-column="74" selection-end-line="14" selection-end-column="74" />
+            <state relative-caret-position="216">
+              <caret line="137" column="40" lean-forward="true" selection-start-line="137" selection-start-column="40" selection-end-line="137" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/index/view/layout.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="43" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -289,12 +118,16 @@
       <list>
         <option value="$PROJECT_DIR$/application/index/view/index/scroll_announcement.html" />
         <option value="$PROJECT_DIR$/application/index/controller/Base.php" />
-        <option value="$PROJECT_DIR$/application/index/controller/Announcement.php" />
         <option value="$PROJECT_DIR$/application/index/view/announcement/announcement_des.html" />
         <option value="$PROJECT_DIR$/application/index/view/announcement/announcement_edit.html" />
-        <option value="$PROJECT_DIR$/application/index/view/index/index.html" />
         <option value="$PROJECT_DIR$/application/database.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="C:/Windows/System32/drivers/etc/hosts" />
+        <option value="$PROJECT_DIR$/application/index/controller/Announcement.php" />
+        <option value="$PROJECT_DIR$/application/index/view/index/index.html" />
+        <option value="$PROJECT_DIR$/application/index/controller/Book.php" />
+        <option value="$PROJECT_DIR$/application/index/logic/User.php" />
+        <option value="$PROJECT_DIR$/application/index/view/book/book.html" />
       </list>
     </option>
   </component>
@@ -307,7 +140,6 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -326,6 +158,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -388,13 +221,160 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crm" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="index" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="system" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crm" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="index" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crm" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="index" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="index" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crm" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="index" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="book" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crm" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="index" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="logic" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crm" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="index" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -453,6 +433,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -487,21 +473,23 @@
       <option name="presentableId" value="Default" />
       <updated>1525244015438</updated>
       <workItem from="1525244016891" duration="75000" />
-      <workItem from="1525245966698" duration="4681000" />
+      <workItem from="1525245966698" duration="8803000" />
+      <workItem from="1525310765085" duration="4334000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4756000" />
+    <option name="totallyTimeSpent" value="13212000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
+    <frame x="-8" y="0" width="1936" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -513,7 +501,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -524,10 +511,69 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/application/index/logic/User.php</url>
+          <line>170</line>
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/application/index/controller/Announcement.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/controller/Base.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2619">
+          <caret line="100" column="73" lean-forward="true" selection-start-line="100" selection-start-column="73" selection-end-line="100" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/logic/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1296">
+          <caret line="200" column="31" lean-forward="false" selection-start-line="200" selection-start-column="31" selection-end-line="200" selection-end-column="31" />
+          <folding>
+            <element signature="e#2346#2426#0#PHP" expanded="false" />
+            <element signature="e#2433#2731#0#PHP" expanded="false" />
+            <element signature="e#2738#3244#0#PHP" expanded="false" />
+            <element signature="e#3251#3702#0#PHP" expanded="false" />
+            <element signature="e#3709#4236#0#PHP" expanded="false" />
+            <element signature="e#4243#4694#0#PHP" expanded="false" />
+            <element signature="e#4700#4907#0#PHP" expanded="false" />
+            <element signature="e#4913#5109#0#PHP" expanded="false" />
+            <element signature="e#5116#5421#0#PHP" expanded="false" />
+            <element signature="e#5429#5730#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/logic/Department.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="8" column="37" lean-forward="false" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/controller/Book.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="18" column="17" lean-forward="false" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/index/controller/Announcement.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -588,7 +634,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="991">
           <caret line="363" column="0" lean-forward="false" selection-start-line="363" selection-start-column="0" selection-end-line="363" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -596,39 +641,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/controller/Announcement.php">
+    <entry file="file://$PROJECT_DIR$/application/index/view/index/scroll_announcement.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="324">
+          <caret line="12" column="24" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/announcement/announcement_des.html">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/announcement/announcement_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/controller/Base.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1269">
-          <caret line="62" column="75" lean-forward="false" selection-start-line="62" selection-start-column="75" selection-end-line="62" selection-end-column="75" />
-          <folding />
+        <state relative-caret-position="216">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -636,21 +662,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1053">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/index/index.html">
+    <entry file="file://$PROJECT_DIR$/application/index/view/announcement/announcement_edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="27" column="47" lean-forward="false" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-            <marker date="1525249348191" expanded="false" signature="1144:1169" ph="..." />
-            <marker date="1525249348191" expanded="false" signature="1356:1381" ph="..." />
-            <marker date="1525249348191" expanded="false" signature="1568:1593" ph="..." />
-            <marker date="1525249348191" expanded="false" signature="1780:1805" ph="..." />
-          </folding>
+        <state relative-caret-position="181">
+          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/announcement/announcement_des.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Windows/System32/drivers/etc/hosts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -662,18 +694,114 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/index/scroll_announcement.html">
+    <entry file="file://$PROJECT_DIR$/application/index/controller/Base.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="14" column="74" lean-forward="false" selection-start-line="14" selection-start-column="74" selection-end-line="14" selection-end-column="74" />
+        <state relative-caret-position="2619">
+          <caret line="100" column="73" lean-forward="false" selection-start-line="100" selection-start-column="73" selection-end-line="100" selection-end-column="73" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/application/index/controller/Announcement.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/controller/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/logic/Department.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="8" column="37" lean-forward="false" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/controller/Project.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/project/project_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="15" column="2" lean-forward="false" selection-start-line="15" selection-start-column="2" selection-end-line="109" selection-end-column="18" />
+          <folding>
+            <element signature="n#div#1;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/index/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-86">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="43" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/controller/Book.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/logic/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="202" column="51" lean-forward="false" selection-start-line="202" selection-start-column="51" selection-end-line="202" selection-end-column="51" />
+          <folding>
+            <element signature="e#2346#2426#0#PHP" expanded="false" />
+            <element signature="e#2433#2731#0#PHP" expanded="false" />
+            <element signature="e#2738#3244#0#PHP" expanded="false" />
+            <element signature="e#3251#3702#0#PHP" expanded="false" />
+            <element signature="e#3709#4236#0#PHP" expanded="false" />
+            <element signature="e#4243#4694#0#PHP" expanded="false" />
+            <element signature="e#4700#4907#0#PHP" expanded="false" />
+            <element signature="e#4913#5109#0#PHP" expanded="false" />
+            <element signature="e#5116#5421#0#PHP" expanded="false" />
+            <element signature="e#5429#5730#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/book/book.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="58" column="65" lean-forward="false" selection-start-line="58" selection-start-column="65" selection-end-line="58" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/system/member_des.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="137" column="40" lean-forward="true" selection-start-line="137" selection-start-column="40" selection-end-line="137" selection-end-column="40" />
           <folding />
         </state>
       </provider>

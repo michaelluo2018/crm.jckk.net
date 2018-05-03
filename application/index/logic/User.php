@@ -193,7 +193,20 @@ class User extends Model{
 
 
 
+    public function get_book(){
 
+        $users = Db::table("jckk_user")
+                ->field(["jckk_user.*","jckk_post.post_name","jckk_department.department_name"])
+                ->where("jckk_user.is_delete",0)
+                ->join("jckk_post","jckk_post.id=jckk_user.post_id")
+                ->join("jckk_department","jckk_department.id=jckk_user.department_id")
+                ->order("jckk_department.sort",'asc')
+                ->group("jckk_user.department_id")
+                ->group("jckk_user.uid")
+                ->paginate();
+
+        return $users;
+    }
 
 
 
