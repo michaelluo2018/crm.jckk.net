@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52bd9cb4-fc9b-4b77-aaf2-8b0e198d5b49" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/index/controller/Book.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/index/view/book/book.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/logic/User.php" afterPath="$PROJECT_DIR$/application/index/logic/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/index/index.html" afterPath="$PROJECT_DIR$/application/index/view/index/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/system/organization.html" afterPath="$PROJECT_DIR$/application/index/view/system/organization.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -52,8 +48,8 @@
       <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/index/logic/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="202" column="51" lean-forward="false" selection-start-line="202" selection-start-column="51" selection-end-line="202" selection-end-column="51" />
+            <state relative-caret-position="344">
+              <caret line="201" column="86" lean-forward="false" selection-start-line="201" selection-start-column="86" selection-end-line="201" selection-end-column="86" />
               <folding>
                 <element signature="e#2346#2426#0#PHP" expanded="false" />
                 <element signature="e#2433#2731#0#PHP" expanded="false" />
@@ -70,6 +66,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="organization.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/index/view/system/organization.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="284">
+              <caret line="63" column="106" lean-forward="false" selection-start-line="63" selection-start-column="106" selection-end-line="63" selection-end-column="106" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="book.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/index/view/book/book.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -80,7 +86,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="member_des.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="member_des.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/index/view/system/member_des.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="216">
@@ -126,8 +132,9 @@
         <option value="$PROJECT_DIR$/application/index/controller/Announcement.php" />
         <option value="$PROJECT_DIR$/application/index/view/index/index.html" />
         <option value="$PROJECT_DIR$/application/index/controller/Book.php" />
-        <option value="$PROJECT_DIR$/application/index/logic/User.php" />
         <option value="$PROJECT_DIR$/application/index/view/book/book.html" />
+        <option value="$PROJECT_DIR$/application/index/logic/User.php" />
+        <option value="$PROJECT_DIR$/application/index/view/system/organization.html" />
       </list>
     </option>
   </component>
@@ -474,12 +481,12 @@
       <updated>1525244015438</updated>
       <workItem from="1525244016891" duration="75000" />
       <workItem from="1525245966698" duration="8803000" />
-      <workItem from="1525310765085" duration="4334000" />
+      <workItem from="1525310765085" duration="4965000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13212000" />
+    <option name="totallyTimeSpent" value="13843000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1936" height="1056" extended-state="0" />
@@ -771,10 +778,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/book/book.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="58" column="65" lean-forward="false" selection-start-line="58" selection-start-column="65" selection-end-line="58" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/system/member_des.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="137" column="40" lean-forward="true" selection-start-line="137" selection-start-column="40" selection-end-line="137" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/index/logic/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="202" column="51" lean-forward="false" selection-start-line="202" selection-start-column="51" selection-end-line="202" selection-end-column="51" />
+        <state relative-caret-position="344">
+          <caret line="201" column="86" lean-forward="false" selection-start-line="201" selection-start-column="86" selection-end-line="201" selection-end-column="86" />
           <folding>
             <element signature="e#2346#2426#0#PHP" expanded="false" />
             <element signature="e#2433#2731#0#PHP" expanded="false" />
@@ -790,18 +813,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/book/book.html">
+    <entry file="file://$PROJECT_DIR$/application/index/view/system/organization.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="58" column="65" lean-forward="false" selection-start-line="58" selection-start-column="65" selection-end-line="58" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/system/member_des.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="137" column="40" lean-forward="true" selection-start-line="137" selection-start-column="40" selection-end-line="137" selection-end-column="40" />
+        <state relative-caret-position="284">
+          <caret line="63" column="106" lean-forward="false" selection-start-line="63" selection-start-column="106" selection-end-line="63" selection-end-column="106" />
           <folding />
         </state>
       </provider>

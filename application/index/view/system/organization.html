@@ -61,7 +61,7 @@
                                 {else/}
                                 <button type="button"  class="btn btn-sm btn-icon btn-pure btn-outline" onclick="alert('你没有权限！');" data-toggle="tooltip"  data-original-title="删除"><i class="ti-close" aria-hidden="true"></i></button>
                                 {/if}
-                                <a href="{:url('index/system/organization')}?id={$department.id}" class="btn btn-sm btn-icon btn-pure btn-outline manage_post" data-toggle="tooltip" data-original-title="岗位管理"><i class="ti-settings" aria-hidden="true"></i></a>
+                                <a href="{:url('index/system/organization')}?id={$department.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline manage_post" data-toggle="tooltip" data-original-title="岗位管理"><i class="ti-settings" aria-hidden="true"></i></a>
                             </td>
                         </tr>
                         {/volist}
