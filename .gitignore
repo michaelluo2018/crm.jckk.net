@@ -1,9 +1,0 @@
-.idea
-.public/uploads
-.public/wukong
-.database
-*.sql
-composer.lock
-*.log
-thinkphp
-application/database.php
