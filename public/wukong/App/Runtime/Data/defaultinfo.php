@@ -1,0 +1,1 @@
+<?php	return array ( 'name' => '悟空CRM', 'description' => '开源免费的客户关系管理系统', 'state' => '河南省', 'city' => '郑州市', 'allow_file_type' => 'pdf,doc,jpg,png,gif,txt,doc,xls,zip,docx', 'contract_alert_time' => 30, 'task_model' => '2', 'logo' => NULL, );?>

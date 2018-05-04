@@ -1,0 +1,110 @@
+{extend name="layout"/}
+{block name="title"/}
+<title>添加线索 - 客户管理系统</title>
+{/block}
+{block name="css"/}
+
+{/block}
+{block name="breadcrumb"/}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">添加线索</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">首页</a></li>
+        <li class="breadcrumb-item active">添加线索</li>
+    </ol>
+</div>
+{/block}
+{block name="detail"/}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-outline-info">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white">添加线索</h4>
+            </div>
+            <div class="card-body">
+                <form action="{:url('index/leads/save_leads')}?mid={$mid}" method="post">
+                    <div class="form-body">
+                        <h3 class="card-title">主要信息</h3>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>负责人</label>
+                                    <input type="text"  class="form-control user_name"  placeholder="请填写负责人"  required autocomplete="off">
+                                    <input type="hidden"  class="form-control"  name="uid" required >
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="col-md-12" id="user_display" style="color: red;" >
+
+                            </div>
+                        </div>
+                        <div class="row p-t-20">
+                            <div class="col-md-12 ">
+                                <div class="form-group">
+                                    <label class="control-label">公司名</label>
+                                    <input type="text"  class="form-control" placeholder="公司名称" name="company_name">
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row p-t-20">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">来源</label>
+                                    <select class="form-control"  tabindex="1" name="lead_from">
+                                        <option value="">请选择</option>
+                                        {volist name="leads_from" id= "from"}
+                                        <option value="{$from}">{$from}</option>
+                                        {/volist}
+                                    </select>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">地址</label>
+                                    <input type="text"  class="form-control" name="address" placeholder="请填写地址"  >
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">下次联系时间</label>
+                                    <input type="datetime-local"  class="form-control" placeholder="请填写" name="contact_time">
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-12">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">下次联系内容</label>
+                                    <textarea  rows="6" class="form-control" placeholder="请填写" name="contact_content"></textarea>
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                        </div>
+
+                        {include file="customer/common_add_contact"}
+                        <h3 class="card-title">附加信息</h3>
+                        <hr>
+                        <div class="row">
+                            <!--/span-->
+                            <div class="col-md-12">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">备注</label>
+                                    <textarea  rows="6" class="form-control" placeholder="请填写备注" name="note"></textarea>
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
+                            <button type="reset" class="btn btn-inverse">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="leads/leads_common_script"/}
+{/block}

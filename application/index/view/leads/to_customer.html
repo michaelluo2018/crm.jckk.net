@@ -1,0 +1,179 @@
+{extend name="layout"/}
+{block name="title"}
+<title>转化客户 - 客户管理系统</title>
+{/block}
+
+{block name="breadcrumb"}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">转化客户</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">首页</a></li>
+        <li class="breadcrumb-item active">转化客户</li>
+    </ol>
+</div>
+{/block}
+{block name="detail"}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-outline-info">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white">转化客户</h4>
+            </div>
+            <div class="card-body">
+                <form action="{:url('index/leads/save_customer')}?mid={$mid}" method="post">
+                    <input type="hidden" name="create_uid" value="{$lead.uid}">
+                    <input type="hidden" name="lead_id" value="{$lead.id}">
+                    <div class="form-body">
+                        <h3 class="card-title">客户信息</h3>
+                        <hr>
+                        <div class="row p-t-20">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>客户全称</label>
+                                    <input type="text" id="" class="form-control" placeholder="请填写公司名称" name="customer_name" required >
+                                    <small class="form-control-feedback">  <span id="msg" style="color: red;" data-data=""></span> </small>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group has-danger">
+                                    <label class="control-label"><span class="text-danger"> * </span>客户行业</label>
+                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="industry" required>
+                                        {volist name="data['industry']" id= "vo"}
+                                        <option value="{$vo}">{$vo}</option>
+                                        {/volist}
+                                    </select>
+                                    <small class="form-control-feedback"></small> </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group has-success">
+                                    <label class="control-label"><span class="text-danger"> * </span>公司性质</label>
+                                    <div class="form-check">
+                                        {volist name="data['company_nature']" id="company_nature" key="k"}
+                                        <label class="custom-control custom-radio">
+                                            <input id="radio{$k}" name="company_nature" value="{$company_nature}" type="radio" checked class="custom-control-input" >
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">{$company_nature}</span>
+                                        </label>
+                                        {/volist}
+                                    </div>
+                                    <small class="form-control-feedback"></small> </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>年营业额</label>
+                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="annual_turnover" required>
+                                        {volist name="data['annual_turnover']" id="annual_turnover" }
+                                        <option value="{$annual_turnover}">{$annual_turnover}</option>
+                                        {/volist}
+                                    </select>
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>客户状态一级</label>
+                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="customer_status_1" required>
+                                        {volist name="data['customer_status_1']" id="customer_status_1"}
+                                        <option value="{$customer_status_1}">{$customer_status_1}</option>
+                                        {/volist}
+                                    </select>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>客户状态二级</label>
+                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="customer_status_2" required>
+                                        {volist name="data['customer_status_2']" id="customer_status_2"}
+                                        <option value="{$customer_status_2}">{$customer_status_2}</option>
+                                        {/volist}
+                                    </select>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <h3 class="card-title">首要联系人信息</h3>
+                        <hr>
+                        {include file="leads/common_edit_contact"}
+                        <!--/span-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">备注</label>
+                                    <textarea  rows="6" class="form-control" placeholder="请填写备注" name="note"></textarea>
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                        </div>
+
+                        <!--/row-->
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存 </button>
+                        <button type="reset" class="btn btn-inverse">重置</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $("form").submit(function () {
+        var msg = $("#msg").text();
+        if(msg.trim()){
+            layer.alert(msg.trim());
+            return false;
+        }
+    });
+
+    //        $("input[name=contact_mobile]").change(function(){
+    //
+    //            var mobile = $(this).val();
+    //
+    //            var phone=/^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/;
+    //
+    //            if (!phone.test(mobile)) {
+    //                $("#msg").text("手机号格式不正确");
+    //            }
+    //
+    //        });
+
+    $("input[name=customer_name]").change(function(){
+
+        //客户名称是否存在
+        var customer_name = $(this).val();
+
+        $.ajax({
+            url: "{:url('index/customer/check_customer_name')}",
+            data: {name:customer_name},
+            method:"get",
+            success:function(data){
+                //写入到对应位置
+                if(data==1){
+                    $("#msg").text(customer_name+"客户已经存在");
+                }
+                else{
+                    $("#msg").text(" ");
+                }
+            },
+            dataType: "json"
+        });
+
+    });
+
+</script>
+
+
+{/block}

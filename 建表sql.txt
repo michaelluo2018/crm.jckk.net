@@ -146,4 +146,19 @@ create table jckk_contact (
 
 
 
+ create table jckk_leads (
+    id int primary key auto_increment,
+    uid int comment "线索负责人",
+    company_name varchar(100) comment "公司名称",
+    lead_from varchar(100)  comment "线索来源",
+    contact_id int  comment "联系人id",
+    address varchar(200)  comment "地址",
+    contact_time int  comment "下次联系时间",
+    contact_content text comment "下次联系内容",
+    note text comment "备注",
+    create_time int comment "加入时间"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+
+
 

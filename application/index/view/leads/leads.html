@@ -1,0 +1,97 @@
+{extend name="layout"/}
+{block name="title"}
+<title>线索列表 - 客户管理系统</title>
+{/block}
+{block name="breadcrumb"/}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">线索列表</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">首页</a></li>
+        <li class="breadcrumb-item active">线索列表</li>
+    </ol>
+</div>
+{/block}
+
+{block name="detail"/}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <!--<h4 class="card-title">线索列表</h4>-->
+                <h6 class="card-subtitle"></h6>
+                <div class="m-t-40">
+                    <div class="d-flex">
+                        <div class="mr-auto">
+                            <div class="form-group">
+                                <a  class="btn btn-primary btn-sm" href="{:url('index/leads/leads_add')}?mid={$mid}">
+                                    <i class="ace-icon fa fa-plus" aria-hidden="true"></i> 添加线索
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ml-auto">
+                            <div class="form-group">
+                                <form  method="post" id="find_form">
+
+                                    <input id="demo-input-search2" type="text" placeholder="搜索线索" name="customer_name" autocomplete="off" required>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" data-page-size="20">
+                    <thead>
+                    <tr class="text-align">
+                        <th>序号</th>
+                        <th>公司名</th>
+                        <th>联系人</th>
+                        <th>尊称</th>
+                        <th>手机</th>
+                        <th>下次联系时间</th>
+                        <th>下次联系内容</th>
+                        <th>负责人</th>
+                        <th>创建人</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="leads" id="lead" key="k"}
+                    <tr>
+                        <td>{$k}</td>
+                        <td>{$lead.company_name}</td>
+                        <td>{$lead.contact_name}</td>
+                        <td>{$lead.sex==0?"男士":"女士"}</td>
+                        <td>{$lead.mobile}</td>
+                        <td>{$lead.contact_time}</td>
+                        <td>{$lead.contact_content}</td>
+                        <td>{$lead.chinese_name}</td>
+                        <td>{$lead.create_name}</td>
+                        <td>{$lead.create_time|date="Y-m-d H:i:s",###}</td>
+                        <td>
+                            <a href="javascript:void (0);" onclick="delete_sure('确定要删除此项目吗？','{:url(\'index/leads/leads_del\')}?id={$lead.id}&mid={$mid}')" class="btn btn-sm btn-icon btn-pure btn-outline " title="删除"><i class="ti-close" aria-hidden="true"></i></a>
+                            <a href="{:url('index/leads/leads_edit')}?id={$lead.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="修改"><i class="ti-pencil" aria-hidden="true"></i></a>
+                            <a href="{:url('index/leads/leads_des')}?id={$lead.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
+                            <a href="{:url('index/leads/to_customer')}?id={$lead.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="转化客户"><i class="ti-settings" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="14">
+                            <div class="text-right">
+                                <ul class="pagination">
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+{/block}

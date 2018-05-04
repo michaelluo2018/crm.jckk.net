@@ -149,7 +149,12 @@ class Customer extends  Model{
                 $customer->note = $data['note'];
                 $customer->is_delete = 0;
                 $customer->create_time = time();
-                $customer->create_uid = Session::get("uid");
+                if(isset($data['create_uid'])){
+                    $customer->create_uid = $data['create_uid'];
+                }
+                else{
+                    $customer->create_uid = Session::get("uid");
+                }
                 if($customer->save()){
                     $customer_log["type"] = Log::ADD_TYPE;
                     $customer_log["before_value"] = "";

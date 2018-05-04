@@ -25,14 +25,15 @@ class Contact extends Model{
         if(!$contact = model("contact","logic")->is_exist_contact_by_name_and_mobile($data['contact_name'],$data['contact_mobile'])){
             //联系人不存在
             $contact = model("contact",'model');
+            $contact->create_time = time();
             $contact_log["type"] = Log::ADD_TYPE;
             $contact_log["before_value"] = "";
-            $contact_log["title"] = "为". $data["customer_name"] ."(客户)添加联系人". $data["contact_name"];
+            $contact_log["title"] = "添加联系人". $data["contact_name"];
 
         }else{
             $contact_log["type"] = Log::ADD_TYPE;
             $contact_log["before_value"] = json_encode($contact);
-            $contact_log["title"] = "修改". $data["customer_name"] ."(客户)联系人". $data["contact_name"];
+            $contact_log["title"] = "修改联系人". $data["contact_name"];
         }
 
         //save contact
@@ -43,11 +44,10 @@ class Contact extends Model{
         $contact->email = $data["contact_email"];
         $contact->qq = $data["contact_qq"];
         $contact->wechat = $data["contact_wechat"];
-        $contact->create_time = time();
-        $contact->save();
-
-        $contact_log["after_value"] = json_encode($contact);
-        model("log","logic")->write_log( $contact_log);
+        if( $contact->save()){
+            $contact_log["after_value"] = json_encode($contact);
+            model("log","logic")->write_log( $contact_log);
+        }
 
         return $contact->id;
 

@@ -1,5 +1,6 @@
 .idea
 .public/uploads
+.public/wukong
 .database
 *.sql
 composer.lock

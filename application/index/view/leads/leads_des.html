@@ -1,0 +1,167 @@
+{extend name="layout"/}
+{block name="title"/}
+<title>线索详情 - 客户管理系统</title>
+{/block}
+{block name="css"/}
+
+{/block}
+{block name="breadcrumb"/}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">线索详情</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">首页</a></li>
+        <li class="breadcrumb-item active">线索详情</li>
+    </ol>
+</div>
+{/block}
+{block name="detail"/}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-outline-info">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white">线索详情</h4>
+            </div>
+            <div class="card-body">
+                    <div class="form-body">
+                        <h3 class="card-title">主要信息</h3>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>负责人</label>
+                                    <input type="text"  class="form-control user_name"  value="{$lead.chinese_name}"  disabled>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row p-t-20">
+                            <div class="col-md-4 ">
+                                <div class="form-group">
+                                    <label class="control-label">公司名</label>
+                                    <input type="text"  class="form-control" value="{$lead.company_name}" name="company_name" disabled>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">来源</label>
+                                    <select class="form-control"  tabindex="1" name="lead_from" disabled>
+                                        <option value="{$lead.lead_from}" selected>{$lead.lead_from}</option>
+                                    </select>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">地址</label>
+                                    <input type="text"  class="form-control" name="address" value="{$lead.address}" disabled >
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row p-t-20">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>联系人</label>
+                                    <input type="text"  class="form-control" value="{$lead.contact_name}" name="contact_name" disabled>
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-4">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">职位</label>
+                                    <input type="text"  class="form-control" value="{$lead.position}" name="position" disabled >
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-4">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">性别</label>
+                                    <div class="form-check">
+                                        <label class="custom-control custom-radio">
+                                            {if condition="$lead.sex eq 0"}
+                                            <input id="radio1" name="radio_sex" type="radio"  class="custom-control-input" value="男" checked disabled>
+                                            {else/}
+                                            <input id="radio1" name="radio_sex" type="radio"  class="custom-control-input" value="男" disabled>
+                                            {/if}
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">男</span>
+                                        </label>
+                                        <label class="custom-control custom-radio">
+                                            {if condition="$lead.sex eq 1"}
+                                            <input id="radio2" name="radio_sex" type="radio" class="custom-control-input" value="女" checked disabled>
+                                            {else/}
+                                            <input id="radio2" name="radio_sex" type="radio" class="custom-control-input" value="女" disabled>
+                                            {/if}
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">女</span>
+                                        </label>
+                                    </div>
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <div class="row p-t-20">
+                            <div class="col-md-4">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">电话</label>
+                                    <input type="text"  class="form-control" value="{$lead.mobile}" name="contact_mobile" disabled>
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">邮箱</label>
+                                    <input type="email"  class="form-control" value="{$lead.email}" name="contact_email" disabled>
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">QQ</label>
+                                    <input type="text"  class="form-control" value="{$lead.qq}" name="contact_qq" disabled>
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">微信</label>
+                                    <input type="text"  class="form-control" value="{$lead.wechat}" name="contact_wechat" disabled>
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-4">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">下次联系时间</label>
+                                    <input type="datetime-local"  class="form-control" value="{$lead.contact_time}" name="contact_time" disabled>
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-12">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">下次联系内容</label>
+                                    <textarea  rows="6" class="form-control" placeholder="请填写下次联系内容" name="contact_content" disabled>{$lead.contact_content}</textarea>
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                            <!--/span-->
+                            <!--/span-->
+                        </div>
+                        <h3 class="card-title">附加信息</h3>
+                        <hr>
+                        <div class="row">
+                            <!--/span-->
+                            <div class="col-md-12">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">备注</label>
+                                    <textarea  rows="6" class="form-control" placeholder="请填写备注" name="note" disabled>{$lead.note}</textarea>
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="leads/leads_common_script"/}
+{/block}

@@ -211,6 +211,22 @@ class User extends Model{
 
 
 
+    public  function  get_users_by_name($name){
+
+        $users=  Db::table("jckk_user")
+            ->where("jckk_user.is_delete","<>",1)
+            ->where("jckk_user.chinese_name","like","%".$name."%")
+            ->field(["jckk_user.*","jckk_department.department_name","jckk_post.post_name"])
+            ->join("jckk_department","jckk_department.id = jckk_user.department_id",'LEFT')
+            ->join("jckk_post","jckk_post.id=jckk_user.post_id",'LEFT')
+            ->order("jckk_department.sort","asc")
+            ->order("jckk_post.sort","asc")
+            ->select();
+
+        return $users;
+    }
+
+
 
 
 

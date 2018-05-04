@@ -22,6 +22,8 @@ class Log extends Model{
 
     const BACK_DELETE = 8; //还原回收站
 
+    const LEAD_CHANGE = 9; //线索转客户
+
 
 
 

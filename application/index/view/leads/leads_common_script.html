@@ -1,0 +1,73 @@
+
+
+
+<script>
+
+    //客户全称
+    $(".user_name").bind('input propertychange', function () {
+        var user_name = $.trim($(this).val());
+        if(!user_name){
+            $('#user_display').html("请输入...");
+        }
+        else{
+            $.ajax({
+                url: "{:url('index/leads/ajax_get_user')}",
+                data: {'user_name':user_name},
+                method:"get",
+                success:function(data){
+                    if(data !=0){
+                        var user_html = "";
+                        var array = [];
+                        $.each(data,function(i,v){
+                            var uid= v.uid;
+                            var user_name= v.chinese_name;
+                            var department_name= v.department_name;
+                            var post_name= v.post_name;
+                            array[uid] = user_name;
+                            user_html +="<div class='user_div' onclick=\"send_user('"+uid+"','"+user_name+"');\" >"+department_name+"(部门)-"+post_name+"(岗位)-"+user_name+"</div>";
+                        });
+
+                        $('#user_display').html(user_html);
+
+                        //如果输入值
+                        for(var i in array){
+                            if(array[i]== $.trim($(".user_name").val())){
+
+                                $("input[name=uid]").val(i);
+
+                                $("#user_display div").hide();
+                            }
+                        }
+
+
+                    }
+                    else{
+                        var message = "没找到该系统用户！";
+                        $('#user_display').html(message);
+
+                    }
+                },
+                dataType: "json"
+            });
+        }
+
+    });
+
+    function send_user(id,name) {
+        $(".user_name").val(name);
+        $("input[name=uid]").val(id);
+        $("#user_display div").hide();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
