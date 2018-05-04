@@ -56,4 +56,9 @@ class Menu extends Base{
         }
     }
 
+
+
+   public  function  icon(){
+        return view("icon");
+   }
 }

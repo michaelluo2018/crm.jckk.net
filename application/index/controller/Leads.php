@@ -27,9 +27,14 @@ class Leads extends  Base{
 
 
     public function leads_add(){
-        $leads_from=Config::get("leads_from");
-        $this->assign("leads_from",$leads_from);
-        return view("leads_add");
+        if(!$this->check_post_menu_permission("add_operate")){
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
+        }
+        else {
+            $leads_from = Config::get("leads_from");
+            $this->assign("leads_from", $leads_from);
+            return view("leads_add");
+        }
     }
 
 
