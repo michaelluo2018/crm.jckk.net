@@ -31,7 +31,7 @@ class CommonExcel{
             for ($currentColumn = 'A'; $currentColumn <= $allColumn; $currentColumn++) {
                 //数据坐标
                 $address = $currentColumn . $currentRow;
-                $value = $currentSheet->getCell($address)->getValue();
+                $value =trim($currentSheet->getCell($address)->getValue()) ;
                 //读取到的数据，保存到数组$arr中
                 $data[$currentRow][$currentColumn] = $value;
             }
