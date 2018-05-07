@@ -59,7 +59,8 @@ class Base extends Controller{
         $uri = request()->module().'/'.request()->controller().'/'.request()->action();
         if(strtolower($uri) != "index/index/index"){
             if(!$this->get_desc_by_url($uri)){
-                $this->redirect("/");
+                echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" ><script>alert('抱歉，你还没有权限！');window.location.href='/'</script>"; exit;
+                //$this->redirect("/");
             }
         }
 
