@@ -51,12 +51,39 @@ class User extends Base{
 
      public  function  excel_save_user(){
 
-         $file = $_FILES['file'];
-         dump($file);die;
+         $file = Request::instance()->file("file");
+         $path = ROOT_PATH . 'public' . DS . 'uploads';
+         $info = $file->validate(['ext'=>'xls,xlsx'])->move($path);
+         if($info){
+           $file_name = $info->getSaveName();
+         }else{
 
+             $error =   $file->getError();
+             echo "<script>alert(' ".$error." ');history.go(-1);</script>";
+         }
 
+         $data = CommonExcel::importExecl($path.DS.$file_name);
 
+         //循环写入数据库
+         $list = array();
+         $list['ok_count'] = 0;
+         $list['error_count'] = 0;
+         for($i=0;$i<count($data);$i++){
+             if($i>=3){
+                $result =  model("user","logic")->excel_save_user($data[$i]);
+                if($result['status'] == 'ok'){
+                    $list['ok_count']  = $list['ok_count']  + 1;
+                }
+                 if($result['status'] == 'error'){
+                     $list['error_count'] =  $list['error_count'] + 1;
+                     $list['msg'][] = "序号".$i."导入出现错误！错误信息是：".$result['msg'];
+                 }
+             }
+         }
 
+         $this->assign("list",$list);
+
+         return view("user_import_result");
 
      }
 

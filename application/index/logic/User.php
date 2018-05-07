@@ -227,6 +227,46 @@ class User extends Model{
     }
 
 
+    public function  excel_save_user($data){
+        //先检测是否已有
+        $user_mobile = $this->where('mobile',$data["E"])->where('is_delete','<>',1)->count();
+        $user_email = $this->where('email',$data["H"])->where('is_delete','<>',1)->count();
+
+        if(!$user_mobile && !$user_email){
+            //写库
+            //获取部门id
+            $department = \model("department")->where("department_name",$data['A'])->where("is_delete","<>",1)->find();
+            if(!$department){
+                return $result = ['status'=>'error','msg'=>'不存在部门'.$data['A'].'!'];
+            }
+            //获取职位id
+            $post = \model("post")->where("department_id",$department->id)->where("post_name",$data['D'])->where("is_delete","<>",1)->find();
+            if(!$post){
+                return $result = ['status'=>'error','msg'=>'部门'.$data['A'].'下不存在岗位'.$data['D'].'!'];
+            }
+            $user =  \model("user");
+            $user->chinese_name  = $data['B'];
+            $user->english_name  = $data['C'];
+            $user->sex  = $data['I']==0?"男":"女";
+            $user->department_id  = $department->id;
+            $user->post_id  = $post->id;
+            $user->mobile  = $data["E"];
+            $user->wechat  = $data['G'];
+            $user->email  = $data["H"];
+            $user->qq  = $data['F'];
+            $user->password  = $this->password(123456);
+            $user->create_time  = time();
+            $user->is_delete  = 0;
+            if( $user->save()){
+                return $result = ['status'=>'ok','msg'=>'添加成功！'];
+            }
+
+        }
+        else{
+            return $result = ['status'=>'error','msg'=>'手机号或邮箱系统已存在！'];
+        }
+
+    }
 
 
 

@@ -1,0 +1,56 @@
+{extend name="layout"/}
+{block name="title"}
+<title>用户导入- 客户管理系统</title>
+{/block}
+{block name="breadcrumb"/}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">工作台</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">首页</a></li>
+        <li class="breadcrumb-item active">用户导入</li>
+    </ol>
+</div>
+{/block}
+{block name="detail"/}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-outline-info">
+            <div class="card-header">
+                <h5 class="m-b-0 text-white">温馨提示：导入数据需要使用指定模板！<a class="text-danger" href="{:url('index/user/user_import_file')}"><i class="mdi mdi-arrow-down-box" aria-hidden="true"></i>下载导入模板</a></h5>
+            </div>
+            <div class="card-body">
+                <form action="{:url('index/user/excel_save_user')}?mid={$mid}" method="post" enctype="multipart/form-data">
+                    <div class="form-body">
+                        <div class="row p-t-20">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="custom-file d-block">
+                                        <input type="file"  name="file" required>
+                                    </label>
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 上传</button>
+                        <button type="reset" class="btn btn-inverse">重置</button>
+                    </div>
+                </form>
+                <div style="min-height: 400px;">
+                    <div class="modal-body">
+                        <p>导入结果:导入成功 {$list['ok_count']} 条，失败 {$list['error_count']} 条。"</p>
+                        {volist name="list['msg']" id="msg"/}
+                        <p><small>{$msg}</small></p>
+                        {/volist}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{/block}
+
