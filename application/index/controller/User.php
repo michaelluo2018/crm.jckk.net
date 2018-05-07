@@ -1,6 +1,7 @@
 <?php
 namespace  app\index\controller;
 
+use think\Config;
 use think\Request;
 
 class User extends Base{
@@ -40,6 +41,44 @@ class User extends Base{
             $this->redirect("system/member");
         }
     }
+
+
+    //批量导入用户
+     public  function  user_import(){
+
+        return view("user_import");
+     }
+
+
+
+    //导入模板下载
+    public  function  user_import_file(){
+        $filename = ROOT_PATH.'public'.DS.'static'.DS.'file'.DS.'user_import_file.xlsx';
+        header('Content-Disposition: attachment; filename='.basename($filename));
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Length: '.filesize($filename));
+        header('Content-Transfer-Encoding: binary');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        readfile($filename);
+       echo "<script>history.go(-1);</script>";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
