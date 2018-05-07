@@ -16,6 +16,7 @@ class Project extends Model{
         $data['contract_status'] = Config::get("contract_status");
         $data['payment_type'] = Config::get("payment_type");
         $data['payment_status'] = Config::get("payment_status");
+        $data['project_channel'] = Config::get("project_channel");
         return $data;
     }
 
@@ -60,13 +61,13 @@ class Project extends Model{
         $project->project_money1 = null;
         $project->project_money2 = null;
         $project->project_money3 = null;
+        $project->planning_uid = null;
+        $project->docking_uid = null;
 
 
         $project->project_name =$project_name;
         $project->customer_id = $customer_id;
         $project->executor_uid = trim($data['executor_uid']);
-        $project->planning_uid = trim($data['planning_uid']);
-        $project->docking_uid = trim($data['docking_uid']);
         $project->manage_uid = trim($data['manage_uid']);
         $project->product_demand_1 = trim($data['product_demand_1']);
         $project->product_demand_2 = trim($data['product_demand_2']);
@@ -79,6 +80,8 @@ class Project extends Model{
         $project->cost_note = trim($data['cost_note']);
         $project->company_name = trim($data['company_name']);
         $project->is_delete = 0;
+        $project->channel = trim($data['channel']);
+        $project->channel_user = trim($data['channel_user']);
 
         if(isset($data['month_money'])){
             $project->month_money =$data['month_money'];
@@ -105,6 +108,13 @@ class Project extends Model{
         }
         if(isset($data['project_money3'])){
             $project->project_money3 =$data['project_money3'];
+        }
+        if(isset($data['planning_uid'])){
+            $project->planning_uid = trim($data['planning_uid']);
+        }
+
+       if(isset($data['docking_uid'])){
+           $project->docking_uid = trim($data['docking_uid']);
         }
 
         if($project->save()){

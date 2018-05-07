@@ -91,8 +91,9 @@
 
                             <div class="col-md-3 ">
                                 <div class="form-group">
-                                    <label><span class="text-danger"> * </span>策划部门</label>
-                                    <select class="form-control custom-select department"   name="planning_department_id" required>
+                                    <label>策划部门</label>
+                                    <select class="form-control custom-select department"   name="planning_department_id" >
+                                        <option value="">请选择</option>
                                         {volist name="departments" id="dep"}
                                             {if condition="$dep.id eq $project.p_d_id"/}
                                                 <option value="{$dep.id}" selected>{$dep.department_name}</option>
@@ -105,8 +106,8 @@
                             </div>
                             <div class="col-md-3 ">
                                 <div class="form-group">
-                                    <label><span class="text-danger"> * </span>策划人</label>
-                                    <select class="form-control custom-select planning_department_id"   required name="planning_uid">
+                                    <label>策划人</label>
+                                    <select class="form-control custom-select planning_department_id"   name="planning_uid">
                                         <option value="">请选择</option>
                                     </select>
                                 </div>
@@ -116,8 +117,9 @@
                         <div class="row">
                             <div class="col-md-3 ">
                                 <div class="form-group">
-                                    <label><span class="text-danger"> * </span>对接部门</label>
-                                    <select class="form-control custom-select department"   name="docking_department_id" required>
+                                    <label>对接部门</label>
+                                    <select class="form-control custom-select department"   name="docking_department_id" >
+                                        <option value="">请选择</option>
                                         {volist name="departments" id="dep"}
                                             {if condition="$dep.id eq $project.d_d_id"/}
                                             <option value="{$dep.id}" selected>{$dep.department_name}</option>
@@ -130,7 +132,7 @@
                             </div>
                             <div class="col-md-3 ">
                                 <div class="form-group">
-                                    <label><span class="text-danger"> * </span>对接人</label>
+                                    <label>对接人</label>
                                     <select class="form-control custom-select docking_department_id"   required name="docking_uid">
                                         <option value="">请选择</option>
                                     </select>
@@ -161,6 +163,32 @@
                             </div>
                             <!--/span-->
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <div class="form-group">
+                                    <label>渠道</label>
+                                    <select class="form-control custom-select"   name="channel" >
+                                        <option value="">请选择</option>
+                                        {volist name="$data['project_channel']" id="project_channel" }
+                                        {if condition="$project_channel eq $project.channel"/}
+                                        <option value="{$project_channel}" selected>{$project_channel}</option>
+                                        {else/}
+                                        <option value="{$project_channel}">{$project_channel}</option>
+                                        {/if}
+                                        {/volist}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 ">
+                                <div class="form-group">
+                                    <label class="control-label">渠道负责人</label>
+                                    <input type="text"  class="form-control" value="{$project.channel_user}" name="channel_user">
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-md-6 ">
                                 <div class="form-group">

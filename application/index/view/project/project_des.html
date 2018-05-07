@@ -200,6 +200,7 @@
                                 <div class="form-group">
                                     <label>项目所在部门</label>
                                     <select class="form-control custom-select department"  name="executor_department_id"  disabled>
+                                        <option value="">请选择</option>
                                         {volist name="departments" id="dep"}
                                         {if condition="$dep.id eq $project.e_d_id"/}
                                         <option value="{$dep.id}" selected>{$dep.department_name}</option>
@@ -223,6 +224,7 @@
                                 <div class="form-group">
                                     <label>策划部门</label>
                                     <select class="form-control custom-select department"   name="planning_department_id" disabled>
+                                        <option value="">请选择</option>
                                         {volist name="departments" id="dep"}
                                         {if condition="$dep.id eq $project.p_d_id"/}
                                         <option value="{$dep.id}" selected>{$dep.department_name}</option>
@@ -248,6 +250,7 @@
                                 <div class="form-group">
                                     <label>对接部门</label>
                                     <select class="form-control custom-select department"   name="docking_department_id" disabled>
+                                        <option value="">请选择</option>
                                         {volist name="departments" id="dep"}
                                         {if condition="$dep.id eq $project.d_d_id"/}
                                         <option value="{$dep.id}" selected>{$dep.department_name}</option>
@@ -271,6 +274,7 @@
                                 <div class="form-group">
                                     <label>管理部门</label>
                                     <select class="form-control custom-select department"   required name="manage_department_id" disabled>
+                                        <option value="">请选择</option>
                                         {volist name="departments" id="dep"}
                                         {if condition="$dep.id eq $project.m_d_id"/}
                                         <option value="{$dep.id}" selected>{$dep.department_name}</option>
@@ -291,6 +295,25 @@
                             </div>
                             <!--/span-->
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <div class="form-group">
+                                    <label>渠道</label>
+                                    <select class="form-control custom-select"   name="channel" disabled >
+                                        <option value="">{$project.channel}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 ">
+                                <div class="form-group">
+                                    <label class="control-label">渠道负责人</label>
+                                    <input type="text"  class="form-control" value="{$project.channel_user}" name="channel_user" disabled>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-md-6 ">
                                 <div class="form-group">
