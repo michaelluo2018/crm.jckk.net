@@ -63,6 +63,7 @@ class Project extends Model{
         $project->project_money3 = null;
         $project->planning_uid = null;
         $project->docking_uid = null;
+        $project->product_demand_2 = null;
 
 
         $project->project_name =$project_name;
@@ -70,7 +71,7 @@ class Project extends Model{
         $project->executor_uid = trim($data['executor_uid']);
         $project->manage_uid = trim($data['manage_uid']);
         $project->product_demand_1 = trim($data['product_demand_1']);
-        $project->product_demand_2 = trim($data['product_demand_2']);
+
         $project->contract_status = trim($data['contract_status']);
         $project->contract_amount = trim($data['contract_amount']);
         $project->payment_type = trim($data['payment_type']);
@@ -115,6 +116,9 @@ class Project extends Model{
 
        if(isset($data['docking_uid'])){
            $project->docking_uid = trim($data['docking_uid']);
+        }
+       if(isset($data['product_demand_2'])){
+           $project->product_demand_2 = trim($data['product_demand_2']);
         }
 
         if($project->save()){

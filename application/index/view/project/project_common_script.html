@@ -183,7 +183,7 @@
         method:"get",
         success:function(data){
             //写入到对应位置
-            var option_html = "";
+            var option_html = "<option value=''>请选择</option>";
             $.each(data,function(i,v){
                 option_html+="<option value='"+v+"'>"+v+"</option>"
             })
@@ -376,7 +376,7 @@
             method:"get",
             success:function(data){
                 //写入到对应位置
-                var option_html = "";
+                var option_html = "<option value=''>请选择</option>";
                 $.each(data,function(i,v){
                     option_html+="<option value='"+v+"'>"+v+"</option>"
                 })
