@@ -49,6 +49,16 @@ class User extends Base{
         return view("user_import");
      }
 
+     public  function  excel_save_user(){
+
+         $file = $_FILES['file'];
+         dump($file);die;
+
+
+
+
+
+     }
 
 
     //导入模板下载
