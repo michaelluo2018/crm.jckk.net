@@ -161,4 +161,47 @@ create table jckk_contact (
 
 
 
+ create table jckk_opportunity (
+    id int primary key auto_increment,
+    uid int  comment "负责人id",
+    customer_id int comment "客户id",
+    opportunity_name varchar(100) comment "商机名称",
+    opportunity_from varchar(100)  comment "来源",
+    contact_id int  comment "联系人id",
+    address varchar(200)  comment "地址",
+    contact_time int  comment "下次联系时间",
+    contact_content text comment "下次联系内容",
+    note text comment "备注",
+    money varchar(50)  comment "商机金额",
+    type varchar(50)  comment "类型",
+    status varchar(50)  comment "状态",
+    gain_rate varchar(50)  comment "赢单率",
+    plan_money varchar(50)  comment "预计成本价",
+    product_id varchar(50)  comment "产品id",
+    forward_time int  comment "上次推进时间",
+    is_delete int default 0 comment "是否删除",
+    create_uid int comment "创建者id",
+    create_time int comment "加入时间"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+
+ create table jckk_product (
+    id int primary key auto_increment,
+    product_name varchar(100) comment "产品名称",
+    product_from varchar(100)  comment "开发团队",
+    type varchar(50)  comment "产品类型",
+    cost_price varchar(50)  comment "成本价",
+    recommend_price varchar(50)  comment "建议零售价",
+    link varchar(50)  comment "详情链接",
+    img varchar(200)  comment "产品图片",
+    develop_time varchar(50)  comment "研发时间",
+    note text comment "备注",
+    is_delete int default 0 comment "是否删除",
+    create_uid int comment "创建者id",
+    create_time int comment "加入时间"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+
+
+
 
