@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52bd9cb4-fc9b-4b77-aaf2-8b0e198d5b49" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/logic/Project.php" afterPath="$PROJECT_DIR$/application/index/logic/Project.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/project/project_add.html" afterPath="$PROJECT_DIR$/application/index/view/project/project_add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/project/project_common_script.html" afterPath="$PROJECT_DIR$/application/index/view/project/project_common_script.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/project/project_edit.html" afterPath="$PROJECT_DIR$/application/index/view/project/project_edit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/config.php" afterPath="$PROJECT_DIR$/application/index/config.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -59,17 +56,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Project.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Project.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/index/logic/Project.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="119" column="39" lean-forward="false" selection-start-line="119" selection-start-column="39" selection-end-line="119" selection-end-column="39" />
+            <state relative-caret-position="149">
+              <caret line="109" column="43" lean-forward="true" selection-start-line="109" selection-start-column="43" selection-end-line="109" selection-end-column="43" />
               <folding>
                 <element signature="e#34#50#0#PHP" expanded="true" />
                 <element signature="e#985#1667#0#PHP" expanded="false" />
                 <element signature="e#1193#1667#0#PHP" expanded="false" />
                 <element signature="e#5284#9908#0#PHP" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/index/config.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="554">
+              <caret line="32" column="11" lean-forward="false" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -173,7 +180,6 @@
         <option value="$PROJECT_DIR$/application/index/controller/Index.php" />
         <option value="$PROJECT_DIR$/application/index/controller/Base.php" />
         <option value="$PROJECT_DIR$/application/index/view/system/member.html" />
-        <option value="$PROJECT_DIR$/application/index/config.php" />
         <option value="$PROJECT_DIR$/application/index/controller/CommonExcel.php" />
         <option value="$PROJECT_DIR$/application/index/view/user/user_import.html" />
         <option value="$PROJECT_DIR$/application/index/logic/User.php" />
@@ -183,6 +189,7 @@
         <option value="$PROJECT_DIR$/application/index/view/project/project_common_script.html" />
         <option value="$PROJECT_DIR$/application/index/logic/Project.php" />
         <option value="$PROJECT_DIR$/application/index/view/project/project_edit.html" />
+        <option value="$PROJECT_DIR$/application/index/config.php" />
       </list>
     </option>
   </component>
@@ -363,32 +370,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="project" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crm" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="index" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="logic" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -527,12 +508,12 @@
       <workItem from="1525245966698" duration="8803000" />
       <workItem from="1525310765085" duration="17744000" />
       <workItem from="1525398648161" duration="23478000" />
-      <workItem from="1525655694551" duration="26643000" />
+      <workItem from="1525655694551" duration="26821000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76743000" />
+    <option name="totallyTimeSpent" value="76921000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -832,14 +813,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/index/view/system/member_add.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="649">
@@ -1032,14 +1005,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/index/logic/Project.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="119" column="39" lean-forward="false" selection-start-line="119" selection-start-column="39" selection-end-line="119" selection-end-column="39" />
+        <state relative-caret-position="149">
+          <caret line="109" column="43" lean-forward="true" selection-start-line="109" selection-start-column="43" selection-end-line="109" selection-end-column="43" />
           <folding>
             <element signature="e#34#50#0#PHP" expanded="true" />
             <element signature="e#985#1667#0#PHP" expanded="false" />
             <element signature="e#1193#1667#0#PHP" expanded="false" />
             <element signature="e#5284#9908#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="32" column="11" lean-forward="false" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
