@@ -25,16 +25,32 @@ for(var i=0;i<customer_status_2_length;i++){
 }
 
 
-//合同状态
-var contract_status=document.getElementsByClassName("contract_status");
-var contract_status_length = contract_status.length;
-var contract_status_key = [];
-var contract_status_value = [];
-for(var i=0;i<contract_status_length;i++){
-    contract_status_key[i] =contract_status[i].name;
+//合同状态1
+var contract_status1=document.getElementsByClassName("contract_status1");
+var contract_status_length1 = contract_status1.length;
+var contract_status_key1 = [];
+var contract_status_value1 = [];
+for(var i=0;i<contract_status_length1;i++){
+    contract_status_key1[i] =contract_status1[i].name;
 
-    contract_status_value[i] =  {value:contract_status[i].value, name:contract_status[i].name};
+    contract_status_value1[i] =  {value:contract_status1[i].value, name:contract_status1[i].name};
 }
+
+//合同状态2
+var contract_status2=document.getElementsByClassName("contract_status2");
+var contract_status_length2 = contract_status2.length;
+var contract_status_key2 = [];
+var contract_status_value2 = [];
+for(var i=0;i<contract_status_length2;i++){
+    contract_status_key2[i] =contract_status2[i].name;
+
+    contract_status_value2[i] =  {value:contract_status2[i].value, name:contract_status2[i].name};
+}
+
+
+
+
+
 
 
 //项目统计
@@ -134,14 +150,14 @@ if (option && typeof option === "object") {
 }
 
 
-//合同状态 
+//合同状态 1
 var dom = document.getElementById("visitor3");
 var myChart = echarts.init(dom);
 var app = {};
 option = null;
 option = {
     title : {
-        text: '合同状态',
+        text: '合同签约状态',
         subtext: '',
         x:'center'
     },
@@ -152,15 +168,15 @@ option = {
     legend: {
         orient: 'vertical',
         left: 'left',
-        data: contract_status_key
+        data: contract_status_key1
     },
     series : [
         {
-            name: '合同状态',
+            name: '合同签约状态',
             type: 'pie',
             radius : '55%',
             center: ['50%', '60%'],
-            data:contract_status_value,
+            data:contract_status_value1,
             itemStyle: {
                 emphasis: {
                     shadowBlur: 10,
@@ -177,8 +193,57 @@ if (option && typeof option === "object") {
 }
 
 
-//项目统计 
+
+//合同状态
 var dom = document.getElementById("visitor4");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    title : {
+        text: '合同续约状态',
+        subtext: '',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+        data: contract_status_key2
+    },
+    series : [
+        {
+            name: '合同续约状态',
+            type: 'pie',
+            radius : '55%',
+            center: ['50%', '60%'],
+            data:contract_status_value2,
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+
+
+
+
+
+
+
+//项目统计 
+var dom = document.getElementById("visitor5");
 var myChart = echarts.init(dom);
 var app = {};
 option = null;

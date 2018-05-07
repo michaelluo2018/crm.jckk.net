@@ -17,12 +17,14 @@ class Index extends Base
         $customer_status_2 = $this->get_customer_status2();
 
         //数据统计--合同状态
-        $get_contract_status = $this->get_contract_status();
-
+        $get_contract_status1 = $this->get_contract_status1();
+        $get_contract_status2 = $this->get_contract_status2();
+//        dump($get_contract_status1);
+//        dump($get_contract_status2);die;
         //数据统计--产品需求
         $product_demand = $this->get_product_demand();
 
-        $customer_status = array_merge($customer_status_1,$customer_status_2,$get_contract_status,$product_demand);
+        $customer_status = array_merge($customer_status_1,$customer_status_2,$get_contract_status1,$get_contract_status2,$product_demand);
         if(! $this->menu_id){
             $this->menu_id = $this->get_mid_by_url("index/index/index");
             $this->assign("mid",$this->menu_id);
@@ -71,15 +73,31 @@ class Index extends Base
     }
 
 
-     public function get_contract_status(){
-        $array = Config::get("contract_status");
+     public function get_contract_status1(){
+        $array = Config::get("contract_status1");
 
         $num = count($array);
         $list = array();
 
         for ($i=0;$i<$num;$i++){
             $contract_status = $array[$i];
-            $list[$i]['field']='contract_status';
+            $list[$i]['field']='contract_status1';
+            $list[$i]['key']=$contract_status;
+            $list[$i]['value']  = model("project","logic")->contract_count_status($contract_status);
+
+        }
+        return $list;
+    }
+
+     public function get_contract_status2(){
+        $array = Config::get("contract_status2");
+
+        $num = count($array);
+        $list = array();
+
+        for ($i=0;$i<$num;$i++){
+            $contract_status = $array[$i];
+            $list[$i]['field']='contract_status2';
             $list[$i]['key']=$contract_status;
             $list[$i]['value']  = model("project","logic")->contract_count_status($contract_status);
 
