@@ -263,7 +263,6 @@ class User extends Model{
 
                 if($data['D'] == $data['E']){
                     $post_model =  Db::table("jckk_post");
-                    
                     $post_data['pid'] = 0;
                     $post_data['path'] = 0;
                     $post_data['post_name'] = $data['E'];

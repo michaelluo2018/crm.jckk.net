@@ -1,6 +1,7 @@
-.idea
+.idea/
 public/uploads
 public/wukong
+public/weiphp
 database/*
 *.sql
 composer.lock
