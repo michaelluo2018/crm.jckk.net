@@ -80,14 +80,16 @@ class User extends Base{
 
          for($i=0;$i<=count($data);$i++){
              if($i>=3){
-                $result =  model("user","logic")->excel_save_user($data[$i]);
-               $mm[$i]=$result;
-                if($result['status'] == 'ok'){
-                    $list['ok_count']  = $list['ok_count']  + 1;
-                }
-                 if($result['status'] == 'error'){
-                     $list['error_count'] =  $list['error_count'] + 1;
-                     $list['msg'][] = "序号".$i."导入出现错误！错误信息是：".$result['msg'];
+                 if($data[$i]["F"]){
+                     $result =  model("user","logic")->excel_save_user($data[$i]);
+                     $mm[$i]=$result;
+                     if($result['status'] == 'ok'){
+                         $list['ok_count']  = $list['ok_count']  + 1;
+                     }
+                     if($result['status'] == 'error'){
+                         $list['error_count'] =  $list['error_count'] + 1;
+                         $list['msg'][] = "序号".$i."导入出现错误！错误信息是：".$result['msg'];
+                     }
                  }
              }
          }

@@ -241,6 +241,8 @@ class User extends Model{
     }
 
 
+
+
     public function  excel_save_user($data){
         //先检测是否已有
         $user_mobile = $this->where('mobile',$data["F"])->where('is_delete','<>',1)->count();
@@ -260,35 +262,38 @@ class User extends Model{
                 //不存在岗位创建新岗位
 
                 if($data['D'] == $data['E']){
-                    $post_model =  \model('post');
-                    $post_model->pid = 0;
-                    $post_model->path =0;
-                    $post_model->post_name = $data['E'];
-                    $post_model->department_id = $department->id;
-                    $post_model->create_time =  time();
-                    $post_model->is_delete =  0;
+                    $post_model =  Db::table("jckk_post");
+                    
+                    $post_data['pid'] = 0;
+                    $post_data['path'] = 0;
+                    $post_data['post_name'] = $data['E'];
+                    $post_data['department_id'] = $department->id;
+                    $post_data['create_time'] =  time();
+                    $post_data['is_delete'] =  0;
+
                 }
                 else{
                     $p_post = \model("post")->where("department_id",$department->id)->where("post_name",$data['D'])->where("is_delete","<>",1)->find();
 
                    if($p_post){
-                       $post_model =  \model('post');
-                       $post_model->pid = $p_post->id;
-                       $post_model->path = ($p_post->path).'-'.$p_post->id;
-                       $post_model->post_name = $data['E'];
-                       $post_model->department_id = $department->id;
-                       $post_model->create_time =  time();
-                       $post_model->is_delete =  0;
-                       $post_model->sort =  $p_post->sort +1;
+                       $post_model =  Db::table("jckk_post");
+                       $post_data['pid'] = $p_post->id;
+                       $post_data['path'] = ($p_post->path).'-'.$p_post->id;
+                       $post_data['post_name'] = $data['E'];
+                       $post_data['department_id'] = $department->id;
+                       $post_data['create_time'] =  time();
+                       $post_data['is_delete'] =  0;
+                       $post_data['sort'] =  $p_post->sort +1;
                    }
                    else{
                        return $result = ['status'=>'error','msg'=>$data['A'].'下岗位'.$data['E'].'的上级岗位不存在!'];
                    }
 
                 }
+                $post_model->insert($post_data);
+                $post_id = $post_model->getLastInsID();
+                if($post_id){
 
-                if($post_model->save()){
-                    $post_id = $post_model->id;
                     //给基础菜单查看权限,工作台，个人中心，通讯录，客户和项目，客户管理，项目管理，线索管理
                     $menu_url_array = ["工作台","个人中心","通讯录","客户和项目","客户管理","项目管理","线索管理"];
                     for ($m=0;$m<count($menu_url_array);$m++){
@@ -296,6 +301,7 @@ class User extends Model{
                         $this_menu = \model("menu")->where("title",$menu_url_array[$m])->where("is_delete","<>",1)->find();
 
                        if($this_menu){
+
                            $permission_array[$m]['pid'] =  $post_id;
                            $permission_array[$m]['mid'] =  $this_menu->id;
                            $permission_array[$m]['add_operate'] =  0;
@@ -322,20 +328,20 @@ class User extends Model{
             else{
                 $post_id = $post->id;
             }
-            $user =  \model("user");
-            $user->chinese_name  = $data['B'];
-            $user->english_name  = $data['C'];
-            $user->sex  = $data['I']==0?"男":"女";
-            $user->department_id  = $department->id;
-            $user->post_id  = $post_id;
-            $user->mobile  = $data["F"];
-            $user->wechat  = $data['H'];
-            $user->email  = $data["I"];
-            $user->qq  = $data['G'];
-            $user->password  = $this->password(123456);
-            $user->create_time  = time();
-            $user->is_delete  = 0;
-            if( $user->save()){
+            $user =  Db::table("jckk_user");
+            $user_data['chinese_name']  = $data['B'];
+            $user_data['english_name']  = $data['C'];
+            $user_data['sex']  = $data['I']==0?"男":"女";
+            $user_data['department_id']  = $department->id;
+            $user_data['post_id']  = $post_id;
+            $user_data['mobile']  = $data["F"];
+            $user_data['wechat']  = $data['H'];
+            $user_data['email']  = $data["I"];
+            $user_data['qq']  = $data['G'];
+            $user_data['password']  = $this->password(123456);
+            $user_data['create_time']  = time();
+            $user_data['is_delete']  = 0;
+            if( $user->insert($user_data)){
                 return $result = ['status'=>'ok','msg'=>'添加成功！'];
             }
 
