@@ -5,6 +5,14 @@ use think\Config;
 use think\Request;
 
 class User extends Base{
+    public function __construct(Request $request = null)
+    {
+        parent::__construct($request);
+        $mid = $this->get_mid_by_url("index/user/profile");
+        $this->menu_id = $mid;
+        $this->assign("mid",$this->menu_id);
+
+    }
 
     public  function  profile(){
 
