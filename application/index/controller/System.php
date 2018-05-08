@@ -10,11 +10,10 @@ class System extends Base{
 
     public function organization($id = null,$mid=null){
 
-        if($mid){
-            $this->menu_id = $mid;
-            $this->assign("mid",$this->menu_id);
-        }
-
+        $mid = $this->get_mid_by_url("index/project/project_list");
+        $this->menu_id = $mid;
+        $this->assign("mid",$this->menu_id);
+        
         $data= model("department","logic")->get_organization($id);
 
         $organization_menus= $this->all_menus;
