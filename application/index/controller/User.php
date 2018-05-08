@@ -101,8 +101,16 @@ class User extends Base{
        echo "<script>history.go(-1);</script>";
     }
 
+    //导出通讯录
+    public function  user_export(){
+        //获取所有用户
+        $users =  model("user","logic")->get_book(false);
+        $users = collection($users)->toArray();
+//        echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" > ";
+//        dump($users);die;
+        CommonExcel::exportExcel($users);
 
-
+    }
 
 
 
