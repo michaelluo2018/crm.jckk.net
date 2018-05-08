@@ -41,9 +41,11 @@
                 <div style="min-height: 400px;">
                     <div class="modal-body">
                         <p>导入结果:导入成功 {$list['ok_count']} 条，失败 {$list['error_count']} 条。"</p>
+                        {if condition="isset($list['msg'])"/}
                         {volist name="list['msg']" id="msg"/}
                         <p><small>{$msg}</small></p>
                         {/volist}
+                        {/if}
                     </div>
                 </div>
             </div>

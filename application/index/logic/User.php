@@ -243,8 +243,8 @@ class User extends Model{
 
     public function  excel_save_user($data){
         //先检测是否已有
-        $user_mobile = $this->where('mobile',$data["E"])->where('is_delete','<>',1)->count();
-        $user_email = $this->where('email',$data["H"])->where('is_delete','<>',1)->count();
+        $user_mobile = $this->where('mobile',$data["F"])->where('is_delete','<>',1)->count();
+        $user_email = $this->where('email',$data["I"])->where('is_delete','<>',1)->count();
 
         if(!$user_mobile && !$user_email){
             //写库
@@ -253,21 +253,85 @@ class User extends Model{
             if(!$department){
                 return $result = ['status'=>'error','msg'=>'不存在部门'.$data['A'].'!'];
             }
+
             //获取职位id
-            $post = \model("post")->where("department_id",$department->id)->where("post_name",$data['D'])->where("is_delete","<>",1)->find();
+            $post = \model("post")->where("department_id",$department->id)->where("post_name",$data['E'])->where("is_delete","<>",1)->find();
             if(!$post){
-                return $result = ['status'=>'error','msg'=>'部门'.$data['A'].'下不存在岗位'.$data['D'].'!'];
+                //不存在岗位创建新岗位
+
+                if($data['D'] == $data['E']){
+                    $post_model =  \model('post');
+                    $post_model->pid = 0;
+                    $post_model->path =0;
+                    $post_model->post_name = $data['E'];
+                    $post_model->department_id = $department->id;
+                    $post_model->create_time =  time();
+                    $post_model->is_delete =  0;
+                }
+                else{
+                    $p_post = \model("post")->where("department_id",$department->id)->where("post_name",$data['D'])->where("is_delete","<>",1)->find();
+
+                   if($p_post){
+                       $post_model =  \model('post');
+                       $post_model->pid = $p_post->id;
+                       $post_model->path = ($p_post->path).'-'.$p_post->id;
+                       $post_model->post_name = $data['E'];
+                       $post_model->department_id = $department->id;
+                       $post_model->create_time =  time();
+                       $post_model->is_delete =  0;
+                       $post_model->sort =  $p_post->sort +1;
+                   }
+                   else{
+                       return $result = ['status'=>'error','msg'=>$data['A'].'下岗位'.$data['E'].'的上级岗位不存在!'];
+                   }
+
+                }
+
+                if($post_model->save()){
+                    $post_id = $post_model->id;
+                    //给基础菜单查看权限,工作台，个人中心，通讯录，客户和项目，客户管理，项目管理，线索管理
+                    $menu_url_array = ["工作台","个人中心","通讯录","客户和项目","客户管理","项目管理","线索管理"];
+                    for ($m=0;$m<count($menu_url_array);$m++){
+
+                        $this_menu = \model("menu")->where("title",$menu_url_array[$m])->where("is_delete","<>",1)->find();
+
+                       if($this_menu){
+                           $permission_array[$m]['pid'] =  $post_id;
+                           $permission_array[$m]['mid'] =  $this_menu->id;
+                           $permission_array[$m]['add_operate'] =  0;
+                           $permission_array[$m]['delete_operate'] =  0;
+                           $permission_array[$m]['update_operate'] =  0;
+                           $permission_array[$m]['desc_operate'] =  1;
+                           $permission_array[$m]['permission_range'] =  "所有人";
+                           $permission_array[$m]['create_time'] =  time();
+                       }
+
+                    }
+
+                    if(isset($permission_array)){
+                        \model("post_permission")->saveAll($permission_array);
+                    }else{
+                        return $result = ['status'=>'error','msg'=>'权限'.$menu_url_array[$m].'添加失败!'];
+                    }
+
+                }
+                else{
+                    return $result = ['status'=>'error','msg'=>$data['A'].'下岗位'.$data['E'].'添加失败!'];
+                }
+            }
+            else{
+                $post_id = $post->id;
             }
             $user =  \model("user");
             $user->chinese_name  = $data['B'];
             $user->english_name  = $data['C'];
             $user->sex  = $data['I']==0?"男":"女";
             $user->department_id  = $department->id;
-            $user->post_id  = $post->id;
-            $user->mobile  = $data["E"];
-            $user->wechat  = $data['G'];
-            $user->email  = $data["H"];
-            $user->qq  = $data['F'];
+            $user->post_id  = $post_id;
+            $user->mobile  = $data["F"];
+            $user->wechat  = $data['H'];
+            $user->email  = $data["I"];
+            $user->qq  = $data['G'];
             $user->password  = $this->password(123456);
             $user->create_time  = time();
             $user->is_delete  = 0;

@@ -71,14 +71,17 @@ class User extends Base{
          }
 
          $data = CommonExcel::importExecl($path.DS.$file_name);
-
+//        echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" > ";
+//        dump($data);die;
          //循环写入数据库
          $list = array();
          $list['ok_count'] = 0;
          $list['error_count'] = 0;
-         for($i=0;$i<count($data);$i++){
+
+         for($i=0;$i<=count($data);$i++){
              if($i>=3){
                 $result =  model("user","logic")->excel_save_user($data[$i]);
+               $mm[$i]=$result;
                 if($result['status'] == 'ok'){
                     $list['ok_count']  = $list['ok_count']  + 1;
                 }
