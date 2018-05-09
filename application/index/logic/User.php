@@ -357,7 +357,12 @@ class User extends Model{
     public function user_quit($id){
 
         $user =  $this->where("uid",$id)->find();
-        $user->quit = 1;
+        if($user->quit == 1){
+            $user->quit = 0;
+        }
+        else{
+            $user->quit = 1;
+        }
         return   $user->save();
     }
 
