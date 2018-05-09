@@ -22,7 +22,7 @@
                 <h4 class="m-b-0 text-white">添加产品</h4>
             </div>
             <div class="card-body">
-                <form action="{:url('index/product/save_product')}?mid={$mid}" method="post">
+                <form action="{:url('index/product/save_product')}?mid={$mid}" method="post" enctype="multipart/form-data">
                     <div class="form-body">
                         <h3 class="card-title">基础信息</h3>
                         <hr>
@@ -30,7 +30,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label"><span class="text-danger"> * </span>产品名</label>
-                                    <input type="text"  class="form-control"  placeholder="请填写产品名" name="product_name"  required >
+                                    <input type="text"  class="form-control"  name="product_name"  required >
                                     <small class="form-control-feedback"> </small>
                                 </div>
                             </div>
@@ -38,7 +38,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">产品类别</label>
-                                    <select class="form-control"  tabindex="1" name="type">
+                                    <select class="form-control"  tabindex="1" name="product_type">
                                         <option value="">请选择</option>
                                         {volist name="product_type" id= "type"}
                                         <option value="{$type}">{$type}</option>
@@ -51,7 +51,7 @@
                             <div class="col-md-4 ">
                                 <div class="form-group">
                                     <label class="control-label">研发时间</label>
-                                    <input type="datetime-local"  class="form-control"  name="develop_time">
+                                    <input type="date"  class="form-control"  name="develop_time">
                                     <small class="form-control-feedback"> </small>
                                 </div>
                             </div>

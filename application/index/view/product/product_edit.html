@@ -22,7 +22,8 @@
                 <h4 class="m-b-0 text-white">修改产品</h4>
             </div>
             <div class="card-body">
-                <form action="{:url('index/product/save_product')}?mid={$mid}" method="post">
+                <form action="{:url('index/product/save_product')}?mid={$mid}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="product_id" value="{$product.id}">
                     <div class="form-body">
                         <h3 class="card-title">基础信息</h3>
                         <hr>
@@ -30,7 +31,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label"><span class="text-danger"> * </span>产品名</label>
-                                    <input type="text"  class="form-control"  placeholder="请填写产品名" name="product_name"  required >
+                                    <input type="text"  class="form-control"  value="{$product.product_name}" name="product_name"  required >
                                     <small class="form-control-feedback"> </small>
                                 </div>
                             </div>
@@ -38,10 +39,14 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">产品类别</label>
-                                    <select class="form-control"  tabindex="1" name="type">
+                                    <select class="form-control"  tabindex="1" name="product_type">
                                         <option value="">请选择</option>
                                         {volist name="product_type" id= "type"}
+                                        {if condition="$product.product_type eq $type"/}
+                                        <option value="{$type}" selected>{$type}</option>
+                                        {else/}
                                         <option value="{$type}">{$type}</option>
+                                        {/if}
                                         {/volist}
                                     </select>
                                     <small class="form-control-feedback"> </small>
@@ -51,7 +56,7 @@
                             <div class="col-md-4 ">
                                 <div class="form-group">
                                     <label class="control-label">研发时间</label>
-                                    <input type="datetime-local"  class="form-control"  name="develop_time">
+                                    <input type="date"  class="form-control" value="{$product.develop_time}" name="develop_time">
                                     <small class="form-control-feedback"> </small>
                                 </div>
                             </div>
@@ -59,7 +64,7 @@
                             <div class="col-md-4 ">
                                 <div class="form-group">
                                     <label class="control-label">详情链接</label>
-                                    <input type="text"  class="form-control" placeholder="http://"  name="link">
+                                    <input type="text"  class="form-control" value="{$product.link}"  name="link">
                                     <small class="form-control-feedback"> </small>
                                 </div>
                             </div>
@@ -67,7 +72,7 @@
                             <div class="col-md-4">
                                 <div class="form-group has-danger">
                                     <label class="control-label"><span class="text-danger"> * </span>开发团队</label>
-                                    <input type="text"  class="form-control" name="product_from"  required>
+                                    <input type="text"  class="form-control" value="{$product.product_from}" name="product_from"  required>
                                     <small class="form-control-feedback"> </small>
                                 </div>
                             </div>
@@ -75,14 +80,14 @@
                             <div class="col-md-4">
                                 <div class="form-group has-danger">
                                     <label class="control-label">成本价</label>
-                                    <input type="text"  class="form-control"  name="cost_price">
+                                    <input type="text"  class="form-control" value="{$product.cost_price}" name="cost_price">
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-4">
                                 <div class="form-group has-danger">
                                     <label class="control-label">建议售价</label>
-                                    <input type="text"  class="form-control"  name="recommend_price">
+                                    <input type="text"  class="form-control" value="{$product.recommend_price}" name="recommend_price">
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
                         </div>
@@ -92,6 +97,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">主图</label>
+                                    <img src="{$product.img}" alt="" width="200">
                                     <label class="custom-file d-block">
                                         <input type="file"  class="custom-file-input" name="img">
                                         <span class="custom-file-control">点击上传图片</span>
@@ -107,7 +113,7 @@
                             <div class="col-md-12">
                                 <div class="form-group has-danger">
                                     <label class="control-label">备注</label>
-                                    <textarea  rows="6" class="form-control" placeholder="请填写备注" name="note"></textarea>
+                                    <textarea  rows="6" class="form-control" placeholder="请填写备注" name="note">{$product.note}</textarea>
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
                             <!--/span-->

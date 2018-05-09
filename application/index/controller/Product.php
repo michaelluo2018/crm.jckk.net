@@ -44,8 +44,7 @@ class Product extends Base {
     public function save_product(){
         $data = Request::instance()->post();
         $file = Request::instance()->file("img");
-       // dump($data);die;
-        $res = model("product","logic")->save_product($data);
+        $res = model("product","logic")->save_product($data,$file);
         if($res){
             $this->redirect("product");
         }
@@ -62,7 +61,8 @@ class Product extends Base {
         else {
 
             $product = model("product", "logic")->get_product($id);
-
+            $product_type = Config::get("product_type");
+            $this->assign("product_type",$product_type);
             $this->assign('product',$product);
             return view("product_edit");
         }
@@ -88,10 +88,9 @@ class Product extends Base {
 
     public function  product_des($id){
 
-
         //获得一条项目信息
         $product = model("product", "logic")->get_product($id);
-
+        $this->assign('product',$product);
         return view("product_des");
 
     }
