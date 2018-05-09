@@ -21,21 +21,11 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">系统日志</h4>
-                            <h6 class="card-subtitle"></h6>
-                            <div class="m-t-40">
-                                <div class="d-flex">
-                                    <div class="ml-auto">
-                                        <div class="form-group">
-                                            <input id="demo-input-search2" type="text" placeholder="搜索日志" autocomplete="off">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="form-actions" style="margin-bottom: 15px;">
                                 <button type="button" class="btn  btn-info " onclick="delete_logs(7);"> <i class=" ace-icon fa fa-close "></i> 删除7天之前日志</button>
                                 <button type="button" class="btn  btn-danger " onclick="delete_logs(30)"> <i class=" ace-icon fa fa-close"></i> 删除30天之前日志</button>
                             </div>
-                            <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" data-page-size="20">
+                            <table  class="table table-bordered table-hover toggle-circle" >
                                 <thead>
                                 <tr class="text-align">
                                     <th  data-toggle="true"  data-hide="phone, tablet">序号</th>
@@ -89,9 +79,9 @@
                                 <tr>
                                     <td colspan="14">
                                         <div class="text-right">
-                                            <ul class="pagination">
-
-                                            </ul>
+                                            <div id="tp_paginate">
+                                                {$logs->render()}
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>
