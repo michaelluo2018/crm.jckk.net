@@ -1,0 +1,125 @@
+{extend name="layout"/}
+{block name="title"/}
+<title>添加产品 - 客户管理系统</title>
+{/block}
+{block name="css"/}
+
+{/block}
+{block name="breadcrumb"/}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">添加产品</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">首页</a></li>
+        <li class="breadcrumb-item active">添加产品</li>
+    </ol>
+</div>
+{/block}
+{block name="detail"/}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-outline-info">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white">添加产品</h4>
+            </div>
+            <div class="card-body">
+                <form action="{:url('index/product/save_product')}?mid={$mid}" method="post">
+                    <div class="form-body">
+                        <h3 class="card-title">基础信息</h3>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>产品名</label>
+                                    <input type="text"  class="form-control"  placeholder="请填写产品名" name="product_name"  required >
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">产品类别</label>
+                                    <select class="form-control"  tabindex="1" name="type">
+                                        <option value="">请选择</option>
+                                        {volist name="product_type" id= "type"}
+                                        <option value="{$type}">{$type}</option>
+                                        {/volist}
+                                    </select>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 ">
+                                <div class="form-group">
+                                    <label class="control-label">研发时间</label>
+                                    <input type="datetime-local"  class="form-control"  name="develop_time">
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 ">
+                                <div class="form-group">
+                                    <label class="control-label">详情链接</label>
+                                    <input type="text"  class="form-control" placeholder="http://"  name="link">
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group has-danger">
+                                    <label class="control-label"><span class="text-danger"> * </span>开发团队</label>
+                                    <input type="text"  class="form-control" name="product_from"  required>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">成本价</label>
+                                    <input type="text"  class="form-control"  name="cost_price">
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-4">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">建议售价</label>
+                                    <input type="text"  class="form-control"  name="recommend_price">
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                        </div>
+                        <h3 class="card-title">产品图片</h3>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label">主图</label>
+                                    <label class="custom-file d-block">
+                                        <input type="file"  class="custom-file-input" name="img">
+                                        <span class="custom-file-control">点击上传图片</span>
+                                    </label>
+                                    <small class="form-control-feedback"></small> </div>
+                            </div>
+                        </div>
+
+                        <h3 class="card-title">附加信息</h3>
+                        <hr>
+                        <div class="row">
+                            <!--/span-->
+                            <div class="col-md-12">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">备注</label>
+                                    <textarea  rows="6" class="form-control" placeholder="请填写备注" name="note"></textarea>
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
+                            <button type="reset" class="btn btn-inverse">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

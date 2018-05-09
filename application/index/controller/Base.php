@@ -36,15 +36,15 @@ class Base extends Controller{
         }
         $this->assign("setting",$setting);
 
+
         $this->post_id = $user_info['post_id'];
         $this->user_info = $user_info;
 
         $this->all_menus = model("menu","logic")->get_menus();
-
-
         $this->user_menus = $this->get_user_menus();
-
         $this->assign("base_menus",$this->user_menus);
+
+
         //总客户，总项目
         $total_customer = model("customer","logic")->total_customer();
         $total_project = model("project","logic")->total_project();
@@ -60,14 +60,13 @@ class Base extends Controller{
         if(strtolower($uri) != "index/index/index"){
             if(!$this->get_desc_by_url($uri)){
                 echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" ><script>alert('抱歉，你还没有权限！');window.location.href='/'</script>"; exit;
-                //$this->redirect("/");
             }
         }
 
         //公告
         $announcements = model("announcement","logic")->get_announcement();
         $this->assign("announcements",$announcements);
-      
+
     }
 
     protected function login($uid){
@@ -113,51 +112,39 @@ class Base extends Controller{
     }
 
 
-
-//    public function get_user_menus(){
-//
-//        $menus_all=  $this->all_menus;
-//
-//        $list = array(); //存放登陆用户岗位的菜单
-//        $array = array(); //存放登陆用户岗位的菜单
-//        $permissions = array(); //存放登陆用户岗位的菜单权限，下标是菜单id
-//
-//        foreach ($menus_all as $k=>$v){
-//            $mid = $v->id;
-//            $post_permission = model("post_permission")->where("pid", $this->post_id)->where("mid",$mid)->find();
-//
-//            if($post_permission){
-//                if($post_permission->desc_operate==1){
-//                    $array[$k] = $v;
-//                    $permissions[$mid] = $post_permission;
-//                }
-//            }
-//
-//        }
-//        $list['menus'] = $array;
-//        $list['permission'] = $permissions;
-//        return $list;
-//
-//
-//    }
-
     public function get_user_menus(){
 
 
-        $menus = model("menu","logic")->get_menu_by_pid(0,true);
+        $menus = $this->get_user_permission_menus( model("menu","logic")->get_menu_by_pid(0,true));
 
         foreach ($menus as $mk=>$mv){
             $child_pid1 = $mv['id'];
-            $menus[$mk]['child'] = model("menu","logic")->get_menu_by_pid($child_pid1,true);
+            $menus[$mk]['child'] = $this->get_user_permission_menus( model("menu","logic")->get_menu_by_pid($child_pid1,true));
             foreach ( $menus[$mk]['child'] as $mck=>$mcv){
                 $child_pid2 = $mcv['id'];
-                $menus[$mk]['child'][$mck]['child'] = model("menu","logic")->get_menu_by_pid($child_pid2,true);
+                $menus[$mk]['child'][$mck]['child'] =$this->get_user_permission_menus( model("menu","logic")->get_menu_by_pid($child_pid2,true));
             }
         }
-
         return $menus;
 
+    }
 
+    public function get_user_permission_menus($menus){
+
+        $array = array();
+        foreach ($menus as $k=>$v){
+            $mid = $v['id'];
+            $post_permission = model("post_permission")->where("pid", $this->post_id)->where("mid",$mid)->find();
+
+            if($post_permission){
+                if($post_permission->desc_operate==1){
+                    $array[] = $v;
+                }
+            }
+
+        }
+
+        return $array;
     }
 
     public  function  get_menu_permission(){
