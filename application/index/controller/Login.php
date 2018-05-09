@@ -36,7 +36,7 @@ class Login extends Controller {
             $this->redirect("index/index");
         }
         else{
-            $data['msg'] = "账号或密码错误,或者用户不存在，请重试！";
+            $data['msg'] = "账号或密码错误,或者用户不存在或已离职！";
             Cookie::set("login_data",$data,10);
             return $this->redirect("login/login");
 
