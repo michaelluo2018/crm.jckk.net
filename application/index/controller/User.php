@@ -37,9 +37,21 @@ class User extends Base{
 
     }
 
+    public function user_quit($id){
+
+        if(!$this->check_post_menu_permission("update_operate")){
+            echo "<script> alert('没有权限！');history.back(-1);</script>";
+        }
+        else{
+            model('user','logic')->user_quit($id);
+
+            $this->redirect("system/member");
+
+        }
+    }
+
 
     public  function user_del($id){
-
 
         if(!$this->check_post_menu_permission("delete_operate")){
             echo "<script> alert('没有权限！');history.back(-1);</script>";

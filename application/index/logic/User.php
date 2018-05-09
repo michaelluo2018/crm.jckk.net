@@ -122,7 +122,7 @@ class User extends Model{
     public function delete_user($id){
         //删除头像
         $user =  $this->where("uid",$id)->find();
-        Common::unlink_file(ROOT_PATH . 'public'.$user->heard_img);
+       // Common::unlink_file(ROOT_PATH . 'public'.$user->heard_img);
         //添加日志
         $user_log["type"] = Log::DELETE_TYPE;
 
@@ -198,6 +198,7 @@ class User extends Model{
              $users = Db::table("jckk_user")
                  ->field(["jckk_user.*","jckk_post.post_name","jckk_department.department_name"])
                  ->where("jckk_user.is_delete",0)
+                 ->where("jckk_user.quit","<>",1)
                  ->join("jckk_post","jckk_post.id=jckk_user.post_id")
                  ->join("jckk_department","jckk_department.id=jckk_user.department_id")
                  ->group("jckk_user.department_id")
@@ -210,6 +211,7 @@ class User extends Model{
              $users = Db::table("jckk_user")
                  ->field(["jckk_user.*","jckk_post.post_name","jckk_department.department_name"])
                  ->where("jckk_user.is_delete",0)
+                 ->where("jckk_user.quit","<>",1)
                  ->join("jckk_post","jckk_post.id=jckk_user.post_id")
                  ->join("jckk_department","jckk_department.id=jckk_user.department_id")
                  ->group("jckk_user.department_id")
@@ -352,6 +354,12 @@ class User extends Model{
     }
 
 
+    public function user_quit($id){
+
+        $user =  $this->where("uid",$id)->find();
+        $user->quit = 1;
+        return   $user->save();
+    }
 
 
 }
