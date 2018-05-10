@@ -27,7 +27,7 @@ class Opportunity extends Base {
 
 
 
-    //项目添加
+    //添加
     public function opportunity_add(){
 
 
@@ -35,17 +35,18 @@ class Opportunity extends Base {
             echo "<script> alert('没有权限！');history.back(-1);</script>";
         }
         else {
-
+            $opportunity_entity = model("opportunity","logic")->get_opportunity_entity();
+            $this->assign("opportunity_entity",$opportunity_entity);
             return view("opportunity_add");
         }
     }
 
 
 
-    //项目保存
-    public function save_project(){
+    //保存
+    public function save_opportunity(){
         $data = Request::instance()->post();
-
+//        dump($data);die;
         $res = model("opportunity","logic")->save_opportunity($data);
         if($res){
             $this->redirect("opportunity");
@@ -53,7 +54,7 @@ class Opportunity extends Base {
     }
 
 
-    //项目修改
+    //修改
 
     public function  opportunity_edit($id){
 
@@ -62,15 +63,18 @@ class Opportunity extends Base {
         }
         else {
 
-            $project = model("opportunity", "logic")->get_project($id);
+            $opportunity = model("opportunity", "logic")->get_opportunity($id);
+            $this->assign("opportunity",$opportunity);
+            $opportunity_entity = model("opportunity","logic")->get_opportunity_entity();
+            $this->assign("opportunity_entity",$opportunity_entity);
             return view("opportunity_edit");
         }
     }
 
 
-    //项目删除
+    //删除
 
-    public function  project_del($id){
+    public function  opportunity_del($id){
         if(!$this->check_post_menu_permission("delete_operate")){
             echo "<script> alert('没有权限！');history.back(-1);</script>";
         }
@@ -83,14 +87,14 @@ class Opportunity extends Base {
     }
 
 
-    //项目信息查看
+    //信息查看
 
     public function  opportunity_des($id){
 
 
-        //获得一条项目信息
-        $project = model("opportunity", "logic")->get_opportunity($id);
-
+        //获得一条信息
+        $opportunity = model("opportunity", "logic")->get_opportunity($id);
+        $this->assign("opportunity",$opportunity);
         return view("opportunity_des");
 
     }

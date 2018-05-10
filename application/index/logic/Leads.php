@@ -54,6 +54,7 @@ class Leads extends Model{
             $lead->create_uid = Session::get("uid");
             $lead_log["before_value"] = "";
             $lead_log["type"] = Lead_Log::ADD_TYPE;
+            $lead_log["title"] = "添加线索";
         }
 
             $lead ->uid = $data["uid"];
@@ -68,7 +69,6 @@ class Leads extends Model{
 
             if($lead->save()){
                 $lead_log["after_value"] = json_encode($lead);
-                $lead_log["title"] = "添加线索，线索ID是". $lead->id;
                 model("log","logic")->write_log( $lead_log);
             }
             return $lead->id;

@@ -1,16 +1,16 @@
 {extend name="layout"/}
 {block name="title"/}
-<title>修改线索 - 客户管理系统</title>
+<title>商机详情 - 客户管理系统</title>
 {/block}
 {block name="css"/}
 
 {/block}
 {block name="breadcrumb"/}
 <div class="col-md-5 col-8 align-self-center">
-    <h3 class="text-themecolor">修改线索</h3>
+    <h3 class="text-themecolor">商机详情</h3>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">首页</a></li>
-        <li class="breadcrumb-item active">修改线索</li>
+        <li class="breadcrumb-item active">商机详情</li>
     </ol>
 </div>
 {/block}
@@ -19,20 +19,21 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-header">
-                <h4 class="m-b-0 text-white">修改线索</h4>
+                <h4 class="m-b-0 text-white">商机详情</h4>
             </div>
             <div class="card-body">
-                <form action="{:url('index/leads/save_leads')}?mid={$mid}" method="post">
-                    <input type="hidden" name="id" value="{$lead.id}">
+                <form action="{:url('index/opportunity/save_opportunity')}?mid={$mid}" method="post">
+                    <input type="hidden" name="opportunity_id" value="{$opportunity.id}">
                     <div class="form-body">
                         <h3 class="card-title">主要信息</h3>
                         <hr>
+
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label"><span class="text-danger"> * </span>负责人</label>
-                                    <input type="text"  class="form-control user_name"  value="{$lead.chinese_name}"  required autocomplete="off">
-                                    <input type="hidden"  class="form-control"  name="uid" value="{$lead.uid}" required >
+                                    <input type="text"  class="form-control user_name"  value="{$opportunity.chinese_name}"  required autocomplete="off">
+                                    <input type="hidden"  class="form-control"  name="uid" value="{$opportunity.uid}" required >
                                     <small class="form-control-feedback"> </small>
                                 </div>
                             </div>
@@ -41,28 +42,95 @@
                             </div>
                         </div>
                         <div class="row p-t-20">
-                            <div class="col-md-12 ">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="control-label">公司名</label>
-                                    <input type="text"  class="form-control" value="{$lead.company_name}" name="company_name">
+                                    <label class="control-label"><span class="text-danger"> * </span>客户全称</label>
+                                    <input type="text"  class="form-control customer_name" value="{$opportunity.customer_name}"  required autocomplete="off">
+                                    <input type="hidden"  class="form-control"  name="customer_id" value="{$opportunity.customer_id}" required >
                                     <small class="form-control-feedback"> </small>
                                 </div>
                             </div>
+                            <div class="col-md-12" id="customer_display" style="color: red;" >
+
+                            </div>
+
                         </div>
-                        {include file="leads/common_edit_contact"/}
+
                         <div class="row p-t-20">
+                            <div class="col-md-4">
+                                <div class="form-group has-danger">
+                                    <label class="control-label"><span class="text-danger"> * </span>商机名</label>
+                                    <input type="text"  class="form-control" name="opportunity_name" value="{$opportunity.opportunity_name}" required >
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">商机金额</label>
+                                    <input type="text"  class="form-control check_content_num" name="money" value="{$opportunity.money}"  >
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">预计成本</label>
+                                    <input type="text"  class="form-control check_content_num" name="plan_money" value="{$opportunity.plan_money}"  >
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">赢单率</label>
+                                    <div class="input-group">
+                                        <input type="text"  class="form-control check_content_num" name="gain_rate" value="{$opportunity.gain_rate}"  >
+                                        <span class="input-group-addon">%</span>
+                                    </div>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">来源</label>
-                                    <select class="form-control"  tabindex="1" name="lead_from">
+                                    <select class="form-control"  tabindex="1" name="opportunity_from" >
                                         <option value="">请选择</option>
-                                        {volist name="leads_from" id= "from"}
-                                        {if condition="$lead.lead_from eq $from"/}
-                                            <option value="{$from}" selected>{$from}</option>
+                                        {volist name="opportunity_entity['opportunity_from']" id= "from"}
+                                        {if condition="$opportunity.opportunity_from eq $from"/}
+                                        <option value="{$from}" selected>{$from}</option>
                                         {else/}
-                                            <option value="{$from}">{$from}</option>
+                                        <option value="{$from}">{$from}</option>
                                         {/if}
-
+                                        {/volist}
+                                    </select>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">类型</label>
+                                    <select class="form-control"  tabindex="1" name="type" >
+                                        <option value="">请选择</option>
+                                        {volist name="opportunity_entity['opportunity_type']" id= "type"}
+                                        {if condition="$opportunity.type eq $type"/}
+                                        <option value="{$type}" selected>{$type}</option>
+                                        {else/}
+                                        <option value="{$type}">{$type}</option>
+                                        {/if}
+                                        {/volist}
+                                    </select>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">状态</label>
+                                    <select class="form-control"  tabindex="1" name="status" >
+                                        <option value="">请选择</option>
+                                        {volist name="opportunity_entity['opportunity_status']" id= "status"}
+                                        {if condition="$opportunity.status eq $status"/}
+                                        <option value="{$status}" selected>{$status}</option>
+                                        {else/}
+                                        <option value="{$status}">{$status}</option>
+                                        {/if}
                                         {/volist}
                                     </select>
                                     <small class="form-control-feedback"> </small>
@@ -70,22 +138,15 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group has-danger">
-                                    <label class="control-label">地址</label>
-                                    <input type="text"  class="form-control" name="address" value="{$lead.address}" >
-                                    <small class="form-control-feedback"> </small>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group has-danger">
                                     <label class="control-label">下次联系时间</label>
-                                    <input type="datetime-local"   class="form-control" value="{$lead.contact_time}" name="contact_time">
+                                    <input type="date"  class="form-control" value="{$opportunity.contact_time}" name="contact_time" >
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
-                        <!--/span-->
+                            <!--/span-->
                             <div class="col-md-12">
                                 <div class="form-group has-danger">
                                     <label class="control-label">下次联系内容</label>
-                                    <textarea  rows="6" class="form-control" placeholder="请填写下次联系内容" name="contact_content">{$lead.contact_content}</textarea>
+                                    <textarea  rows="6" class="form-control" value="{$opportunity.contact_content}" name="contact_content" ></textarea>
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
                         </div>
@@ -97,12 +158,29 @@
                             <div class="col-md-12">
                                 <div class="form-group has-danger">
                                     <label class="control-label">备注</label>
-                                    <textarea  rows="6" class="form-control" placeholder="请填写备注" name="note">{$lead.note}</textarea>
+                                    <textarea  rows="6" class="form-control" placeholder="请填写备注" name="note" >{$opportunity.note}</textarea>
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
                             <!--/span-->
                         </div>
-                        <div class="form-actions">
+                        <h3 class="card-title">相关产品</h3>
+
+                        <div class="row p-t-20">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label">产品名称</label>
+                                    <input type="text"  class="form-control product_name" value="{$opportunity.product_name}"   autocomplete="off">
+                                    <input type="hidden"  class="form-control"  name="product_id" value="{$opportunity.product_id}" required >
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="col-md-12" id="product_display" style="color: red;" >
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-actions  p-t-20">
                             <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
                             <button type="reset" class="btn btn-inverse">重置</button>
                         </div>

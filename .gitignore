@@ -2,6 +2,7 @@
 public/uploads
 public/wukong
 public/weiphp
+public/phpad
 database/*
 *.sql
 composer.lock

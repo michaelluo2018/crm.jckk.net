@@ -3,7 +3,7 @@
 
 <script>
 
-    //客户全称
+    //用户全称
     $(".user_name").bind('input propertychange', function () {
         var user_name = $.trim($(this).val());
         if(!user_name){
@@ -61,10 +61,155 @@
 
 
 
+    //客户全称
+    $(".customer_name").bind('input propertychange', function () {
+        var customer_name = $.trim($(this).val());
+        if(!customer_name){
+            $('#customer_display').html("请输入...");
+        }
+        else{
+            $.ajax({
+                url: "{:url('index/project/ajax_get_customer')}",
+                data: {'customer_name':customer_name},
+                method:"get",
+                success:function(data){
+                    if(data !=0){
+                        var customer_html = "";
+                        var array = [];
+                        $.each(data,function(i,v){
+                            var customer_id= v.id;
+                            var customer_name= v.customer_name;
+                            array[customer_id] = customer_name;
+                            customer_html +="<div class='customer_div' onclick=\"send_customer('"+customer_id+"','"+customer_name+"');\" >"+customer_name+"</div>";
+                        });
+
+                        $('#customer_display').html(customer_html);
+
+                        //如果输入值
+                        for(var i in array){
+                            if(array[i]== $.trim($(".customer_name").val())){
+
+                                $("input[name=customer_id]").val(i);
+
+                                $("#customer_display div").hide();
+                            }
+                        }
+
+
+                    }
+                    else{
+                        var message = "没找到客户信息&nbsp;&nbsp;<a href="+"{:url('index/customer/customer_add')}?mid={$customer_mid}"+" type='button' class='btn btn-info'>添加客户</a>";
+                        $('#customer_display').html(message);
+
+                    }
+                },
+                dataType: "json"
+            });
+        }
+
+    });
+
+    function send_customer(id,name) {
+        $(".customer_name").val(name);
+        $("input[name=customer_id]").val(id);
+        $("#customer_display div").hide();
+    }
+
+
+    //产品全称
+
+
+    $(".product_name").bind('input propertychange', function () {
+        var product_name = $.trim($(this).val());
+        if(!product_name){
+            $('#user_display').html("请输入...");
+        }
+        else{
+            $.ajax({
+                url: "{:url('index/product/ajax_get_product')}",
+                data: {'product_name':product_name},
+                method:"get",
+                success:function(data){
+                    if(data !=0){
+                        var product_html = "";
+                        var array = [];
+                        $.each(data,function(i,v){
+                            var pid= v.id;
+                            var product_name= v.product_name;
+                            var recommend_price= v.recommend_price;
+                            var cost_price= v.cost_price;
+                            array[pid] = product_name;
+                            product_html +="<div class='product_div' onclick=\"send_product('"+pid+"','"+product_name+"');\" >产品名称："+product_name+"--建议售价："+recommend_price+"(元)--成本价："+cost_price+"(元)</div>";
+                        });
+
+                        $('#product_display').html(product_html);
+
+                        //如果输入值
+                        for(var i in array){
+                            if(array[i]== $.trim($(".product_name").val())){
+
+                                $("input[name=product_id]").val(i);
+
+                                $("#product_display div").hide();
+                            }
+                        }
+
+
+                    }
+                    else{
+                        var message = "没找到该产品！";
+                        $('#product_display').html(message);
+
+                    }
+                },
+                dataType: "json"
+            });
+        }
+
+    });
+
+    function send_product(id,name) {
+        $(".product_name").val(name);
+        $("input[name=product_id]").val(id);
+        $("#product_display div").hide();
+    }
 
 
 
+    //几个输入框检查,只能是数字和.
 
+    function check_content_num(data,obj) {
+
+        var _this_data = $.trim(data);
+
+        var patt_1 = /^([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$/;
+        var patt_2 = /^([1-9]\d*|0)$/;
+
+        patt_1.lastIndex = 0;
+
+        var res1 = patt_1.test(_this_data);
+
+        patt_2.lastIndex = 0;
+
+        var res2 = patt_2.test(_this_data);
+
+        if(!res1 && !res2){
+            if(obj){
+                obj.val(" ");
+            }
+            return 1;
+        }
+    }
+
+    $(".check_content_num").change(function () {
+
+        if(check_content_num($(this).val(),$(this))){
+
+            layer.alert("请输入正确格式");
+        }
+
+
+    });
 
 
 

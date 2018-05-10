@@ -96,6 +96,17 @@ class Product extends Base {
     }
 
 
+    public  function  ajax_get_product(){
+        $product_name = Request::instance()->get("product_name");
+        $products = model("product","logic")->get_product_by_name($product_name);
+        if($products){
+            return $products;
+        }
+        else{
+            return 0;
+        }
+    }
+
 
 
 

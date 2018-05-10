@@ -112,7 +112,11 @@ class Product extends Model{
 
 
 
+    public function get_product_by_name($product_name){
 
+        return $this->where("product_name","like","%".$product_name."%")->where("is_delete","<>",1)->select();
+
+    }
 
 
 
