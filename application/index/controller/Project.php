@@ -32,7 +32,42 @@ class Project extends Base {
 
     }
 
-     //项目回收站
+
+
+    public  function  contract_status($name){
+
+        $projects = model("project", "logic")->get_projects_by_status("contract_status",$name);
+
+        return  view("project_status_list")->assign(["projects"=>$projects,"name"=>$name]);
+
+    }
+
+
+    public  function  product_demand($name){
+
+        $projects = model("project", "logic")->get_projects_by_status("product_demand_1",$name);
+
+        return  view("project_status_list")->assign(["projects"=>$projects,"name"=>$name]);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //项目回收站
     public function project_recycle(){
 
         $create_uids = $this->check_post_menu_range_permission();

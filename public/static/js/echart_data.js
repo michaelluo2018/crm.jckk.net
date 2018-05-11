@@ -49,10 +49,6 @@ for(var i=0;i<contract_status_length2;i++){
 
 
 
-
-
-
-
 //项目统计
 var product_demand=document.getElementsByClassName("product_demand_1");
 var product_demand_length = product_demand.length;
@@ -105,6 +101,19 @@ if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
 
+//点击跳转
+myChart.on('click', function (param){
+    var name=param.name;
+    top.location.href="/index/customer/customer_status_1?name="+name;
+});
+
+
+
+
+
+
+
+
 //客户二级状态 
 var dom = document.getElementById("visitor2");
 var myChart = echarts.init(dom);
@@ -150,6 +159,19 @@ if (option && typeof option === "object") {
 }
 
 
+//点击跳转
+myChart.on('click', function (param){
+    var name=param.name;
+    top.location.href="/index/customer/customer_status_2?name="+name;
+});
+
+
+
+
+
+
+
+
 //合同状态 1
 var dom = document.getElementById("visitor3");
 var myChart = echarts.init(dom);
@@ -191,6 +213,18 @@ option = {
 if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
+
+
+//点击跳转
+myChart.on('click', function (param){
+    var name=param.name;
+    top.location.href="/index/project/contract_status?name="+name;
+});
+
+
+
+
+
 
 
 
@@ -236,7 +270,11 @@ if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
 
-
+//点击跳转
+myChart.on('click', function (param){
+    var name=param.name;
+    top.location.href="/index/project/contract_status?name="+name;
+});
 
 
 
@@ -283,3 +321,17 @@ option = {
 if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
+
+
+//点击跳转
+myChart.on('click', function (param){
+    var name=param.name;
+    top.location.href="/index/project/product_demand?name="+name;
+});
+
+
+
+
+
+
+
