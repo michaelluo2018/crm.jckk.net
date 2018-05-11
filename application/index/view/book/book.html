@@ -26,7 +26,24 @@
             <div class="card-body">
                 <h4 class="card-title">通讯录</h4>
                 <h6 class="card-subtitle"></h6>
-                <table  class="table table-bordered table-hover toggle-circle">
+                <div class="m-t-40">
+                    <div class="d-flex">
+                        <div class="mr-auto">
+                            <div class="form-group"></div>
+                        </div>
+                        <div class="ml-auto">
+                            <div class="form-group">
+                                <form  method="post" id="find_form">
+
+                                    <input id="demo-input-search2" type="text" placeholder="搜索" name="customer_name" autocomplete="off" required>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" data-page-size="20">
                     <thead>
                     <tr class="text-align">
                         <th>序号</th>
@@ -65,8 +82,9 @@
                     <tfoot>
                     <tr>
                         <td colspan="14">
-                            <div id="tp_paginate">
-                               {$books->render()}
+                            <div class="text-right">
+                                <ul class="pagination">
+                                </ul>
                             </div>
                         </td>
                     </tr>

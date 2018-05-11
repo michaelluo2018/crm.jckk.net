@@ -18,7 +18,7 @@ class Book extends Base{
 
     public function book(){
 
-        $books = model("user","logic")->get_book();
+        $books = model("user","logic")->get_book(false);
 
         $this->assign("books",$books);
         return view("book");
