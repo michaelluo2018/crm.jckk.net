@@ -34,7 +34,13 @@ class Base extends Controller{
         if(isset($setting[$key])){
             $setting['system_theme'] = $setting[$key];
         }
+
+        $key = ($this->uid).'menu_display';
+        if(isset($setting[$key])){
+            $setting['menu_display'] = $setting[$key];
+        }
         $this->assign("setting",$setting);
+
 
 
         $this->post_id = $user_info['post_id'];

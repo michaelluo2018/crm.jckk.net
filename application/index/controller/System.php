@@ -198,6 +198,16 @@ class System extends Base{
         return 1;
     }
 
+    public function ajax_menu_display(){
+        $key = ($this->uid).'menu_display';
+
+        $data[$key] = Request::instance()->post("menu_display");
+
+        model("setting","logic")->save_settings($data);
+
+        return 1;
+    }
+
 
 
 

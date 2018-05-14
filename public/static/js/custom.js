@@ -52,6 +52,7 @@ $(function () {
             //$(".sidebartoggler i").addClass("ti-menu");
         }
         else {
+
             $("body").trigger("resize");
             $(".scroll-sidebar, .slimScrollDiv").css("overflow-x", "visible").parent().css("overflow", "visible");
             $("body").addClass("mini-sidebar");
