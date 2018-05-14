@@ -39,6 +39,9 @@ class Base extends Controller{
         if(isset($setting[$key])){
             $setting['menu_display'] = $setting[$key];
         }
+        else{
+            $setting['menu_display'] = null;
+        }
         $this->assign("setting",$setting);
 
 
