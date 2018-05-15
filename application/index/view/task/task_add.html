@@ -1,0 +1,163 @@
+{extend name="layout"/}
+{block name="title"/}
+<title>添加任务 - 客户管理系统</title>
+{/block}
+{block name="css"/}
+
+{/block}
+{block name="breadcrumb"/}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">添加任务</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">首页</a></li>
+        <li class="breadcrumb-item active">添加任务</li>
+    </ol>
+</div>
+{/block}
+{block name="detail"/}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-outline-info">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white">添加任务</h4>
+            </div>
+            <div class="card-body">
+                <form action="{:url('index/task/save_task')}?mid={$mid}" method="post" enctype="multipart/form-data">
+                    <div class="form-body">
+                        <h3 class="card-title">基础信息</h3>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>项目名</label>
+                                    <input type="text"  class="form-control project_name"  placeholder="请填写项目名"  required autocomplete="off">
+                                    <input type="hidden"  class="form-control"  name="project_id" required >
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="col-md-12" id="project_display" style="color: red;" >
+
+                            </div>
+                        </div>
+                        <div class="row p-t-20">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>任务名</label>
+                                    <input type="text"  class="form-control" placeholder="请填写任务名" name="task_name"  required >
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">任务类别</label>
+                                    <select class="form-control"  tabindex="1" name="task_type">
+                                        <option value="">请选择</option>
+                                        {volist name="task_type" id= "type"}
+                                        <option value="{$type}">{$type}</option>
+                                        {/volist}
+                                    </select>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 ">
+                                <div class="form-group">
+                                    <label class="control-label">开始时间</label>
+                                    <input type="datetime-local"  class="form-control"  name="task_start">
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="col-md-4 ">
+                                <div class="form-group">
+                                    <label class="control-label">结束时间</label>
+                                    <input type="datetime-local"  class="form-control"  name="task_end">
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="col-md-4 ">
+                                <div class="form-group">
+                                    <label class="control-label">优先级</label>
+                                    <select class="form-control"  tabindex="1" name="task_order">
+                                        <option value="">请选择</option>
+                                        {for start="1" end= "11"}
+                                        <option value="{$i}">{$i}</option>
+                                        {/for}
+                                    </select>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group has-success">
+                                    <label class="control-label">提醒方式</label>
+                                    <div class="form-check">
+                                        <label class="custom-control custom-radio">
+                                            <input  name="message" type="checkbox" value="1" checked class="custom-control-input" >
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">系统消息</span>
+                                        </label>
+                                        <label class="custom-control custom-radio">
+                                            <input  name="is_send_mail" type="checkbox" value="1" checked class="custom-control-input" >
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">发送邮件</span>
+                                        </label>
+                                    </div>
+                                    <small class="form-control-feedback"></small> </div>
+                            </div>
+
+                        </div>
+                        <div class=" row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>指派给</label>
+                                    <input type="text"  class="form-control user_name"  placeholder="请填写"  required autocomplete="off">
+                                    <input type="hidden"  class="form-control"  name="to_uid" required >
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="col-md-12" id="user_display" style="color: red;" >
+
+                            </div>
+                        </div>
+                        <div class="row p-t-20">
+                            <div class="col-md-12">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">任务描述</label>
+                                    <textarea  rows="6" class="form-control" placeholder="请填写" name="task_describe"></textarea>
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-12">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">审核标准</label>
+                                    <textarea  rows="6" class="form-control" placeholder="请填写备注" name="audit_standard"></textarea>
+                                    <small class="form-control-feedback"> </small> </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label">附件上传</label>
+                                    <label class="custom-file d-block">
+                                        <input type="file"  class="custom-file-input" name="file">
+                                        <span class="custom-file-control">点击上传</span>
+                                    </label>
+                                    <small class="form-control-feedback"></small> </div>
+                            </div>
+                        </div>
+
+                            <!--/span-->
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
+                            <button type="reset" class="btn btn-inverse">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="leads/leads_common_script"/}
+{/block}

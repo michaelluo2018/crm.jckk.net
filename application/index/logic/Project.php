@@ -435,6 +435,12 @@ class Project extends Model{
             ->select();
     }
 
+    public function get_project_by_name($name){
+
+        return $this->where("is_delete","<>",1)
+            ->where("project_name","like",'%'.$name .'%')
+            ->select();
+    }
 
 
     public function contract_count_status($status){

@@ -203,5 +203,64 @@ create table jckk_contact (
 
 
 
+ create table jckk_task (
+    id int primary key auto_increment,
+    project_id int comment "项目id",
+    task_type varchar(100)  comment "任务类型",
+    to_uid int  comment "指派给",
+    message_id int  comment "系统消息",
+    is_send_mail int default 0  comment "是否发邮件提醒",
+    task_name varchar(50)  comment "任务名称",
+    task_describe text  comment "任务描述",
+    audit_standard text  comment "审核标准",
+    create_uid int comment "创建者",
+    task_start varchar(50) comment "开始时间",
+    task_end varchar(50) comment "结束时间",
+    task_order int comment "优先级",
+    file varchar(100) comment "附件",
+    task_status int default 0 comment "任务状态",
+    actual_start varchar(50) comment "实际开始",
+    actual_end varchar(50) comment "实际完成",
+    complete_file varchar(100) comment "完成附件",
+    create_time int comment "加入时间",
+    is_delete int default 0 comment "是否删除"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
 
+
+ create table jckk_task_history (
+    id int primary key auto_increment,
+    task_id int comment "任务id",
+    title varchar(100) comment "标题",
+    before_value varchar(200) comment "之前值",
+    after_value varchar(200) comment "之后值",
+    create_uid int comment "创建者",
+    create_time int comment "加入时间"
+
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+create table jckk_task_time (
+    id int primary key auto_increment,
+    task_id int comment "任务id",
+    title varchar(100) comment "标题",
+    note text comment "备注",
+    file varchar(200) comment "附件",
+    start_time varchar(50) comment "开始时间",
+    end_time varchar(50) comment "结束时间",
+    create_uid int comment "创建者",
+    create_time int comment "加入时间"
+
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+create table jckk_message (
+    id int primary key auto_increment,
+    from_uid int comment "发信者",
+    to_uid int comment "收信者",
+    title varchar(200) comment "标题",
+    content text comment "内容",
+    status int default 0 comment "状态，0未读，1已读",
+    type varchar(50)  comment "类型",
+    create_uid int comment "创建者",
+    create_time int comment "加入时间",
+    is_delete int default 0 comment "是否删除"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
 

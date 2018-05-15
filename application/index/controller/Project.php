@@ -269,6 +269,16 @@ class Project extends Base {
        }
     }
 
+    public function ajax_get_project_by_name(){
+        $project_name = Request::instance()->get("project_name");
+        $projects = model("project","logic")->get_project_by_name($project_name);
+        if($projects){
+            return $projects;
+        }
+        else{
+            return 0;
+        }
+    }
 
 
 }

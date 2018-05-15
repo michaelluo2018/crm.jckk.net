@@ -60,6 +60,60 @@
     }
 
 
+    //项目全称
+
+    $(".project_name").bind('input propertychange', function () {
+        var project_name = $.trim($(this).val());
+        if(!project_name){
+            $('#project_display').html("请输入...");
+        }
+        else{
+            $.ajax({
+                url: "{:url('index/project/ajax_get_project_by_name')}",
+                data: {'project_name':project_name},
+                method:"get",
+                success:function(data){
+                    if(data !=0){
+                        var project_html = "";
+                        var array = [];
+                        $.each(data,function(i,v){
+                            var project_id= v.id;
+                            var project_name= v.project_name;
+                            array[project_id] = project_name;
+                            project_html +="<div class='project_div' onclick=\"send_project('"+project_id+"','"+project_name+"');\" >"+project_name+"</div>";
+                        });
+
+                        $('#project_display').html(project_html);
+
+                        //如果输入值
+                        for(var i in array){
+                            if(array[i]== $.trim($(".project_name").val())){
+
+                                $("input[name=project_id]").val(i);
+
+                                $("#project_display div").hide();
+                            }
+                        }
+
+                    }
+                    else{
+                        var message = "没找到该项目！";
+                        $('#project_display').html(message);
+
+                    }
+                },
+                dataType: "json"
+            });
+        }
+
+    });
+
+
+    function send_project(id,name) {
+        $(".project_name").val(name);
+        $("input[name=project_id]").val(id);
+        $("#project_display div").hide();
+    }
 
     //客户全称
     $(".customer_name").bind('input propertychange', function () {
