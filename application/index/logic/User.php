@@ -8,9 +8,9 @@ class User extends Model{
 
     protected  $table="jckk_user";
 
-    //获取部门下所有用户
+    //获取部门下所有用户，去掉离职人员
     public function  get_department_users($department_id){
-        $users = $this->where(["department_id"=>$department_id,"is_delete"=>0])->select();
+        $users = $this->where(["department_id"=>$department_id,"is_delete"=>0,"quit"=>0])->select();
         return $users;
     }
 
