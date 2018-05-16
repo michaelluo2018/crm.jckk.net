@@ -13,10 +13,9 @@ class Task extends Model{
 
     //保存
     public  function  save_task($data,$file,$create_name){
-        
-        
+
         if(isset($file)){
-            $info = $file->validate(['ext'=>'jpg,png,gif,docx,xlsx,xls,pdf'])->move(ROOT_PATH . 'public' . DS . 'uploads');
+            $info = $file->validate(['ext'=>'jpg,png,gif,docx,xlsx,xls,pdf,doc,zip,rar,ppt,pptx'])->move(ROOT_PATH . 'public' . DS . 'uploads');
             if($info){
                 $url = $info->getSaveName();
             }
@@ -43,7 +42,7 @@ class Task extends Model{
 
         }
         if(isset($url)){
-            $file_url = "/uploads/".$url;
+            $file_url = DS ."uploads". DS .$url;
             $task->file = $file_url;
         }
 
@@ -166,10 +165,10 @@ class Task extends Model{
     public function save_task_end($data,$file,$create_name){
             $task = model("task","model")->where("id",$data['task_id'])->find();
             if(isset($file)){
-                $info = $file->validate(['ext'=>'jpg,png,gif,docx,xlsx,xls,pdf'])->move(ROOT_PATH . 'public' . DS . 'uploads');
+                $info = $file->validate(['ext'=>'jpg,png,gif,docx,xlsx,xls,pdf,doc,zip,rar,ppt,pptx'])->move(ROOT_PATH . 'public' . DS . 'uploads');
                 if($info){
                     $url = $info->getSaveName();
-                    $file_url = "/uploads/".$url;
+                    $file_url =  DS ."uploads". DS .$url;
                     $task->complete_file = $file_url;
                 }
             }

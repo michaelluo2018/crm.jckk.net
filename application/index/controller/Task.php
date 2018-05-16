@@ -138,7 +138,37 @@ class Task extends Base {
 
 
 
+    public function download_file($p){
+        $file = $p;
+        $array = explode(".",$file);
+        $ext = $array[1];
+        $filename = ROOT_PATH.'public'.$file;
 
+        if(in_array($ext,['jpg','png','gif'])){
+            if($ext=='jpg'){
+                header('Content-Type: image/jpeg');
+            }
+           else{
+               header('Content-Type: image/'.$ext);
+           }
+
+        }
+
+       elseif(in_array($ext,['xlsx','xls'])){
+           header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+           header('Content-Transfer-Encoding: binary');
+           header('Content-Length: '.filesize($filename));
+           header('Cache-Control: must-revalidate');
+           header('Pragma: public');
+
+        }
+         else{
+             header('Content-type: application/'.$ext);
+         }
+        header('Content-Disposition: attachment; filename='.basename($filename));
+        readfile($filename);
+        exit;
+    }
 
 
 
