@@ -179,7 +179,15 @@ class Task extends Model{
     //获取一条
     public function get_task($id){
 
-        return  $this->where("id",$id)->find();
+        return   Db::table("jckk_task")
+            ->alias("t")
+            ->field(["t.*","p.project_name","tu.chinese_name as to_name","cu.chinese_name as create_name"])
+            ->where("t.is_delete","<>",1)
+            ->where("t.id",$id)
+            ->join("jckk_project p","p.id = t.project_id","LEFT")
+            ->join("jckk_user tu","tu.uid = t.to_uid","LEFT")
+            ->join("jckk_user cu","cu.uid = t.create_uid","LEFT")
+            ->find();
 
     }
 

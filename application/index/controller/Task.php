@@ -56,10 +56,10 @@ class Task extends Base {
 
     //修改
 
-    public function  task_edit($id){
+    public function  task_edit($id,$cd){
 
-        if(!$this->check_post_menu_permission("update_operate")){
-            echo "<script> alert('没有权限！');history.back(-1);</script>";
+        if($this->uid != $cd){
+            echo "<script> alert('你不是任务添加者，没有权限修改！');history.back(-1);</script>";
         }
         else {
 
