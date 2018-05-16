@@ -2,7 +2,7 @@
 namespace  app\index\logic;
 use think\Model;
 use think\Db;
-use app\index\model\Log;
+use app\index\model\Log as MessageLog;
 use think\Session;
 
 class Message extends Model{
@@ -16,7 +16,7 @@ class Message extends Model{
         $message = model("message",'model');
         $message->create_time = time();
         $message->create_uid = Session::get("uid");
-        $message_log["type"] = Log::ADD_TYPE;
+        $message_log["type"] = MessageLog::ADD_TYPE;
         $message_log["before_value"] = "";
         $message_log["title"] = "创建系统消息";
         $message->from_uid = $data['from_uid'];
@@ -81,7 +81,7 @@ class Message extends Model{
         $message = $this->where("id",$id)->find();
 
         //添加日志
-        $message_log["type"] = Log::DELETE_TYPE;
+        $message_log["type"] = MessageLog::DELETE_TYPE;
 
         $message_log["before_value"] = json_encode($message);
         $message_log["after_value"] = "";
@@ -90,8 +90,6 @@ class Message extends Model{
         if($message->save()){
             model("log","logic")->write_log( $message_log);
         }
-
-
 
     }
 

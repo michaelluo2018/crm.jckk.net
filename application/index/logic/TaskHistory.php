@@ -1,8 +1,6 @@
 <?php
 namespace  app\index\logic;
 use think\Model;
-use think\Db;
-use app\index\model\Log;
 use think\Session;
 
 class TaskHistory extends Model{
@@ -11,10 +9,16 @@ class TaskHistory extends Model{
 
 
     //保存
-    public  function  save_task_history($data,$file){
+    public  function  save_task_history($data){
 
-
-
+        $task_history = model("task_history",'model');
+        $task_history->task_id = $data['task_id'];
+        $task_history->title = $data['title'];
+        $task_history->before_value = $data['before_value'];
+        $task_history->after_value = $data['after_value'];
+        $task_history->create_time = time();
+        $task_history->create_uid = Session::get("uid");
+        $task_history->save();
 
     }
 
@@ -27,34 +31,6 @@ class TaskHistory extends Model{
 
 
 
-    //获取一条
-    public function get_task_history($id){
-
-        return  $this->where("id",$id)->find();
-
-    }
-
-
-
-    //删除
-    public function  delete_task_history($id){
-
-        $task_history = $this->where("id",$id)->find();
-
-        //添加日志
-        $task_history_log["type"] = Log::DELETE_TYPE;
-
-        $task_history_log["before_value"] = json_encode($task_history);
-        $task_history_log["after_value"] = "";
-        $task_history_log["title"] = "删除".$task_history->title."(产品)，ID是".$task_history->id;
-        $task_history->is_delete = 1;
-        if($task_history->save()){
-            model("log","logic")->write_log( $task_history_log);
-        }
-
-
-
-    }
 
 
 

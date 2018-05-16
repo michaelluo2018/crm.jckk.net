@@ -106,6 +106,22 @@ class Task extends Model{
             $task_log["after_value"] = json_encode($task);
             model("log","logic")->write_log( $task_log);
         }
+
+        //历史记录
+        $history_data=[
+            "task_id" => $task->id,
+            "title" => "",
+            "before_value" => "",
+            "after_value" => "",
+        ];
+        if(isset($data['task_id'])){
+            $history_data['title']=date("Y-m-d H:i:s")."由".$create_name."修改";
+        }
+        else{
+            //添加
+            $history_data['title']=date("Y-m-d H:i:s")."由".$create_name."创建";
+        }
+        model("task_history",'logic')->save_task_history($history_data);
         return $task->id;
 
 
@@ -130,7 +146,16 @@ class Task extends Model{
         model("message","logic")->save_message($message);
         $task->save();
 
+        //历史记录
+        $history_data=[
+            "task_id" => $task->id,
+            "title" => "",
+            "before_value" => "",
+            "after_value" => "",
+        ];
 
+        $history_data['title']=date("Y-m-d H:i:s")."由".$create_name."开始";
+        model("task_history",'logic')->save_task_history($history_data);
 
     }
 
@@ -160,7 +185,16 @@ class Task extends Model{
             model("message","logic")->save_message($message);
             $task->save();
 
+            //历史记录
+            $history_data=[
+                "task_id" => $task->id,
+                "title" => "",
+                "before_value" => "",
+                "after_value" => "",
+            ];
 
+            $history_data['title']=date("Y-m-d H:i:s")."由".$create_name."结束";
+            model("task_history",'logic')->save_task_history($history_data);
     }
 
 
