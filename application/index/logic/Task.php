@@ -63,65 +63,69 @@ class Task extends Model{
         else{
             $task->task_type = null;
         }
-        $task->save();
+        if( $task->save()){
+            //发送系统消息或邮件
+            $url = "/index/task/task_des?id=".$task->id;
+            $message = [
+                "from_uid"=>Session::get("uid"),
+                "to_uid"=>$data['uid'],
+                "title"=>"你有新的任务指派待完成",
+                "content"=>"<a href='".$url."'>你的同事".$create_name."给你指派了新任务，点击查看</a>"
+            ];
+            if(isset($data['message']) && $data['message']==1){
 
-        //发送系统消息或邮件
-        $url = "/index/task/task_des?id=".$task->id;
-        $message = [
-            "from_uid"=>Session::get("uid"),
-            "to_uid"=>$data['uid'],
-            "title"=>"你有新的任务指派待完成",
-            "content"=>"<a href='".$url."'>你的同事".$create_name."给你指派了新任务，点击查看</a>"
-        ];
-        if($data['message']==1){
-
-            if(isset($message_id)){
-                if(!$message_id){
+                if(isset($message_id)){
+                    if(!$message_id){
+                        $mess_id = model("message","logic")->save_message($message);
+                        $task->message_id = $mess_id;
+                    }
+                }
+                else{
                     $mess_id = model("message","logic")->save_message($message);
                     $task->message_id = $mess_id;
                 }
-            }
-            else{
-                $mess_id = model("message","logic")->save_message($message);
-                $task->message_id = $mess_id;
+
             }
 
-        }
-
-        if($data['is_send_mail']==1){
-            $user = model("user")->where("uid",$data['uid'])->find();
-            if(isset($is_send_mail)){
-                if(!$is_send_mail){
+            if(isset($data['is_send_mail']) && $data['is_send_mail']==1){
+                $user = model("user")->where("uid",$data['uid'])->find();
+                if(isset($is_send_mail)){
+                    if(!$is_send_mail){
+                        Common::send_mail($user->email,$message['title'],$message['content'],$type = "HTML");
+                        $task->is_send_mail = 1;
+                    }
+                }
+                else{
                     Common::send_mail($user->email,$message['title'],$message['content'],$type = "HTML");
                     $task->is_send_mail = 1;
                 }
             }
-            else{
-                 Common::send_mail($user->email,$message['title'],$message['content'],$type = "HTML");
-                $task->is_send_mail = 1;
+            //历史记录
+            $history_data=[
+                "task_id" => $task->id,
+                "title" => "",
+                "before_value" => "",
+                "after_value" => "",
+            ];
+            if(isset($data['task_id'])){
+                $history_data['title']=date("Y-m-d H:i:s")."由".$create_name."修改";
             }
+            else{
+                //添加
+                $history_data['title']=date("Y-m-d H:i:s")."由".$create_name."创建";
+            }
+            model("task_history",'logic')->save_task_history($history_data);
         }
+
+
+
 
         if($task->save()){
             $task_log["after_value"] = json_encode($task);
             model("log","logic")->write_log( $task_log);
         }
 
-        //历史记录
-        $history_data=[
-            "task_id" => $task->id,
-            "title" => "",
-            "before_value" => "",
-            "after_value" => "",
-        ];
-        if(isset($data['task_id'])){
-            $history_data['title']=date("Y-m-d H:i:s")."由".$create_name."修改";
-        }
-        else{
-            //添加
-            $history_data['title']=date("Y-m-d H:i:s")."由".$create_name."创建";
-        }
-        model("task_history",'logic')->save_task_history($history_data);
+
         return $task->id;
 
 

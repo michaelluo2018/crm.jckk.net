@@ -76,16 +76,26 @@
                         <td>{$task.create_name}</td>
                         <td>{$task.to_name}</td>
                         <td>
-                            <?php echo $num1=number_format((strtotime($task['task_end'])-strtotime($task['task_start']))/86400,1); ?>天
+                            <?php
+                             echo $num1=number_format((strtotime($task['task_end'])-strtotime($task['task_start']))/86400,1);
+                            ?>天
                         </td>
                         <td>
-                            <?php echo $num2=number_format((time()-strtotime($task['task_start']))/86400,1); ?>天
+                            <?php
+                                $num2=number_format((time()-strtotime($task['task_start']))/86400,1);
+                                echo $num2 >0 ?$num2 :0;
+                            ?>天
                         </td>
                         <td>
-                            <?php echo number_format((strtotime($task['task_end'])-time())/86400,1); ?>天
+                            <?php
+                                $num3 =number_format((strtotime($task['task_end'])-time())/86400,1);
+                                echo   $num2 >0?$num3:$num1;
+                            ?>天
                         </td>
                         <td>
-                            <?php  $width =  number_format(($num2/$num1)*100,2);?>
+                            <?php
+                            $width = $num2 >0? number_format(($num2/$num1)*100,2):0;
+                            ?>
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" style="width: <?php echo $width; ?>%;"></div><?php echo $width; ?>%
                             </div>
@@ -98,11 +108,12 @@
                             <a href="{:url('index/task/task_des')}?id={$task.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline" title="查看详情"><i class="mdi mdi-account-search" aria-hidden="true"></i></a>
                             {if condition="$user_info['uid'] eq $task.to_uid"/}
 
-                                <button type="button"  class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="time_send_tid('{$task.id}','{$task.create_uid}')" data-toggle="modal" data-target="#add_time" ><i class="mdi mdi-alarm-plus" data-original-title="添加工时" data-toggle="tooltip" aria-hidden="true"></i></button>
                             {if condition="$task.task_status eq 0"/}
-                                 <button type="button"  class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="start_send_tid('{$task.id}')" data-toggle="modal" data-target="#begin_task" ><i class="mdi mdi-arrow-right-drop-circle" data-original-title="开始任务" data-toggle="tooltip" aria-hidden="true"></i></button>
+                            <button disabled="disabled" class="btn btn-sm btn-icon btn-pure btn-outline " title="添加工时"  ><i class="mdi mdi-alarm-plus"  aria-hidden="true"></i></button>
+                            <button type="button"  class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="start_send_tid('{$task.id}')" data-toggle="modal" data-target="#begin_task" ><i class="mdi mdi-arrow-right-drop-circle" data-original-title="开始任务" data-toggle="tooltip" aria-hidden="true"></i></button>
                             {else/}
-                                <button disabled="disabled" class="btn btn-sm btn-icon btn-pure btn-outline" title="开始任务"><i class="mdi mdi-arrow-right-drop-circle" aria-hidden="true"></i></button>
+                            <button type="button"  class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="time_send_tid('{$task.id}','{$task.create_uid}')" data-toggle="modal" data-target="#add_time" ><i class="mdi mdi-alarm-plus" data-original-title="添加工时" data-toggle="tooltip" aria-hidden="true"></i></button>
+                            <button disabled="disabled" class="btn btn-sm btn-icon btn-pure btn-outline" title="开始任务"><i class="mdi mdi-arrow-right-drop-circle" aria-hidden="true"></i></button>
                             {/if}
 
                             {if condition="$task.task_status eq 1"/}

@@ -49,6 +49,13 @@
                                 </div>
                             </div>
                             {/if}
+                            {if condition="$task.complete_file"/}
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    完成附件：<a href="">下载</a>
+                                </div>
+                            </div>
+                            {/if}
                         </div>
 
 
@@ -57,7 +64,7 @@
                         {volist name="task_history" id="history" key="k"}
                         <div class="col-md-12">
                             <div class="form-group">
-                               {$k}、 {$history.create_time|date="Y-m-d H:i:s",###}  {$history.title}
+                               {$k}、   {$history.title}
                             </div>
                         </div>
                         {/volist}
@@ -66,7 +73,7 @@
                         {volist name="task_time" id="time" key="v"}
                         <div class="col-md-12">
                             <div class="form-group">
-                                {$v}、 {$time.start_time} - {$time.end_time}  {$time.title}  {if condition="$time.file"/}附件 <a href="">下载</a>{/if}
+                                {$v}、 {$time.start_time} - {$time.end_time} &nbsp;&nbsp;&nbsp;&nbsp; {$time.title}   &nbsp;&nbsp;&nbsp;&nbsp;{if condition="$time.file"/} <a href="">附件下载</a>{/if}
                             </div>
                         </div>
                         {/volist}

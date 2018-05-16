@@ -129,7 +129,7 @@ class Task extends Base {
 
     public function save_task_end(){
         $data = Request::instance()->post();
-        $file = Request::instance()->file("file");
+        $file = Request::instance()->file("complete_file");
         $user_info = $this->user_info;
         model("task","logic")->save_task_end($data,$file,$user_info['chinese_name']);
 
