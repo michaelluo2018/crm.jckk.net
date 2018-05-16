@@ -24,11 +24,7 @@ class Task extends Base {
         return view("task");
     }
 
-    //总预计
-    static function get_time($start_time,$end_time){
-      $days =  (strtotime($end_time)-strtotime($start_time))/86400;
-      return $days;
-    }
+
 
     //添加
     public function task_add(){
@@ -103,9 +99,27 @@ class Task extends Base {
     }
 
 
+    //开始任务
+    public function task_start($id,$td){
+        if($this->uid != $td){
+            echo "<script> alert('任务不是指派给你，你没有权限开始！');history.back(-1);</script>";
+        }
+        else{
+            $this->assign("id",$id);
+            return view("task_start");
+        }
+
+    }
 
 
+    public function save_task_begin(){
+        $data = Request::instance()->post();
+        $user_info = $this->user_info;
+        model("task","logic")->save_task_begin($data,$user_info['chinese_name']);
 
+        $this->redirect("task_des",["id"=>$data['id']]);
+
+    }
 
 
 

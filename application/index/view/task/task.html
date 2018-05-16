@@ -91,9 +91,20 @@
                             </div>
                         </td>
                         <td>
-                            <a href="javascript:void (0);" onclick="delete_sure('确定要删除此任务吗？','{:url(\'index/task/task_del\')}?id={$task.id}&mid={$mid}')" class="btn btn-sm btn-icon btn-pure btn-outline " title="删除"><i class="ti-close" aria-hidden="true"></i></a>
-                            <a href="{:url('index/task/task_edit')}?id={$task.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="修改"><i class="ti-pencil" aria-hidden="true"></i></a>
-                            <a href="{:url('index/task/task_des')}?id={$task.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
+                            {if condition="$user_info['uid'] eq $task.create_uid"/}
+                            <a href="javascript:void (0);" onclick="delete_sure('确定要删除此任务吗？','{:url(\'index/task/task_del\')}?id={$task.id}&cuid={$task.create_uid}')" class="btn btn-sm btn-icon btn-pure btn-outline" title="删除"><i class="mdi mdi-close" aria-hidden="true"></i></a>
+                            <a href="{:url('index/task/task_edit')}?id={$task.id}&cd={$task.create_uid}" class="btn btn-sm btn-icon btn-pure btn-outline" title="修改"><i class="mdi mdi-border-color" aria-hidden="true"></i></a>
+                            {/if}
+                            <a href="{:url('index/task/task_des')}?id={$task.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline" title="查看详情"><i class="mdi mdi-account-search" aria-hidden="true"></i></a>
+                            {if condition="$user_info['uid'] eq $task.to_uid"/}
+                            <a href="{:url('index/task/task_add_time')}?id={$task.id}&td={$task.to_uid}" class="btn btn-sm btn-icon btn-pure btn-outline" title="添加工时"><i class="mdi mdi-alarm-plus" aria-hidden="true"></i></a>
+                                {if condition="$task.task_status eq 0"/}
+                                    <button type="button"  class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="send_tid('{$task.id}')" data-toggle="modal" data-target="#begin_task" ><i class="mdi mdi-arrow-right-drop-circle" data-original-title="开始任务" data-toggle="tooltip" aria-hidden="true"></i></button>
+                                {else/}
+                                    <button disabled="disabled" class="btn btn-sm btn-icon btn-pure btn-outline" title="开始任务"><i class="mdi mdi-arrow-right-drop-circle" aria-hidden="true"></i></button>
+                                {/if}
+                            <a href="{:url('index/task/task_end')}?id={$task.id}&td={$task.to_uid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="完成任务"><i class="mdi mdi-checkbox-marked" aria-hidden="true"></i></a>
+                            {/if}
                         </td>
                     </tr>
                     {/volist}
@@ -109,6 +120,55 @@
                     </tr>
                     </tfoot>
                 </table>
+
+                <div id="begin_task" class="modal fade in show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+                    <div class="modal-dialog col-10">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">开始任务</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{:url('index/task/save_task_begin')}?mid={$mid}" method="post">
+                                    <input type="hidden" name="id" id="task_id">
+                                    <div class="form-body">
+
+                                        <div class="row">
+                                            <div class="col-md-10 ">
+                                                <div class="form-group">
+                                                    <label class="control-label"><span class="text-danger"> * </span>实际开始时间</label>
+                                                    <input type="datetime-local"  class="form-control"  name="actual_start" required>
+                                                    <small class="form-control-feedback"> </small>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
+                                        <button type="reset" class="btn btn-inverse">重置</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+
+
+
+
+
+                </div>
+
+                <script>
+                    function send_tid(id) {
+
+                        $("#task_id").val(id);
+                    }
+                </script>
+
             </div>
         </div>
 

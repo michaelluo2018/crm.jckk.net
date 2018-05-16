@@ -111,6 +111,33 @@ class Task extends Model{
 
     }
 
+
+    public function save_task_begin($data,$create_name){
+
+        $task = model("task","model")->where("id",$data['id'])->find();
+        $task->task_status = 1;
+        $task->actual_start = trim($data['actual_start']);
+
+        //发送系统消息或邮件
+        $url = "/index/task/task_des?id=".$task->id;
+        $message = [
+            "from_uid"=>Session::get("uid"),
+            "to_uid"=>$task->create_uid,
+            "title"=>"你指派的".$task->task_name."已开始",
+            "content"=>"<a href='".$url."'>你的同事".$create_name."已经开始了你指派的任务，点击查看</a>"
+        ];
+
+        model("message","logic")->save_message($message);
+        $task->save();
+
+
+
+    }
+
+
+
+
+
     //获取列表
     public function get_tasks(){
         return Db::table("jckk_task")
