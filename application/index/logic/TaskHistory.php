@@ -21,6 +21,7 @@ class TaskHistory extends Model{
     //获取列表
     public function get_task_history_by_task($task_id){
 
+        return  $this->where("task_id",$task_id)->order("create_time","asc")->select();
 
     }
 

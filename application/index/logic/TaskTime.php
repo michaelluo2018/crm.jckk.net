@@ -11,17 +11,71 @@ class TaskTime extends Model{
 
 
     //保存
-    public  function  save_task_time($data,$file){
+    public  function  save_task_time($data,$file,$create_name){
+
+        if(isset($file)){
+            $info = $file->validate(['ext'=>'jpg,png,gif,docx,xlsx,xls,pdf'])->move(ROOT_PATH . 'public' . DS . 'uploads');
+            if($info){
+                $url = $info->getSaveName();
+            }
+        }
+        if(isset($data['id'])){
+            //修改
+            $task_time = model("task_time","model")->where("id",$data['id'])->find();
+            $task_log["type"] = Log::UPDATE_TYPE;
+            $task_log["before_value"] = json_encode($task_time);
+            $task_log["title"] = "更改工时信息";
+        }
+        else{
+            //添加
+            $task_time = model("task_time",'model');
+            $task_time->create_time = time();
+            $task_time->create_uid = Session::get("uid");
+            $task_log["type"] = Log::ADD_TYPE;
+            $task_log["before_value"] = "";
+            $task_log["title"] = "添加新工时";
+
+        }
+        if(isset($url)){
+            $file_url = "/uploads/".$url;
+            $task_time->file = $file_url;
+        }
+
+        $task_time->task_id = trim($data['task_id']);
+        $task_time->title = trim($data['title']);
+        $task_time->note = trim($data['note']);
+        $task_time->start_time = trim($data['start_time']);
+        $task_time->end_time = trim($data['end_time']);
+        $task_time->save();
+
+        //发送系统消息或邮件
+        $url = "/index/task/task_des?id=".$data['task_id'];
+        $message = [
+            "from_uid"=>Session::get("uid"),
+            "to_uid"=>$data['create_uid'],
+            "title"=>"你创建的任务有新的工时进展",
+            "content"=>"<a href='".$url."'>你的同事".$create_name."给任务添加了新的工时进展，点击查看</a>"
+        ];
+        if(!isset($data['id'])){
+            model("message","logic")->save_message($message);
+        }
+
+        if($task_time->save()){
+            $task_log["after_value"] = json_encode($task_time);
+            model("log","logic")->write_log( $task_log);
+        }
+        return $task_time->id;
 
 
 
 
     }
 
+
     //获取列表
     public function get_task_time_by_task($task_id){
 
-
+        return  $this->where("task_id",$task_id)->select();
     }
 
 

@@ -93,23 +93,16 @@ class Task extends Base {
 
         //获得一条项目信息
         $task = model("task", "logic")->get_task($id);
+        $task_history = model("task_history", "logic")->get_task_history_by_task($id);
+        $task_time = model("task_time", "logic")->get_task_time_by_task($id);
         $this->assign('task',$task);
+        $this->assign('task_history',$task_history);
+        $this->assign('task_time',$task_time);
         return view("task_des");
 
     }
 
 
-    //开始任务
-    public function task_start($id,$td){
-        if($this->uid != $td){
-            echo "<script> alert('任务不是指派给你，你没有权限开始！');history.back(-1);</script>";
-        }
-        else{
-            $this->assign("id",$id);
-            return view("task_start");
-        }
-
-    }
 
 
     public function save_task_begin(){
@@ -122,6 +115,15 @@ class Task extends Base {
     }
 
 
+    public function save_task_time(){
+        $data = Request::instance()->post();
+        $file = Request::instance()->file("file");
+        $user_info = $this->user_info;
+        model("task_time","logic")->save_task_time($data,$file,$user_info['chinese_name']);
+
+        $this->redirect("task_des",["id"=>$data['task_id']]);
+
+    }
 
 
 

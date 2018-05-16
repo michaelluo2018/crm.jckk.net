@@ -1,0 +1,85 @@
+<div id="add_time" class="modal fade in show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+    <div class="modal-dialog col-10">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">添加工时</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <form action="{:url('index/task/save_task_time')}?mid={$mid}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="task_id" id="time_task_id">
+                    <input type="hidden" name="create_uid" id="create_uid">
+                    <div class="form-body">
+
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>开始时间</label>
+                                    <input type="datetime-local"  class="form-control"  name="start_time" required>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>结束时间</label>
+                                    <input type="datetime-local"  class="form-control"  name="end_time" required>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>主题</label>
+                                    <input type="text"  class="form-control"  name="title" required>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <div class="form-group">
+                                    <label class="control-label">描述</label>
+                                    <textarea  rows="6" class="form-control" placeholder="请填写描述" name="note"></textarea>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <div class="form-group">
+                                    <label class="control-label">附件上传</label>
+                                    <label class="custom-file d-block">
+                                        <input type="file"  class="custom-file-input" name="file">
+                                        <span class="custom-file-control">点击上传</span>
+                                    </label>
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
+                        <button type="reset" class="btn btn-inverse">重置</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+
+
+
+</div>
+
+<script>
+    function time_send_tid(id,create_uid) {
+        $("#time_task_id").val(id);
+        $("#create_uid").val(create_uid);
+    }
+</script>

@@ -1,16 +1,16 @@
 {extend name="layout"/}
 {block name="title"/}
-<title>产品详情 - 客户管理系统</title>
+<title>任务详情 - 客户管理系统</title>
 {/block}
 {block name="css"/}
 
 {/block}
 {block name="breadcrumb"/}
 <div class="col-md-5 col-8 align-self-center">
-    <h3 class="text-themecolor">产品详情</h3>
+    <h3 class="text-themecolor">任务详情</h3>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">首页</a></li>
-        <li class="breadcrumb-item active">产品详情</li>
+        <li class="breadcrumb-item active">任务详情</li>
     </ol>
 </div>
 {/block}
@@ -19,7 +19,7 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-header">
-                <h4 class="m-b-0 text-white">产品详情</h4>
+                <h4 class="m-b-0 text-white">任务详情</h4>
             </div>
             <div class="card-body">
                 <form>
@@ -27,87 +27,50 @@
                         <h3 class="card-title">基础信息</h3>
                         <hr>
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label"><span class="text-danger"> * </span>产品名</label>
-                                    <input type="text"  class="form-control"  value="{$product.product_name}" name="product_name"  disabled >
-                                    <small class="form-control-feedback"> </small>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">产品类别</label>
-                                    <select class="form-control"  tabindex="1" name="product_type" disabled>
-                                        <option value="">{$product.product_type}</option>
-                                    </select>
-                                    <small class="form-control-feedback"> </small>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 ">
-                                <div class="form-group">
-                                    <label class="control-label">研发时间</label>
-                                    <input type="date"  class="form-control" value="{$product.develop_time}" name="develop_time" disabled>
-                                    <small class="form-control-feedback"> </small>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 ">
-                                <div class="form-group">
-                                    <label class="control-label">详情链接</label>
-                                    <input type="text"  class="form-control" value="{$product.link}"  name="link" disabled>
-                                    <small class="form-control-feedback"> </small>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group has-danger">
-                                    <label class="control-label"><span class="text-danger"> * </span>开发团队</label>
-                                    <input type="text"  class="form-control" value="{$product.product_from}" name="product_from"  disabled>
-                                    <small class="form-control-feedback"> </small>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group has-danger">
-                                    <label class="control-label">成本价</label>
-                                    <input type="text"  class="form-control" value="{$product.cost_price}" name="cost_price" disabled>
-                                    <small class="form-control-feedback"> </small> </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-4">
-                                <div class="form-group has-danger">
-                                    <label class="control-label">建议售价</label>
-                                    <input type="text"  class="form-control" value="{$product.recommend_price}" name="recommend_price" disabled>
-                                    <small class="form-control-feedback"> </small> </div>
-                            </div>
-                        </div>
-                        <h3 class="card-title">产品图片</h3>
-                        <hr>
-                        <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="control-label">主图</label>
-                                    <label class="custom-file d-block">
-                                        <img src="{$product.img}" alt="" width="200">
-                                    </label>
-                                    <small class="form-control-feedback"></small> </div>
+                                    任务名：{$task.task_name}
+                                </div>
                             </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    任务描述：{$task.task_describe}
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    审核标准：{$task.audit_standard}
+                                </div>
+                            </div>
+                            {if condition="$task.file"/}
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    附件：<a href="">下载</a>
+                                </div>
+                            </div>
+                            {/if}
                         </div>
 
-                        <h3 class="card-title">附加信息</h3>
+
+                        <h3 class="card-title">历史记录</h3>
                         <hr>
-                        <div class="row">
-                            <!--/span-->
-                            <div class="col-md-12">
-                                <div class="form-group has-danger">
-                                    <label class="control-label">备注</label>
-                                    <textarea  rows="6" class="form-control" placeholder="请填写备注" name="note" disabled>{$product.note}</textarea>
-                                    <small class="form-control-feedback"> </small> </div>
+                        {volist name="task_history" id="history" key="k"}
+                        <div class="col-md-12">
+                            <div class="form-group">
+                               {$k}、 {$history.create_time|date="Y-m-d H:i:s",###}  {$history.title}
                             </div>
-                            <!--/span-->
                         </div>
+                        {/volist}
+                        <h3 class="card-title">工时记录</h3>
+                        <hr>
+                        {volist name="task_time" id="time" key="v"}
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {$v}、 {$time.start_time} - {$time.end_time}  {$time.title}  {if condition="$time.file"/}附件 <a href="">下载</a>{/if}
+                            </div>
+                        </div>
+                        {/volist}
+
                     </div>
                 </form>
             </div>
