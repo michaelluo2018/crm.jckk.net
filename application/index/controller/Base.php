@@ -66,7 +66,7 @@ class Base extends Controller{
 
         //检测链接是否有权限展示
         $uri = request()->module().'/'.request()->controller().'/'.request()->action();
-        if(strtolower($uri) != "index/index/index"){
+        if(strtolower($uri) != "index/index/index" && strtolower(request()->controller()) != "message" ){
             if(!$this->get_desc_by_url($uri)){
                 echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" ><script>alert('抱歉，你还没有权限！');window.location.href='/'</script>"; exit;
             }
@@ -76,6 +76,9 @@ class Base extends Controller{
         $announcements = model("announcement","logic")->get_announcement();
         $this->assign("announcements",$announcements);
 
+        //系统消息
+        $message_count = model("message","logic")->get_message_count($this->uid,0);
+        $this->assign("message_count",$message_count);
     }
 
     protected function login($uid){

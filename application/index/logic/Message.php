@@ -43,14 +43,29 @@ class Message extends Model{
 
     public function get_message_by_to_uid($to_uid){
 
-
+        return Db::table("jckk_message")
+            ->alias("m")
+            ->field(["m.*","tu.chinese_name as to_name","cu.chinese_name as create_name","fu.chinese_name as from_name"])
+            ->where("m.is_delete","<>",1)
+            ->where("m.to_uid",$to_uid)
+            ->join("jckk_user tu","tu.uid = m.to_uid","LEFT")
+            ->join("jckk_user fu","fu.uid = m.from_uid","LEFT")
+            ->join("jckk_user cu","cu.uid = m.create_uid","LEFT")
+            ->select();
     }
 
     public function get_message_by_from_uid($from_uid){
-
+        return Db::table("jckk_message")
+            ->alias("m")
+            ->field(["m.*","tu.chinese_name as to_name","cu.chinese_name as create_name","fu.chinese_name as from_name"])
+            ->where("m.is_delete","<>",1)
+            ->where("m.from_uid",$from_uid)
+            ->join("jckk_user tu","tu.uid = m.to_uid","LEFT")
+            ->join("jckk_user fu","fu.uid = m.from_uid","LEFT")
+            ->join("jckk_user cu","cu.uid = m.create_uid","LEFT")
+            ->select();
 
     }
-
 
 
 
@@ -62,7 +77,7 @@ class Message extends Model{
 
     public function get_message_count($to_uid,$status){
 
-
+        return $this->where(["to_uid"=>$to_uid,"status"=>$status,"is_delete"=>0])->count();
     }
 
 
