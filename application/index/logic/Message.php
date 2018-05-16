@@ -13,6 +13,28 @@ class Message extends Model{
     //保存
     public  function  save_message($data){
 
+        $message = model("message",'model');
+        $message->create_time = time();
+        $message->create_uid = Session::get("uid");
+        $message_log["type"] = Log::ADD_TYPE;
+        $message_log["before_value"] = "";
+        $message_log["title"] = "创建系统消息";
+        $message->from_uid = $data['from_uid'];
+        $message->to_uid = $data['to_uid'];
+        $message->title = $data['title'];
+        $message->content = $data['content'];
+        $message->status = 0;
+        if(isset($data['type'])){
+            $message->type = $data['type'];
+        }
+        $message->is_delete = 0;
+
+        if($message->save()){
+            $message_log["after_value"] = json_encode($message);
+            model("log","logic")->write_log( $message_log);
+        }
+
+        return $message->id;
 
 
 
@@ -76,6 +98,7 @@ class Message extends Model{
 
 
 
+    
 
 
 

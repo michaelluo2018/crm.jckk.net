@@ -64,13 +64,32 @@
                         <td>{$task.project_name}</td>
                         <td>{$task.task_order}</td>
                         <td>{$task.task_name}</td>
-                        <td>{$task.status}</td>
+                        <td>
+                            {if condition="$task.task_status eq 0"/}
+                            等待开始
+                            {elseif condition="$task.task_status eq 1"/}
+                            已开始
+                            {elseif condition="$task.task_status eq 2"/}
+                            完成
+                            {/if}
+                        </td>
                         <td>{$task.create_name}</td>
                         <td>{$task.to_name}</td>
-                        <td><?php echo  app\index\controller\Task::get_time($task.task_end,$task.task_start);?></td>
-                        <td><?php echo  app\index\controller\Task::get_time(date('Y-m-d H:i:s'),$task.task_start);?></td>
-                        <td><?php echo  app\index\controller\Task::get_time($task.task_end,date('Y-m-d H:i:s'));?></td>
-                        <td></td>
+                        <td>
+                            <?php echo $num1=number_format((strtotime($task['task_end'])-strtotime($task['task_start']))/86400,1); ?>
+                        </td>
+                        <td>
+                            <?php echo $num2=number_format((time()-strtotime($task['task_start']))/86400,1); ?>
+                        </td>
+                        <td>
+                            <?php echo number_format((strtotime($task['task_end'])-time())/86400,1); ?>
+                        </td>
+                        <td>
+                            <?php  $width =  number_format(($num2/$num1)*100,2);?>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: <?php echo $width; ?>%;"></div><?php echo $width; ?>%
+                            </div>
+                        </td>
                         <td>
                             <a href="javascript:void (0);" onclick="delete_sure('确定要删除此任务吗？','{:url(\'index/task/task_del\')}?id={$task.id}&mid={$mid}')" class="btn btn-sm btn-icon btn-pure btn-outline " title="删除"><i class="ti-close" aria-hidden="true"></i></a>
                             <a href="{:url('index/task/task_edit')}?id={$task.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="修改"><i class="ti-pencil" aria-hidden="true"></i></a>

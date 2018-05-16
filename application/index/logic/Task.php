@@ -1,5 +1,6 @@
 <?php
 namespace  app\index\logic;
+use app\index\controller\Common;
 use think\Model;
 use think\Db;
 use app\index\model\Log;
@@ -11,7 +12,7 @@ class Task extends Model{
 
 
     //保存
-    public  function  save_task($data,$file){
+    public  function  save_task($data,$file,$create_name){
         
         
         if(isset($file)){
@@ -27,6 +28,9 @@ class Task extends Model{
             $task_log["type"] = Log::UPDATE_TYPE;
             $task_log["before_value"] = json_encode($task);
             $task_log["title"] = "更改任务信息";
+            //发送系统消息或邮件
+            $message_id = $task->message_id;
+            $is_send_mail = $task->is_send_mail;
         }
         else{
             //添加
@@ -36,6 +40,7 @@ class Task extends Model{
             $task_log["type"] = Log::ADD_TYPE;
             $task_log["before_value"] = "";
             $task_log["title"] = "添加新任务";
+
         }
         if(isset($url)){
             $file_url = "/uploads/".$url;
@@ -43,7 +48,7 @@ class Task extends Model{
         }
 
         $task->project_id = trim($data['project_id']);
-        $task->to_uid = trim($data['to_uid']);
+        $task->to_uid = trim($data['uid']);
         $task->task_name = trim($data['task_name']);
         $task->task_describe = trim($data['task_describe']);
         $task->audit_standard = trim($data['audit_standard']);
@@ -58,12 +63,49 @@ class Task extends Model{
         else{
             $task->task_type = null;
         }
+        $task->save();
+
+        //发送系统消息或邮件
+        $url = "/index/task/task_des?id=".$task->id;
+        $message = [
+            "from_uid"=>Session::get("uid"),
+            "to_uid"=>$data['uid'],
+            "title"=>"你有新的任务指派待完成",
+            "content"=>"<a href='".$url."'>你的同事".$create_name."给你指派了新任务，点击查看</a>"
+        ];
+        if($data['message']==1){
+
+            if(isset($message_id)){
+                if(!$message_id){
+                    $mess_id = model("message","logic")->save_message($message);
+                    $task->message_id = $mess_id;
+                }
+            }
+            else{
+                $mess_id = model("message","logic")->save_message($message);
+                $task->message_id = $mess_id;
+            }
+
+        }
+
+        if($data['is_send_mail']==1){
+            $user = model("user")->where("uid",$data['uid'])->find();
+            if(isset($is_send_mail)){
+                if(!$is_send_mail){
+                    Common::send_mail($user->email,$message['title'],$message['content'],$type = "HTML");
+                    $task->is_send_mail = 1;
+                }
+            }
+            else{
+                 Common::send_mail($user->email,$message['title'],$message['content'],$type = "HTML");
+                $task->is_send_mail = 1;
+            }
+        }
 
         if($task->save()){
             $task_log["after_value"] = json_encode($task);
             model("log","logic")->write_log( $task_log);
         }
-
         return $task->id;
 
 

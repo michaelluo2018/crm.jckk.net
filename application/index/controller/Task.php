@@ -49,8 +49,9 @@ class Task extends Base {
     //保存
     public function save_task(){
         $data = Request::instance()->post();
-        $file = Request::instance()->file("img");
-        $res = model("task","logic")->save_task($data,$file);
+        $file = Request::instance()->file("file");
+        $user_info = $this->user_info;
+        $res = model("task","logic")->save_task($data,$file,$user_info['chinese_name']);
         if($res){
             $this->redirect("task");
         }
