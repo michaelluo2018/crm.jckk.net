@@ -74,12 +74,13 @@ class Task extends Base {
 
     //删除
 
-    public function  task_del($id){
-        if(!$this->check_post_menu_permission("delete_operate")){
-            echo "<script> alert('没有权限！');history.back(-1);</script>";
+    public function  task_del($id,$cd){
+        if($this->uid != $cd){
+            echo "<script> alert('你不是任务创建者，没有权限！');history.back(-1);</script>";
         }
         else {
-            model("task", "logic")->delete_task($id);
+            $user_info = $this->user_info;
+            model("task", "logic")->delete_task($id,$user_info['chinese_name']);
 
             $this->redirect("task");
         }
@@ -126,7 +127,14 @@ class Task extends Base {
     }
 
 
+    public function save_task_end(){
+        $data = Request::instance()->post();
+        $file = Request::instance()->file("file");
+        $user_info = $this->user_info;
+        model("task","logic")->save_task_end($data,$file,$user_info['chinese_name']);
 
+        $this->redirect("task_des",["id"=>$data['task_id']]);
+    }
 
 
 

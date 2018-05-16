@@ -134,7 +134,34 @@ class Task extends Model{
 
     }
 
+    public function save_task_end($data,$file,$create_name){
+            $task = model("task","model")->where("id",$data['task_id'])->find();
+            if(isset($file)){
+                $info = $file->validate(['ext'=>'jpg,png,gif,docx,xlsx,xls,pdf'])->move(ROOT_PATH . 'public' . DS . 'uploads');
+                if($info){
+                    $url = $info->getSaveName();
+                    $file_url = "/uploads/".$url;
+                    $task->complete_file = $file_url;
+                }
+            }
+            $task->task_status = 2;
+            $task->actual_end = trim($data['actual_end']);
 
+
+            //发送系统消息或邮件
+            $url = "/index/task/task_des?id=".$task->id;
+            $message = [
+                "from_uid"=>Session::get("uid"),
+                "to_uid"=>$task->create_uid,
+                "title"=>"你指派的".$task->task_name."已完成",
+                "content"=>"<a href='".$url."'>你的同事".$create_name."已经完成你指派的任务，点击查看</a>"
+            ];
+
+            model("message","logic")->save_message($message);
+            $task->save();
+
+
+    }
 
 
 
@@ -194,7 +221,7 @@ class Task extends Model{
 
 
     //删除
-    public function  delete_task($id){
+    public function  delete_task($id,$create_name){
 
         $task= $this->where("id",$id)->find();
 
@@ -203,11 +230,19 @@ class Task extends Model{
 
         $task_log["before_value"] = json_encode($task);
         $task_log["after_value"] = "";
-        $task_log["title"] = "删除".$task->task_name."(产品)，ID是".$task->id;
+        $task_log["title"] = "删除".$task->task_name;
         $task->is_delete = 1;
         if($task->save()){
             model("log","logic")->write_log( $task_log);
         }
+        //发消息给指派者
+        $message = [
+            "from_uid"=>Session::get("uid"),
+            "to_uid"=>$task->to_uid,
+            "title"=>"任务被删除",
+            "content"=>"你的同事".$create_name."删除了指派给你de任务：".$task->task_name
+        ];
+       model("message","logic")->save_message($message);
 
 
 
