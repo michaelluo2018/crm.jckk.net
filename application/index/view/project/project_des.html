@@ -340,7 +340,29 @@
                             <!--/span-->
                         </div>
                         <!--/row-->
-
+                        <div class="row">
+                            <div class="col-md-6 ">
+                                <div class="form-group">
+                                    <label>开始时间</label>
+                                    <input type="text"  class="form-control" value="{$project.project_start}" name="project_start" disabled>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="form-group">
+                                    <label>结束时间</label>
+                                    <input type="text"  class="form-control" value="{$project.project_end}" name="project_end" disabled>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>备注</label>
+                                    <textarea type="text" rows="6" class="form-control" placeholder="请填写备注" name="project_note" disabled>{$project.project_note}</textarea>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                        </div>
                         <h3 class="box-title m-t-40">合同信息</h3>
                         <hr>
                         <div class="row">

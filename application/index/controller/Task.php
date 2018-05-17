@@ -27,13 +27,17 @@ class Task extends Base {
 
 
     //添加
-    public function task_add(){
+    public function task_add($id=null){
 
 
         if(!$this->check_post_menu_permission("add_operate")){
             echo "<script> alert('没有权限！');history.back(-1);</script>";
         }
         else {
+            if($id){
+                $project = model("project")->where("id",$id)->find();
+                $this->assign("project",$project);
+            }
             $task_type = Config::get("task_type");
             $this->assign("task_type",$task_type);
             return view("task_add");

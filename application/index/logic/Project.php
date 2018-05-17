@@ -71,6 +71,9 @@ class Project extends Model{
         $project->executor_uid = trim($data['executor_uid']);
         $project->manage_uid = trim($data['manage_uid']);
         $project->product_demand_1 = trim($data['product_demand_1']);
+        $project->project_start = trim($data['project_start']);
+        $project->project_end = trim($data['project_end']);
+        $project->project_note = trim($data['project_note']);
 
         $project->contract_status = trim($data['contract_status']);
         $project->contract_amount = trim($data['contract_amount']);

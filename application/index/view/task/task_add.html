@@ -26,6 +26,18 @@
                     <div class="form-body">
                         <h3 class="card-title">基础信息</h3>
                         <hr>
+                        {if condition="isset($project)"/}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>项目名</label>
+                                    <input type="text"  class="form-control project_name"  value="{$project.project_name}"  disabled>
+                                    <input type="hidden"  class="form-control"  name="project_id" value="{$project.id}" required >
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                        </div>
+                        {else/}
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -39,6 +51,7 @@
 
                             </div>
                         </div>
+                        {/if}
                         <div class="row p-t-20">
                             <div class="col-md-4">
                                 <div class="form-group">
