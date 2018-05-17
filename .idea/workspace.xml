@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52bd9cb4-fc9b-4b77-aaf2-8b0e198d5b49" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/controller/Task.php" afterPath="$PROJECT_DIR$/application/index/controller/Task.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/logic/Project.php" afterPath="$PROJECT_DIR$/application/index/logic/Project.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/project/project_add.html" afterPath="$PROJECT_DIR$/application/index/view/project/project_add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/project/project_des.html" afterPath="$PROJECT_DIR$/application/index/view/project/project_des.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/project/project_edit.html" afterPath="$PROJECT_DIR$/application/index/view/project/project_edit.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/project/project_list.html" afterPath="$PROJECT_DIR$/application/index/view/project/project_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/task/task_add.html" afterPath="$PROJECT_DIR$/application/index/view/task/task_add.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,15 +15,16 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Task.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Task.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/index/controller/Task.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="28" column="8" lean-forward="true" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+            <state relative-caret-position="237">
+              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding>
                 <element signature="e#40#57#0#PHP" expanded="true" />
                 <element signature="e#109#346#0#PHP" expanded="false" />
                 <element signature="e#361#514#0#PHP" expanded="false" />
+                <element signature="e#577#1032#0#PHP" expanded="false" />
                 <element signature="e#1055#1378#0#PHP" expanded="false" />
                 <element signature="e#1395#1827#0#PHP" expanded="false" />
                 <element signature="e#2213#2661#0#PHP" expanded="false" />
@@ -54,23 +49,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Project.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Project.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/index/logic/Project.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="356" column="37" lean-forward="true" selection-start-line="356" selection-start-column="37" selection-end-line="356" selection-end-column="37" />
+            <state relative-caret-position="1740">
+              <caret line="127" column="29" lean-forward="true" selection-start-line="127" selection-start-column="29" selection-end-line="127" selection-end-column="29" />
               <folding>
-                <element signature="e#5470#10094#0#PHP" expanded="false" />
-                <element signature="e#10102#11170#0#PHP" expanded="false" />
-                <element signature="e#11191#15794#0#PHP" expanded="false" />
-                <element signature="e#15803#15959#0#PHP" expanded="false" />
-                <element signature="e#16846#17420#0#PHP" expanded="false" />
-                <element signature="e#17439#17988#0#PHP" expanded="false" />
-                <element signature="e#17996#18093#0#PHP" expanded="false" />
-                <element signature="e#18100#18987#0#PHP" expanded="false" />
-                <element signature="e#19180#19326#0#PHP" expanded="false" />
-                <element signature="e#19491#20051#0#PHP" expanded="false" />
-                <element signature="e#20069#20878#0#PHP" expanded="false" />
+                <element signature="e#4650#5343#0#PHP" expanded="false" />
+                <element signature="e#5612#10236#0#PHP" expanded="false" />
+                <element signature="e#10244#11312#0#PHP" expanded="false" />
+                <element signature="e#11333#15936#0#PHP" expanded="false" />
+                <element signature="e#15945#16101#0#PHP" expanded="false" />
+                <element signature="e#16988#17562#0#PHP" expanded="false" />
+                <element signature="e#17581#18130#0#PHP" expanded="false" />
+                <element signature="e#18138#18235#0#PHP" expanded="false" />
+                <element signature="e#18242#19129#0#PHP" expanded="false" />
+                <element signature="e#19322#19468#0#PHP" expanded="false" />
+                <element signature="e#19633#20193#0#PHP" expanded="false" />
+                <element signature="e#20211#21020#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -79,8 +75,8 @@
       <file leaf-file-name="project_list.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/index/view/project/project_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="123" column="188" lean-forward="false" selection-start-line="123" selection-start-column="188" selection-end-line="123" selection-end-column="188" />
+            <state relative-caret-position="3217">
+              <caret line="121" column="44" lean-forward="false" selection-start-line="121" selection-start-column="44" selection-end-line="121" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -133,8 +129,8 @@
       <find>read_message</find>
       <find>product_start</find>
       <find>需求产品二级</find>
-      <find>strong&gt;</find>
       <find>get_project</find>
+      <find>strong&gt;</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -217,11 +213,11 @@
         <option value="$PROJECT_DIR$/application/index/view/project/project_des.html" />
         <option value="$PROJECT_DIR$/application/index/view/project/project_add.html" />
         <option value="$PROJECT_DIR$/application/index/view/project/project_edit.html" />
-        <option value="$PROJECT_DIR$/application/index/logic/Project.php" />
         <option value="$PROJECT_DIR$/application/index/config.php" />
-        <option value="$PROJECT_DIR$/application/index/view/project/project_list.html" />
         <option value="$PROJECT_DIR$/application/index/controller/Task.php" />
         <option value="$PROJECT_DIR$/application/index/view/task/task_add.html" />
+        <option value="$PROJECT_DIR$/application/index/view/project/project_list.html" />
+        <option value="$PROJECT_DIR$/application/index/logic/Project.php" />
       </list>
     </option>
   </component>
@@ -512,15 +508,15 @@
       <workItem from="1526260749204" duration="6833000" />
       <workItem from="1526346704907" duration="22946000" />
       <workItem from="1526434366223" duration="30717000" />
-      <workItem from="1526520497390" duration="7030000" />
+      <workItem from="1526520497390" duration="7817000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="217144000" />
+    <option name="totallyTimeSpent" value="217931000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18854167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -557,7 +553,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/application/index/logic/Project.php</url>
-          <line>345</line>
+          <line>350</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -974,39 +970,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/project/project_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="123" column="188" lean-forward="false" selection-start-line="123" selection-start-column="188" selection-end-line="123" selection-end-column="188" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/index/controller/Project.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
           <caret line="273" column="65" lean-forward="false" selection-start-line="273" selection-start-column="46" selection-end-line="273" selection-end-column="65" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/logic/Project.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="356" column="37" lean-forward="true" selection-start-line="356" selection-start-column="37" selection-end-line="356" selection-end-column="37" />
-          <folding>
-            <element signature="e#5470#10094#0#PHP" expanded="false" />
-            <element signature="e#10102#11170#0#PHP" expanded="false" />
-            <element signature="e#11191#15794#0#PHP" expanded="false" />
-            <element signature="e#15803#15959#0#PHP" expanded="false" />
-            <element signature="e#16846#17420#0#PHP" expanded="false" />
-            <element signature="e#17439#17988#0#PHP" expanded="false" />
-            <element signature="e#17996#18093#0#PHP" expanded="false" />
-            <element signature="e#18100#18987#0#PHP" expanded="false" />
-            <element signature="e#19180#19326#0#PHP" expanded="false" />
-            <element signature="e#19491#20051#0#PHP" expanded="false" />
-            <element signature="e#20069#20878#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1024,17 +992,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/index/controller/Task.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="28" column="8" lean-forward="true" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+        <state relative-caret-position="237">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
             <element signature="e#40#57#0#PHP" expanded="true" />
             <element signature="e#109#346#0#PHP" expanded="false" />
             <element signature="e#361#514#0#PHP" expanded="false" />
+            <element signature="e#577#1032#0#PHP" expanded="false" />
             <element signature="e#1055#1378#0#PHP" expanded="false" />
             <element signature="e#1395#1827#0#PHP" expanded="false" />
             <element signature="e#2213#2661#0#PHP" expanded="false" />
             <element signature="e#2670#2935#0#PHP" expanded="false" />
             <element signature="e#2942#3272#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/project/project_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3217">
+          <caret line="121" column="44" lean-forward="false" selection-start-line="121" selection-start-column="44" selection-end-line="121" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/logic/Project.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1740">
+          <caret line="127" column="29" lean-forward="true" selection-start-line="127" selection-start-column="29" selection-end-line="127" selection-end-column="29" />
+          <folding>
+            <element signature="e#4650#5343#0#PHP" expanded="false" />
+            <element signature="e#5612#10236#0#PHP" expanded="false" />
+            <element signature="e#10244#11312#0#PHP" expanded="false" />
+            <element signature="e#11333#15936#0#PHP" expanded="false" />
+            <element signature="e#15945#16101#0#PHP" expanded="false" />
+            <element signature="e#16988#17562#0#PHP" expanded="false" />
+            <element signature="e#17581#18130#0#PHP" expanded="false" />
+            <element signature="e#18138#18235#0#PHP" expanded="false" />
+            <element signature="e#18242#19129#0#PHP" expanded="false" />
+            <element signature="e#19322#19468#0#PHP" expanded="false" />
+            <element signature="e#19633#20193#0#PHP" expanded="false" />
+            <element signature="e#20211#21020#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>

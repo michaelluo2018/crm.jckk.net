@@ -37,6 +37,7 @@ class Project extends Model{
             //修改
             $project = model("project","model")->where("id",$data['project_id'])->find();
             $before_value = json_encode($project);
+
         }
         else{
             //查看回收站有没有同名项目
@@ -147,6 +148,10 @@ class Project extends Model{
             }
 
             model("log","logic")->write_log( $project_log);
+            if(isset($data['project_id'])) {
+                $project->update_time = time();
+                $project->save();
+            }
         }
 
         return $project->id;

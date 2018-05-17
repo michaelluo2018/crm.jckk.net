@@ -116,7 +116,11 @@
                                     <td></td>
                                     <?php }?>
                                     <td>{$project.c_name}</td>
-                                    <td>{$project.c_name}</td>
+                                    <td>
+                                        {if condition="$project.update_time"/}
+                                        {$project.update_time|date="Y-m-d H:i:s",###}
+                                        {/if}
+                                    </td>
                                     <td>
                                         <a href="javascript:void (0);" onclick="delete_sure('确定要删除此项目吗？','{:url(\'index/project/project_del\')}?id={$project.id}&mid={$mid}')" class="btn btn-sm btn-icon btn-pure btn-outline " title="删除"><i class="ti-close" aria-hidden="true"></i></a>
                                         <a href="{:url('index/project/project_edit')}?id={$project.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="修改"><i class="ti-pencil" aria-hidden="true"></i></a>
