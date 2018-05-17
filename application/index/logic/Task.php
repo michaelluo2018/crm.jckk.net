@@ -188,29 +188,26 @@ class Task extends Model{
             }
 
             if(isset($data['is_send_mail']) && $data['is_send_mail']==1){
-
+                $content = $this->get_email_html($task->id,"任务指派",$url);
                 if (!isset($data['task_id'])) {
-                    Common::send_mail($user->email,$message1['title'],$message1['content'],$type = "HTML");
+
+                    Common::send_mail($user->email,$message1['title'],$content,$type = "HTML");
                     $task->is_send_mail = 1;
 
                 }
                 else {
                     //修改
                     if ($old_to_uid != $task->to_uid) {
-                        Common::send_mail($user->email,$message1['title'],$message1['content'],$type = "HTML");
-                        $task->is_send_mail = 1;
-                        $message2 = [
-                            "title" => "我的待办任务被重新指派给其他同事",
-                            "content" => "<a href='" . $url . "'>你的同事" . $create_name . "在" . date('Y-m-d H:i:s') .
-                                "把" . $task->task_name . "任务重新指派给其他同事！点击查看详情！</a>"
-                        ];
+                        $content = $this->get_email_html($task->id,"任务指派",$url);
 
-                        Common::send_mail($user2->email,$message2['title'],$message2['content'],$type = "HTML");
+                        Common::send_mail($user->email,$message1['title'],$content,$type = "HTML");
+                        $task->is_send_mail = 1;
+                        Common::send_mail($user2->email,"我的待办任务被重新指派给其他同事",$content,$type = "HTML");
                         $task->is_send_mail = 1;
                     }
                     else {
                         if( $old_is_send_mail!=1){
-                            Common::send_mail($user->email,$message1['title'],$message1['content'],$type = "HTML");
+                            Common::send_mail($user->email,$message1['title'],$content,$type = "HTML");
                             $task->is_send_mail = 1;
                         }
 
@@ -249,8 +246,25 @@ class Task extends Model{
 
     }
 
+    public function get_email_html($task_id,$task_event,$url){
+        $task =  $this->get_task_full_info($task_id); //dump($task);die;
+        $html = "<div style='line-height: 40px;'><p>邮件主题：【".$task['task_name']."】-【".$task_event."】-任务通知-客户管理系统</p><p>尊敬的用户".$task['to_name']."，您好：</p><p style='margin-top: 20px;margin-bottom: 20px;'><a href='".$url."'>【".$task['task_name']."】-【".$task_event."】  -  点击处理</a></p><p>客户名称：".$task['customer_name']." </p><p>项目名称：".$task['project_name']."  </p><p>项目时间：".$task['project_start']."--".$task['project_end']." </p><p>任务名称：".$task['task_name']." </p><p>任务创建人：".$task['create_name']." </p><p>任务执行人：".$task['to_name']." </p><p>任务时间： ".$task['task_start']."--".$task['task_end']."</p><p>任务内容：".$task['task_describe']." </p><p style='margin-top: 20px;'>金诚互动客户管理系统 </p><p>技术支持邮箱：star.fang@jckk.net </p></div>";
 
+        return $html;
+    }
 
+    public function get_task_full_info($task_id){
+       return   Db::table("jckk_task")
+            ->alias("t")
+            ->field(["t.*","p.project_name","p.project_start","p.project_end","c.customer_name","tu.chinese_name as to_name","tu.email as to_email","cu.email as create_email","cu.chinese_name as create_name"])
+            ->where("t.is_delete","<>",1)
+            ->where("t.id",$task_id)
+            ->join("jckk_project p","p.id = t.project_id","LEFT")
+            ->join("jckk_user tu","tu.uid = t.to_uid","LEFT")
+            ->join("jckk_user cu","cu.uid = t.create_uid","LEFT")
+            ->join("jckk_customer c","c.id = p.customer_id","LEFT")
+            ->find();
+    }
 
     public function save_task_begin($data,$create_name){
 
