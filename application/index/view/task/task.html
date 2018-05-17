@@ -17,7 +17,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <!--<h4 class="card-title">任务列表</h4>-->
+                <h4 class="card-title">{$title}</h4>
                 <h6 class="card-subtitle"></h6>
                 <div class="m-t-40">
                     <div class="d-flex">
@@ -25,6 +25,15 @@
                             <div class="form-group">
                                 <a  class="btn btn-primary btn-sm" href="{:url('index/task/task_add')}?mid={$mid}">
                                     <i class="ace-icon fa fa-plus" aria-hidden="true"></i> 添加任务
+                                </a>
+                                <a  class="btn btn-warning btn-sm" href="{:url('index/task/task')}?mid={$mid}">
+                                    <i class="ace-icon fa fa-file-word-o" aria-hidden="true"></i> 所有任务
+                                </a>
+                                <a  class="btn btn-info btn-sm" href="{:url('index/task/task_to')}?mid={$mid}">
+                                    <i class="ace-icon fa fa-file-word-o" aria-hidden="true"></i> 我待办
+                                </a>
+                                <a  class="btn btn-success btn-sm" href="{:url('index/task/task_from')}?mid={$mid}">
+                                    <i class="ace-icon fa fa-file-word-o" aria-hidden="true"></i> 我创建
                                 </a>
                             </div>
                         </div>
@@ -75,9 +84,11 @@
                         </td>
                         <td>{$task.create_name}</td>
                         <td>{$task.to_name}</td>
+                        <?php if($task['task_start'] && $task['task_end']){ ?>
                         <td>
                             <?php
-                             echo $num1=number_format((strtotime($task['task_end'])-strtotime($task['task_start']))/86400,1);
+                              $num1=number_format((strtotime($task['task_end'])-strtotime($task['task_start']))/86400,1);
+                               echo $num1= $num1 >0 ?$num1 :0;
                             ?>天
                         </td>
                         <td>
@@ -94,12 +105,15 @@
                         </td>
                         <td>
                             <?php
-                            $width = $num2 >0? number_format(($num2/$num1)*100,2):0;
+                            $width = $num1 >0? number_format(($num2/$num1)*100,2):0;
                             ?>
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" style="width: <?php echo $width; ?>%;"></div><?php echo $width; ?>%
                             </div>
                         </td>
+                        <?php }else{?>
+                        <td></td>
+                        <?php }?>
                         <td>
                             {if condition="$user_info['uid'] eq $task.create_uid"/}
                             <a href="javascript:void (0);" onclick="delete_sure('确定要删除此任务吗？','{:url(\'index/task/task_del\')}?id={$task.id}&cd={$task.create_uid}')" class="btn btn-sm btn-icon btn-pure btn-outline" title="删除"><i class="mdi mdi-close" aria-hidden="true"></i></a>

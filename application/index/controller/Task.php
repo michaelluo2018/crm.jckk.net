@@ -20,6 +20,25 @@ class Task extends Base {
 
         $tasks =  model('task','logic')->get_tasks();
 
+        $this->assign("title","所有任务");
+        $this->assign("tasks",$tasks);
+        return view("task");
+    }
+
+  //列表
+    public function task_to(){
+
+        $tasks =  model('task','logic')->get_tasks_by_to_uid($this->uid);
+        $this->assign("title","待办任务");
+        $this->assign("tasks",$tasks);
+        return view("task");
+    }
+
+  //列表
+    public function task_from(){
+
+        $tasks =  model('task','logic')->get_tasks_by_create_uid($this->uid);
+        $this->assign("title","我创建任务");
         $this->assign("tasks",$tasks);
         return view("task");
     }
