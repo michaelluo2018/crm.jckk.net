@@ -65,9 +65,13 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                {$k}、   {$history.title}
+                                {if condition="$history.after_value"/}
+                               <p style="margin-left: 30px;line-height: 30px;"><samll>把{$history.before_value}改成{$history.after_value}</samll></p>
+                                {/if}
                             </div>
                         </div>
                         {/volist}
+
                         <h3 class="card-title">工时记录</h3>
                         <hr>
                         {volist name="task_time" id="time" key="v"}

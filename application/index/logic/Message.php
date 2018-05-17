@@ -14,27 +14,19 @@ class Message extends Model{
     public  function  save_message($data){
 
         $message = model("message",'model');
-        $message->create_time = time();
-        $message->create_uid = Session::get("uid");
-        $message_log["type"] = MessageLog::ADD_TYPE;
-        $message_log["before_value"] = "";
-        $message_log["title"] = "创建系统消息";
-        $message->from_uid = $data['from_uid'];
-        $message->to_uid = $data['to_uid'];
-        $message->title = $data['title'];
-        $message->content = $data['content'];
-        $message->status = 0;
-        if(isset($data['type'])){
-            $message->type = $data['type'];
-        }
-        $message->is_delete = 0;
+        $data['create_time'] = time();
+        $data['create_uid'] = Session::get("uid");
+        $data['status'] = 0;
+        $data['is_delete'] = 0;
 
-        if($message->save()){
+        if($id = $message->insertGetId($data)){
             $message_log["after_value"] = json_encode($message);
+            $message_log["type"] = MessageLog::ADD_TYPE;
+            $message_log["before_value"] = "";
+            $message_log["title"] = "创建系统消息";
             model("log","logic")->write_log( $message_log);
         }
-
-        return $message->id;
+        return $id;
 
 
 

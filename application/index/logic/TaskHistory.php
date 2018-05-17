@@ -12,13 +12,9 @@ class TaskHistory extends Model{
     public  function  save_task_history($data){
 
         $task_history = model("task_history",'model');
-        $task_history->task_id = $data['task_id'];
-        $task_history->title = $data['title'];
-        $task_history->before_value = $data['before_value'];
-        $task_history->after_value = $data['after_value'];
-        $task_history->create_time = time();
-        $task_history->create_uid = Session::get("uid");
-        $task_history->save();
+        $data['create_time'] = time();
+        $data['create_uid'] = Session::get("uid");
+        $task_history->insert($data);
 
     }
 
