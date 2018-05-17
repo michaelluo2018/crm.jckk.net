@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52bd9cb4-fc9b-4b77-aaf2-8b0e198d5b49" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/index/controller/Question.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/controller/Task.php" afterPath="$PROJECT_DIR$/application/index/controller/Task.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/logic/Message.php" afterPath="$PROJECT_DIR$/application/index/logic/Message.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/logic/Task.php" afterPath="$PROJECT_DIR$/application/index/logic/Task.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/project/project_list.html" afterPath="$PROJECT_DIR$/application/index/view/project/project_list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/task/task.html" afterPath="$PROJECT_DIR$/application/index/view/task/task.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/task/task_des.html" afterPath="$PROJECT_DIR$/application/index/view/task/task_des.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Message.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Message.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/index/logic/Message.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1639">
-              <caret line="75" column="43" lean-forward="false" selection-start-line="75" selection-start-column="43" selection-end-line="75" selection-end-column="43" />
+            <state relative-caret-position="424">
+              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
                 <element signature="e#34#50#0#PHP" expanded="true" />
                 <element signature="e#3728#4212#0#PHP" expanded="false" />
@@ -55,27 +50,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="common_task_begin.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/index/view/task/common_task_begin.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="8" column="63" lean-forward="false" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="63" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="task.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="task.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/index/view/task/task.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1301">
-              <caret line="158" column="54" lean-forward="true" selection-start-line="156" selection-start-column="14" selection-end-line="158" selection-end-column="54" />
+            <state relative-caret-position="518">
+              <caret line="129" column="70" lean-forward="false" selection-start-line="129" selection-start-column="70" selection-end-line="129" selection-end-column="70" />
               <folding>
                 <element signature="n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
                 <element signature="n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
                 <element signature="n#td#9;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
                 <element signature="n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="task_des.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/index/view/task/task_des.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="950">
+              <caret line="105" column="44" lean-forward="false" selection-start-line="105" selection-start-column="44" selection-end-line="105" selection-end-column="44" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -200,10 +195,10 @@
         <option value="$PROJECT_DIR$/application/index/controller/Question.php" />
         <option value="$PROJECT_DIR$/application/index/view/project/project_list.html" />
         <option value="$PROJECT_DIR$/application/index/logic/Task.php" />
-        <option value="$PROJECT_DIR$/application/index/view/task/task.html" />
-        <option value="$PROJECT_DIR$/application/index/view/task/task_des.html" />
         <option value="$PROJECT_DIR$/application/index/controller/Task.php" />
         <option value="$PROJECT_DIR$/application/index/logic/Message.php" />
+        <option value="$PROJECT_DIR$/application/index/view/task/task_des.html" />
+        <option value="$PROJECT_DIR$/application/index/view/task/task.html" />
       </list>
     </option>
   </component>
@@ -494,12 +489,12 @@
       <workItem from="1526260749204" duration="6833000" />
       <workItem from="1526346704907" duration="22946000" />
       <workItem from="1526434366223" duration="30717000" />
-      <workItem from="1526520497390" duration="21767000" />
+      <workItem from="1526520497390" duration="22884000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="231881000" />
+    <option name="totallyTimeSpent" value="232998000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
@@ -993,35 +988,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/task/task.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1301">
-          <caret line="158" column="54" lean-forward="true" selection-start-line="156" selection-start-column="14" selection-end-line="158" selection-end-column="54" />
-          <folding>
-            <element signature="n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#td#9;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/task/common_task_begin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="63" lean-forward="false" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/task/task_des.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="105" column="33" lean-forward="false" selection-start-line="105" selection-start-column="33" selection-end-line="105" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/index/controller/Task.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="311">
@@ -1042,13 +1008,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/task/common_task_begin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="19" column="34" lean-forward="true" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/index/logic/Message.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1639">
-          <caret line="75" column="43" lean-forward="false" selection-start-line="75" selection-start-column="43" selection-end-line="75" selection-end-column="43" />
+        <state relative-caret-position="424">
+          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="e#34#50#0#PHP" expanded="true" />
             <element signature="e#3728#4212#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/task/task_des.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="950">
+          <caret line="105" column="44" lean-forward="false" selection-start-line="105" selection-start-column="44" selection-end-line="105" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/task/task.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="129" column="70" lean-forward="false" selection-start-line="129" selection-start-column="70" selection-end-line="129" selection-end-column="70" />
+          <folding>
+            <element signature="n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
+            <element signature="n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
+            <element signature="n#td#9;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
+            <element signature="n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>

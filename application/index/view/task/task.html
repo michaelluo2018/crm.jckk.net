@@ -119,24 +119,24 @@
                         <?php }?>
                         <td>
                             {if condition="$user_info['uid'] eq $task.create_uid"/}
-                            <a href="javascript:void (0);" onclick="delete_sure('确定要删除此任务吗？','{:url(\'index/task/task_del\')}?id={$task.id}&cd={$task.create_uid}')" class="btn btn-sm btn-icon btn-pure btn-outline" title="删除"><i class="mdi mdi-close" aria-hidden="true"></i></a>
-                            <a href="{:url('index/task/task_edit')}?id={$task.id}&cd={$task.create_uid}" class="btn btn-sm btn-icon btn-pure btn-outline" title="修改"><i class="mdi mdi-border-color" aria-hidden="true"></i></a>
+                            <a href="javascript:void (0);" onclick="delete_sure('确定要删除此任务吗？','{:url(\'index/task/task_del\')}?id={$task.id}&cd={$task.create_uid}')" class="btn btn-danger" title="删除"><i class="mdi mdi-close" aria-hidden="true"></i></a>
+                            <a href="{:url('index/task/task_edit')}?id={$task.id}&cd={$task.create_uid}" class="btn btn-primary" title="修改"><i class="mdi mdi-border-color" aria-hidden="true"></i></a>
                             {/if}
-                            <a href="{:url('index/task/task_des')}?id={$task.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline" title="查看详情"><i class="mdi mdi-account-search" aria-hidden="true"></i></a>
+                            <a href="{:url('index/task/task_des')}?id={$task.id}&mid={$mid}" class="btn btn-info" title="查看详情"><i class="mdi mdi-account-search" aria-hidden="true"></i></a>
                             {if condition="$user_info['uid'] eq $task.to_uid"/}
 
                             {if condition="$task.task_status eq 0"/}
-                            <button disabled="disabled" class="btn btn-sm btn-icon btn-pure btn-outline " title="添加工时"  ><i class="mdi mdi-alarm-plus"  aria-hidden="true"></i></button>
-                            <button type="button"  class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="start_send_tid('{$task.id}')" data-toggle="modal" data-target="#begin_task" ><i class="mdi mdi-arrow-right-drop-circle" data-original-title="开始任务" data-toggle="tooltip" aria-hidden="true"></i></button>
+                            <button disabled="disabled" class="btn btn-default " title="添加工时"  ><i class="mdi mdi-alarm-plus"  aria-hidden="true"></i></button>
+                            <button type="button"  class="btn btn-dark "  onclick="start_send_tid('{$task.id}')" data-toggle="modal" data-target="#begin_task" ><i class="mdi mdi-arrow-right-drop-circle" data-original-title="开始任务" data-toggle="tooltip" aria-hidden="true"></i></button>
                             {else/}
-                            <button type="button"  class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="time_send_tid('{$task.id}','{$task.create_uid}')" data-toggle="modal" data-target="#add_time" ><i class="mdi mdi-alarm-plus" data-original-title="添加工时" data-toggle="tooltip" aria-hidden="true"></i></button>
-                            <button disabled="disabled" class="btn btn-sm btn-icon btn-pure btn-outline" title="开始任务"><i class="mdi mdi-arrow-right-drop-circle" aria-hidden="true"></i></button>
+                            <button type="button"  class="btn btn-warning "  onclick="time_send_tid('{$task.id}','{$task.create_uid}')" data-toggle="modal" data-target="#add_time" ><i class="mdi mdi-alarm-plus" data-original-title="添加工时" data-toggle="tooltip" aria-hidden="true"></i></button>
+                            <button disabled="disabled" class="btn btn-default" title="开始任务"><i class="mdi mdi-arrow-right-drop-circle" aria-hidden="true"></i></button>
                             {/if}
 
                             {if condition="$task.task_status eq 1"/}
-                                <button type="button"  class="btn btn-sm btn-icon btn-pure btn-outline "  onclick="end_send_tid('{$task.id}')" data-toggle="modal" data-target="#end_task" ><i class="mdi mdi-checkbox-marked" data-original-title="完成任务" data-toggle="tooltip" aria-hidden="true"></i></button>
+                                <button type="button"  class="btn btn-success"  onclick="end_send_tid('{$task.id}')" data-toggle="modal" data-target="#end_task" ><i class="mdi mdi-checkbox-marked" data-original-title="完成任务" data-toggle="tooltip" aria-hidden="true"></i></button>
                             {else/}
-                                <button disabled="disabled" class="btn btn-sm btn-icon btn-pure btn-outline " title="完成任务"><i class="mdi mdi-checkbox-marked" aria-hidden="true"></i></button>
+                                <button disabled="disabled" class="btn btn-default " title="完成任务"><i class="mdi mdi-checkbox-marked" aria-hidden="true"></i></button>
                             {/if}
                             {/if}
                         </td>
