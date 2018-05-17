@@ -98,7 +98,7 @@
                                         {if condition="isset($project)"/}
                                         <input type="text"  class="form-control check_content_num" value="{$project.project_money3}" required name="project_money3" >
                                         {else/}
-                                        <input type="text"  class="form-control check_content_num" placeholder="请输入其他金额"  name="project_money3" >
+                                        <input type="text"  class="form-control check_content_num" value="0"  name="project_money3" >
                                         {/if}
                                         <small class="form-control-feedback"> </small>
                                 </div>

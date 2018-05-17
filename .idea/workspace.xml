@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52bd9cb4-fc9b-4b77-aaf2-8b0e198d5b49" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/task/task.html" afterPath="$PROJECT_DIR$/application/index/view/task/task.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/project/project_add.html" afterPath="$PROJECT_DIR$/application/index/view/project/project_add.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/project/project_common_script.html" afterPath="$PROJECT_DIR$/application/index/view/project/project_common_script.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/project/project_edit.html" afterPath="$PROJECT_DIR$/application/index/view/project/project_edit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/task/common_add_time.html" afterPath="$PROJECT_DIR$/application/index/view/task/common_add_time.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/task/common_task_begin.html" afterPath="$PROJECT_DIR$/application/index/view/task/common_task_begin.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/task/common_task_end.html" afterPath="$PROJECT_DIR$/application/index/view/task/common_task_end.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/task/task_add.html" afterPath="$PROJECT_DIR$/application/index/view/task/task_add.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/task/task_edit.html" afterPath="$PROJECT_DIR$/application/index/view/task/task_edit.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,65 +21,32 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Task.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/index/controller/Task.php">
+      <file leaf-file-name="common_add_time.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/index/view/task/common_add_time.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="70" column="50" lean-forward="false" selection-start-line="70" selection-start-column="50" selection-end-line="70" selection-end-column="50" />
-              <folding>
-                <element signature="e#40#57#0#PHP" expanded="true" />
-                <element signature="e#109#346#0#PHP" expanded="false" />
-                <element signature="e#1031#1538#0#PHP" expanded="false" />
-                <element signature="e#1077#1532#0#PHP" expanded="false" />
-                <element signature="e#1895#2327#0#PHP" expanded="false" />
-                <element signature="e#2344#2694#0#PHP" expanded="false" />
-                <element signature="e#2713#3161#0#PHP" expanded="false" />
-                <element signature="e#3170#3435#0#PHP" expanded="false" />
-                <element signature="e#3442#3772#0#PHP" expanded="false" />
-                <element signature="e#3779#4110#0#PHP" expanded="false" />
-                <element signature="e#4118#5096#0#PHP" expanded="false" />
-              </folding>
+            <state relative-caret-position="-513">
+              <caret line="29" column="34" lean-forward="true" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="task.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/index/view/task/task.html">
+      <file leaf-file-name="common_task_begin.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/index/view/task/common_task_begin.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="780">
-              <caret line="117" column="28" lean-forward="false" selection-start-line="117" selection-start-column="28" selection-end-line="117" selection-end-column="28" />
-              <folding>
-                <element signature="n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
-                <element signature="n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
-                <element signature="n#td#9;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
-                <element signature="n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
-                <element signature="n#td#15;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
-              </folding>
+            <state relative-caret-position="459">
+              <caret line="17" column="82" lean-forward="true" selection-start-line="17" selection-start-column="82" selection-end-line="17" selection-end-column="82" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Task.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/index/logic/Task.php">
+      <file leaf-file-name="common_task_end.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/index/view/task/common_task_end.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="983">
-              <caret line="136" column="50" lean-forward="false" selection-start-line="136" selection-start-column="50" selection-end-line="136" selection-end-column="50" />
-              <folding>
-                <element signature="e#612#5100#0#PHP" expanded="false" />
-                <element signature="e#1585#2020#0#PHP" expanded="false" />
-                <element signature="e#2034#2486#0#PHP" expanded="false" />
-                <element signature="e#2500#2951#0#PHP" expanded="false" />
-                <element signature="e#2965#3422#0#PHP" expanded="false" />
-                <element signature="e#3436#3877#0#PHP" expanded="false" />
-                <element signature="e#3891#4324#0#PHP" expanded="false" />
-                <element signature="e#4338#4778#0#PHP" expanded="false" />
-                <element signature="e#5110#5222#0#PHP" expanded="false" />
-                <element signature="e#6429#7749#0#PHP" expanded="false" />
-                <element signature="e#9182#9623#0#PHP" expanded="false" />
-                <element signature="e#9834#10797#0#PHP" expanded="false" />
-                <element signature="e#10803#12256#0#PHP" expanded="false" />
-                <element signature="e#14413#15144#0#PHP" expanded="false" />
-              </folding>
+            <state relative-caret-position="351">
+              <caret line="16" column="53" lean-forward="false" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="53" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -81,13 +54,68 @@
       <file leaf-file-name="task_add.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/index/view/task/task_add.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="37" column="34" lean-forward="false" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
+            <state relative-caret-position="-23">
+              <caret line="87" column="82" lean-forward="true" selection-start-line="87" selection-start-column="82" selection-end-line="87" selection-end-column="82" />
               <folding>
-                <element signature="n#div#2;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
                 <element signature="n#div#5;n#div#2;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
                 <element signature="n#div#3;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="task_des.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/index/view/task/task_des.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="66" column="39" lean-forward="true" selection-start-line="66" selection-start-column="39" selection-end-line="66" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="task_edit.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/index/view/task/task_edit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="274">
+              <caret line="79" column="53" lean-forward="false" selection-start-line="79" selection-start-column="53" selection-end-line="79" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="project_add.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/index/view/project/project_add.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="280" column="86" lean-forward="false" selection-start-line="280" selection-start-column="86" selection-end-line="280" selection-end-column="86" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="project_common_script.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/index/view/project/project_common_script.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="392">
+              <caret line="100" column="107" lean-forward="false" selection-start-line="100" selection-start-column="107" selection-end-line="100" selection-end-column="107" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <marker date="1526546489119" expanded="true" signature="11317:11323" ph=" " />
+                <marker date="1526546489119" expanded="true" signature="11323:11329" ph=" " />
+                <marker date="1526546489119" expanded="true" signature="13464:13478" ph="..." />
+                <marker date="1526546489119" expanded="true" signature="13630:13668" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="project_edit.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/index/view/project/project_edit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="274">
+              <caret line="221" column="53" lean-forward="false" selection-start-line="221" selection-start-column="53" selection-end-line="221" selection-end-column="53" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -96,8 +124,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>message</find>
-      <find>uploads</find>
       <find>get</find>
       <find>xlsx</find>
       <find>downloadFile</find>
@@ -126,6 +152,8 @@
       <find>save_task_history</find>
       <find>消息</find>
       <find>$user</find>
+      <find>datetime-local</find>
+      <find>其他</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -155,6 +183,7 @@
       <replace>strong&gt;</replace>
       <replace>b&gt;</replace>
       <replace>$data['</replace>
+      <replace>date</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -163,7 +192,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="E:/downloads/phpad_adm/phpad_adm/PHPAD网络广告管理系统V4.0/index/single_art.php" />
         <option value="E:/downloads/phpad_adm/phpad_adm/PHPAD网络广告管理系统V4.0/index/send_reg_mail_again.tpl.php" />
         <option value="E:/downloads/phpad_adm/phpad_adm/PHPAD网络广告管理系统V4.0/index/search_pwd.php" />
         <option value="$PROJECT_DIR$/public/phpad/include/Mysql.class.php" />
@@ -187,9 +215,6 @@
         <option value="$PROJECT_DIR$/application/index/controller/Project.php" />
         <option value="$PROJECT_DIR$/application/index/view/leads/leads_common_script.html" />
         <option value="$PROJECT_DIR$/application/index/view/task/task_start.html" />
-        <option value="$PROJECT_DIR$/application/index/view/task/common_add_time.html" />
-        <option value="$PROJECT_DIR$/application/index/view/task/common_task_begin.html" />
-        <option value="$PROJECT_DIR$/application/index/view/task/common_task_end.html" />
         <option value="$PROJECT_DIR$/application/index/logic/TaskTime.php" />
         <option value="$PROJECT_DIR$/application/index/view/menu/index.html" />
         <option value="$PROJECT_DIR$/application/index/controller/Base.php" />
@@ -198,10 +223,7 @@
         <option value="$PROJECT_DIR$/application/index/view/message/message_des.html" />
         <option value="$PROJECT_DIR$/application/index/controller/Message.php" />
         <option value="$PROJECT_DIR$/application/index/view/project/project_des.html" />
-        <option value="$PROJECT_DIR$/application/index/view/project/project_add.html" />
-        <option value="$PROJECT_DIR$/application/index/view/project/project_edit.html" />
         <option value="$PROJECT_DIR$/application/index/config.php" />
-        <option value="$PROJECT_DIR$/application/index/view/task/task_add.html" />
         <option value="$PROJECT_DIR$/application/index/logic/Project.php" />
         <option value="$PROJECT_DIR$/application/index/view/project/project_list.html" />
         <option value="$PROJECT_DIR$/application/index/view/message/message_create.html" />
@@ -209,11 +231,18 @@
         <option value="$PROJECT_DIR$/application/index/view/message/message_read.html" />
         <option value="$PROJECT_DIR$/application/index/logic/TaskHistory.php" />
         <option value="$PROJECT_DIR$/application/index/logic/Message.php" />
-        <option value="$PROJECT_DIR$/application/index/view/task/task_edit.html" />
         <option value="$PROJECT_DIR$/application/index/view/task/task_des.html" />
         <option value="$PROJECT_DIR$/application/index/logic/Task.php" />
         <option value="$PROJECT_DIR$/application/index/controller/Task.php" />
         <option value="$PROJECT_DIR$/application/index/view/task/task.html" />
+        <option value="$PROJECT_DIR$/application/index/view/task/common_add_time.html" />
+        <option value="$PROJECT_DIR$/application/index/view/task/common_task_begin.html" />
+        <option value="$PROJECT_DIR$/application/index/view/task/common_task_end.html" />
+        <option value="$PROJECT_DIR$/application/index/view/task/task_add.html" />
+        <option value="$PROJECT_DIR$/application/index/view/task/task_edit.html" />
+        <option value="$PROJECT_DIR$/application/index/view/project/project_add.html" />
+        <option value="$PROJECT_DIR$/application/index/view/project/project_edit.html" />
+        <option value="$PROJECT_DIR$/application/index/view/project/project_common_script.html" />
       </list>
     </option>
   </component>
@@ -334,7 +363,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="task" />
+              <option name="myItemId" value="project" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -504,12 +533,12 @@
       <workItem from="1526260749204" duration="6833000" />
       <workItem from="1526346704907" duration="22946000" />
       <workItem from="1526434366223" duration="30717000" />
-      <workItem from="1526520497390" duration="16898000" />
+      <workItem from="1526520497390" duration="18136000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="227012000" />
+    <option name="totallyTimeSpent" value="228250000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
@@ -588,13 +617,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/index/model/Message.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/index/model/Product.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -676,13 +698,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/index/view/task/task_start.html" />
-    <entry file="file://$PROJECT_DIR$/application/index/view/task/common_add_time.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="729">
-          <caret line="60" column="30" lean-forward="true" selection-start-line="49" selection-start-column="22" selection-end-line="60" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/index/logic/TaskTime.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
@@ -693,20 +708,6 @@
             <element signature="e#2335#2426#0#PHP" expanded="false" />
             <element signature="e#2443#2946#0#PHP" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/task/common_task_end.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="27" column="105" lean-forward="false" selection-start-line="27" selection-start-column="92" selection-end-line="27" selection-end-column="105" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/task/common_task_begin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="16" column="63" lean-forward="false" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="63" />
         </state>
       </provider>
     </entry>
@@ -840,30 +841,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/project/project_des.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="346" column="51" lean-forward="false" selection-start-line="346" selection-start-column="51" selection-end-line="346" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/project/project_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="223" column="38" lean-forward="true" selection-start-line="223" selection-start-column="38" selection-end-line="223" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/project/project_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="209" column="67" lean-forward="false" selection-start-line="209" selection-start-column="67" selection-end-line="209" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/index/config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -898,26 +875,6 @@
             <element signature="e#19633#20193#0#PHP" expanded="false" />
             <element signature="e#20211#21020#0#PHP" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/task/task_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="37" column="34" lean-forward="false" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
-          <folding>
-            <element signature="n#div#2;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#div#5;n#div#2;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#div#3;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/project/project_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="27" column="48" lean-forward="false" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -974,24 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/task/task_des.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="66" column="39" lean-forward="true" selection-start-line="66" selection-start-column="39" selection-end-line="66" selection-end-column="39" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/task/task_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="104" column="75" lean-forward="false" selection-start-line="104" selection-start-column="75" selection-end-line="104" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/index/logic/Task.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="983">
@@ -1037,14 +976,111 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/index/view/task/task.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="117" column="28" lean-forward="false" selection-start-line="117" selection-start-column="28" selection-end-line="117" selection-end-column="28" />
+        <state relative-caret-position="240">
+          <caret line="63" column="9" lean-forward="false" selection-start-line="63" selection-start-column="9" selection-end-line="63" selection-end-column="9" />
           <folding>
             <element signature="n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
             <element signature="n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
             <element signature="n#td#9;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
             <element signature="n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
             <element signature="n#td#15;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/task/common_add_time.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-513">
+          <caret line="29" column="34" lean-forward="true" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/task/common_task_begin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="17" column="82" lean-forward="true" selection-start-line="17" selection-start-column="82" selection-end-line="17" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/task/common_task_end.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="16" column="53" lean-forward="false" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/task/task_add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-23">
+          <caret line="87" column="82" lean-forward="true" selection-start-line="87" selection-start-column="82" selection-end-line="87" selection-end-column="82" />
+          <folding>
+            <element signature="n#div#5;n#div#2;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/task/task_des.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="66" column="39" lean-forward="true" selection-start-line="66" selection-start-column="39" selection-end-line="66" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/task/task_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="79" column="53" lean-forward="false" selection-start-line="79" selection-start-column="53" selection-end-line="79" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/project/project_des.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="346" column="51" lean-forward="false" selection-start-line="346" selection-start-column="51" selection-end-line="346" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/project/project_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1053">
+          <caret line="27" column="48" lean-forward="false" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/project/project_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="221" column="53" lean-forward="false" selection-start-line="221" selection-start-column="53" selection-end-line="221" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/project/project_add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="280" column="86" lean-forward="false" selection-start-line="280" selection-start-column="86" selection-end-line="280" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/project/project_common_script.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="100" column="107" lean-forward="false" selection-start-line="100" selection-start-column="107" selection-end-line="100" selection-end-column="107" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <marker date="1526546489119" expanded="true" signature="11317:11323" ph=" " />
+            <marker date="1526546489119" expanded="true" signature="11323:11329" ph=" " />
+            <marker date="1526546489119" expanded="true" signature="13464:13478" ph="..." />
+            <marker date="1526546489119" expanded="true" signature="13630:13668" ph="..." />
           </folding>
         </state>
       </provider>
