@@ -23,7 +23,28 @@
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
-
+            <div class="card-body">
+            <div class="profiletimeline">
+                {volist name="messages" id="message" key="k"/}
+                <div class="sl-item">
+                    <div class="sl-left">
+                        {$k}
+                    </div>
+                    <div class="sl-right">
+                        <a href="{:url('index/message/message_des')}?id={$message.id}">
+                        <span class="sl-date">{$message.create_time|date="Y-m-d H:i:s",###}</span>
+                        <span class="sl-date">来至：{$message.from_name}</span>
+                        <p>{$message.title}</p>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                {/volist}
+           </div>
+                <div id="tp_paginate">
+                    {$messages->render()}
+                </div>
+           </div>
         </div>
     </div>
 </div>

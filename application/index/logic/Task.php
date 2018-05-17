@@ -277,7 +277,7 @@ class Task extends Model{
             "from_uid"=>Session::get("uid"),
             "to_uid"=>$task->to_uid,
             "title"=>"任务被删除",
-            "content"=>"你的同事".$create_name."删除了指派给你de任务：".$task->task_name
+            "content"=>"你的同事".$create_name."删除了指派给你的任务：".$task->task_name
         ];
        model("message","logic")->save_message($message);
 

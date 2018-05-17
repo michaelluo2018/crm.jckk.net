@@ -51,7 +51,7 @@ class Message extends Model{
             ->join("jckk_user tu","tu.uid = m.to_uid","LEFT")
             ->join("jckk_user fu","fu.uid = m.from_uid","LEFT")
             ->join("jckk_user cu","cu.uid = m.create_uid","LEFT")
-            ->select();
+            ->paginate();
     }
 
     public function get_message_by_from_uid($from_uid){
@@ -63,15 +63,23 @@ class Message extends Model{
             ->join("jckk_user tu","tu.uid = m.to_uid","LEFT")
             ->join("jckk_user fu","fu.uid = m.from_uid","LEFT")
             ->join("jckk_user cu","cu.uid = m.create_uid","LEFT")
-            ->select();
+            ->paginate();
 
     }
 
 
 
     public function get_message_by_status($status,$uid){
-
-
+        return Db::table("jckk_message")
+            ->alias("m")
+            ->field(["m.*","tu.chinese_name as to_name","cu.chinese_name as create_name","fu.chinese_name as from_name"])
+            ->where("m.is_delete","<>",1)
+            ->where("m.status",$status)
+            ->where("m.to_uid",$uid)
+            ->join("jckk_user tu","tu.uid = m.to_uid","LEFT")
+            ->join("jckk_user fu","fu.uid = m.from_uid","LEFT")
+            ->join("jckk_user cu","cu.uid = m.create_uid","LEFT")
+            ->paginate();
     }
 
 
@@ -84,8 +92,37 @@ class Message extends Model{
     //获取一条
     public function get_message($id){
 
-        return  $this->where("id",$id)->find();
+        return Db::table("jckk_message")
+            ->alias("m")
+            ->field(["m.*","tu.chinese_name as to_name","fu.chinese_name as from_name"])
+            ->where("m.id",$id)
+            ->join("jckk_user tu","tu.uid = m.to_uid","LEFT")
+            ->join("jckk_user fu","fu.uid = m.from_uid","LEFT")
+            ->find();
 
+    }
+
+
+    public function read_message($id,$uid){
+        $message = $this->where("id",$id)->find();
+       if($message->to_uid == $uid){
+           $message->status = 1;
+           $message->save();
+       }
+
+    }
+
+
+    public function check_permission_to_read($id,$uid){
+       $res1 =  $this->where("id",$id)->where("to_uid",$uid)->count();
+       $res2 =  $this->where("id",$id)->where("from_uid",$uid)->count();
+
+       if($res1 || $res2){
+           return true;
+       }
+       else{
+           return false;
+       }
     }
 
 
