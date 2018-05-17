@@ -129,6 +129,7 @@
                                         <a href="{:url('index/project/project_edit')}?id={$project.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="修改"><i class="ti-pencil" aria-hidden="true"></i></a>
                                         <a href="{:url('index/project/project_des')}?id={$project.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
                                         <a href="{:url('index/task/task_add')}?id={$project.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="添加任务"><i class="ti-plus" aria-hidden="true"></i></a>
+                                        <a href="{:url('index/task/project_task')}?id={$project.id}&n={$project.project_name}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="项目任务"><i class="ti-file" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                                 {/volist}

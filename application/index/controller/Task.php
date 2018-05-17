@@ -43,6 +43,17 @@ class Task extends Base {
         return view("task");
     }
 
+//列表
+    public function project_task($id,$n){
+
+        $tasks =  model('task','logic')->get_tasks_by_project($id);
+        $this->assign("title",$n."的任务");
+        $this->assign("tasks",$tasks);
+        return view("task");
+    }
+
+
+
 
 
     //添加

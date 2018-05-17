@@ -43,6 +43,7 @@ class Message extends Model{
             ->join("jckk_user tu","tu.uid = m.to_uid","LEFT")
             ->join("jckk_user fu","fu.uid = m.from_uid","LEFT")
             ->join("jckk_user cu","cu.uid = m.create_uid","LEFT")
+            ->order("m.create_time","desc")
             ->paginate();
     }
 
@@ -55,6 +56,7 @@ class Message extends Model{
             ->join("jckk_user tu","tu.uid = m.to_uid","LEFT")
             ->join("jckk_user fu","fu.uid = m.from_uid","LEFT")
             ->join("jckk_user cu","cu.uid = m.create_uid","LEFT")
+            ->order("m.create_time","desc")
             ->paginate();
 
     }
@@ -71,6 +73,7 @@ class Message extends Model{
             ->join("jckk_user tu","tu.uid = m.to_uid","LEFT")
             ->join("jckk_user fu","fu.uid = m.from_uid","LEFT")
             ->join("jckk_user cu","cu.uid = m.create_uid","LEFT")
+            ->order("m.create_time","desc")
             ->paginate();
     }
 

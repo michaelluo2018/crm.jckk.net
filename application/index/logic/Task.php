@@ -339,7 +339,15 @@ class Task extends Model{
 
 
     public function get_tasks_by_project($project_id){
-
+        return Db::table("jckk_task")
+            ->alias("t")
+            ->field(["t.*","p.project_name","tu.chinese_name as to_name","cu.chinese_name as create_name"])
+            ->where("t.is_delete","<>",1)
+            ->where("t.project_id",$project_id)
+            ->join("jckk_project p","p.id = t.project_id","LEFT")
+            ->join("jckk_user tu","tu.uid = t.to_uid","LEFT")
+            ->join("jckk_user cu","cu.uid = t.create_uid","LEFT")
+            ->select();
 
     }
 
