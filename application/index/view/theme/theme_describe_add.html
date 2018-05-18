@@ -1,0 +1,59 @@
+<div id="add_theme_describe" class="modal fade in show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+    <div class="modal-dialog col-10">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <form action="{:url('index/theme/save_theme_describe')}?mid={$mid}" method="post">
+                    <input type="hidden" name="theme_id" id="theme_id">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>内容</label>
+                                    <input type="text"  class="form-control"  name="theme_describe" placeholder="请填写内容" required >
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>行号</label>
+                                    <select class="form-control"  tabindex="1" name="describe_sort" required>
+                                        <option value="">请选择</option>
+                                        {for start="1" end= "4"}
+                                        <option value="{$i}">{$i}</option>
+                                        {/for}
+                                    </select>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
+                            <button type="reset" class="btn btn-inverse">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+
+
+
+</div>
+
+<script>
+    function describe_send_tid(id,name) {
+        $("#myModalLabel").text(name);
+        $("#theme_id").val(id);
+    }
+</script>
+

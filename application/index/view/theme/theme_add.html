@@ -1,0 +1,46 @@
+<div id="add_theme" class="modal fade in show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+    <div class="modal-dialog col-10">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">添加主题</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <form action="{:url('index/theme/save_theme')}?mid={$mid}" method="post">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>主题名</label>
+                                    <input type="text"  class="form-control"  name="theme_name" placeholder="请填写主题标题" required >
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>主题类别</label>
+                                    <select class="form-control"  tabindex="1" name="theme_type" required>
+                                        <option value="">请选择</option>
+                                        {volist name="theme_type" id= "type"}
+                                        <option value="{$type}">{$type}</option>
+                                        {/volist}
+                                    </select>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
+                            <button type="reset" class="btn btn-inverse">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</div>
+

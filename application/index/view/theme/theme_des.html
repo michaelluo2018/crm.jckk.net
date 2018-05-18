@@ -1,37 +1,38 @@
 {extend name="layout"/}
-{block name="title"}
-<title>题目列表 - 客户管理系统</title>
+{block name="title"/}
+<title>主题详情 - 客户管理系统</title>
+{/block}
+{block name="css"/}
+
 {/block}
 {block name="breadcrumb"/}
 <div class="col-md-5 col-8 align-self-center">
-    <h3 class="text-themecolor">题目列表</h3>
+    <h3 class="text-themecolor">主题详情</h3>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">首页</a></li>
-        <li class="breadcrumb-item active">题目列表</li>
+        <li class="breadcrumb-item active">主题详情</li>
     </ol>
 </div>
 {/block}
-
 {block name="detail"/}
 <div class="row">
-    <div class="col-12">
+    <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <!--<h4 class="card-title">题目列表</h4>-->
-                <h6 class="card-subtitle"></h6>
+                <h4 class="card-title">{$theme.theme_name}</h4>
                 <div class="m-t-40">
                     <div class="d-flex">
                         <div class="mr-auto">
                             <div class="form-group">
-                                <a  class="btn btn-primary btn-sm" href="{:url('index/question/question_add')}?mid={$mid}">
-                                    <i class="ace-icon fa fa-plus" aria-hidden="true"></i> 添加题目
+                                <a  class="btn btn-primary btn-sm" href="{:url('index/theme/theme_describe_add')}?tid={$theme.id}&theme_name={$theme.theme_name}&mid={$mid}">
+                                    <i class="ace-icon fa fa-plus" aria-hidden="true"></i> 添加主题内容
                                 </a>
                             </div>
                         </div>
                         <div class="ml-auto">
                             <div class="form-group">
                                 <form  method="post" id="find_form">
-                                    <input id="demo-input-search2" type="text" placeholder="搜索题目"  autocomplete="off" required>
+                                    <input id="demo-input-search2" type="text" placeholder="搜索主题内容"  autocomplete="off" required>
                                 </form>
 
                             </div>
@@ -41,23 +42,19 @@
                 <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" data-page-size="20">
                     <thead>
                     <tr class="text-align">
-                        <th>序号</th>
-                        <th>类型</th>
-                        <th>标题</th>
+                        <th>内容所属行号</th>
+                        <th>名称</th>
                         <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {volist name="questions" id="question" key="k"}
+                    {volist name="describes" id="describe" }
                     <tr>
-                        <td>{$k}</td>
-                        <td>{$question.question_type}</td>
-                        <td>{$question.title}</td>
-
+                        <td>{$describe.describe_sort}</td>
+                        <td>{$describe.theme_describe}</td>
                         <td>
-                            <a href="javascript:void (0);" onclick="delete_sure('确定要删除吗？','{:url(\'index/question/question_del\')}?id={$question.id}&mid={$mid}')" class="btn btn-danger " title="删除"><i class="ti-close" aria-hidden="true"></i></a>
-                            <a href="{:url('index/question/question_edit')}?id={$question.id}&mid={$mid}" class="btn btn-primary" title="修改"><i class="ti-pencil" aria-hidden="true"></i></a>
-                            <a href="{:url('index/question/question_des')}?id={$question.id}&mid={$mid}" class="btn btn-info" title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
+                            <a href="javascript:void (0);" onclick="delete_sure('确定要删除吗？','{:url(\'index/theme/theme_describe_del\')}?id={$theme.id}&mid={$mid}')" class="btn btn-danger " title="删除"><i class="ti-close" aria-hidden="true"></i></a>
+                            <a href="{:url('index/theme/theme_describe_edit')}?id={$describe.id}&mid={$mid}" class="btn btn-primary" title="修改"><i class="ti-pencil" aria-hidden="true"></i></a>
                         </td>
                     </tr>
                     {/volist}
@@ -75,7 +72,6 @@
                 </table>
             </div>
         </div>
-
     </div>
 </div>
 {/block}

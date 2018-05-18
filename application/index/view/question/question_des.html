@@ -28,7 +28,7 @@
                         <p>{$answer.sort}、{$answer.content} <small style="margin-left: 40px;">分数：{$answer.score}</small></p>
                         {/volist}
                     </div>
-                <a href="javascript:void (0);" onclick="delete_sure('确定要删除此项目吗？','{:url(\'index/question/question_del\')}?id={$question.id}&mid={$mid}')" class="btn btn-danger " title="删除"><i class="ti-close" aria-hidden="true"></i></a>
+                <a href="javascript:void (0);" onclick="delete_sure('确定要删除吗？','{:url(\'index/question/question_del\')}?id={$question.id}&mid={$mid}')" class="btn btn-danger " title="删除"><i class="ti-close" aria-hidden="true"></i></a>
                 <a href="{:url('index/question/question_edit')}?id={$question.id}&mid={$mid}" class="btn btn-primary" title="修改"><i class="ti-pencil" aria-hidden="true"></i></a>
             </div>
 

@@ -19,29 +19,20 @@ class Theme extends Model{
             $theme = model("theme","model")->where("id",$data['theme_id'])->find();
             $theme_log["type"] = Log::UPDATE_TYPE;
             $theme_log["before_value"] = json_encode($theme);
-            $theme_log["title"] = "更改产品信息";
+            $theme_log["title"] = "更改主题信息";
 
         }
         else{
             //添加
             $theme = model("theme",'model');
             $theme->create_time = time();
-            $theme->create_uid = Session::get("uid");
             $theme_log["type"] = Log::ADD_TYPE;
             $theme_log["before_value"] = "";
-            $theme_log["title"] = "添加新产品";
+            $theme_log["title"] = "添加新主题";
         }
 
         $theme->theme_name = trim($data['theme_name']);
-        $theme->theme_from = trim($data['theme_from']);
-        $theme->cost_price = trim($data['cost_price']);
-        $theme->recommend_price = trim($data['recommend_price']);
-        $theme->link = trim($data['link']);
-
-        $theme->develop_time = trim($data['develop_time']);
-        $theme->note = trim($data['note']);
         $theme->is_delete = 0;
-
         if(isset($data['theme_type'])){
             $theme->theme_type = $data['theme_type'];
         }
@@ -61,12 +52,14 @@ class Theme extends Model{
 
     //获取列表
     public function get_themes(){
-        return Db::table("jckk_theme")
-            ->alias("p")
-            ->field(["p.*","u.chinese_name"])
-            ->where("p.is_delete","<>",1)
-            ->join("jckk_user u","p.create_uid = u.uid","LEFT")
-            ->select();
+        $array = array();
+        $themes = $this->where("is_delete",0)->order("id desc")->select();
+        foreach ($themes as $key=>$value){
+            $array[$key]["theme"] = $value;
+            $array[$key]["describes"] = $this->get_theme_and_describe($value->id);
+        }
+
+        return $array;
     }
 
 
@@ -78,7 +71,10 @@ class Theme extends Model{
 
     }
 
+    public function get_theme_and_describe($id){
+        return  model("theme_describe","logic")->get_theme_describes($id);
 
+    }
 
     //删除
     public function  delete_theme($id){

@@ -19,35 +19,23 @@ class ThemeDescribe extends Model{
             $theme_describe = model("theme_describe","model")->where("id",$data['theme_describe_id'])->find();
             $theme_describe_log["type"] = Log::UPDATE_TYPE;
             $theme_describe_log["before_value"] = json_encode($theme_describe);
-            $theme_describe_log["title"] = "更改产品信息";
+            $theme_describe_log["title"] = "更改主题内容";
 
         }
         else{
             //添加
             $theme_describe = model("theme_describe",'model');
             $theme_describe->create_time = time();
-            $theme_describe->create_uid = Session::get("uid");
+
             $theme_describe_log["type"] = Log::ADD_TYPE;
             $theme_describe_log["before_value"] = "";
-            $theme_describe_log["title"] = "添加新产品";
+            $theme_describe_log["title"] = "添加主题内容";
         }
 
-        $theme_describe->theme_describe_name = trim($data['theme_describe_name']);
-        $theme_describe->theme_describe_from = trim($data['theme_describe_from']);
-        $theme_describe->cost_price = trim($data['cost_price']);
-        $theme_describe->recommend_price = trim($data['recommend_price']);
-        $theme_describe->link = trim($data['link']);
-
-        $theme_describe->develop_time = trim($data['develop_time']);
-        $theme_describe->note = trim($data['note']);
+        $theme_describe->theme_id = trim($data['theme_id']);
+        $theme_describe->theme_describe= trim($data['theme_describe']);
+        $theme_describe->describe_sort = trim($data['describe_sort']);
         $theme_describe->is_delete = 0;
-
-        if(isset($data['theme_describe_type'])){
-            $theme_describe->theme_describe_type = $data['theme_describe_type'];
-        }
-        else{
-            $theme_describe->theme_describe_type = null;
-        }
 
         if($theme_describe->save()){
             $theme_describe_log["after_value"] = json_encode($theme_describe);
@@ -60,12 +48,9 @@ class ThemeDescribe extends Model{
     }
 
     //获取列表
-    public function get_theme_describes(){
-        return Db::table("jckk_theme_describe")
-            ->alias("p")
-            ->field(["p.*","u.chinese_name"])
-            ->where("p.is_delete","<>",1)
-            ->join("jckk_user u","p.create_uid = u.uid","LEFT")
+    public function get_theme_describes($theme_id){
+        return $this->where("theme_id",$theme_id)->where("is_delete",0)
+            ->order("describe_sort","asc")
             ->select();
     }
 
@@ -90,7 +75,7 @@ class ThemeDescribe extends Model{
 
         $theme_describe_log["before_value"] = json_encode($theme_describe);
         $theme_describe_log["after_value"] = "";
-        $theme_describe_log["title"] = "删除".$theme_describe->theme_describe_name."(产品)，ID是".$theme_describe->id;
+        $theme_describe_log["title"] = "删除主题内容";
         $theme_describe->is_delete = 1;
         if($theme_describe->save()){
             model("log","logic")->write_log( $theme_describe_log);
