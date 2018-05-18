@@ -264,3 +264,41 @@ create table jckk_message (
     is_delete int default 0 comment "是否删除"
     )ENGINE=MYISAM DEFAULT CHARSET=utf8;
 
+
+
+
+create table jckk_question (
+    id int primary key auto_increment,
+    question_type varchar(50) comment "类型",
+    title varchar(100) comment "标题",
+    create_time int comment "加入时间",
+    is_delete int default 0 comment "是否删除"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+create table jckk_answer (
+    id int primary key auto_increment,
+    question_id int comment "问题",
+    content varchar(200) comment "内容",
+    sort varchar(10) comment "序号",
+    score int comment "分数",
+    create_time int comment "加入时间",
+    is_delete int default 0 comment "是否删除"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+
+create table jckk_theme (
+    id int primary key auto_increment,
+    theme_type varchar(30) comment "类型",
+    theme_name varchar(100) comment "主题名称",
+    create_time int comment "加入时间",
+    is_delete int default 0 comment "是否删除"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+create table jckk_theme_describe (
+    id int primary key auto_increment,
+    theme_id int comment "主题",
+    theme_describe varchar(200) comment "内容",
+    describe_sort int comment "所属行号",
+    create_time int comment "加入时间",
+    is_delete int default 0 comment "是否删除"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;

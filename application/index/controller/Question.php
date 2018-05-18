@@ -28,14 +28,18 @@ class Question extends Base {
     public function question_add(){
 
 
-        if(!$this->check_post_menu_permission("add_operate")){
-            echo "<script> alert('没有权限！');history.back(-1);</script>";
-        }
-        else {
+//        if(!$this->check_post_menu_permission("add_operate")){
+//            echo "<script> alert('没有权限！');history.back(-1);</script>";
+//        }
+//        else {
             $question_type = Config::get("question_type");
+            $answer_sort = Config::get("answer_sort");
+            $answer_score = Config::get("answer_score");
             $this->assign("question_type",$question_type);
+            $this->assign("answer_sort",$answer_sort);
+            $this->assign("answer_score",$answer_score);
             return view("question_add");
-        }
+//        }
     }
 
 
@@ -43,8 +47,7 @@ class Question extends Base {
     //保存
     public function save_question(){
         $data = Request::instance()->post();
-        $file = Request::instance()->file("img");
-        $res = model("question","logic")->save_question($data,$file);
+        $res = model("question","logic")->save_question($data);
         if($res){
             $this->redirect("question");
         }
@@ -55,17 +58,22 @@ class Question extends Base {
 
     public function  question_edit($id){
 
-        if(!$this->check_post_menu_permission("update_operate")){
-            echo "<script> alert('没有权限！');history.back(-1);</script>";
-        }
-        else {
+//        if(!$this->check_post_menu_permission("update_operate")){
+//            echo "<script> alert('没有权限！');history.back(-1);</script>";
+//        }
+//        else {
 
             $question = model("question", "logic")->get_question($id);
             $question_type = Config::get("question_type");
+            $answer_sort = Config::get("answer_sort");
+            $answer_score = Config::get("answer_score");
             $this->assign("question_type",$question_type);
-            $this->assign('question',$question);
+            $this->assign("answer_sort",$answer_sort);
+            $this->assign("answer_score",$answer_score);
+            $this->assign('question',$question['question']);
+            $this->assign('answers',$question['answer']);
             return view("question_edit");
-        }
+//        }
     }
 
 
@@ -90,22 +98,13 @@ class Question extends Base {
 
         //获得一条项目信息
         $question = model("question", "logic")->get_question($id);
-        $this->assign('question',$question);
+        $this->assign('question',$question['question']);
+        $this->assign('answers',$question['answer']);
         return view("question_des");
 
     }
 
 
-    public  function  ajax_get_question(){
-        $question_name = Request::instance()->get("question_name");
-        $questions = model("question","logic")->get_question_by_name($question_name);
-        if($questions){
-            return $questions;
-        }
-        else{
-            return 0;
-        }
-    }
 
 
 

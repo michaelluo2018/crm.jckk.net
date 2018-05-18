@@ -1,0 +1,38 @@
+{extend name="layout"/}
+{block name="title"/}
+<title>题目详情 - 客户管理系统</title>
+{/block}
+{block name="css"/}
+
+{/block}
+{block name="breadcrumb"/}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">题目详情</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">首页</a></li>
+        <li class="breadcrumb-item active">题目详情</li>
+    </ol>
+</div>
+{/block}
+{block name="detail"/}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-outline-info">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white">题目详情</h4>
+            </div>
+            <div class="card-body">
+                    <h4>【{$question.question_type}】 {$question.title} </h4>
+                    <div style="line-height: 40px;padding: 20px;">
+                        {volist name="answers" id="answer"/}
+                        <p>{$answer.sort}、{$answer.content} <small style="margin-left: 40px;">分数：{$answer.score}</small></p>
+                        {/volist}
+                    </div>
+                <a href="javascript:void (0);" onclick="delete_sure('确定要删除此项目吗？','{:url(\'index/question/question_del\')}?id={$question.id}&mid={$mid}')" class="btn btn-danger " title="删除"><i class="ti-close" aria-hidden="true"></i></a>
+                <a href="{:url('index/question/question_edit')}?id={$question.id}&mid={$mid}" class="btn btn-primary" title="修改"><i class="ti-pencil" aria-hidden="true"></i></a>
+            </div>
+
+        </div>
+    </div>
+</div>
+{/block}
