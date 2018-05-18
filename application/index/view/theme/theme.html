@@ -23,7 +23,10 @@
                     <div class="d-flex">
                         <div class="mr-auto">
                             <div class="form-group">
-                                <button type="button"  class="btn btn-info "  data-toggle="modal" data-target="#add_theme" ><i class="ti-plus" aria-hidden="true"></i>添加主题</button>
+                                <button type="button"  class="btn btn-primary btn-sm "  data-toggle="modal" data-target="#add_theme" ><i class="ti-plus" aria-hidden="true"></i>添加主题</button>
+                                <a  class="btn btn-info btn-sm " href="{:url('index/question/question')}?mid={$mid}">
+                                    <i class="ace-icon fa fa-file-word-o" aria-hidden="true"></i> 题目管理
+                                </a>
                             </div>
                         </div>
                         <div class="ml-auto">
@@ -53,9 +56,9 @@
                         <td>{$theme['theme']['theme_name']}</td>
 
                         <td>
-                            <a href="javascript:void (0);" onclick="delete_sure('确定要删除此项目吗？','{:url(\'index/theme/theme_del\')}?id={$theme[\'theme\'][\'id\']}&mid={$mid}')" class="btn btn-danger " title="删除"><i class="ti-close" aria-hidden="true"></i></a>
-                            <a href="{:url('index/theme/theme_edit')}?id={$theme['theme']['id']}&mid={$mid}" class="btn btn-primary" title="修改"><i class="ti-pencil" aria-hidden="true"></i></a>
-                            <button type="button"  class="btn btn-info "  onclick="describe_send_tid('{$theme[\'theme\'][\'id\']}','{$theme[\'theme\'][\'theme_name\']}')" data-toggle="modal" data-target="#add_theme_describe" ><i class="ti-plus" aria-hidden="true"></i></button>
+                            <a href="javascript:void (0);" onclick="delete_sure('确定要删除此项目吗？','{:url(\'index/theme/theme_del\')}?id={$theme[\'theme\'][\'id\']}&mid={$mid}')" class="btn btn-danger btn-sm" title="删除"><i class="ti-close" aria-hidden="true"></i></a>
+                            <a href="{:url('index/theme/theme_edit')}?id={$theme['theme']['id']}&mid={$mid}" class="btn btn-primary btn-sm" title="修改"><i class="ti-pencil" aria-hidden="true"></i></a>
+                            <button type="button"  class="btn btn-info btn-sm"  onclick="describe_send_tid('{$theme[\'theme\'][\'id\']}','{$theme[\'theme\'][\'theme_name\']}')" data-toggle="modal" data-target="#add_theme_describe" ><i class="ti-plus" aria-hidden="true"></i></button>
                         </td>
                     </tr>
                     {if condition="count($theme['describes']) gt 0"/}

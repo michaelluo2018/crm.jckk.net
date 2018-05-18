@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52bd9cb4-fc9b-4b77-aaf2-8b0e198d5b49" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/index/view/theme/theme.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/index/view/theme/theme_add.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/index/view/theme/theme_des.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/index/view/theme/theme_describe_add.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/index/view/theme/theme_edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/config.php" afterPath="$PROJECT_DIR$/application/index/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/logic/Theme.php" afterPath="$PROJECT_DIR$/application/index/logic/Theme.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/logic/ThemeDescribe.php" afterPath="$PROJECT_DIR$/application/index/logic/ThemeDescribe.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/question/question.html" afterPath="$PROJECT_DIR$/application/index/view/question/question.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/question/question_add.html" afterPath="$PROJECT_DIR$/application/index/view/question/question_add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/question/question_des.html" afterPath="$PROJECT_DIR$/application/index/view/question/question_des.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/question/question_edit.html" afterPath="$PROJECT_DIR$/application/index/view/question/question_edit.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/application/index/view/question/theme.html" afterPath="$PROJECT_DIR$/application/index/controller/Theme.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/application/index/view/question/theme_describe.html" afterPath="$PROJECT_DIR$/application/index/view/theme/theme_describe.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/theme/theme.html" afterPath="$PROJECT_DIR$/application/index/view/theme/theme.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/theme/theme_describe_add.html" afterPath="$PROJECT_DIR$/application/index/view/theme/theme_describe_add.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Theme.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Theme.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/index/logic/Theme.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+            <state relative-caret-position="556">
+              <caret line="86" column="57" lean-forward="true" selection-start-line="86" selection-start-column="57" selection-end-line="86" selection-end-column="57" />
               <folding>
                 <element signature="e#206#1263#0#PHP" expanded="false" />
                 <element signature="e#252#814#0#PHP" expanded="false" />
@@ -76,8 +64,8 @@
       <file leaf-file-name="theme.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/index/view/theme/theme.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="55" column="123" lean-forward="false" selection-start-line="55" selection-start-column="114" selection-end-line="55" selection-end-column="123" />
+            <state relative-caret-position="324">
+              <caret line="60" column="77" lean-forward="false" selection-start-line="60" selection-start-column="77" selection-end-line="60" selection-end-column="77" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#p#0;n#td#1;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#1;n#p#0;n#td#1;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
@@ -89,9 +77,21 @@
       <file leaf-file-name="theme_add.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/index/view/theme/theme_add.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="19" column="49" lean-forward="false" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+            <state relative-caret-position="108">
+              <caret line="4" column="57" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="57" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="theme_describe_add.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/index/view/theme/theme_describe_add.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+              <folding>
+                <element signature="n#div#0;n#!!top" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,7 +99,7 @@
       <file leaf-file-name="task.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/index/view/task/task.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
+            <state relative-caret-position="3429">
               <caret line="156" column="56" lean-forward="true" selection-start-line="156" selection-start-column="13" selection-end-line="156" selection-end-column="56" />
               <folding>
                 <element signature="n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
@@ -107,6 +107,16 @@
                 <element signature="n#td#9;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
                 <element signature="n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="question.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/index/view/question/question.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="648">
+              <caret line="30" column="36" lean-forward="true" selection-start-line="28" selection-start-column="31" selection-end-line="30" selection-end-column="36" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -125,7 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get_message</find>
       <find>read_message</find>
       <find>product_start</find>
       <find>需求产品二级</find>
@@ -155,6 +164,7 @@
       <find>required=</find>
       <find>theme_describe_del</find>
       <find>theme_del</find>
+      <find>delete_theme</find>
     </findStrings>
     <replaceStrings>
       <replace>opportunities</replace>
@@ -235,17 +245,17 @@
         <option value="$PROJECT_DIR$/application/index/controller/Question.php" />
         <option value="$PROJECT_DIR$/application/index/config.php" />
         <option value="$PROJECT_DIR$/application/index/view/theme/theme_edit.html" />
-        <option value="$PROJECT_DIR$/application/index/view/question/question.html" />
         <option value="$PROJECT_DIR$/application/index/view/question/question_des.html" />
         <option value="$PROJECT_DIR$/application/index/view/question/question_add.html" />
         <option value="$PROJECT_DIR$/application/index/view/question/question_edit.html" />
         <option value="$PROJECT_DIR$/application/index/view/theme/theme_des.html" />
         <option value="$PROJECT_DIR$/application/index/logic/Theme.php" />
         <option value="$PROJECT_DIR$/application/index/logic/ThemeDescribe.php" />
-        <option value="$PROJECT_DIR$/application/index/view/theme/theme_describe_add.html" />
         <option value="$PROJECT_DIR$/application/index/view/theme/theme_add.html" />
-        <option value="$PROJECT_DIR$/application/index/view/theme/theme.html" />
         <option value="$PROJECT_DIR$/application/index/controller/Theme.php" />
+        <option value="$PROJECT_DIR$/application/index/view/question/question.html" />
+        <option value="$PROJECT_DIR$/application/index/view/theme/theme.html" />
+        <option value="$PROJECT_DIR$/application/index/view/theme/theme_describe_add.html" />
       </list>
     </option>
   </component>
@@ -392,7 +402,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="task" />
+              <option name="myItemId" value="question" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -563,12 +573,12 @@
       <workItem from="1526346704907" duration="22946000" />
       <workItem from="1526434366223" duration="30717000" />
       <workItem from="1526520497390" duration="25745000" />
-      <workItem from="1526606245209" duration="16313000" />
+      <workItem from="1526606245209" duration="16776000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="252172000" />
+    <option name="totallyTimeSpent" value="252635000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1934" height="1056" extended-state="0" />
@@ -968,14 +978,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/question/question.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="57" column="86" lean-forward="false" selection-start-line="57" selection-start-column="86" selection-end-line="57" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/index/view/task/task_add.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
@@ -1058,29 +1060,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/theme/theme_describe_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding>
-            <element signature="n#div#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/task/task.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="156" column="56" lean-forward="true" selection-start-line="156" selection-start-column="13" selection-end-line="156" selection-end-column="56" />
-          <folding>
-            <element signature="n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#td#9;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/index/logic/ThemeDescribe.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="455">
@@ -1091,25 +1070,6 @@
             <element signature="e#657#968#0#PHP" expanded="false" />
             <element signature="e#1680#1776#0#PHP" expanded="false" />
             <element signature="e#1793#2306#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/theme/theme_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="19" column="49" lean-forward="false" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/theme/theme.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="55" column="123" lean-forward="false" selection-start-line="55" selection-start-column="114" selection-end-line="55" selection-end-column="123" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#p#0;n#td#1;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#p#0;n#td#1;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1128,13 +1088,63 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/index/logic/Theme.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+        <state relative-caret-position="556">
+          <caret line="86" column="57" lean-forward="true" selection-start-line="86" selection-start-column="57" selection-end-line="86" selection-end-column="57" />
           <folding>
             <element signature="e#206#1263#0#PHP" expanded="false" />
             <element signature="e#252#814#0#PHP" expanded="false" />
             <element signature="e#911#1069#0#PHP" expanded="false" />
             <element signature="e#2341#2488#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/task/task.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3429">
+          <caret line="156" column="56" lean-forward="true" selection-start-line="156" selection-start-column="13" selection-end-line="156" selection-end-column="56" />
+          <folding>
+            <element signature="n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
+            <element signature="n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
+            <element signature="n#td#9;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
+            <element signature="n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/question/question.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="30" column="36" lean-forward="true" selection-start-line="28" selection-start-column="31" selection-end-line="30" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/theme/theme.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="60" column="77" lean-forward="false" selection-start-line="60" selection-start-column="77" selection-end-line="60" selection-end-column="77" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#p#0;n#td#1;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#p#0;n#td#1;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/theme/theme_add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="57" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/theme/theme_describe_add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding>
+            <element signature="n#div#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
