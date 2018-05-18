@@ -57,6 +57,7 @@ class Question extends Model{
 
 
 
+
     //获取一条
     public function get_question($id){
 
@@ -99,5 +100,48 @@ class Question extends Model{
 
 
 
+    //获取h5题
+    public function get_h5_questions(){
+        //固定题目
+        $fixed_question = $this->get_question_by_type("固定");
+        //容易题目
+        $easy_question = $this->get_question_by_type("容易");
+        //困难题目
+        $difficult_question = $this->get_question_by_type("困难");
+
+        $h5_question_num = Config::get("h5_question_num");
+
+
+        $easy_list = array();
+        if($easy_question){
+            $easy_num_rand = $this->get_range_num($h5_question_num['容易'],count($easy_question));
+            for($n=0;$n<count($easy_num_rand);$n++){
+                $easy_list[$n] = $easy_question[$n];
+            }
+        }
+      
+       $difficult_list = array();
+       if($difficult_question){
+            $difficult_num_rand = $this->get_range_num($h5_question_num['困难'],count($difficult_question));
+            for($m=0;$m<count($difficult_num_rand);$m++){
+                $difficult_list[$m] = $difficult_question[$m];
+            }
+        }
+
+        $list = collection(array_merge($fixed_question,$easy_list,$difficult_list))->toArray();
+        shuffle($list) ; //shuffle随机排序
+        return $list;
+    }
+
+    public function  get_range_num($need_num,$total_num){
+        $num_range = range(0,$total_num-1);
+        if($need_num<=$total_num-1){
+            $result = array_rand($num_range,$need_num);
+        }
+       else{
+           $result = $num_range;
+       }
+        return $result;
+    }
 
 }

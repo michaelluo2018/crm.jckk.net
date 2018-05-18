@@ -106,5 +106,16 @@ class Theme extends Model{
 
 
 
+    public function get_user_theme_result($theme_type){
+        $data['theme'] = array_rand(collection($this->get_theme_by_type($theme_type))->toArray(),1);
+        $data['describe1'] =  array_rand(collection(model("theme_describe","logic")->get_theme_describe_by_sort($data['theme']->theme_id,1))->toArray(),1);
+        $data['describe2'] =  array_rand(collection(model("theme_describe","logic")->get_theme_describe_by_sort($data['theme']->theme_id,2))->toArray(),1);
+        $data['describe3'] =  array_rand(collection(model("theme_describe","logic")->get_theme_describe_by_sort($data['theme']->theme_id,3))->toArray(),1);
+
+        return $data;
+    }
+
+
+
 
 }
