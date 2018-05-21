@@ -130,7 +130,13 @@ class Question extends Model{
 
         $list = collection(array_merge($fixed_question,$easy_list,$difficult_list))->toArray();
         shuffle($list) ; //shuffle随机排序
-        return $list;
+        $result = array();
+        foreach ($list as $key=>$value){
+            $data = $this->get_question($value['id']);
+            $result[$key]['question'] = $value;
+            $result[$key]['answer'] = collection($data['answer'])->toArray();
+        }
+        return $result;
     }
 
     public function  get_range_num($need_num,$total_num){

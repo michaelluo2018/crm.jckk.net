@@ -32,10 +32,12 @@ class H5 extends Controller {
             }
             else{
                 //学渣
-                $user_theme = $theme_type[1];
+                $user_theme = $theme_type[2];
             }
 
             $theme_result = model("theme","logic")->get_user_theme_result($user_theme);
+            dump($theme_result);die;
+
             $orign_image = ROOT_PATH.'public'.DS.'static'.DS.'assets'.DS.'images'.DS.'1.jpg';
             $result_image = ROOT_PATH.'public'.DS.'uploads'.DS.date('YmdHis').DS.$name.rand(1000,99999).'.jpg';
             //生成图片
@@ -49,6 +51,25 @@ class H5 extends Controller {
 
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
