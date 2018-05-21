@@ -54,7 +54,18 @@ class H5 extends Controller {
 
 
 
+        public function badword(){
+           $badword = Config::get("badword");
+            $badword1 = array_combine($badword,array_fill(0,count($badword),'*'));
+            $bb = '抵制nnn共产主义';
+            $str = strtr($bb, $badword1);
+            dump($str);
+        }
 
+
+        public function baiDuApi(){
+            require_once 'BaiduApi.php';
+        }
 
 
 
