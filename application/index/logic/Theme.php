@@ -107,10 +107,21 @@ class Theme extends Model{
 
 
     public function get_user_theme_result($theme_type){
-        $data['theme'] = array_rand(collection($this->get_theme_by_type($theme_type))->toArray(),1);
-        $data['describe1'] =  array_rand(collection(model("theme_describe","logic")->get_theme_describe_by_sort($data['theme']->theme_id,1))->toArray(),1);
-        $data['describe2'] =  array_rand(collection(model("theme_describe","logic")->get_theme_describe_by_sort($data['theme']->theme_id,2))->toArray(),1);
-        $data['describe3'] =  array_rand(collection(model("theme_describe","logic")->get_theme_describe_by_sort($data['theme']->theme_id,3))->toArray(),1);
+        $theme = collection($this->get_theme_by_type($theme_type))->toArray();
+        $i = array_rand(collection($this->get_theme_by_type($theme_type))->toArray(),1);
+        $data['theme'] = $theme[$i];
+        $describe1 = collection(model("theme_describe","logic")->get_theme_describe_by_sort($data['theme']['id'],1))->toArray();
+        $describe2 = collection(model("theme_describe","logic")->get_theme_describe_by_sort($data['theme']['id'],2))->toArray();
+        $describe3 = collection(model("theme_describe","logic")->get_theme_describe_by_sort($data['theme']['id'],3))->toArray();
+        if($describe1){
+            $data['describe1'] = $describe1[array_rand($describe1,1)];
+        }
+        if($describe1){
+            $data['describe2'] = $describe1[array_rand($describe2,1)];
+        }
+        if($describe1){
+            $data['describe3'] = $describe1[array_rand($describe3,1)];
+        }
 
         return $data;
     }
