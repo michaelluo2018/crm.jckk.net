@@ -4,6 +4,8 @@ use think\Model;
 use think\Db;
 use app\index\model\Log;
 use app\index\controller\Common;
+use think\Session;
+
 class User extends Model{
 
     protected  $table="jckk_user";
@@ -366,5 +368,35 @@ class User extends Model{
         return   $user->save();
     }
 
+
+
+    public function get_my_leaders(){
+        $uid = Session::get("uid");
+        $user = $this->where("uid",$uid)->find();
+        //获取我的岗位path
+        $my_post = model("post")->where("id",$user->post_id)->find();
+        if($my_post){
+           $array = explode("-",$my_post->path);
+           if(count($array)>1){
+               for ($i=1;$i<count($array);$i++){
+                   $post = model("post")->where(["department_id"=>$user->department_id,"id"=>$array[$i],"is_delete"=>0])->column("id");
+                   $post_id[$i-1] = $post[0];
+               }
+             //根据post_id 获取用户
+               if(!empty($post_id)){
+                   $leader_users = $this->whereIn("post_id",$post_id)->where("is_delete",0)->where("quit",0)->select();
+                   return $leader_users;
+               }
+           }
+           else{
+              //已经是部门最高领导,就选择董事会部门
+               $department = model("department")->where(["department_name"=>"董事会","is_delete"=>0])->find();
+               $leader_users = $this->where("department_id",$department->id)->where("is_delete",0)->where("quit",0)->select();
+               return $leader_users;
+           }
+
+
+        }
+    }
 
 }

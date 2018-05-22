@@ -302,3 +302,20 @@ create table jckk_theme_describe (
     create_time int comment "加入时间",
     is_delete int default 0 comment "是否删除"
     )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+
+create table jckk_leave (
+    id int primary key auto_increment,
+    uid int comment "请假者",
+    department_id int comment "部门",
+    post_id int comment "岗位",
+    leave_type varchar(50) comment "请假类别",
+    leave_start varchar(50) comment "开始时间",
+    leave_end varchar(50) comment "结束时间",
+    work_day varchar(20) comment "请假几个工作日",
+    leave_reason varchar(200) comment "请假事由",
+    audit_status int  default 0 comment "审核状态",
+    create_time int  comment "创建时间",
+    create_uid int  comment "创建者",
+    is_delete int default 0 comment "是否删除"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
