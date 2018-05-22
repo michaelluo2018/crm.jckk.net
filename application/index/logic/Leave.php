@@ -40,26 +40,34 @@ class Leave extends Model{
         $leave->leave_end = trim($data['leave_end']);
         $leave->work_day = trim($data['work_day']);
         $leave->leave_reason = trim($data['leave_reason']);
-        $leave->leader_uid = trim($data['leader_uid']);
+        if(isset($data['leader_uid'])){
+            $leave->leader_uid = trim($data['leader_uid']);
+            $leader_uid = trim($data['leader_uid']);
+        }
+        if(isset($data['leader_uid2'])){
+            $leave->leader_uid = trim($data['leader_uid2']);
+            $leader_uid = trim($data['leader_uid2']);
+        }
         $leave->audit_status = 0;
         $leave->is_delete = 0;
 
         if($leave->save()){
             $leave_log["after_value"] = json_encode($leave);
             model("log","logic")->write_log( $leave_log);
+            //发系统消息和邮件通知上司
+            $url = "http://crm1.jckk.net/index/leave/leave_des?id=".$leave->id;
+            $message1 = [
+                "from_uid"=>Session::get("uid"),
+                "to_uid"=>$leader_uid,
+                "title"=>"【请假】【".$data['leave_type']."】".$name,
+                "content"=>"<div style='margin-left: 30px;'> <a href='".$url."'><p>姓名：".$name."</p><p>请假类别：".$data['leave_type']."</p><p>请假时间：".$data['leave_start']."--".$data['leave_end']." （请假".$data['work_day']."天）</p><p>事由：".$data['leave_reason']."</p></a></div>"
+            ];
+            model("message", "logic")->save_message($message1);
+            $user = model("user")->where("uid",$leader_uid)->find();
+            $content = $this->get_leave_email_html($leave->id,$url);
+            Common::send_mail($user->email,$message1['title'],$content,$type = "HTML");
+
         }
-        //发系统消息和邮件通知上司
-        $url = "http://crm1.jckk.net/index/leave/leave_des?id=".$leave->id;
-        $message1 = [
-            "from_uid"=>Session::get("uid"),
-            "to_uid"=>$data['leader_uid'],
-            "title"=>"【请假】".$name,
-            "content"=>"<div style='margin-left: 30px;'> <a href='".$url."'><p>姓名：".$name."</p><p>请假类别：".$data['leave_type']."</p><p>请假时间：".$data['leave_start']."--".$data['leave_end']." （请假".$data['work_day']."天）</p><p>事由：".$data['leave_reason']."</p></a></div>"
-        ];
-       model("message", "logic")->save_message($message1);
-       $user = model("user")->where("uid",$data['leader_uid'])->find();
-       $content = $this->get_leave_email_html($leave->id,$url);
-       Common::send_mail($user->email,$message1['title'],$content,$type = "HTML");
         return $leave->id;
 
     }
@@ -111,17 +119,21 @@ class Leave extends Model{
     public function  delete_leave($id){
 
         $leave = $this->where("id",$id)->find();
-
-        //添加日志
-        $leave_log["type"] = Log::DELETE_TYPE;
-
-        $leave_log["before_value"] = json_encode($leave);
-        $leave_log["after_value"] = "";
-        $leave_log["title"] = "删除".$leave->leave_name."(产品)，ID是".$leave->id;
-        $leave->is_delete = 1;
-        if($leave->save()){
-            model("log","logic")->write_log( $leave_log);
+        if($leave->audit_status !=3){
+            //添加日志
+            $leave_log["type"] = Log::DELETE_TYPE;
+            $leave_log["before_value"] = json_encode($leave);
+            $leave_log["after_value"] = "";
+            $leave_log["title"] = "删除请假";
+            $leave->is_delete = 1;
+            if($leave->save()){
+                model("log","logic")->write_log( $leave_log);
+            }
         }
+        else{
+            return 3;
+        }
+
 
 
 

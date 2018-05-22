@@ -19,8 +19,9 @@ class Leave extends Base {
 
         $leave_type = Config::get("leave_type");
         //获取我的部门领导
-        $leader_users = model("user","logic")->get_my_leaders();
-        $this->assign("leader_users",$leader_users);
+        $result = model("user","logic")->get_my_leaders();
+        $this->assign("leader_users",$result['leader_users']);
+        $this->assign("leader_uid",$result['leader_uid']);
         $this->assign("leave_type",$leave_type);
         return view("leave_add");
 
@@ -44,16 +45,17 @@ class Leave extends Base {
     public function  leave_edit($id){
 
         $leave = model("leave", "logic")->get_leave($id);
-        if($leave['audit_status']==0 || $leave['audit_status']==4 || $leave['audit_status']==5){
+        if($leave['audit_status']!=3){
             $leave_type = Config::get("leave_type");
-            $leader_users = model("user","logic")->get_my_leaders();
-            $this->assign("leader_users",$leader_users);
+            $result = model("user","logic")->get_my_leaders();
+            $this->assign("leader_users",$result['leader_users']);
+            $this->assign("leader_uid",$result['leader_uid']);
             $this->assign("leave_type",$leave_type);
             $this->assign('leave',$leave);
             return view("leave_edit");
         }
         else{
-            echo "<script> alert('你的请假正在走审核流程，没法修改！');history.back(-1);</script>";
+            echo "<script> alert('你的请假审核流程已走完，没法修改！');history.back(-1);</script>";
         }
 
 
@@ -63,15 +65,14 @@ class Leave extends Base {
     //删除
 
     public function  leave_del($id){
-        if(!$this->check_post_menu_permission("delete_operate")){
-            echo "<script> alert('没有权限！');history.back(-1);</script>";
-        }
-        else {
-            model("leave", "logic")->delete_leave($id);
 
-            $this->redirect("leave");
-        }
-
+           $result =  model("leave", "logic")->delete_leave($id);
+           if($result!=3){
+               $this->redirect("leave");
+           }
+           else{
+               echo "<script> alert('你的请假审核流程已走完，没法删除！');history.back(-1);</script>";
+           }
     }
 
 

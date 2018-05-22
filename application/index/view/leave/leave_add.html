@@ -68,6 +68,7 @@
                                     <textarea  rows="6" class="form-control" placeholder="请填写备注" name="leave_reason" required></textarea>
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
+                            {if condition="$leader_uid eq 'leader_uid'"}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label"><span class="text-danger"> * </span>审批上司</label>
@@ -80,7 +81,20 @@
                                     <small class="form-control-feedback"> </small>
                                 </div>
                             </div>
-
+                            {else/}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>审批上司</label>
+                                    <select class="form-control"  tabindex="1" name="leader_uid2" required>
+                                        <option value="">请选择</option>
+                                        {volist name="leader_users" id= "user"}
+                                        <option value="{$user.uid}">{$user.chinese_name}</option>
+                                        {/volist}
+                                    </select>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            {/if}
 
                         </div>
 
