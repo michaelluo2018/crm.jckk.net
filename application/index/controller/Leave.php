@@ -9,8 +9,7 @@ class Leave extends Base {
     //列表
     public function leave(){
 
-        $leaves =  model('leave','logic')->get_leaves();
-
+        $leaves =  model('leave','logic')->get_leave_by_uid($this->uid);
         $this->assign("leaves",$leaves);
         return view("leave");
     }
@@ -44,17 +43,20 @@ class Leave extends Base {
 
     public function  leave_edit($id){
 
-        if(!$this->check_post_menu_permission("update_operate")){
-            echo "<script> alert('没有权限！');history.back(-1);</script>";
-        }
-        else {
-
-            $leave = model("leave", "logic")->get_leave($id);
+        $leave = model("leave", "logic")->get_leave($id);
+        if($leave['audit_status']==0 || $leave['audit_status']==4 || $leave['audit_status']==5){
             $leave_type = Config::get("leave_type");
+            $leader_users = model("user","logic")->get_my_leaders();
+            $this->assign("leader_users",$leader_users);
             $this->assign("leave_type",$leave_type);
             $this->assign('leave',$leave);
             return view("leave_edit");
         }
+        else{
+            echo "<script> alert('你的请假正在走审核流程，没法修改！');history.back(-1);</script>";
+        }
+
+
     }
 
 

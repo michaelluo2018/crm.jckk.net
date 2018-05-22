@@ -40,6 +40,7 @@ class Leave extends Model{
         $leave->leave_end = trim($data['leave_end']);
         $leave->work_day = trim($data['work_day']);
         $leave->leave_reason = trim($data['leave_reason']);
+        $leave->leader_uid = trim($data['leader_uid']);
         $leave->audit_status = 0;
         $leave->is_delete = 0;
 
@@ -63,12 +64,12 @@ class Leave extends Model{
 
     }
 
-      public function get_leave_email_html($leave_id,$url){
-        $leave = $this->get_leave($leave_id);
-        $html = "<table style='width: 80%;margin: 0 auto;'><tr><td style='border: 1px solid #0c0c0c'>部门</td><td style='border: 1px solid #0c0c0c'>".$leave['department_name']."</td><td style='border: 1px solid #0c0c0c'>姓名</td><td style='border: 1px solid #0c0c0c'>".$leave['chinese_name']."</td><td style='border: 1px solid #0c0c0c'>职务</td><td style='border: 1px solid #0c0c0c'>".$leave['post_name']."</td></tr><tr><td style='border: 1px solid #0c0c0c'>请假类别</td><td colspan='5' style='border: 1px solid #0c0c0c'>".$leave['leave_type']."</td></tr><tr><td style='border: 1px solid #0c0c0c'>请假时间</td><td colspan='5' style='border: 1px solid #0c0c0c'>".$leave['leave_start']."--".$leave['leave_end']."（请假".$leave['work_day']."天）</td></tr><tr><td style='border: 1px solid #0c0c0c'>请假事由</td><td colspan='5' style='border: 1px solid #0c0c0c'>".$leave['leave_reason']."</td></tr></table>";
-        $html .= "<div style='width: 80%;margin: 0 auto;'><p><a href='".$url."'>来至金诚互动客户管理系统，去查看</a></p><p>技术支持邮箱：star.fang@jckk.net</p></div>";
-        return $html;
-      }
+    public function get_leave_email_html($leave_id,$url){
+    $leave = $this->get_leave($leave_id);
+    $html = "<table style='width: 80%;margin: 0 auto;'><tr><td style='border: 1px solid #0c0c0c'>部门</td><td style='border: 1px solid #0c0c0c'>".$leave['department_name']."</td><td style='border: 1px solid #0c0c0c'>姓名</td><td style='border: 1px solid #0c0c0c'>".$leave['chinese_name']."</td><td style='border: 1px solid #0c0c0c'>职务</td><td style='border: 1px solid #0c0c0c'>".$leave['post_name']."</td></tr><tr><td style='border: 1px solid #0c0c0c'>请假类别</td><td colspan='5' style='border: 1px solid #0c0c0c'>".$leave['leave_type']."</td></tr><tr><td style='border: 1px solid #0c0c0c'>请假时间</td><td colspan='5' style='border: 1px solid #0c0c0c'>".$leave['leave_start']."--".$leave['leave_end']."（请假".$leave['work_day']."天）</td></tr><tr><td style='border: 1px solid #0c0c0c'>请假事由</td><td colspan='5' style='border: 1px solid #0c0c0c'>".$leave['leave_reason']."</td></tr></table>";
+    $html .= "<div style='width: 80%;margin: 0 auto;'><p><a href='".$url."'>来至金诚互动客户管理系统，去查看</a></p><p>技术支持邮箱：star.fang@jckk.net</p></div>";
+    return $html;
+  }
 
 
 
@@ -129,7 +130,6 @@ class Leave extends Model{
 
 
     public function get_leave_by_uid($uid){
-
         return Db::table("jckk_leave")
             ->alias("l")
             ->field(["l.*","u.chinese_name","d.department_name","p.post_name"])
@@ -139,7 +139,6 @@ class Leave extends Model{
             ->join("jckk_department d","d.id = u.department_id","LEFT")
             ->join("jckk_post p","p.id = u.post_id","LEFT")
             ->select();
-
     }
 
 
