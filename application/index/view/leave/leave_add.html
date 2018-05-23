@@ -95,8 +95,8 @@
                             {else/}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">高层审批</label>
-                                    <select class="form-control"  tabindex="1" name="leader_uid2">
+                                    <label class="control-label"><span class="text-danger"> * </span>高层审批</label>
+                                    <select class="form-control"  tabindex="1" name="leader_uid2" required>
                                         <option value="">请选择</option>
                                         {volist name="leader_users2" id= "user2"}
                                         <option value="{$user2.uid}">{$user2.chinese_name}</option>

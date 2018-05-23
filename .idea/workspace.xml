@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52bd9cb4-fc9b-4b77-aaf2-8b0e198d5b49" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/logic/Leave.php" afterPath="$PROJECT_DIR$/application/index/logic/Leave.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/leave/leave.html" afterPath="$PROJECT_DIR$/application/index/view/leave/leave.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/leave/leave_add.html" afterPath="$PROJECT_DIR$/application/index/view/leave/leave_add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/leave/leave_des.html" afterPath="$PROJECT_DIR$/application/index/view/leave/leave_des.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/leave/leave_edit.html" afterPath="$PROJECT_DIR$/application/index/view/leave/leave_edit.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,41 +14,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="leave_edit.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/index/view/leave/leave_edit.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-783">
-              <caret line="92" column="65" lean-forward="false" selection-start-line="92" selection-start-column="65" selection-end-line="92" selection-end-column="65" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="leave_add.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="leave_add.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/index/view/leave/leave_add.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="541">
-              <caret line="91" column="113" lean-forward="true" selection-start-line="91" selection-start-column="34" selection-end-line="91" selection-end-column="113" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="leave_des.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/index/view/leave/leave_des.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="514">
-              <caret line="54" column="33" lean-forward="true" selection-start-line="50" selection-start-column="27" selection-end-line="54" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="leave.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/index/view/leave/leave.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="676">
-              <caret line="85" column="24" lean-forward="true" selection-start-line="85" selection-start-column="24" selection-end-line="85" selection-end-column="24" />
+            <state relative-caret-position="217">
+              <caret line="97" column="101" lean-forward="false" selection-start-line="97" selection-start-column="101" selection-end-line="97" selection-end-column="101" />
               <folding />
             </state>
           </provider>
@@ -179,11 +144,11 @@
         <option value="$PROJECT_DIR$/application/index/logic/User.php" />
         <option value="$PROJECT_DIR$/application/index/controller/Leave.php" />
         <option value="$PROJECT_DIR$/../email/application/index/controller/Login.php" />
-        <option value="$PROJECT_DIR$/application/index/view/leave/leave_add.html" />
         <option value="$PROJECT_DIR$/application/index/logic/Leave.php" />
         <option value="$PROJECT_DIR$/application/index/view/leave/leave_edit.html" />
         <option value="$PROJECT_DIR$/application/index/view/leave/leave_des.html" />
         <option value="$PROJECT_DIR$/application/index/view/leave/leave.html" />
+        <option value="$PROJECT_DIR$/application/index/view/leave/leave_add.html" />
       </list>
     </option>
   </component>
@@ -304,28 +269,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="leave" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crm" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="index" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="logic" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -481,12 +424,12 @@
       <workItem from="1526606245209" duration="24329000" />
       <workItem from="1526865447808" duration="27123000" />
       <workItem from="1526952498749" duration="21530000" />
-      <workItem from="1527037522392" duration="15091000" />
+      <workItem from="1527037522392" duration="16974000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="323932000" />
+    <option name="totallyTimeSpent" value="325815000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1934" height="1056" extended-state="0" />
@@ -570,13 +513,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/phprunlogs/2018-05-10-sqlerror.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/static/font/书体坊兰亭体.ttf" />
     <entry file="file://$PROJECT_DIR$/public/static/font/书体坊赵九江钢笔行书.ttf" />
     <entry file="file://$PROJECT_DIR$/public/static/font/simkai.ttf">
@@ -912,18 +848,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/leave/leave_add.html">
+    <entry file="file://$PROJECT_DIR$/application/index/view/leave/leave.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="91" column="113" lean-forward="true" selection-start-line="91" selection-start-column="34" selection-end-line="91" selection-end-column="113" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/leave/leave_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-783">
-          <caret line="92" column="65" lean-forward="false" selection-start-line="92" selection-start-column="65" selection-end-line="92" selection-end-column="65" />
+        <state relative-caret-position="730">
+          <caret line="87" column="52" lean-forward="true" selection-start-line="87" selection-start-column="52" selection-end-line="87" selection-end-column="52" />
           <folding />
         </state>
       </provider>
@@ -936,10 +864,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/leave/leave.html">
+    <entry file="file://$PROJECT_DIR$/application/index/view/leave/leave_edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="676">
-          <caret line="85" column="24" lean-forward="true" selection-start-line="85" selection-start-column="24" selection-end-line="85" selection-end-column="24" />
+        <state relative-caret-position="-783">
+          <caret line="92" column="65" lean-forward="false" selection-start-line="92" selection-start-column="65" selection-end-line="92" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="757">
+          <caret line="254" column="29" lean-forward="true" selection-start-line="225" selection-start-column="23" selection-end-line="254" selection-end-column="29" />
+          <folding>
+            <element signature="n#li#1;n#ul#0;n#nav#0;n#div#0;n#aside#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/leave/leave_add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="97" column="101" lean-forward="false" selection-start-line="97" selection-start-column="101" selection-end-line="97" selection-end-column="101" />
           <folding />
         </state>
       </provider>
