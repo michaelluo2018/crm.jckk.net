@@ -46,29 +46,20 @@
                             <div class="col-md-6">
                                 <div class="form-group has-danger">
                                     <label class="control-label"><span class="text-danger"> * </span>开始时间</label>
-                                    <input type="datetime-local"  class="form-control" value="{$leave['leave_start']}" name="leave_start" required>
+                                    <input type="text"  class="form-control" value="{$leave['leave_start']}" name="leave_start" required>
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group has-danger">
                                     <label class="control-label"><span class="text-danger"> * </span>结束时间</label>
-                                    <input type="datetime-local"  class="form-control" value="{$leave['leave_end']}" name="leave_end" required>
+                                    <input type="text"  class="form-control" value="{$leave['leave_end']}" name="leave_end" required>
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group has-danger">
                                     <label class="control-label"><span class="text-danger"> * </span>请假天数</label>
-                                    <select class="form-control"   name="work_day" required>
-                                        <option value="">请选择</option>
-                                        {for start="1" end= "200"}
-                                        {if condition="$leave['work_day'] eq $i"/}
-                                        <option value="{$i}" selected>{$i}</option>
-                                        {else/}
-                                        <option value="{$i}">{$i}</option>
-                                        {/if}
-                                        {/for}
-                                    </select>
+                                    <input type="text"  class="form-control" value="{$leave['work_day']}" name="work_day" required>
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
                             <div class="col-md-12">
@@ -77,6 +68,9 @@
                                     <textarea  rows="6" class="form-control" placeholder="请填写备注" name="leave_reason" required>{$leave.leave_reason}</textarea>
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
+                        </div>
+                        <h3>审批流程</h3>
+                        <div class="row p-t-20">
                             {if condition="$leader_users"}
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -96,8 +90,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label"><span class="text-danger"> * </span>高层审批</label>
-                                    <select class="form-control"  tabindex="1" name="leader_uid2" required>
+                                    <label class="control-label">高层审批</label>
+                                    <select class="form-control"  tabindex="1" name="leader_uid2" >
                                         <option value="">请选择</option>
                                         {volist name="leader_users2" id= "user2"}
                                         {if condition="$leave['leader_uid2'] eq $user2.uid"/}
@@ -107,7 +101,7 @@
                                         {/if}
                                         {/volist}
                                     </select>
-                                    <small class="form-control-feedback"> </small>
+                                    <small class="form-control-feedback text-danger"> *普通员工请假3天以下的不用CEO批准</small>
                                 </div>
                             </div>
                             {else/}

@@ -62,7 +62,12 @@
                         <td>{$leave.create_time|date="Y-m-d H:i:s",###}</td>
                         <td>
                             {if condition="$leave.audit_status eq 0"/}待上司审批
-                            {elseif condition="$leave.audit_status eq 1"/}待CEO审批
+                            {elseif condition="$leave.audit_status eq 1"/}
+                            {if condition="$leave.leader_uid2"/}
+                            待CEO审批
+                            {else/}
+                            待人事备案
+                            {/if}
                             {elseif condition="$leave.audit_status eq 2"/}待人事备案
                             {elseif condition="$leave.audit_status eq 3"/}完结
                             {elseif condition="$leave.audit_status eq 4"/}上司驳回

@@ -47,7 +47,12 @@
                         <td style='border: 1px solid #0c0c0c'>请假状态</td>
                         <td colspan='5' style='border: 1px solid #0c0c0c'>
                             {if condition="$leave['audit_status'] eq 0"/}待上司审批
-                            {elseif condition="$leave['audit_status'] eq 1"/}待CEO审批
+                            {elseif condition="$leave['audit_status'] eq 1"/}
+                            {if condition="$leave['leader_uid2']"/}
+                            待CEO审批
+                            {else/}
+                            待人事备案
+                            {/if}
                             {elseif condition="$leave['audit_status'] eq 2"/}待人事备案
                             {elseif condition="$leave['audit_status'] eq 3"/}完结
                             {elseif condition="$leave['audit_status'] eq 4"/}上司驳回

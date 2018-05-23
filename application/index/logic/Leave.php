@@ -153,21 +153,39 @@ class Leave extends Model{
         if($leave->leader_uid ==  $uid){
             $leave->audit_status = 1;
             if($leave->save()){
-
-                //发系统消息和邮件通知上司
-                $url = "http://crm1.jckk.net/index/leave/leave_des?id=".$leave->id;
-                $create_user = model("user")->where("uid",$leave->create_uid)->find();
-                $message1 = [
-                    "from_uid"=>$uid,
-                    "to_uid"=>$leave->leader_uid2,
-                    "title"=>"【请假】【".$leave->leave_type."】".$create_user->chinese_name,
-                    "content"=>"<div style='margin-left: 30px;'> <a href='".$url."'><p>姓名：".$create_user->chinese_name."</p><p>请假类别：".$leave->leave_type."</p><p>请假时间：".$leave->leave_start."--".$leave->leave_end." （请假".$leave->work_day."天）</p><p>事由：".$leave->leave_reason."</p></a></div>"
-                ];
-                model("message", "logic")->save_message($message1);
-                $user = model("user")->where("uid",$leave->leader_uid2)->find();
-                $message = "<p>批准！</p>";
-                $content = $this->get_leave_email_html($leave->id,$url,$message);
-                Common::send_mail($user->email,$message1['title'],$content,$type = "HTML");
+                //判断需不需要CEO批准
+                if($leave->leader_uid2){
+                    //发系统消息和邮件通知CEO
+                    $url = "http://crm1.jckk.net/index/leave/leave_des?id=".$leave->id;
+                    $create_user = model("user")->where("uid",$leave->create_uid)->find();
+                    $message1 = [
+                        "from_uid"=>$uid,
+                        "to_uid"=>$leave->leader_uid2,
+                        "title"=>"【请假】【".$leave->leave_type."】".$create_user->chinese_name,
+                        "content"=>"<div style='margin-left: 30px;'> <a href='".$url."'><p>我已批准！点此处理请假申请</p><p></p><p>姓名：".$create_user->chinese_name."</p><p>请假类别：".$leave->leave_type."</p><p>请假时间：".$leave->leave_start."--".$leave->leave_end." （请假".$leave->work_day."天）</p><p>事由：".$leave->leave_reason."</p></a></div>"
+                    ];
+                    model("message", "logic")->save_message($message1);
+                    $user = model("user")->where("uid",$leave->leader_uid2)->find();
+                    $message = "<p>批准！</p><p></p>";
+                    $content = $this->get_leave_email_html($leave->id,$url,$message);
+                    Common::send_mail($user->email,$message1['title'],$content,$type = "HTML");
+                }
+               else{
+                   //发系统消息和邮件通知人事
+                   $url = "http://crm1.jckk.net/index/leave/leave_des?id=".$leave->id;
+                   $create_user = model("user")->where("uid",$leave->create_uid)->find();
+                   $message1 = [
+                       "from_uid"=>$uid,
+                       "to_uid"=>$leave->personnel_uid,
+                       "title"=>"【请假】【".$leave->leave_type."】".$create_user->chinese_name,
+                       "content"=>"<div style='margin-left: 30px;'> <a href='".$url."'><p>我已批准！点此备案请假申请</p><p></p><p>姓名：".$create_user->chinese_name."</p><p>请假类别：".$leave->leave_type."</p><p>请假时间：".$leave->leave_start."--".$leave->leave_end." （请假".$leave->work_day."天）</p><p>事由：".$leave->leave_reason."</p></a></div>"
+                   ];
+                   model("message", "logic")->save_message($message1);
+                   $user = model("user")->where("uid",$leave->personnel_uid)->find();
+                   $message = "<p>批准！</p><p></p>";
+                   $content = $this->get_leave_email_html($leave->id,$url,$message);
+                   Common::send_mail($user->email,$message1['title'],$content,$type = "HTML");
+               }
             }
         }
         else{
@@ -191,11 +209,11 @@ class Leave extends Model{
                         "from_uid"=>$uid,
                         "to_uid"=>$leave->personnel_uid,
                         "title"=>"【请假】【".$leave->leave_type."】".$create_user->chinese_name,
-                        "content"=>"<div style='margin-left: 30px;'> <a href='".$url."'><p>姓名：".$create_user->chinese_name."</p><p>请假类别：".$leave->leave_type."</p><p>请假时间：".$leave->leave_start."--".$leave->leave_end." （请假".$leave->work_day."天）</p><p>事由：".$leave->leave_reason."</p></a></div>"
+                        "content"=>"<div style='margin-left: 30px;'> <a href='".$url."'><p>我已批准！点此备案请假申请</p><p></p><p>姓名：".$create_user->chinese_name."</p><p>请假类别：".$leave->leave_type."</p><p>请假时间：".$leave->leave_start."--".$leave->leave_end." （请假".$leave->work_day."天）</p><p>事由：".$leave->leave_reason."</p></a></div>"
                     ];
                     model("message", "logic")->save_message($message1);
                     $user = model("user")->where("uid",$leave->personnel_uid)->find();
-                    $message = "<p>批准！</p>";
+                    $message = "<p>批准！</p><p></p>";
                     $content = $this->get_leave_email_html($leave->id,$url,$message);
                     Common::send_mail($user->email,$message1['title'],$content,$type = "HTML");
                 }
@@ -220,12 +238,12 @@ class Leave extends Model{
                 $message1 = [
                     "from_uid"=>$uid,
                     "to_uid"=>$leave->create_uid,
-                    "title"=>"【请假】【".$leave->leave_type."】被".$leader_user->chinese_name."驳回",
-                    "content"=>"<a href='".$url."'>你的请假被驳回！</a></div>"
+                    "title"=>"你的请假被".$leader_user->chinese_name."驳回",
+                    "content"=>"<a href='".$url."'>【请假】【".$leave->leave_type."】被".$leader_user->chinese_name."驳回！点此查看请假详情</a></div>"
                 ];
                 model("message", "logic")->save_message($message1);
                 $user = model("user")->where("uid",$leave->create_uid)->find();
-                $message = "<p>驳回请求！</p>";
+                $message = "<p>驳回请求！</p><p></p>";
                 $content = $this->get_leave_email_html($leave->id,$url,$message);
                 Common::send_mail($user->email,$message1['title'],$content,$type = "HTML");
             }
@@ -252,18 +270,18 @@ class Leave extends Model{
                 $message1 = [
                     "from_uid"=>$uid,
                     "to_uid"=>$leave->create_uid,
-                    "title"=>"【请假】【".$leave->leave_type."】被".$leader_user2->chinese_name."驳回",
-                    "content"=>"<a href='".$url."'>请假被驳回！</a></div>"
+                    "title"=>"你的请假被驳回",
+                    "content"=>"<a href='".$url."'>请假被".$leader_user2->chinese_name."驳回！点此查看请假详情</a></div>"
                 ];
                 $message2 = [
                     "from_uid"=>$uid,
                     "to_uid"=>$leave->leader_uid,
-                    "title"=>"【请假】【".$leave->leave_type."】被".$leader_user2->chinese_name."驳回",
-                    "content"=>"<a href='".$url."'>请假被驳回！</a></div>"
+                    "title"=>"【请假】【".$leave->leave_type."】".$create_user->chinese_name."被".$leader_user2->chinese_name."驳回",
+                    "content"=>"<a href='".$url."'>请假被驳回！点此查看请假详情</a></div>"
                 ];
                 model("message", "logic")->save_message($message1);
                 model("message", "logic")->save_message($message2);
-                $message = "<p>驳回请求！</p>";
+                $message = "<p>驳回请求！</p><p></p>";
                 $content = $this->get_leave_email_html($leave->id,$url,$message);
                 Common::send_mail($create_user->email,$message1['title'],$content,$type = "HTML");
                 Common::send_mail($leader_user->email,$message1['title'],$content,$type = "HTML");
@@ -288,11 +306,11 @@ class Leave extends Model{
                 $message1 = [
                     "from_uid"=>$uid,
                     "to_uid"=>$leave->create_uid,
-                    "title"=>"【请假】【".$leave->leave_type."】".$create_user->chinese_name."已被人事备案",
-                    "content"=>"<div style='margin-left: 30px;'> <a href='".$url."'><p>姓名：".$create_user->chinese_name."</p><p>请假类别：".$leave->leave_type."</p><p>请假时间：".$leave->leave_start."--".$leave->leave_end." （请假".$leave->work_day."天）</p><p>事由：".$leave->leave_reason."</p></a></div>"
+                    "title"=>"你的请假已被人事备案",
+                    "content"=>"<div style='margin-left: 30px;'> <a href='".$url."'>你的请假已被人事处理，点此查看详情</a></div>"
                 ];
                 model("message", "logic")->save_message($message1);
-                $message = "<p>请假批准，人事已备案！</p>";
+                $message = "<p>请假已批准，人事已备案！</p><p></p>";
                 $content = $this->get_leave_email_html($leave->id,$url,$message);
                 Common::send_mail($create_user->email,$message1['title'],$content,$type = "HTML");
             }
