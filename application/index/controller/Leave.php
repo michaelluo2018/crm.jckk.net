@@ -88,16 +88,68 @@ class Leave extends Base {
     }
 
 
-    public  function  ajax_get_leave(){
-        $leave_name = Request::instance()->get("leave_name");
-        $leaves = model("leave","logic")->get_leave_by_name($leave_name);
-        if($leaves){
-            return $leaves;
+
+
+    public function leader_pass($id){
+
+        //上司批准
+        $result = model("leave","logic")->leader_pass($id,$this->uid);
+        if($result){
+            echo "<script> alert('".$result."');history.back(-1);</script>";
         }
         else{
-            return 0;
+            $this->redirect("leave_des",["id"=>$id]);
+        }
+
+    }
+
+    public function leader_pass2($id){
+        //CEO 批准
+        $result = model("leave","logic")->leader_pass2($id,$this->uid);
+        if($result){
+            echo "<script> alert('".$result."');history.back(-1);</script>";
+        }
+        else{
+            $this->redirect("leave_des",["id"=>$id]);
         }
     }
+
+
+    public function leader_false($id){
+        // 上司驳回
+        $result = model("leave","logic")->leader_false($id,$this->uid);
+        if($result){
+            echo "<script> alert('".$result."');history.back(-1);</script>";
+        }
+        else{
+            $this->redirect("leave_des",["id"=>$id]);
+        }
+
+    }
+
+
+
+   public function leader_false2($id){
+
+        //CEO驳回
+       $result = model("leave","logic")->leader_false2($id,$this->uid);
+       if($result){
+           echo "<script> alert('".$result."');history.back(-1);</script>";
+       }
+       else{
+           $this->redirect("leave_des",["id"=>$id]);
+       }
+    }
+
+
+
+   public function personnel_pass($id){
+
+       //人事备案
+    }
+
+
+
 
 
 

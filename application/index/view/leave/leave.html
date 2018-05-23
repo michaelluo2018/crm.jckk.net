@@ -72,6 +72,7 @@
                         <td>
                             <a href="javascript:void (0);" onclick="delete_sure('确定要删除此项目吗？','{:url(\'index/leave/leave_del\')}?id={$leave.id}&mid={$mid}')" class="btn btn-sm btn-icon btn-pure btn-outline " title="删除"><i class="ti-close" aria-hidden="true"></i></a>
                             <a href="{:url('index/leave/leave_edit')}?id={$leave.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="修改"><i class="ti-pencil" aria-hidden="true"></i></a>
+                            <a href="{:url('index/leave/leave_des')}?id={$leave.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="查看"><i class="ti-search" aria-hidden="true"></i></a>
                         </td>
                     </tr>
                     {/volist}

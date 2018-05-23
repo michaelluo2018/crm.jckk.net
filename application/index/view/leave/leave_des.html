@@ -22,75 +22,73 @@
                 <h4 class="m-b-0 text-white">请假详情</h4>
             </div>
             <div class="card-body">
-                <form action="{:url('index/leave/save_leave')}?mid={$mid}" method="post">
-                    <div class="form-body">
-                        <div class="row p-t-20">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label"><span class="text-danger"> * </span>类型</label>
-                                    <select class="form-control"  tabindex="1" name="leave_type" required>
-                                        <option value="">请选择</option>
-                                        {volist name="leave_type" id= "type"}
-                                        <option value="{$type}">{$type}</option>
-                                        {/volist}
-                                    </select>
-                                    <small class="form-control-feedback"> </small>
-                                </div>
-                            </div>
 
-                            <div class="col-md-6">
-                                <div class="form-group has-danger">
-                                    <label class="control-label"><span class="text-danger"> * </span>开始时间</label>
-                                    <input type="datetime-local"  class="form-control" placeholder="请填写" name="leave_start" required>
-                                    <small class="form-control-feedback"> </small> </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group has-danger">
-                                    <label class="control-label"><span class="text-danger"> * </span>结束时间</label>
-                                    <input type="datetime-local"  class="form-control" placeholder="请填写" name="leave_end" required>
-                                    <small class="form-control-feedback"> </small> </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group has-danger">
-                                    <label class="control-label"><span class="text-danger"> * </span>请假天数</label>
-                                    <select class="form-control"   name="work_day" required>
-                                        <option value="">请选择</option>
-                                        {for start="1" end= "200"}
-                                        <option value="{$i}">{$i}</option>
-                                        {/for}
-                                    </select>
-                                    <small class="form-control-feedback"> </small> </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group has-danger">
-                                    <label class="control-label"><span class="text-danger"> * </span>请假事由</label>
-                                    <textarea  rows="6" class="form-control" placeholder="请填写备注" name="leave_reason" required></textarea>
-                                    <small class="form-control-feedback"> </small> </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label"><span class="text-danger"> * </span>审批上司</label>
-                                    <select class="form-control"  tabindex="1" name="leader_uid" required>
-                                        <option value="">请选择</option>
-                                        {volist name="leader_users" id= "user"}
-                                        <option value="{$user.uid}">{$user.chinese_name}</option>
-                                        {/volist}
-                                    </select>
-                                    <small class="form-control-feedback"> </small>
-                                </div>
-                            </div>
+                <table style='width: 80%;margin: 0 auto;text-align: center;line-height: 40px;'>
+                    <tr>
+                        <td style='border: 1px solid #0c0c0c'>部门</td>
+                        <td style='border: 1px solid #0c0c0c'>{$leave['department_name']}</td>
+                        <td style='border: 1px solid #0c0c0c'>姓名</td><td style='border: 1px solid #0c0c0c'>{$leave['chinese_name']}</td>
+                        <td style='border: 1px solid #0c0c0c'>职务</td>
+                        <td style='border: 1px solid #0c0c0c'>{$leave['post_name']}</td>
+                    </tr>
+                    <tr>
+                        <td style='border: 1px solid #0c0c0c'>请假类别</td>
+                        <td colspan='5' style='border: 1px solid #0c0c0c'>{$leave['leave_type']}</td>
+                    </tr>
+                    <tr>
+                        <td style='border: 1px solid #0c0c0c'>请假时间</td>
+                        <td colspan='5' style='border: 1px solid #0c0c0c'>{$leave['leave_start']} --{$leave['leave_end']}（请假{$leave['work_day']}天）</td>
+                    </tr>
+                    <tr>
+                        <td style='border: 1px solid #0c0c0c'>请假事由</td>
+                        <td colspan='5' style='border: 1px solid #0c0c0c'>{$leave['leave_reason']}</td>
+                    </tr>
+                    <tr>
+                        <td style='border: 1px solid #0c0c0c'>请假状态</td>
+                        <td colspan='5' style='border: 1px solid #0c0c0c'>
+                            {if condition="$leave['audit_status'] eq 0"/}待上司审批
+                            {elseif condition="$leave['audit_status'] eq 1"/}待CEO审批
+                            {elseif condition="$leave['audit_status'] eq 2"/}待人事备案
+                            {elseif condition="$leave['audit_status'] eq 3"/}完结
+                            {elseif condition="$leave['audit_status'] eq 4"/}上司驳回
+                            {elseif condition="$leave['audit_status'] eq 5"/}CEO驳回
+                            {/if}
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                    {if condition="$leave['audit_status'] eq 0"/}
+                        {if condition="$user_info['uid'] eq $leave['leader_uid']"/}
+                            <a href="{:url('index/leave/leader_pass')}?id={$leave['id']}">批准</a>
+                            <a href="{:url('index/leave/leader_false')}?id={$leave['id']}">驳回</a>
+                        {elseif condition="$user_info['uid'] eq $leave['leader_uid2']"/}
+                            <a href="{:url('index/leave/leader_pass2')}?id={$leave['id']}">批准</a>
+                            <a href="{:url('index/leave/leader_false2')}?id={$leave['id']}">驳回</a>
+                        {/if}
+                    {elseif condition="$leave['audit_status'] eq 1"/}
+                        {if condition="$user_info['uid'] eq $leave['leader_uid2']"/}
+                            <a href="{:url('index/leave/leader_pass2')}?id={$leave['id']}">批准</a>
+                            <a href="{:url('index/leave/leader_false2')}?id={$leave['id']}">驳回</a>
+                        {/if}
+                    {elseif condition="$leave['audit_status'] eq 2"/}
+                        {if condition="$user_info['uid'] eq $leave['personnel_uid']"/}
+                            <a href="{:url('index/leave/personnel_pass')}?id={$leave['id']}">人事备案</a>
+                        {/if}
+                    {elseif condition="$leave['audit_status'] eq 3"/}
+
+                    {elseif condition="$leave['audit_status'] eq 4"/}
+
+                        {if condition="$user_info['uid'] eq $leave['leader_uid']"/}
+                            <a href="{:url('index/leave/leader_pass')}?id={$leave['id']}">撤销驳回并批准</a>
+                        {/if}
+                    {elseif condition="$leave['audit_status'] eq 5"/}
+                        {if condition="$user_info['uid'] eq $leave['leader_uid2']"/}
+                            <a href="{:url('index/leave/leader_pass2')}?id={$leave['id']}">撤销驳回并批准</a>
+                        {/if}
+                    {/if}
 
 
-                        </div>
-
-                    </div>
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
-                        <button type="reset" class="btn btn-inverse">重置</button>
-                    </div>
-
-                </form>
+                </div>
             </div>
         </div>
     </div>
