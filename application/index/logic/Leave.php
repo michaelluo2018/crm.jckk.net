@@ -89,6 +89,7 @@ class Leave extends Model{
             ->alias("l")
             ->field(["l.*","u.chinese_name","d.department_name","p.post_name"])
             ->where("l.is_delete","<>",1)
+            ->where("l.audit_status",3)
             ->join("jckk_user u","l.create_uid = u.uid","LEFT")
             ->join("jckk_department d","d.id = u.department_id","LEFT")
             ->join("jckk_post p","p.id = u.post_id","LEFT")

@@ -14,6 +14,13 @@ class Leave extends Base {
         return view("leave");
     }
 
+    public function personnel_leave(){
+
+        $leaves =  model('leave','logic')->get_leaves();
+        $this->assign("leaves",$leaves);
+        return view("personnel_leave");
+    }
+
     //添加
     public function leave_add(){
 
