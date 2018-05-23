@@ -118,21 +118,15 @@ class Leave extends Model{
     public function  delete_leave($id){
 
         $leave = $this->where("id",$id)->find();
-        if($leave->audit_status !=3){
-            //添加日志
-            $leave_log["type"] = Log::DELETE_TYPE;
-            $leave_log["before_value"] = json_encode($leave);
-            $leave_log["after_value"] = "";
-            $leave_log["title"] = "删除请假";
-            $leave->is_delete = 1;
-            if($leave->save()){
-                model("log","logic")->write_log( $leave_log);
-            }
+        //添加日志
+        $leave_log["type"] = Log::DELETE_TYPE;
+        $leave_log["before_value"] = json_encode($leave);
+        $leave_log["after_value"] = "";
+        $leave_log["title"] = "删除请假";
+        $leave->is_delete = 1;
+        if($leave->save()){
+            model("log","logic")->write_log( $leave_log);
         }
-        else{
-            return 3;
-        }
-
 
 
 
@@ -284,7 +278,7 @@ class Leave extends Model{
     public function personnel_pass($id,$uid){
         //人事备案 状态改为3
         $leave = $this->where("id",$id)->find();
-        if($leave->leader_uid ==  $uid){
+        if($leave->personnel_uid ==  $uid){
             $leave->audit_status = 3;
             if($leave->save()){
 

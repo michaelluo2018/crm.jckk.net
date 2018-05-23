@@ -55,7 +55,7 @@ class Leave extends Base {
     public function  leave_edit($id){
 
         $leave = model("leave", "logic")->get_leave($id);
-        if($leave['audit_status']!=3){
+        if($leave['audit_status']!=3 && $leave['audit_status']!=1 && $leave['audit_status']!=2){
             $leave_type = Config::get("leave_type");
             $result = model("user","logic")->get_my_leaders();
             $personnel = model("user","logic")->get_personnel();
@@ -67,7 +67,7 @@ class Leave extends Base {
             return view("leave_edit");
         }
         else{
-            echo "<script> alert('你的请假审核流程已走完，没法修改！');history.back(-1);</script>";
+            echo "<script> alert('你的请假正在走审核流程，或者已走完审核流程，没法修改！');history.back(-1);</script>";
         }
 
 
@@ -78,12 +78,14 @@ class Leave extends Base {
 
     public function  leave_del($id){
 
-           $result =  model("leave", "logic")->delete_leave($id);
-           if($result!=3){
+
+        $leave = model("leave", "logic")->get_leave($id);
+        if($leave['audit_status']!=3 && $leave['audit_status']!=1 && $leave['audit_status']!=2){
+              model("leave", "logic")->delete_leave($id);
                $this->redirect("leave");
            }
            else{
-               echo "<script> alert('你的请假审核流程已走完，没法删除！');history.back(-1);</script>";
+               echo "<script> alert('你的请假正在走审核流程，或者已走完审核流程，没法删除！');history.back(-1);</script>";
            }
     }
 
