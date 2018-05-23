@@ -20,6 +20,9 @@ class Leave extends Base {
         $leave_type = Config::get("leave_type");
         //获取我的部门领导
         $result = model("user","logic")->get_my_leaders();
+        //获取人事部门人员
+        $personnel = model("user","logic")->get_personnel();
+        $this->assign("personnel_users",$personnel);
         $this->assign("leader_users",$result['leader_users']);
         $this->assign("leader_uid",$result['leader_uid']);
         $this->assign("leave_type",$leave_type);
@@ -48,6 +51,8 @@ class Leave extends Base {
         if($leave['audit_status']!=3){
             $leave_type = Config::get("leave_type");
             $result = model("user","logic")->get_my_leaders();
+            $personnel = model("user","logic")->get_personnel();
+            $this->assign("personnel_users",$personnel);
             $this->assign("leader_users",$result['leader_users']);
             $this->assign("leader_uid",$result['leader_uid']);
             $this->assign("leave_type",$leave_type);
@@ -89,7 +94,6 @@ class Leave extends Base {
 
 
 
-
     public function leader_pass($id){
 
         //上司批准
@@ -102,6 +106,7 @@ class Leave extends Base {
         }
 
     }
+
 
     public function leader_pass2($id){
         //CEO 批准
@@ -146,6 +151,13 @@ class Leave extends Base {
    public function personnel_pass($id){
 
        //人事备案
+       $result = model("leave","logic")->personnel_pass($id,$this->uid);
+       if($result){
+           echo "<script> alert('".$result."');history.back(-1);</script>";
+       }
+       else{
+           $this->redirect("leave_des",["id"=>$id]);
+       }
     }
 
 

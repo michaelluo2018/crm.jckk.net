@@ -95,7 +95,18 @@
                                 </div>
                             </div>
                             {/if}
-
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>备案人事</label>
+                                    <select class="form-control"  tabindex="1" name="personnel_uid" required>
+                                        <option value="">请选择</option>
+                                        {volist name="personnel_users" id= "personnel"}
+                                        <option value="{$personnel.uid}">{$personnel.chinese_name}</option>
+                                        {/volist}
+                                    </select>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
                         </div>
 
                         </div>

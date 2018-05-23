@@ -48,6 +48,7 @@ class Leave extends Model{
             $leave->leader_uid = trim($data['leader_uid2']);
             $leader_uid = trim($data['leader_uid2']);
         }
+        $leave->personnel_uid = trim($data['personnel_uid']);
         $leave->audit_status = 0;
         $leave->is_delete = 0;
 
@@ -167,7 +168,8 @@ class Leave extends Model{
                 ];
                 model("message", "logic")->save_message($message1);
                 $user = model("user")->where("uid",$leave->leader_uid2)->find();
-                $content = $this->get_leave_email_html($leave->id,$url);
+                $message = "<p>批准！</p>";
+                $content = $this->get_leave_email_html($leave->id,$url,$message);
                 Common::send_mail($user->email,$message1['title'],$content,$type = "HTML");
             }
         }
@@ -177,6 +179,37 @@ class Leave extends Model{
     }
 
 
+
+    public function leader_pass2($id,$uid){
+            //CEO批准 状态改为2
+            $leave = $this->where("id",$id)->find();
+            if($leave->leader_uid2 ==  $uid){
+                $leave->audit_status = 2;
+                if($leave->save()){
+
+                    //发系统消息和邮件通知人事
+                    $url = "http://crm1.jckk.net/index/leave/leave_des?id=".$leave->id;
+                    $create_user = model("user")->where("uid",$leave->create_uid)->find();
+                    $message1 = [
+                        "from_uid"=>$uid,
+                        "to_uid"=>$leave->personnel_uid,
+                        "title"=>"【请假】【".$leave->leave_type."】".$create_user->chinese_name,
+                        "content"=>"<div style='margin-left: 30px;'> <a href='".$url."'><p>姓名：".$create_user->chinese_name."</p><p>请假类别：".$leave->leave_type."</p><p>请假时间：".$leave->leave_start."--".$leave->leave_end." （请假".$leave->work_day."天）</p><p>事由：".$leave->leave_reason."</p></a></div>"
+                    ];
+                    model("message", "logic")->save_message($message1);
+                    $user = model("user")->where("uid",$leave->personnel_uid)->find();
+                    $message = "<p>批准！</p>";
+                    $content = $this->get_leave_email_html($leave->id,$url,$message);
+                    Common::send_mail($user->email,$message1['title'],$content,$type = "HTML");
+                }
+            }
+            else{
+                return "你没有权利审批！";
+            }
+        }
+
+
+
     public function leader_false($id,$uid){
         //上司驳回 状态改为4
         $leave = $this->where("id",$id)->find();
@@ -184,7 +217,7 @@ class Leave extends Model{
             $leave->audit_status = 4;
             if($leave->save()){
 
-                //发系统消息和邮件通知上司
+                //发系统消息和邮件通知请假者
                 $url = "http://crm1.jckk.net/index/leave/leave_des?id=".$leave->id;
                 $leader_user = model("user")->where("uid",$uid)->find();
                 $message1 = [
@@ -204,34 +237,6 @@ class Leave extends Model{
             return "你没有权利审批！";
         }
     }
-
-
-    public function leader_pass2($id,$uid){
-            //上司批准 状态改为2
-            $leave = $this->where("id",$id)->find();
-            if($leave->leader_uid2 ==  $uid){
-                $leave->audit_status = 2;
-                if($leave->save()){
-
-                    //发系统消息和邮件通知请假者
-                    $url = "http://crm1.jckk.net/index/leave/leave_des?id=".$leave->id;
-                    $create_user = model("user")->where("uid",$leave->create_uid)->find();
-                    $message1 = [
-                        "from_uid"=>$uid,
-                        "to_uid"=>$leave->personnel_uid,
-                        "title"=>"【请假】【".$leave->leave_type."】".$create_user->chinese_name,
-                        "content"=>"<div style='margin-left: 30px;'> <a href='".$url."'><p>姓名：".$create_user->chinese_name."</p><p>请假类别：".$leave->leave_type."</p><p>请假时间：".$leave->leave_start."--".$leave->leave_end." （请假".$leave->work_day."天）</p><p>事由：".$leave->leave_reason."</p></a></div>"
-                    ];
-                    model("message", "logic")->save_message($message1);
-                    $user = model("user")->where("uid",$leave->personnel_uid)->find();
-                    $content = $this->get_leave_email_html($leave->id,$url);
-                    Common::send_mail($user->email,$message1['title'],$content,$type = "HTML");
-                }
-            }
-            else{
-                return "你没有权利审批！";
-            }
-        }
 
 
 
@@ -273,7 +278,32 @@ class Leave extends Model{
     }
 
 
+    public function personnel_pass($id,$uid){
+        //人事备案 状态改为3
+        $leave = $this->where("id",$id)->find();
+        if($leave->leader_uid ==  $uid){
+            $leave->audit_status = 3;
+            if($leave->save()){
 
+                //发系统消息和邮件通知请假者
+                $url = "http://crm1.jckk.net/index/leave/leave_des?id=".$leave->id;
+                $create_user = model("user")->where("uid",$leave->create_uid)->find();
+                $message1 = [
+                    "from_uid"=>$uid,
+                    "to_uid"=>$leave->create_uid,
+                    "title"=>"【请假】【".$leave->leave_type."】".$create_user->chinese_name."已被人事备案",
+                    "content"=>"<div style='margin-left: 30px;'> <a href='".$url."'><p>姓名：".$create_user->chinese_name."</p><p>请假类别：".$leave->leave_type."</p><p>请假时间：".$leave->leave_start."--".$leave->leave_end." （请假".$leave->work_day."天）</p><p>事由：".$leave->leave_reason."</p></a></div>"
+                ];
+                model("message", "logic")->save_message($message1);
+                $message = "<p>请假批准，人事已备案！</p>";
+                $content = $this->get_leave_email_html($leave->id,$url,$message);
+                Common::send_mail($create_user->email,$message1['title'],$content,$type = "HTML");
+            }
+        }
+        else{
+            return "你没有权利审批！";
+        }
+    }
 
 
 

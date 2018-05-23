@@ -401,4 +401,22 @@ class User extends Model{
         }
     }
 
+
+
+    public function get_personnel(){
+
+           $department = model("department")->where("department_name",'like','%'."人事".'%')->where("is_delete",0)->find();
+           $result = $this->where("department_id",$department->id)->where("is_delete",0)->where("quit",0)->select();
+           return $result;
+
+    }
+
+
+
+
+
+
+
+
+
 }
