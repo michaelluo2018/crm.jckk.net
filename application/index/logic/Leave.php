@@ -40,16 +40,18 @@ class Leave extends Model{
         $leave->leave_end = trim($data['leave_end']);
         $leave->work_day = trim($data['work_day']);
         $leave->leave_reason = trim($data['leave_reason']);
+        if(isset($data['leader_uid2'])){
+            $leave->leader_uid2 = trim($data['leader_uid2']);
+            $leader_uid = trim($data['leader_uid2']);
+            $leave->audit_status = 1;
+        }
         if(isset($data['leader_uid'])){
             $leave->leader_uid = trim($data['leader_uid']);
             $leader_uid = trim($data['leader_uid']);
-        }
-        if(isset($data['leader_uid2'])){
-            $leave->leader_uid = trim($data['leader_uid2']);
-            $leader_uid = trim($data['leader_uid2']);
+            $leave->audit_status = 0;
         }
         $leave->personnel_uid = trim($data['personnel_uid']);
-        $leave->audit_status = 0;
+
         $leave->is_delete = 0;
 
         if($leave->save()){

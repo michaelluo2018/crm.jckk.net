@@ -56,11 +56,14 @@
                         </td>
                     </tr>
                 </table>
-                <div>
+                {if condition="$leave['is_delete'] eq 1"/}
+                <p style="text-align: center;margin-top: 30px;color: red;">该请假已被申请人删除！</p>
+                {else/}
+                <div style="text-align: center;margin-top: 30px;">
                     {if condition="$leave['audit_status'] eq 0"/}
                         {if condition="$user_info['uid'] eq $leave['leader_uid']"/}
-                            <a href="{:url('index/leave/leader_pass')}?id={$leave['id']}">批准</a>
-                            <a href="{:url('index/leave/leader_false')}?id={$leave['id']}">驳回</a>
+                            <a class="btn btn-primary" href="{:url('index/leave/leader_pass')}?id={$leave['id']}">批准</a>
+                            <a class="btn btn-warning" href="{:url('index/leave/leader_false')}?id={$leave['id']}">驳回</a>
                         {elseif condition="$user_info['uid'] eq $leave['leader_uid2']"/}
                             <a href="{:url('index/leave/leader_pass2')}?id={$leave['id']}">批准</a>
                             <a href="{:url('index/leave/leader_false2')}?id={$leave['id']}">驳回</a>
@@ -89,6 +92,7 @@
 
 
                 </div>
+                {/if}
             </div>
         </div>
     </div>

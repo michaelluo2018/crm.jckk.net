@@ -31,7 +31,7 @@ class Leave extends Base {
         $personnel = model("user","logic")->get_personnel();
         $this->assign("personnel_users",$personnel);
         $this->assign("leader_users",$result['leader_users']);
-        $this->assign("leader_uid",$result['leader_uid']);
+        $this->assign("leader_users2",$result['leader_users2']);
         $this->assign("leave_type",$leave_type);
         return view("leave_add");
 
@@ -41,7 +41,7 @@ class Leave extends Base {
 
     //保存
     public function save_leave(){
-        $data = Request::instance()->post();
+        $data = Request::instance()->post(); dump($data);
         $user_info = $this->user_info;
         $res = model("leave","logic")->save_leave($data,$user_info['chinese_name']);
         if($res){
@@ -61,7 +61,7 @@ class Leave extends Base {
             $personnel = model("user","logic")->get_personnel();
             $this->assign("personnel_users",$personnel);
             $this->assign("leader_users",$result['leader_users']);
-            $this->assign("leader_uid",$result['leader_uid']);
+            $this->assign("leader_users2",$result['leader_users2']);
             $this->assign("leave_type",$leave_type);
             $this->assign('leave',$leave);
             return view("leave_edit");

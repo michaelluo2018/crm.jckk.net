@@ -77,7 +77,7 @@
                                     <textarea  rows="6" class="form-control" placeholder="请填写备注" name="leave_reason" required>{$leave.leave_reason}</textarea>
                                     <small class="form-control-feedback"> </small> </div>
                             </div>
-                            {if condition="$leader_uid eq 'leader_uid'"}
+                            {if condition="$leader_users"}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label"><span class="text-danger"> * </span>审批上司</label>
@@ -94,17 +94,33 @@
                                     <small class="form-control-feedback"> </small>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label"><span class="text-danger"> * </span>高层审批</label>
+                                    <select class="form-control"  tabindex="1" name="leader_uid2" required>
+                                        <option value="">请选择</option>
+                                        {volist name="leader_users2" id= "user2"}
+                                        {if condition="$leave['leader_uid2'] eq $user2.uid"/}
+                                        <option value="{$user2.uid}" selected>{$user2.chinese_name}</option>
+                                        {else/}
+                                        <option value="{$user2.uid}">{$user2.chinese_name}</option>
+                                        {/if}
+                                        {/volist}
+                                    </select>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
                             {else/}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label"><span class="text-danger"> * </span>审批上司</label>
+                                    <label class="control-label"><span class="text-danger"> * </span>高层审批</label>
                                     <select class="form-control"  tabindex="1" name="leader_uid2" required>
                                         <option value="">请选择</option>
-                                        {volist name="leader_users" id= "user"}
-                                        {if condition="$leave['leader_uid2'] eq $user.uid"/}
-                                        <option value="{$user.uid}" selected>{$user.chinese_name}</option>
+                                        {volist name="leader_users2" id= "user2"}
+                                        {if condition="$leave['leader_uid2'] eq $user2.uid"/}
+                                        <option value="{$user2.uid}" selected>{$user2.chinese_name}</option>
                                         {else/}
-                                        <option value="{$user.uid}">{$user.chinese_name}</option>
+                                        <option value="{$user2.uid}">{$user2.chinese_name}</option>
                                         {/if}
                                         {/volist}
                                     </select>
