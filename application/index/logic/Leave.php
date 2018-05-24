@@ -63,7 +63,7 @@ class Leave extends Model{
                 "from_uid"=>Session::get("uid"),
                 "to_uid"=>$leader_uid,
                 "title"=>"【请假】【".$data['leave_type']."】".$name,
-                "content"=>"<div style='margin-left: 30px;'> <a href='".$url."'><p>姓名：".$name."</p><p>请假类别：".$data['leave_type']."</p><p>请假时间：".$data['leave_start']."--".$data['leave_end']." （请假".$data['work_day']."天）</p><p>事由：".$data['leave_reason']."</p></a></div>"
+                "content"=>"<div style='margin-left: 50px;'> <a href='".$url."'><p>姓名：".$name."</p><p>请假类别：".$data['leave_type']."</p><p>请假时间：".$data['leave_start']."--".$data['leave_end']." （请假".$data['work_day']."天）</p><p>事由：".$data['leave_reason']."</p><p>点此去处理!</p></a></div>"
             ];
             model("message", "logic")->save_message($message1);
             $user = model("user")->where("uid",$leader_uid)->find();
@@ -78,7 +78,7 @@ class Leave extends Model{
     public function get_leave_email_html($leave_id,$url,$message=null){
     $leave = $this->get_leave($leave_id);
     $html = $message;
-    $html .= "<table style='width: 80%;margin: 0 auto;'><tr><td style='border: 1px solid #0c0c0c'>部门</td><td style='border: 1px solid #0c0c0c'>".$leave['department_name']."</td><td style='border: 1px solid #0c0c0c'>姓名</td><td style='border: 1px solid #0c0c0c'>".$leave['chinese_name']."</td><td style='border: 1px solid #0c0c0c'>职务</td><td style='border: 1px solid #0c0c0c'>".$leave['post_name']."</td></tr><tr><td style='border: 1px solid #0c0c0c'>请假类别</td><td colspan='5' style='border: 1px solid #0c0c0c'>".$leave['leave_type']."</td></tr><tr><td style='border: 1px solid #0c0c0c'>请假时间</td><td colspan='5' style='border: 1px solid #0c0c0c'>".$leave['leave_start']."--".$leave['leave_end']."（请假".$leave['work_day']."天）</td></tr><tr><td style='border: 1px solid #0c0c0c'>请假事由</td><td colspan='5' style='border: 1px solid #0c0c0c'>".$leave['leave_reason']."</td></tr></table>";
+    $html .= "<table style='width: 80%;margin: 0 auto;text-align: center;'><tr><td style='border: 1px solid #0c0c0c'>部门</td><td style='border: 1px solid #0c0c0c'>".$leave['department_name']."</td><td style='border: 1px solid #0c0c0c'>姓名</td><td style='border: 1px solid #0c0c0c'>".$leave['chinese_name']."</td><td style='border: 1px solid #0c0c0c'>职务</td><td style='border: 1px solid #0c0c0c'>".$leave['post_name']."</td></tr><tr><td style='border: 1px solid #0c0c0c'>请假类别</td><td colspan='5' style='border: 1px solid #0c0c0c'>".$leave['leave_type']."</td></tr><tr><td style='border: 1px solid #0c0c0c'>请假时间</td><td colspan='5' style='border: 1px solid #0c0c0c'>".$leave['leave_start']."--".$leave['leave_end']."（请假".$leave['work_day']."天）</td></tr><tr><td style='border: 1px solid #0c0c0c'>请假事由</td><td colspan='5' style='border: 1px solid #0c0c0c'>".$leave['leave_reason']."</td></tr></table>";
     $html .= "<div style='width: 80%;margin: 0 auto;'><p><a href='".$url."'>来至金诚互动客户管理系统，去查看</a></p><p>技术支持邮箱：star.fang@jckk.net</p></div>";
     return $html;
   }
@@ -162,7 +162,7 @@ class Leave extends Model{
                         "from_uid"=>$uid,
                         "to_uid"=>$leave->leader_uid2,
                         "title"=>"【请假】【".$leave->leave_type."】".$create_user->chinese_name,
-                        "content"=>"<div style='margin-left: 30px;'> <a href='".$url."'><p>我已批准！点此处理请假申请</p><p></p><p>姓名：".$create_user->chinese_name."</p><p>请假类别：".$leave->leave_type."</p><p>请假时间：".$leave->leave_start."--".$leave->leave_end." （请假".$leave->work_day."天）</p><p>事由：".$leave->leave_reason."</p></a></div>"
+                        "content"=>"<div style='margin-left: 50px;'> <a href='".$url."'><p>我已批准！点此处理请假申请</p><p></p><p>姓名：".$create_user->chinese_name."</p><p>请假类别：".$leave->leave_type."</p><p>请假时间：".$leave->leave_start."--".$leave->leave_end." （请假".$leave->work_day."天）</p><p>事由：".$leave->leave_reason."</p><p>点此去处理!</p></a></div>"
                     ];
                     model("message", "logic")->save_message($message1);
                     $user = model("user")->where("uid",$leave->leader_uid2)->find();
@@ -178,7 +178,7 @@ class Leave extends Model{
                        "from_uid"=>$uid,
                        "to_uid"=>$leave->personnel_uid,
                        "title"=>"【请假】【".$leave->leave_type."】".$create_user->chinese_name,
-                       "content"=>"<div style='margin-left: 30px;'> <a href='".$url."'><p>我已批准！点此备案请假申请</p><p></p><p>姓名：".$create_user->chinese_name."</p><p>请假类别：".$leave->leave_type."</p><p>请假时间：".$leave->leave_start."--".$leave->leave_end." （请假".$leave->work_day."天）</p><p>事由：".$leave->leave_reason."</p></a></div>"
+                       "content"=>"<div style='margin-left: 50px;'> <a href='".$url."'><p>我已批准！点此备案请假申请</p><p></p><p>姓名：".$create_user->chinese_name."</p><p>请假类别：".$leave->leave_type."</p><p>请假时间：".$leave->leave_start."--".$leave->leave_end." （请假".$leave->work_day."天）</p><p>事由：".$leave->leave_reason."</p></a></div>"
                    ];
                    model("message", "logic")->save_message($message1);
                    $user = model("user")->where("uid",$leave->personnel_uid)->find();
@@ -209,7 +209,7 @@ class Leave extends Model{
                         "from_uid"=>$uid,
                         "to_uid"=>$leave->personnel_uid,
                         "title"=>"【请假】【".$leave->leave_type."】".$create_user->chinese_name,
-                        "content"=>"<div style='margin-left: 30px;'> <a href='".$url."'><p>我已批准！点此备案请假申请</p><p></p><p>姓名：".$create_user->chinese_name."</p><p>请假类别：".$leave->leave_type."</p><p>请假时间：".$leave->leave_start."--".$leave->leave_end." （请假".$leave->work_day."天）</p><p>事由：".$leave->leave_reason."</p></a></div>"
+                        "content"=>"<div style='margin-left: 50px;'> <a href='".$url."'><p>我已批准！点此备案请假申请</p><p></p><p>姓名：".$create_user->chinese_name."</p><p>请假类别：".$leave->leave_type."</p><p>请假时间：".$leave->leave_start."--".$leave->leave_end." （请假".$leave->work_day."天）</p><p>事由：".$leave->leave_reason."</p></a></div>"
                     ];
                     model("message", "logic")->save_message($message1);
                     $user = model("user")->where("uid",$leave->personnel_uid)->find();
@@ -307,7 +307,7 @@ class Leave extends Model{
                     "from_uid"=>$uid,
                     "to_uid"=>$leave->create_uid,
                     "title"=>"你的请假已被人事备案",
-                    "content"=>"<div style='margin-left: 30px;'> <a href='".$url."'>你的请假已被人事处理，点此查看详情</a></div>"
+                    "content"=>"<a href='".$url."'>你的请假已被人事处理，点此查看详情</a>"
                 ];
                 model("message", "logic")->save_message($message1);
                 $message = "<p>请假已批准，人事已备案！</p><p></p>";
