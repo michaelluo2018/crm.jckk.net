@@ -14,6 +14,15 @@ class Leave extends Base {
         return view("leave");
     }
 
+    public function audit_leave(){
+        $leaves =  model('leave','logic')->get_my_audit_leave($this->uid);
+        $this->assign("leaves",$leaves);
+        return view("audit_leave");
+    }
+
+
+
+
     public function personnel_leave(){
 
         $leaves =  model('leave','logic')->get_leaves();

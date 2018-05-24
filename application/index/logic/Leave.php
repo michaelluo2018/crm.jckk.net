@@ -104,9 +104,12 @@ class Leave extends Model{
     public function get_leave($id){
         return Db::table("jckk_leave")
             ->alias("l")
-            ->field(["l.*","u.chinese_name","d.department_name","p.post_name"])
+            ->field(["l.*","u.chinese_name","d.department_name","p.post_name","leader1.chinese_name as leader_name","leader2.chinese_name as leader_name2","personnel.chinese_name as personnel_name"])
             ->where("l.id",$id)
             ->join("jckk_user u","l.create_uid = u.uid","LEFT")
+            ->join("jckk_user leader1","l.leader_uid = leader1.uid","LEFT")
+            ->join("jckk_user leader2","l.leader_uid2 = leader2.uid","LEFT")
+            ->join("jckk_user personnel","l.personnel_uid = personnel.uid","LEFT")
             ->join("jckk_department d","d.id = u.department_id","LEFT")
             ->join("jckk_post p","p.id = u.post_id","LEFT")
             ->find();
@@ -145,6 +148,52 @@ class Leave extends Model{
             ->join("jckk_post p","p.id = u.post_id","LEFT")
             ->select();
     }
+
+    public function get_my_audit_leave($uid){
+        $leader_leave1 = Db::table("jckk_leave")
+            ->alias("l")
+            ->field(["l.*","u.chinese_name","d.department_name","p.post_name"])
+            ->where("l.leader_uid",$uid)
+            ->where("l.is_delete","<>",1)
+            ->join("jckk_user u","l.create_uid = u.uid","LEFT")
+            ->join("jckk_department d","d.id = u.department_id","LEFT")
+            ->join("jckk_post p","p.id = u.post_id","LEFT")
+            ->select();
+
+        $leader_leave2 = Db::table("jckk_leave")
+            ->alias("l")
+            ->field(["l.*","u.chinese_name","d.department_name","p.post_name"])
+            ->where("l.leader_uid2",$uid)
+            ->whereIn("l.audit_status",[1,2,3,5])
+            ->where("l.is_delete","<>",1)
+            ->join("jckk_user u","l.create_uid = u.uid","LEFT")
+            ->join("jckk_department d","d.id = u.department_id","LEFT")
+            ->join("jckk_post p","p.id = u.post_id","LEFT")
+            ->select();
+
+        $personnel_leave = Db::table("jckk_leave")
+            ->alias("l")
+            ->field(["l.*","u.chinese_name","d.department_name","p.post_name"])
+            ->where("l.personnel_uid",$uid)
+            ->whereIn("l.audit_status",[2,3])
+            ->where("l.is_delete","<>",1)
+            ->join("jckk_user u","l.create_uid = u.uid","LEFT")
+            ->join("jckk_department d","d.id = u.department_id","LEFT")
+            ->join("jckk_post p","p.id = u.post_id","LEFT")
+            ->select();
+        $leaves = array_merge($leader_leave1,$leader_leave2,$personnel_leave);
+        return  $leaves;
+
+
+
+
+    }
+
+
+
+
+
+
 
 
     public function leader_pass($id,$uid){

@@ -61,6 +61,18 @@
                         </td>
                     </tr>
                 </table>
+                <p style="text-align: center;margin-top: 30px;">
+                    审批流程：
+                    {if condition="$leave['leader_uid']"/}
+                        {$leave['leader_name']} （上司审批） --
+                    {/if}
+                    {if condition="$leave['leader_uid2']"/}
+                        {$leave['leader_name2']} （高层审批） --
+                    {/if}
+                    {if condition="$leave['personnel_uid']"/}
+                        {$leave['personnel_name']} （人事备案）
+                    {/if}
+                </p>
                 {if condition="$leave['is_delete'] eq 1"/}
                 <p style="text-align: center;margin-top: 30px;color: red;">该请假已被申请人删除！</p>
                 {else/}

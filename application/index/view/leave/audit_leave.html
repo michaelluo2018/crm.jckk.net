@@ -1,0 +1,116 @@
+{extend name="layout"/}
+{block name="title"}
+<title>我审批的请假 - 客户管理系统</title>
+{/block}
+{block name="breadcrumb"/}
+<div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">我审批的请假</h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">首页</a></li>
+        <li class="breadcrumb-item active">我审批的请假</li>
+    </ol>
+</div>
+{/block}
+
+{block name="detail"/}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <!--<h4 class="card-title">我审批的请假</h4>-->
+                <h6 class="card-subtitle"></h6>
+                <div class="m-t-40">
+                    <div class="d-flex">
+                        <div class="form-group">
+                            <a  class="btn btn-primary btn-sm" href="{:url('index/leave/leave_add')}?mid={$mid}">
+                                <i class="ace-icon fa fa-plus" aria-hidden="true"></i> 我要请假
+                            </a>
+
+                            <a  class="btn btn-info btn-sm" href="{:url('index/leave/leave')}?mid={$mid}">
+                                <i class="ace-icon fa fa-file-word-o" aria-hidden="true"></i> 我的请假
+                            </a>
+                        </div>
+                        <div class="ml-auto">
+                            <div class="form-group">
+                                <form  method="post" id="find_form">
+
+                                    <input id="demo-input-search2" type="text" placeholder="搜索假条" name="customer_name" autocomplete="off" required>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" data-page-size="20">
+                    <thead>
+                    <tr class="text-align">
+                        <th>序号</th>
+                        <th>姓名</th>
+                        <th>部门</th>
+                        <th>岗位</th>
+                        <th>请假类别</th>
+                        <th>请假时间</th>
+                        <th>创建时间</th>
+                        <th>状态</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="leaves" id="leave" key="k"}
+                    <tr>
+                        <td>{$k}</td>
+                        <td>{$leave.chinese_name}</td>
+                        <td>{$leave.department_name}</td>
+                        <td>{$leave.post_name}</td>
+                        <td>{$leave.leave_type}</td>
+                        <td>{$leave.leave_start}--{$leave.leave_end} （请假{$leave.work_day}天）</td>
+                        <td>{$leave.create_time|date="Y-m-d H:i:s",###}</td>
+                        <td>
+                            <a href="{:url('index/leave/leave_des')}?id={$leave.id}">
+                            {if condition="$leave.leader_uid eq $user_info['uid']"/}
+                                {if condition="$leave.audit_status eq 0"/}
+                                去审批
+                                {elseif condition="$leave.audit_status eq 4"/}
+                                已驳回
+                                {else/}
+                                我已批准
+                                {/if}
+                            {elseif condition="$leave.leader_uid2 eq $user_info['uid']"/}
+                                {if condition="$leave.audit_status eq 1"/}
+                                去审批
+                                {elseif condition="$leave.audit_status eq 5"/}
+                                已驳回
+                                {else/}
+                                我已批准
+                                {/if}
+                            {elseif condition="$leave.personnel_uid eq $user_info['uid']"/}
+                                {if condition="$leave.audit_status eq 2"/}
+                                去备案
+                                {elseif condition="$leave.audit_status eq 3"/}
+                                我已备案
+                                {/if}
+                            {/if}
+
+                            </a>
+                        </td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="14">
+                            <div class="text-right">
+                                <ul class="pagination">
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+{/block}
