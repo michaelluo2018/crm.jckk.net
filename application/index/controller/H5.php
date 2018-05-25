@@ -70,13 +70,17 @@ class H5 extends Controller {
 
 
 
-        public function badword($name){
+        public function ajax_badword($name){
            $badword = Config::get("badword");
            $badword1 = array_combine($badword,array_fill(0,count($badword),'*'));
-           // $name = '抵制nnn共产主义';
             $str = strtr($name, $badword1);
-            //dump($str);
-            return $str;
+           if(strstr($str,"*")===false){
+               return 1;
+           }
+           else{
+               return 0;
+           }
+           
         }
 
 
