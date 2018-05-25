@@ -70,7 +70,8 @@ class H5 extends Controller {
 
 
 
-        public function ajax_badword($name){
+        public function ajax_badword(){
+           $name= Request::instance()->post("name");
            $badword = Config::get("badword");
            $badword1 = array_combine($badword,array_fill(0,count($badword),'*'));
             $str = strtr($name, $badword1);
@@ -80,7 +81,7 @@ class H5 extends Controller {
            else{
                return 0;
            }
-           
+
         }
 
 
