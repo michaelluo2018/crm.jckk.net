@@ -33,124 +33,96 @@
 </div>
 
 <div class="row">
-    <div class="col-lg-12 col-md-12 col-xs-12">
+    <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">任务排期</h4>
                 <!-- Nav tabs -->
-                <div class="vtabs customvtab">
-                    <ul class="nav nav-tabs tabs-vertical" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#home3" role="tab">
-                                <span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">我的任务</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#profile3" role="tab">
-                                <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">部门任务</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#messages3" role="tab">
-                                <span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">公司任务</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="home3" role="tabpanel">
-                            <div class="row">
-                                <div class="col-xs-12 text-center">
-                                    {$res}
-                                </div>
-                                <div style="padding-left: 5px;">
-                                    <div id="task_content" >
-                                        {foreach name="tasks" item="task"/}
-                                        <div class="{$key} content_item" style="display: none">
-                                            {if condition="$task"/}
-                                            <table style="width: 190%;" >
-                                                <thead>
-                                                <tr class="text-align">
-                                                    <th>序号</th>
-                                                    <th>优先级</th>
-                                                    <th>任务名</th>
-                                                    <th>状态</th>
-                                                    <!--<th>指派给</th>-->
-                                                    <th>总预计</th>
-                                                    <th>总消耗</th>
-                                                    <th>总剩余</th>
-                                                    <th>时间进度</th>
-                                                    <th>操作</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                {volist name="task" id="vo"}
-                                                <tr>
-                                                    <td>{$key+1}</td>
-                                                    <td>{$vo.task_order}</td>
-                                                    <td>{$vo.task_name}</td>
-                                                    <td>
-                                                        {if condition="$vo.task_status eq 0"/}
-                                                        等待开始
-                                                        {elseif condition="$vo.task_status eq 1"/}
-                                                        已开始
-                                                        {elseif condition="$vo.task_status eq 2"/}
-                                                        完成
-                                                        {/if}
-                                                    </td>
-                                                    <!--<td>{$vo.to_name}</td>-->
-                                                    <?php if($vo['task_start'] && $vo['task_end']){ ?>
-                                                    <td>
-                                                        <?php
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        {$res}
+                    </div>
+                    <div style="padding-left: 5px;">
+                        <div id="task_content" >
+                            {foreach name="tasks" item="task"/}
+                            <div class="{$key} content_item" style="display: none">
+                                {if condition="$task"/}
+                                <table style="width: 200%;" >
+                                    <thead>
+                                    <tr class="text-align">
+                                        <th>序号</th>
+                                        <th>优先级</th>
+                                        <th>任务名</th>
+                                        <th>状态</th>
+                                        <th>指派给</th>
+                                        <th>创建人</th>
+                                        <th>总预计</th>
+                                        <th>总消耗</th>
+                                        <th>总剩余</th>
+                                        <th>时间进度</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {volist name="task" id="vo"}
+                                    <tr>
+                                        <td>{$key+1}</td>
+                                        <td>{$vo.task_order}</td>
+                                        <td>{$vo.task_name}</td>
+                                        <td>
+                                            {if condition="$vo.task_status eq 0"/}
+                                            等待开始
+                                            {elseif condition="$vo.task_status eq 1"/}
+                                            已开始
+                                            {elseif condition="$vo.task_status eq 2"/}
+                                            完成
+                                            {/if}
+                                        </td>
+                                        <td>{$vo.to_name}</td>
+                                        <td>{$vo.create_name}</td>
+                                        <?php if($vo['task_start'] && $vo['task_end']){ ?>
+                                        <td>
+                                            <?php
                           $num1=number_format(($vo['task_end']-$vo['task_start'])/86400,1);
                            echo $num1= $num1 >0 ?$num1 :0;
-                                                        ?>天
-                                                    </td>
-                                                    <td>
-                                                        <?php
+                                            ?>天
+                                        </td>
+                                        <td>
+                                            <?php
                             $num2=number_format((time()-$vo['task_start'])/86400,1);
                             echo $num2 >0 ?$num2 :0;
-                                                        ?>天
-                                                    </td>
-                                                    <td>
-                                                        <?php
+                                            ?>天
+                                        </td>
+                                        <td>
+                                            <?php
                             $num3 =number_format(($vo['task_end']-time())/86400,1);
                             echo   $num2 >0?$num3:$num1;
-                                                        ?>天
-                                                    </td>
-                                                    <td>
-                                                        <?php
+                                            ?>天
+                                        </td>
+                                        <td>
+                                            <?php
                         $width = $num1 >0? number_format(($num2/$num1)*100,2):0;
-                                                        ?>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: <?php echo $width; ?>%;"></div><?php echo $width; ?>%
-                                                        </div>
-                                                    </td>
-                                                    <?php }else{?>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <?php }?>
-                                                    <td> <a href="{:url('index/task/task_des')}?id={$vo.id}&mid={$mid}" class="btn btn-info">查看</a></td>
-                                                </tr>
-                                                {/volist}
-                                                </tbody>
-                                            </table>
-                                            {else/}
-                                            <p>暂无任务</p>
-                                            {/if}
-                                        </div>
-                                        {/foreach}
-                                    </div>
-                                </div>
+                                            ?>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: <?php echo $width; ?>%;"></div><?php echo $width; ?>%
+                                            </div>
+                                        </td>
+                                        <?php }else{?>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <?php }?>
+                                        <td> <a href="{:url('index/task/task_des')}?id={$vo.id}&mid={$mid}" class="btn btn-info">查看</a></td>
+                                    </tr>
+                                    {/volist}
+                                    </tbody>
+                                </table>
+                                {else/}
+                                <p>暂无任务</p>
+                                {/if}
                             </div>
-                        </div>
-                        <div class="tab-pane  p-20" id="profile3" role="tabpanel">
-
-                        </div>
-                        <div class="tab-pane p-20" id="messages3" role="tabpanel">
-
+                            {/foreach}
                         </div>
                     </div>
                 </div>
