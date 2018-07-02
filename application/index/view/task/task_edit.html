@@ -70,14 +70,14 @@
                             <div class="col-md-4 ">
                                 <div class="form-group">
                                     <label class="control-label">开始时间</label>
-                                    <input type="date"  class="form-control"  name="task_start" value="{$task.task_start|date='Y-m-d',###}">
+                                    <input type="date"  class="form-control"  name="task_start" {if condition="$task.task_start"/} value="{$task.task_start|date='Y-m-d',###}" {/if}>
                                     <small class="form-control-feedback"> </small>
                                 </div>
                             </div>
                             <div class="col-md-4 ">
                                 <div class="form-group">
                                     <label class="control-label">结束时间</label>
-                                    <input type="date"  class="form-control"  name="task_end" value="{$task.task_end|date='Y-m-d',###}">
+                                    <input type="date"  class="form-control"  name="task_end" {if condition="$task.task_start"/} value="{$task.task_end|date='Y-m-d',###}" {/if}>
                                     <small class="form-control-feedback"> </small>
                                 </div>
                             </div>
