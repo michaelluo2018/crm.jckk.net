@@ -133,8 +133,8 @@ class Task extends Model{
         $task->task_name = trim($data['task_name']);
         $task->task_describe = trim($data['task_describe']);
         $task->audit_standard = trim($data['audit_standard']);
-        $task->task_start = trim($data['task_start']);
-        $task->task_end = trim($data['task_end']);
+        $task->task_start =strtotime(trim($data['task_start']));
+        $task->task_end = strtotime(trim($data['task_end']));
         $task->task_order = trim($data['task_order']);
         $task->is_delete = 0;
 
@@ -445,9 +445,25 @@ class Task extends Model{
     }
 
 
+/*
+ * 获取某天，某人的任务
+ * */
+
+    public function get_task_by_day_and_uid($day,$uid){
+        $tasks = Db::table("jckk_task")
+                ->alias("t")
+                ->field(["t.*","p.project_name","tu.chinese_name as to_name","cu.chinese_name as create_name"])
+                ->whereTime('t.task_start','<=',$day)
+                ->whereTime('t.task_end','>=',$day)
+                ->where('t.to_uid',$uid)
+                ->join("jckk_project p","p.id = t.project_id","LEFT")
+                ->join("jckk_user tu","tu.uid = t.to_uid","LEFT")
+                ->join("jckk_user cu","cu.uid = t.create_uid","LEFT")
+                ->select();
+        return $tasks;
 
 
-
+    }
 
 
 }

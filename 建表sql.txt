@@ -319,3 +319,14 @@ create table jckk_leave (
     create_uid int  comment "创建者",
     is_delete int default 0 comment "是否删除"
     )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+
+create table wp_welcome (
+    id int primary key auto_increment,
+    token varchar(100) comment "token",
+    material_type varchar(20) comment "素材类型",
+    material_id int comment "本地素材id",
+    wx_material_id varchar(100) comment "微信素材id",
+    is_use  int default 1 comment "是否使用",
+    create_time int  comment "创建时间"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;

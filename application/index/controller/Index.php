@@ -124,6 +124,18 @@ class Index extends Base
 
 
 
+    /*
+     * 任务排期
+     * */
+    public function calendar_task(){
+
+        $year = isset($_GET['year']) ? $_GET['year'] : date("Y");
+        $month = isset($_GET['month']) ? $_GET['month'] : date("m");
+        $res = __toString('calendar_task',$year,$month,$this->uid);
+        $this->assign('res',$res['out']);
+        $this->assign('tasks',$res['tasks']);
+       return view('calendar_task');
+    }
 
 
 

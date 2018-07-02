@@ -87,19 +87,19 @@
                         <?php if($task['task_start'] && $task['task_end']){ ?>
                         <td>
                             <?php
-                              $num1=number_format((strtotime($task['task_end'])-strtotime($task['task_start']))/86400,1);
+                              $num1=number_format(($task['task_end']-$task['task_start'])/86400,1);
                                echo $num1= $num1 >0 ?$num1 :0;
                             ?>天
                         </td>
                         <td>
                             <?php
-                                $num2=number_format((time()-strtotime($task['task_start']))/86400,1);
+                                $num2=number_format((time()-$task['task_start'])/86400,1);
                                 echo $num2 >0 ?$num2 :0;
                             ?>天
                         </td>
                         <td>
                             <?php
-                                $num3 =number_format((strtotime($task['task_end'])-time())/86400,1);
+                                $num3 =number_format(($task['task_end']-time())/86400,1);
                                 echo   $num2 >0?$num3:$num1;
                             ?>天
                         </td>
