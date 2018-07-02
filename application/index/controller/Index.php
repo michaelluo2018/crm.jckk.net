@@ -29,6 +29,12 @@ class Index extends Base
             $this->menu_id = $this->get_mid_by_url("index/index/index");
             $this->assign("mid",$this->menu_id);
         }
+        //任务排期
+        $year = isset($_GET['year']) ? $_GET['year'] : date("Y");
+        $month = isset($_GET['month']) ? $_GET['month'] : date("m");
+        $res = __toString('index',$year,$month,$this->uid);
+        $this->assign('res',$res['out']);
+        $this->assign('tasks',$res['tasks']);
         return view("index")->assign("my_logs",$my_logs)->assign("customer_status",$customer_status);
 
     }

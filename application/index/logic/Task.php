@@ -3,7 +3,7 @@ namespace  app\index\logic;
 use app\index\controller\Common;
 use think\Model;
 use think\Db;
-use app\index\model\Log;
+use app\index\model\Log as TaskLog;
 use think\Session;
 
 class Task extends Model{
@@ -24,7 +24,7 @@ class Task extends Model{
         if(isset($data['task_id'])){
             //修改
             $task = model("task","model")->where("id",$data['task_id'])->find();
-            $task_log["type"] = Log::UPDATE_TYPE;
+            $task_log["type"] = TaskLog::UPDATE_TYPE;
             $task_log["before_value"] = json_encode($task);
             $task_log["title"] = "更改任务信息";
             $old_to_uid = $task->to_uid;
@@ -117,7 +117,7 @@ class Task extends Model{
             $task = model("task",'model');
             $task->create_time = time();
             $task->create_uid = Session::get("uid");
-            $task_log["type"] = Log::ADD_TYPE;
+            $task_log["type"] = TaskLog::ADD_TYPE;
             $task_log["before_value"] = "";
             $task_log["title"] = "添加新任务";
 
@@ -422,7 +422,7 @@ class Task extends Model{
         $task= $this->where("id",$id)->find();
 
         //添加日志
-        $task_log["type"] = Log::DELETE_TYPE;
+        $task_log["type"] = TaskLog::DELETE_TYPE;
 
         $task_log["before_value"] = json_encode($task);
         $task_log["after_value"] = "";
