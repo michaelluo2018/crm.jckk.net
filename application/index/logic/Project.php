@@ -169,7 +169,7 @@ class Project extends Model{
                     ->alias("p")
                     ->where("p.is_delete","<>",1)
                     ->where("p.customer_id",$customer_id)
-                    ->whereIn("p.create_uid",$create_uids)
+                    ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
                     ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
                         "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
                     ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
@@ -207,7 +207,7 @@ class Project extends Model{
                 return Db::table("jckk_project")
                     ->alias("p")
                     ->where("p.is_delete","<>",1)
-                    ->whereIn("p.create_uid",$create_uids)
+                    ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
                     ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
                         "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
                     ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
@@ -273,7 +273,7 @@ class Project extends Model{
                     ->alias("p")
                     ->where("p.is_delete",1)
                     ->where("p.customer_id",$customer_id)
-                    ->whereIn("p.create_uid",$create_uids)
+                    ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
                     ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
                         "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
                     ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
@@ -311,7 +311,7 @@ class Project extends Model{
                 return Db::table("jckk_project")
                     ->alias("p")
                     ->where("p.is_delete",1)
-                    ->whereIn("p.create_uid",$create_uids)
+                    ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
                     ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
                         "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
                     ->join("jckk_customer c ","p.customer_id = c.id","LEFT")

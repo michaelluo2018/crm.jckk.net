@@ -56,7 +56,7 @@
                                     <th>客户信息</th>
                                     <th>合同</th>
                                     <th>进度(天)</th>
-                                    <th>创建者</th>
+                                    <th>参与者</th>
                                     <th>最后更新</th>
                                     <th>操作</th>
                                 </tr>
@@ -118,7 +118,13 @@
                                     <?php }else{?>
                                     <td></td>
                                     <?php }?>
-                                    <td>{$project.c_name}</td>
+                                    <td>
+                                        <p><b>创建者</b>：<small>  {$project.c_name}</small></p>
+                                        <p><b>管理人</b>：<small>{$project.m_name}</small></p>
+                                        <p><b>执行者</b>：<small>{$project.e_name}</small></p>
+                                        <p><b>策划人</b>：<small>{$project.p_name}</small></p>
+                                        <p><b>对接人</b>：<small>{$project.d_name}</small></p>
+                                    </td>
                                     <td>
                                         {if condition="$project.update_time"/}
                                         {$project.update_time|date="Y-m-d H:i:s",###}
