@@ -19,11 +19,8 @@ class Index extends Base
         //数据统计--合同状态
         $get_contract_status1 = $this->get_contract_status1();
         $get_contract_status2 = $this->get_contract_status2();
-//        dump($get_contract_status1);
-//        dump($get_contract_status2);die;
         //数据统计--产品需求
         $product_demand = $this->get_product_demand();
-
         $customer_status = array_merge($customer_status_1,$customer_status_2,$get_contract_status1,$get_contract_status2,$product_demand);
         if(! $this->menu_id){
             $this->menu_id = $this->get_mid_by_url("index/index/index");
@@ -32,9 +29,17 @@ class Index extends Base
         //任务排期
         $year = isset($_GET['year']) ? $_GET['year'] : date("Y");
         $month = isset($_GET['month']) ? $_GET['month'] : date("m");
-        $res = __toString('index',$year,$month,$this->uid);
+        $mid = $this->get_mid_by_url("index/task/task");
+        $this->menu_id = $mid;
+        $uids = $this->check_post_menu_range_permission();
+        if($uids == "all") {
+            $res = __toString('index',$year,$month);
+        }else{
+            $res = __toString('index',$year,$month,$uids);
+        }
         $this->assign('res',$res['out']);
         $this->assign('tasks',$res['tasks']);
+
         return view("index")->assign("my_logs",$my_logs)->assign("customer_status",$customer_status);
 
     }

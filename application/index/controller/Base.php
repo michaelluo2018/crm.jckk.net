@@ -167,13 +167,11 @@ class Base extends Controller{
         foreach ($menus_all as $k=>$v){
             $mid = $v->id;
             $post_permission = model("post_permission")->where("pid", $this->post_id)->where("mid",$mid)->find();
-
             if($post_permission){
                 if($post_permission->desc_operate==1){
                     $permissions[$mid] = $post_permission;
                 }
             }
-
         }
 
         return $permissions;

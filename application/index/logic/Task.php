@@ -338,15 +338,30 @@ class Task extends Model{
 
 
     //获取列表
-    public function get_tasks(){
-        return Db::table("jckk_task")
-            ->alias("t")
-            ->field(["t.*","p.project_name","tu.chinese_name as to_name","cu.chinese_name as create_name"])
-            ->where("t.is_delete","<>",1)
-            ->join("jckk_project p","p.id = t.project_id","LEFT")
-            ->join("jckk_user tu","tu.uid = t.to_uid","LEFT")
-            ->join("jckk_user cu","cu.uid = t.create_uid","LEFT")
-            ->select();
+    public function get_tasks($uids=null){
+        if($uids){
+            return  Db::table("jckk_task")
+                ->alias("t")
+                ->field(["t.*","p.project_name","tu.chinese_name as to_name","cu.chinese_name as create_name"])
+                ->where("t.create_uid|t.to_uid","in",$uids)
+                ->where("t.is_delete","<>",1)
+                ->join("jckk_project p","p.id = t.project_id","LEFT")
+                ->join("jckk_user tu","tu.uid = t.to_uid","LEFT")
+                ->join("jckk_user cu","cu.uid = t.create_uid","LEFT")
+                ->select();
+
+        }
+        else{
+            return Db::table("jckk_task")
+                ->alias("t")
+                ->field(["t.*","p.project_name","tu.chinese_name as to_name","cu.chinese_name as create_name"])
+                ->where("t.is_delete","<>",1)
+                ->join("jckk_project p","p.id = t.project_id","LEFT")
+                ->join("jckk_user tu","tu.uid = t.to_uid","LEFT")
+                ->join("jckk_user cu","cu.uid = t.create_uid","LEFT")
+                ->select();
+        }
+
 
     }
 
@@ -449,18 +464,34 @@ class Task extends Model{
  * 获取某天，某人的任务
  * */
 
-    public function get_task_by_day_and_uid($day,$uid){
-        $tasks = Db::table("jckk_task")
+    public function get_task_by_day_and_uid($day,$uids=null){
+        if($uids){
+            return  Db::table("jckk_task")
                 ->alias("t")
                 ->field(["t.*","p.project_name","tu.chinese_name as to_name","cu.chinese_name as create_name"])
+                ->where("t.create_uid|t.to_uid","in",$uids)
+                ->where("t.is_delete","<>",1)
                 ->whereTime('t.task_start','<=',$day)
                 ->whereTime('t.task_end','>=',$day)
-                ->where('t.to_uid',$uid)
                 ->join("jckk_project p","p.id = t.project_id","LEFT")
                 ->join("jckk_user tu","tu.uid = t.to_uid","LEFT")
                 ->join("jckk_user cu","cu.uid = t.create_uid","LEFT")
                 ->select();
-        return $tasks;
+        }
+        else{
+            $tasks = Db::table("jckk_task")
+                ->alias("t")
+                ->field(["t.*","p.project_name","tu.chinese_name as to_name","cu.chinese_name as create_name"])
+                ->whereTime('t.task_start','<=',$day)
+                ->whereTime('t.task_end','>=',$day)
+                ->join("jckk_project p","p.id = t.project_id","LEFT")
+                ->join("jckk_user tu","tu.uid = t.to_uid","LEFT")
+                ->join("jckk_user cu","cu.uid = t.create_uid","LEFT")
+                ->select();
+            return $tasks;
+        }
+
+
 
 
     }

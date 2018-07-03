@@ -17,8 +17,12 @@ class Task extends Base {
 
     //列表
     public function task(){
-
-        $tasks =  model('task','logic')->get_tasks();
+        $uids = $this->check_post_menu_range_permission();
+        if($uids == "all") {
+            $tasks =  model('task','logic')->get_tasks();
+        }else{
+            $tasks =  model('task','logic')->get_tasks($uids);
+        }
 
         $this->assign("title","所有任务");
         $this->assign("tasks",$tasks);
