@@ -43,51 +43,96 @@
                         </div>
                     </div>
                 </div>
-                <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" data-page-size="20">
+                <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" data-page-size="10">
                     <thead>
                     <tr class="text-align">
-                        <!--<th>序号</th>-->
+
                         <th>编号</th>
-                        <th>客户全称</th>
-                        <th>项目名称</th>
-                        <th>客户类别</th>
-                        <th>客户状态</th>
-                        <th>所属部门</th>
-                        <!--<th>执行人</th>-->
-                        <!--<th>策划人</th>-->
-                        <!--<th>对接人</th>-->
-                        <!--<th>管理人</th>-->
-                        <th>需求产品</th>
-                        <th>合同状态</th>
-                        <th>回款模式</th>
-                        <th>回款状态</th>
-                        <th>创建者</th>
+
+                        <th>项目信息</th>
+                        <th>客户信息</th>
+                        <th>合同</th>
+                        <th>进度(天)</th>
+                        <th>参与者</th>
+                        <th>最后更新</th>
                         <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
                     {volist name="projects" id="project" key="k"}
                     <tr>
-                        <!--<td>{$k}</td>-->
+
                         <td>P{$project.create_time|date="Ymd",###}-{$project.id}</td>
-                        <td>{$project.customer_name}</td>
-                        <td>{$project.project_name}</td>
-                        <td>{$project.customer_status_1}</td>
-                        <td><span class="label label-table label-success">{$project.customer_status_2}</span></td>
-                        <td>{$project.department_name}</td>
-                        <!--<td>{$project.e_name}</td>-->
-                        <!--<td>{$project.p_name}</td>-->
-                        <!--<td>{$project.d_name}</td>-->
-                        <!--<td>{$project.m_name}</td>-->
-                        <td>{$project.product_demand_1}</td>
-                        <td>{$project.contract_status}</td>
-                        <td>{$project.payment_type}</td>
-                        <td>{$project.payment_status}</td>
-                        <td>{$project.c_name}</td>
+                        <td>
+                            <p><b>项目名称</b>：<small>{$project.project_name}</small></p>
+                            <p><b>所属部门</b>：<small>{$project.department_name}</small></p>
+                            <p><b>需求产品</b>：<small>{$project.product_demand_1}</small></p>
+                        </td>
+                        <td>
+                            <p><b>客户名称</b>：<small>{$project.customer_name}</small></p>
+                            <p><b>客户类别</b>：<small>{$project.customer_status_1}</small></p>
+                            <p><b>客户状态</b>：<small>{$project.customer_status_2}</small></p>
+                        </td>
+
+                        <td>
+                            <p><b>合同状态</b>：<small>{$project.contract_status}</small></p>
+                            <p><b>回款模式</b>：<small>{$project.payment_type}</small></p>
+                            <p><b>回款状态</b>：<small>{$project.payment_status}</small></p>
+                        </td>
+
+
+                        <?php if($project['project_start'] && $project['project_end']){ ?>
+                        <td>
+                            <p>预计：<small>
+                                <?php
+                                         $num1=number_format((strtotime($project['project_end'])-strtotime($project['project_start']))/86400,1);
+                                         echo $num1= $num1 >0 ?$num1 :0;
+
+                                ?></small>
+                            </p>
+                            <p><b>消耗</b>：<small>
+                                <?php
+                                        $num2=number_format((time()-strtotime($project['project_start']))/86400,1);
+                                        echo $num2= $num2 >0 ?$num2 :0;
+
+                                ?></small>
+                            </p>
+                            <p><b>剩余</b>：<small>
+                                <?php
+                                        $num3 =number_format((strtotime($project['project_end'])-time())/86400,1);
+                                        echo   $num2 >0?$num3:$num1;
+                                ?></small>
+                            </p>
+                            <p>
+                                <?php
+                                        $width = $num1 >0? number_format(($num2/$num1)*100,2):0;
+                                ?>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: <?php echo $width; ?>%;"></div><?php echo $width; ?>%
+                            </div>
+                            </p>
+                        </td>
+                        <?php }else{?>
+                        <td></td>
+                        <?php }?>
+                        <td>
+                            <p><b>创建者</b>：<small>  {$project.c_name}</small></p>
+                            <p><b>管理人</b>：<small>{$project.m_name}</small></p>
+                            <p><b>执行者</b>：<small>{$project.e_name}</small></p>
+                            <p><b>策划人</b>：<small>{$project.p_name}</small></p>
+                            <p><b>对接人</b>：<small>{$project.d_name}</small></p>
+                        </td>
+                        <td>
+                            {if condition="$project.update_time"/}
+                            {$project.update_time|date="Y-m-d H:i:s",###}
+                            {/if}
+                        </td>
                         <td>
                             <a href="javascript:void (0);" onclick="delete_sure('确定要删除此项目吗？','{:url(\'index/project/project_del\')}?id={$project.id}&mid={$mid}')" class="btn btn-sm btn-icon btn-pure btn-outline " title="删除"><i class="ti-close" aria-hidden="true"></i></a>
                             <a href="{:url('index/project/project_edit')}?id={$project.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="修改"><i class="ti-pencil" aria-hidden="true"></i></a>
                             <a href="{:url('index/project/project_des')}?id={$project.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="查看详情"><i class="ti-search" aria-hidden="true"></i></a>
+                            <a href="{:url('index/task/task_add')}?id={$project.id}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="添加任务"><i class="ti-plus" aria-hidden="true"></i></a>
+                            <a href="{:url('index/task/project_task')}?id={$project.id}&n={$project.project_name}&mid={$mid}" class="btn btn-sm btn-icon btn-pure btn-outline " title="项目任务"><i class="ti-file" aria-hidden="true"></i></a>
                         </td>
                     </tr>
                     {/volist}
