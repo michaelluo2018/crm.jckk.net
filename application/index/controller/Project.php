@@ -44,8 +44,14 @@ class Project extends Base {
 
 
     public  function  product_demand($name){
+        $create_uids = $this->check_post_menu_range_permission();
 
-        $projects = model("project", "logic")->get_projects_by_status("product_demand_1",$name);
+        if($create_uids == "all") {
+
+            $projects = model("project", "logic")->get_projects_by_status("product_demand_1",$name);
+        }else{
+            $projects = model("project", "logic")->get_projects_by_status("product_demand_1",$name,$create_uids);
+        }
 
         return  view("project_status_list")->assign(["projects"=>$projects,"name"=>$name]);
 
