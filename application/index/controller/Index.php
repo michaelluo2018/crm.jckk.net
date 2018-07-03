@@ -33,7 +33,7 @@ class Index extends Base
         $this->menu_id = $mid;
         $uids = $this->check_post_menu_range_permission();
         if($uids == "all") {
-            $res = __toString('index',$year,$month);
+            $res = __toString('index',$year,$month,'');
         }else{
             $res = __toString('index',$year,$month,$uids);
         }
