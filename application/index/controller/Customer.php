@@ -241,18 +241,26 @@ class Customer extends Base{
 
 
     public  function  customer_status_1($name){
-
-        $data = model("customer","logic")->get_customers_by_status("customer_status_1",$name);
-
+        $create_uids = $this->check_post_menu_range_permission();
+        if($create_uids == "all"){
+            $data = model("customer","logic")->get_customers_by_status("customer_status_1",$name);
+        }
+        else{
+            $data = model("customer","logic")->get_customers_by_status("customer_status_1",$name,$create_uids);
+        }
         return  view("customer_status_list")->assign(["data"=>$data,"name"=>$name]);
 
     }
 
 
     public  function  customer_status_2($name){
-
-        $data = model("customer","logic")->get_customers_by_status("customer_status_2",$name);
-
+        $create_uids = $this->check_post_menu_range_permission();
+        if($create_uids == "all"){
+            $data = model("customer","logic")->get_customers_by_status("customer_status_2",$name);
+        }
+        else{
+            $data = model("customer","logic")->get_customers_by_status("customer_status_2",$name,$create_uids);
+        }
         return  view("customer_status_list")->assign(["data"=>$data,"name"=>$name]);
 
     }

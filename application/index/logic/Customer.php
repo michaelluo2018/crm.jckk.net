@@ -36,18 +36,28 @@ class Customer extends  Model{
     }
 
 
-      public function get_customers_by_status($key,$status){
-
-
-            return Db::table("jckk_customer")
-                ->where("jckk_customer.is_delete","<>",1)
-                ->where("jckk_customer.".$key,$status)
-                ->field(["jckk_customer.*","jckk_user.chinese_name","jckk_contact.contact_name","jckk_contact.position","jckk_contact.sex","jckk_contact.mobile","jckk_contact.email","jckk_contact.qq","jckk_contact.wechat"])
-                ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
-                ->join("jckk_user","jckk_user.uid = jckk_customer.create_uid","LEFT")
-                ->order("jckk_customer.id","desc")
-                ->select();
-
+      public function get_customers_by_status($key,$status,$create_uids=null){
+          if($create_uids){
+              return Db::table("jckk_customer")
+                  ->where("jckk_customer.is_delete","<>",1)
+                  ->where("jckk_customer.".$key,$status)
+                  ->where("jckk_customer.create_uid","in",$create_uids)
+                  ->field(["jckk_customer.*","jckk_user.chinese_name","jckk_contact.contact_name","jckk_contact.position","jckk_contact.sex","jckk_contact.mobile","jckk_contact.email","jckk_contact.qq","jckk_contact.wechat"])
+                  ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
+                  ->join("jckk_user","jckk_user.uid = jckk_customer.create_uid","LEFT")
+                  ->order("jckk_customer.id","desc")
+                  ->select();
+          }
+          else{
+              return Db::table("jckk_customer")
+                  ->where("jckk_customer.is_delete","<>",1)
+                  ->where("jckk_customer.".$key,$status)
+                  ->field(["jckk_customer.*","jckk_user.chinese_name","jckk_contact.contact_name","jckk_contact.position","jckk_contact.sex","jckk_contact.mobile","jckk_contact.email","jckk_contact.qq","jckk_contact.wechat"])
+                  ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
+                  ->join("jckk_user","jckk_user.uid = jckk_customer.create_uid","LEFT")
+                  ->order("jckk_customer.id","desc")
+                  ->select();
+          }
 
     }
 
