@@ -348,7 +348,7 @@ class Task extends Model{
                 ->join("jckk_project p","p.id = t.project_id","LEFT")
                 ->join("jckk_user tu","tu.uid = t.to_uid","LEFT")
                 ->join("jckk_user cu","cu.uid = t.create_uid","LEFT")
-                ->select();
+                ->paginate(["query"=>request()->param(),]);
 
         }
         else{
@@ -359,7 +359,7 @@ class Task extends Model{
                 ->join("jckk_project p","p.id = t.project_id","LEFT")
                 ->join("jckk_user tu","tu.uid = t.to_uid","LEFT")
                 ->join("jckk_user cu","cu.uid = t.create_uid","LEFT")
-                ->select();
+                ->paginate(["query"=>request()->param(),]);
         }
 
 
@@ -376,7 +376,7 @@ class Task extends Model{
             ->join("jckk_project p","p.id = t.project_id","LEFT")
             ->join("jckk_user tu","tu.uid = t.to_uid","LEFT")
             ->join("jckk_user cu","cu.uid = t.create_uid","LEFT")
-            ->select();
+            ->paginate(["query"=>request()->param(),]);
 
     }
 
@@ -390,7 +390,7 @@ class Task extends Model{
            ->join("jckk_project p","p.id = t.project_id","LEFT")
            ->join("jckk_user tu","tu.uid = t.to_uid","LEFT")
            ->join("jckk_user cu","cu.uid = t.create_uid","LEFT")
-           ->select();
+           ->paginate(["query"=>request()->param(),]);
 
    }
 
@@ -406,7 +406,7 @@ class Task extends Model{
             ->join("jckk_project p","p.id = t.project_id","LEFT")
             ->join("jckk_user tu","tu.uid = t.to_uid","LEFT")
             ->join("jckk_user cu","cu.uid = t.create_uid","LEFT")
-            ->select();
+            ->paginate(["query"=>request()->param(),]);
 
     }
 
@@ -476,7 +476,7 @@ class Task extends Model{
                 ->join("jckk_project p","p.id = t.project_id","LEFT")
                 ->join("jckk_user tu","tu.uid = t.to_uid","LEFT")
                 ->join("jckk_user cu","cu.uid = t.create_uid","LEFT")
-                ->select();
+                ->paginate(["query"=>request()->param(),]);
         }
         else{
             $tasks = Db::table("jckk_task")
@@ -487,7 +487,7 @@ class Task extends Model{
                 ->join("jckk_project p","p.id = t.project_id","LEFT")
                 ->join("jckk_user tu","tu.uid = t.to_uid","LEFT")
                 ->join("jckk_user cu","cu.uid = t.create_uid","LEFT")
-                ->select();
+                ->paginate(["query"=>request()->param(),]);
             return $tasks;
         }
 

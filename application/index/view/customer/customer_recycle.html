@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" data-page-size="20">
+                <table class="table">
                     <thead>
                     <tr>
                         <!--<th>序号</th>-->
@@ -86,10 +86,7 @@
                     <tfoot>
                     <tr>
                         <td colspan="11">
-                            <div class="text-right">
-                                <ul class="pagination">
-                                </ul>
-                            </div>
+                           {$data->render()}
                         </td>
                     </tr>
                     </tfoot>

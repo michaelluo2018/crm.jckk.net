@@ -180,7 +180,7 @@ class Project extends Model{
                     ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                     ->join("jckk_department d","d.id = eu.department_id","LEFT")
                     ->order("p.id","desc")
-                    ->select();
+                    ->paginate( ['query' => request()->param(),]);
             }
             else{
                 return Db::table("jckk_project")
@@ -197,7 +197,7 @@ class Project extends Model{
                     ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                     ->join("jckk_department d","d.id = eu.department_id","LEFT")
                     ->order("p.id","desc")
-                    ->select();
+                    ->paginate( ['query' => request()->param(),]);
             }
         }
         else{
@@ -217,7 +217,7 @@ class Project extends Model{
                     ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                     ->join("jckk_department d","d.id = eu.department_id","LEFT")
                     ->order("p.id","desc")
-                    ->select();
+                    ->paginate( ['query' => request()->param(),]);
             }
             else{
                 return Db::table("jckk_project")
@@ -233,7 +233,7 @@ class Project extends Model{
                     ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                     ->join("jckk_department d","d.id = eu.department_id","LEFT")
                     ->order("p.id","desc")
-                    ->select();
+                    ->paginate( ['query' => request()->param(),]);
             }
 
         }
@@ -260,7 +260,7 @@ class Project extends Model{
                 ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                 ->join("jckk_department d","d.id = eu.department_id","LEFT")
                 ->order("p.id","desc")
-                ->select();
+                ->paginate( ['query' => request()->param(),]);
         }
         else{
             return Db::table("jckk_project")
@@ -277,7 +277,7 @@ class Project extends Model{
                 ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                 ->join("jckk_department d","d.id = eu.department_id","LEFT")
                 ->order("p.id","desc")
-                ->select();
+                ->paginate( ['query' => request()->param(),]);
         }
 
 
@@ -304,7 +304,7 @@ class Project extends Model{
                     ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                     ->join("jckk_department d","d.id = eu.department_id","LEFT")
                     ->order("p.id","desc")
-                    ->select();
+                    ->paginate( ['query' => request()->param(),]);
             }
             else{
                 return Db::table("jckk_project")
@@ -321,7 +321,7 @@ class Project extends Model{
                     ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                     ->join("jckk_department d","d.id = eu.department_id","LEFT")
                     ->order("p.id","desc")
-                    ->select();
+                    ->paginate( ['query' => request()->param(),]);
             }
 
         }
@@ -342,7 +342,7 @@ class Project extends Model{
                     ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                     ->join("jckk_department d","d.id = eu.department_id","LEFT")
                     ->order("p.id","desc")
-                    ->select();
+                    ->paginate( ['query' => request()->param(),]);
             }
             else{
                 return Db::table("jckk_project")
@@ -358,7 +358,7 @@ class Project extends Model{
                     ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                     ->join("jckk_department d","d.id = eu.department_id","LEFT")
                     ->order("p.id","desc")
-                    ->select();
+                    ->paginate( ['query' => request()->param(),]);
             }
 
         }
@@ -460,7 +460,7 @@ class Project extends Model{
             ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
             ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
             ->join("jckk_department d","d.id = eu.department_id","LEFT")
-            ->select();
+            ->paginate( ['query' => request()->param(),]);
     }
 
     public function get_project_by_name($name){

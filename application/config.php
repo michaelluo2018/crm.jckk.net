@@ -232,11 +232,10 @@ return [
         'setcookie' => true,
     ],
 
-    //分页配置
     'paginate'               => [
-        'type'      => 'bootstrap',
+        'type'      => 'page\Page',
         'var_page'  => 'page',
-        'list_rows' => 15,
+        'list_rows' => 25,
     ],
     //邮件配置
     'email'               => [

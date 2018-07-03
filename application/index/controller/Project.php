@@ -35,6 +35,7 @@ class Project extends Base {
 
 
     public  function  contract_status($name){
+
         $create_uids = $this->check_post_menu_range_permission();
 
         if($create_uids == "all") {

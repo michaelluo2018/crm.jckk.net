@@ -43,7 +43,7 @@
                         </div>
                     </div>
                 </div>
-                <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" data-page-size="10">
+                <table  class="table" >
                     <thead>
                     <tr class="text-align">
 
@@ -140,10 +140,7 @@
                     <tfoot>
                     <tr>
                         <td colspan="14">
-                            <div class="text-right">
-                                <ul class="pagination">
-                                </ul>
-                            </div>
+                            {$projects->render()}
                         </td>
                     </tr>
                     </tfoot>

@@ -21,7 +21,7 @@ class Customer extends  Model{
                 ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
                 ->join("jckk_user","jckk_user.uid = jckk_customer.create_uid","LEFT")
                 ->order("jckk_customer.id","desc")
-                ->select();
+                ->paginate(['query'=> request()->param(),]);
         }
         else{
             return Db::table("jckk_customer")
@@ -30,7 +30,7 @@ class Customer extends  Model{
                 ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
                 ->join("jckk_user","jckk_user.uid = jckk_customer.create_uid","LEFT")
                 ->order("jckk_customer.id","desc")
-                ->select();
+                ->paginate(['query'=> request()->param(),]);
         }
 
     }
@@ -46,7 +46,7 @@ class Customer extends  Model{
                   ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
                   ->join("jckk_user","jckk_user.uid = jckk_customer.create_uid","LEFT")
                   ->order("jckk_customer.id","desc")
-                  ->select();
+                  ->paginate(['query'=> request()->param(),]);
           }
           else{
               return Db::table("jckk_customer")
@@ -56,7 +56,7 @@ class Customer extends  Model{
                   ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
                   ->join("jckk_user","jckk_user.uid = jckk_customer.create_uid","LEFT")
                   ->order("jckk_customer.id","desc")
-                  ->select();
+                  ->paginate(['query'=> request()->param(),]);
           }
 
     }
@@ -87,7 +87,7 @@ class Customer extends  Model{
                 ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
                 ->join("jckk_user","jckk_user.uid = jckk_customer.create_uid","LEFT")
                 ->order("jckk_customer.id","desc")
-                ->select();
+                ->paginate(['query'=> request()->param(),]);
         }
         else{
             return Db::table("jckk_customer")
@@ -96,7 +96,7 @@ class Customer extends  Model{
                 ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
                 ->join("jckk_user","jckk_user.uid = jckk_customer.create_uid","LEFT")
                 ->order("jckk_customer.id","desc")
-                ->select();
+                ->paginate(['query'=> request()->param(),]);
         }
 
 
@@ -359,7 +359,7 @@ class Customer extends  Model{
             ->where("jckk_customer.customer_name","like","%".$name."%")
             ->field(["jckk_customer.*","jckk_contact.contact_name","jckk_contact.position","jckk_contact.sex","jckk_contact.mobile","jckk_contact.email","jckk_contact.qq","jckk_contact.wechat"])
             ->join("jckk_contact","jckk_customer.contact_id = jckk_contact.id","LEFT")
-            ->select();
+            ->paginate(['query'=> request()->param(),]);
     }
 
     public function  get_customer_like_name($name){
