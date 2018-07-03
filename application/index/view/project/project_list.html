@@ -82,21 +82,21 @@
 
                                    <?php if($project['project_start'] && $project['project_end']){ ?>
                                     <td>
-                                        <p>预计：<small>
+                                        <p>预计:<small>
                                         <?php
                                          $num1=number_format((strtotime($project['project_end'])-strtotime($project['project_start']))/86400,1);
                                          echo $num1= $num1 >0 ?$num1 :0;
 
                                         ?></small>
                                         </p>
-                                        <p><b>消耗</b>：<small>
+                                        <p><b>消耗</b>:<small>
                                         <?php
                                         $num2=number_format((time()-strtotime($project['project_start']))/86400,1);
                                         echo $num2= $num2 >0 ?$num2 :0;
 
                                         ?></small>
                                         </p>
-                                    <p><b>剩余</b>：<small>
+                                    <p><b>剩余</b>:<small>
                                         <?php
                                         $num3 =number_format((strtotime($project['project_end'])-time())/86400,1);
                                         echo   $num2 >0?$num3:$num1;
