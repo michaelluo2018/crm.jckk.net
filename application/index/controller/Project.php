@@ -35,8 +35,15 @@ class Project extends Base {
 
 
     public  function  contract_status($name){
+        $create_uids = $this->check_post_menu_range_permission();
 
-        $projects = model("project", "logic")->get_projects_by_status("contract_status",$name);
+        if($create_uids == "all") {
+
+            $projects = model("project", "logic")->get_projects_by_status("contract_status",$name);
+        }else{
+            $projects = model("project", "logic")->get_projects_by_status("contract_status",$name,$create_uids);
+        }
+
 
         return  view("project_status_list")->assign(["projects"=>$projects,"name"=>$name]);
 

@@ -199,7 +199,6 @@ class Project extends Model{
                     ->order("p.id","desc")
                     ->select();
             }
-
         }
         else{
 
