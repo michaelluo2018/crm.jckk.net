@@ -20,12 +20,12 @@ class Project extends Base {
     public function project_list(){
 
         $create_uids = $this->check_post_menu_range_permission();
-
+        $keyword = Request::instance()->get();
         if($create_uids == "all") {
 
-            $projects = model("project", "logic")->get_projects();
+            $projects = model("project", "logic")->get_projects("","",$keyword);
         }else{
-            $projects = model("project", "logic")->get_projects("",$create_uids);
+            $projects = model("project", "logic")->get_projects("",$create_uids,$keyword);
         }
 
         return  view("project_list")->assign("projects",$projects);

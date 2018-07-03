@@ -160,10 +160,9 @@ class Project extends Model{
     }
 
     //获取项目列表
-    public function get_projects($customer_id = null,$create_uids = null){
+    public function get_projects($customer_id = null,$create_uids = null,$keyword=null){
 
         if($customer_id){
-
             if($create_uids){
                 return Db::table("jckk_project")
                     ->alias("p")
