@@ -29,22 +29,6 @@ class Project extends Base {
         $this->assign("contract_info",$contract_info);
         $this->assign("join_info",$join_info);
 
-    /*    if($id_info){
-            $where= 'p.id = '.$id_info;
-        }
-        if($project_info){
-            $where['p.project_name|d.department_name|p.product_demand_1']= ['like','%'.$project_info.'%'];
-        }
-        if($customer_info){
-            $where['c.customer_name|c.customer_status_1|c.customer_status_2']= ['like','%'.$customer_info.'%'];
-        }
-        if($contract_info){
-            $where['p.contract_status|p.payment_type|p.payment_status']= ['like','%'.$contract_info.'%'];
-        }
-        if($join_info){
-            $where['cu.chinese_name|mu.chinese_name|eu.chinese_name|pu.chinese_name|du.chinese_name']=['like','%'.$join_info.'%'];
-         }*/
-
         $create_uids = $this->check_post_menu_range_permission();
 
         if($create_uids == "all") {
@@ -62,13 +46,24 @@ class Project extends Base {
 
     public  function  contract_status($name){
 
+        $id_info = Request::instance()->get('id_info');
+        $project_info = Request::instance()->get('project_info');
+        $customer_info = Request::instance()->get('customer_info');
+        $contract_info = Request::instance()->get('contract_info');
+        $join_info = Request::instance()->get('join_info');
+        $this->assign("id_info",$id_info);
+        $this->assign("project_info",$project_info);
+        $this->assign("customer_info",$customer_info);
+        $this->assign("contract_info",$contract_info);
+        $this->assign("join_info",$join_info);
+        $this->assign("name",$name);
         $create_uids = $this->check_post_menu_range_permission();
 
         if($create_uids == "all") {
 
-            $projects = model("project", "logic")->get_projects_by_status("contract_status",$name);
+            $projects = model("project", "logic")->get_projects_by_status("contract_status",$name,"",$id_info,$project_info,$customer_info,$contract_info,$join_info);
         }else{
-            $projects = model("project", "logic")->get_projects_by_status("contract_status",$name,$create_uids);
+            $projects = model("project", "logic")->get_projects_by_status("contract_status",$name,$create_uids,$id_info,$project_info,$customer_info,$contract_info,$join_info);
         }
 
 
@@ -78,33 +73,28 @@ class Project extends Base {
 
 
     public  function  product_demand($name){
+        $id_info = Request::instance()->get('id_info');
+        $project_info = Request::instance()->get('project_info');
+        $customer_info = Request::instance()->get('customer_info');
+        $contract_info = Request::instance()->get('contract_info');
+        $join_info = Request::instance()->get('join_info');
+        $this->assign("id_info",$id_info);
+        $this->assign("project_info",$project_info);
+        $this->assign("customer_info",$customer_info);
+        $this->assign("contract_info",$contract_info);
+        $this->assign("join_info",$join_info);
+        $this->assign("name",$name);
         $create_uids = $this->check_post_menu_range_permission();
 
         if($create_uids == "all") {
-
-            $projects = model("project", "logic")->get_projects_by_status("product_demand_1",$name);
+            $projects = model("project", "logic")->get_projects_by_status("product_demand_1",$name,"",$id_info,$project_info,$customer_info,$contract_info,$join_info);
         }else{
-            $projects = model("project", "logic")->get_projects_by_status("product_demand_1",$name,$create_uids);
+            $projects = model("project", "logic")->get_projects_by_status("product_demand_1",$name,$create_uids,$id_info,$project_info,$customer_info,$contract_info,$join_info);
         }
 
         return  view("project_status_list")->assign(["projects"=>$projects,"name"=>$name]);
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     //项目回收站

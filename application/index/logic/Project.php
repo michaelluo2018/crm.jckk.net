@@ -2915,44 +2915,693 @@ class Project extends Model{
 
 
 
-    public function get_projects_by_status($key,$name,$create_uids=null){
+    public function get_projects_by_status($key,$name,$create_uids=null,$id_info="",$project_info="",$customer_info="",$contract_info="",$join_info=""){
 
         if($create_uids){
-            return Db::table("jckk_project")
-                ->alias("p")
-                ->where("p.is_delete","<>",1)
-                ->where("p.".$key,$name)
-                ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
-                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
-                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
-                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
-                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
-                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
-                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
-                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
-                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
-                ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                ->order("p.id","desc")
-                ->paginate( ['query' => request()->param(),]);
+            if($id_info){
+                if($project_info){
+                    if($customer_info){
+                        if($contract_info){
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.id",$id_info)
+                                ->where("p.contract_status|p.payment_type|p.payment_status",'like','%'.$contract_info.'%')
+                                ->where("c.customer_name|c.customer_status_1|c.customer_status_2","like",'%'.$customer_info.'%')
+                                ->where("p.project_name|d.department_name|p.product_demand_1","like","%".$project_info."%")
+                                ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                        else{
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.id",$id_info)
+                                ->where("c.customer_name|c.customer_status_1|c.customer_status_2","like",'%'.$customer_info.'%')
+                                ->where("p.project_name|d.department_name|p.product_demand_1","like","%".$project_info."%")
+                                ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                    }
+                    else{
+                        if($contract_info){
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.id",$id_info)
+                                ->where("p.contract_status|p.payment_type|p.payment_status",'like','%'.$contract_info.'%')
+                                ->where("p.project_name|d.department_name|p.product_demand_1","like","%".$project_info."%")
+                                ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                        else{
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.id",$id_info)
+                                ->where("p.project_name|d.department_name|p.product_demand_1","like","%".$project_info."%")
+                                ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                    }
+                }
+                else{
+                    if($customer_info){
+                        if($contract_info){
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.id",$id_info)
+                                ->where("p.contract_status|p.payment_type|p.payment_status",'like','%'.$contract_info.'%')
+                                ->where("c.customer_name|c.customer_status_1|c.customer_status_2","like",'%'.$customer_info.'%')
+                                ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                        else{
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.id",$id_info)
+                                ->where("c.customer_name|c.customer_status_1|c.customer_status_2","like",'%'.$customer_info.'%')
+                                ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                    }
+                    else{
+                        if($contract_info){
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.id",$id_info)
+                                ->where("p.contract_status|p.payment_type|p.payment_status",'like','%'.$contract_info.'%')
+                                ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                        else{
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.id",$id_info)
+                                ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                    }
+                }
+            }
+            else{
+                if($project_info){
+                    if($customer_info){
+                        if($contract_info){
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.contract_status|p.payment_type|p.payment_status",'like','%'.$contract_info.'%')
+                                ->where("c.customer_name|c.customer_status_1|c.customer_status_2","like",'%'.$customer_info.'%')
+                                ->where("p.project_name|d.department_name|p.product_demand_1","like","%".$project_info."%")
+                                ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                        else{
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("c.customer_name|c.customer_status_1|c.customer_status_2","like",'%'.$customer_info.'%')
+                                ->where("p.project_name|d.department_name|p.product_demand_1","like","%".$project_info."%")
+                                ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                    }
+                    else{
+                        if($contract_info){
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.contract_status|p.payment_type|p.payment_status",'like','%'.$contract_info.'%')
+                                ->where("p.project_name|d.department_name|p.product_demand_1","like","%".$project_info."%")
+                                ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                        else{
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.project_name|d.department_name|p.product_demand_1","like","%".$project_info."%")
+                                ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                    }
+                }
+                else{
+                    if($customer_info){
+                        if($contract_info){
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.contract_status|p.payment_type|p.payment_status",'like','%'.$contract_info.'%')
+                                ->where("c.customer_name|c.customer_status_1|c.customer_status_2","like",'%'.$customer_info.'%')
+                                ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                        else{
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("c.customer_name|c.customer_status_1|c.customer_status_2","like",'%'.$customer_info.'%')
+                                ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                    }
+                    else{
+                        if($contract_info){
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.contract_status|p.payment_type|p.payment_status",'like','%'.$contract_info.'%')
+                                ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                        else{
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.create_uid|p.executor_uid|p.planning_uid|p.docking_uid|p.manage_uid","in",$create_uids)
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                    }
+                }
+            }
         }
         else{
-            return Db::table("jckk_project")
-                ->alias("p")
-                ->where("p.is_delete","<>",1)
-                ->where("p.".$key,$name)
-                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
-                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
-                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
-                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
-                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
-                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
-                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
-                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
-                ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                ->order("p.id","desc")
-                ->paginate( ['query' => request()->param(),]);
-        }
+            if($id_info){
+                if($project_info){
+                    if($customer_info){
+                        if($contract_info){
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.id",$id_info)
+                                ->where("p.contract_status|p.payment_type|p.payment_status",'like','%'.$contract_info.'%')
+                                ->where("c.customer_name|c.customer_status_1|c.customer_status_2","like",'%'.$customer_info.'%')
+                                ->where("p.project_name|d.department_name|p.product_demand_1","like","%".$project_info."%")
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                        else{
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.id",$id_info)
+                                ->where("c.customer_name|c.customer_status_1|c.customer_status_2","like",'%'.$customer_info.'%')
+                                ->where("p.project_name|d.department_name|p.product_demand_1","like","%".$project_info."%")
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                    }
+                    else{
+                        if($contract_info){
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.id",$id_info)
+                                ->where("p.contract_status|p.payment_type|p.payment_status",'like','%'.$contract_info.'%')
+                                ->where("p.project_name|d.department_name|p.product_demand_1","like","%".$project_info."%")
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                        else{
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.id",$id_info)
+                                ->where("p.project_name|d.department_name|p.product_demand_1","like","%".$project_info."%")
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                    }
+                }
+                else{
+                    if($customer_info){
+                        if($contract_info){
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.id",$id_info)
+                                ->where("p.contract_status|p.payment_type|p.payment_status",'like','%'.$contract_info.'%')
+                                ->where("c.customer_name|c.customer_status_1|c.customer_status_2","like",'%'.$customer_info.'%')
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                        else{
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.id",$id_info)
+                                ->where("c.customer_name|c.customer_status_1|c.customer_status_2","like",'%'.$customer_info.'%')
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                    }
+                    else{
+                        if($contract_info){
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.id",$id_info)
+                                ->where("p.contract_status|p.payment_type|p.payment_status",'like','%'.$contract_info.'%')
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                        else{
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.id",$id_info)
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                    }
+                }
+            }
+            else{
+                if($project_info){
+                    if($customer_info){
+                        if($contract_info){
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.contract_status|p.payment_type|p.payment_status",'like','%'.$contract_info.'%')
+                                ->where("c.customer_name|c.customer_status_1|c.customer_status_2","like",'%'.$customer_info.'%')
+                                ->where("p.project_name|d.department_name|p.product_demand_1","like","%".$project_info."%")
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                        else{
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("c.customer_name|c.customer_status_1|c.customer_status_2","like",'%'.$customer_info.'%')
+                                ->where("p.project_name|d.department_name|p.product_demand_1","like","%".$project_info."%")
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
 
+                    }
+                    else{
+                        if($contract_info){
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.contract_status|p.payment_type|p.payment_status",'like','%'.$contract_info.'%')
+                                ->where("p.project_name|d.department_name|p.product_demand_1","like","%".$project_info."%")
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                        else{
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.project_name|d.department_name|p.product_demand_1","like","%".$project_info."%")
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                    }
+                }
+                else{
+                    if($customer_info){
+                        if($contract_info){
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.contract_status|p.payment_type|p.payment_status",'like','%'.$contract_info.'%')
+                                ->where("c.customer_name|c.customer_status_1|c.customer_status_2","like",'%'.$customer_info.'%')
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                        else{
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("c.customer_name|c.customer_status_1|c.customer_status_2","like",'%'.$customer_info.'%')
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                    }
+                    else{
+                        if($contract_info){
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->where("p.contract_status|p.payment_type|p.payment_status",'like','%'.$contract_info.'%')
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                        else{
+                            return Db::table("jckk_project")
+                                ->alias("p")
+                                ->where("p.is_delete","<>",1)
+                                ->where("p.".$key,$name)
+                                ->field(["p.*","c.customer_name","c.customer_status_1","c.customer_status_2","eu.chinese_name as e_name",
+                                    "pu.chinese_name as p_name","du.chinese_name as d_name","mu.chinese_name as m_name","cu.chinese_name as c_name","d.department_name"])
+                                ->join("jckk_customer c ","p.customer_id = c.id","LEFT")
+                                ->join("jckk_user eu","p.executor_uid = eu.uid","LEFT")
+                                ->join("jckk_user pu","p.planning_uid = pu.uid","LEFT")
+                                ->join("jckk_user du","p.docking_uid = du.uid","LEFT")
+                                ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
+                                ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
+                                ->join("jckk_department d","d.id = eu.department_id","LEFT")
+                                ->order("p.id","desc")
+                                ->paginate( ['query' => request()->param(),]);
+                        }
+                    }
+                }
+            }
+        }
 
     }
 
