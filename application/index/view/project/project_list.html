@@ -34,33 +34,17 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="ml-auto">
-                                        <div class="form-group">
-                                            <form method="get" id="find_form">
-                                                <input id="demo-input-search2" type="text" placeholder="搜索" name="keyword" autocomplete="off" required>
-                                            </form>
-
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <table  class="table" >
                                 <thead>
                                 <tr class="text-align">
-                                    <th>编号</th>
-                                    <th>项目信息</th>
-                                    <th>客户信息</th>
-                                    <th>合同</th>
-                                    <th>进度(天)</th>
-                                    <th>参与者</th>
-                                    <th>最后更新</th>
-                                    <th>操作</th>
+                                   {include file="project/project_common_search"/}
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {volist name="projects" id="project" key="k"}
                                 <tr>
-
                                     <td>P{$project.create_time|date="Ymd",###}-{$project.id}</td>
                                     <td>
                                         <p><b>项目名称</b>:<small>{$project.project_name}</small></p>
@@ -72,14 +56,11 @@
                                         <p><b>客户类别</b>:<small>{$project.customer_status_1}</small></p>
                                         <p><b>客户状态</b>:<small>{$project.customer_status_2}</small></p>
                                     </td>
-
                                     <td>
                                         <p><b>合同状态</b>:<small>{$project.contract_status}</small></p>
                                         <p><b>回款模式</b>:<small>{$project.payment_type}</small></p>
                                         <p><b>回款状态</b>:<small>{$project.payment_status}</small></p>
                                     </td>
-
-
                                    <?php if($project['project_start'] && $project['project_end']){ ?>
                                     <td>
                                         <p>预计:<small>
@@ -146,7 +127,6 @@
                             </table>
                         </div>
                     </div>
-
                 </div>
             </div>
  {/block}

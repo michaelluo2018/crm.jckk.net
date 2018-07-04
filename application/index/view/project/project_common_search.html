@@ -1,0 +1,68 @@
+<th>
+    <div class="p-b-20 ">编号 </div>
+    <form method="get" >
+        <input type="text" placeholder="请输入-后面数字" name="id_info" {if condition="isset($id_info)"/} value="{$id_info}" {/if} class="form-control" autocomplete="off" >
+        <input type="hidden"  name="project_info" {if condition="isset($project_info)"/} value="{$project_info}" {/if} >
+        <input type="hidden"  name="customer_info" {if condition="isset($customer_info)"/} value="{$customer_info}" {/if}>
+        <input type="hidden" name="contract_info" {if condition="isset($contract_info)"/} value="{$contract_info}" {/if}>
+        <input type="hidden"  name="join_info" {if condition="isset($join_info)"/} value="{$join_info}" {/if}>
+    </form>
+</th>
+<th>
+    <div class="p-b-20 ">项目信息 </div>
+    <form method="get" >
+        <input type="hidden"  name="id_info" {if condition="isset($id_info)"/} value="{$id_info}" {/if}>
+        <input type="text" placeholder="搜索" name="project_info" {if condition="isset($project_info)"/} value="{$project_info}" {/if} class="form-control" autocomplete="off" >
+        <input type="hidden"  name="customer_info" {if condition="isset($customer_info)"/} value="{$customer_info}" {/if}>
+        <input type="hidden" name="contract_info" {if condition="isset($contract_info)"/} value="{$contract_info}" {/if}>
+        <input type="hidden"  name="join_info" {if condition="isset($join_info)"/} value="{$join_info}" {/if}>
+    </form>
+</th>
+<th>
+    <div class="p-b-20 ">客户信息 </div>
+    <form method="get" >
+        <input type="hidden" name="id_info" {if condition="isset($id_info)"/} value="{$id_info}" {/if}>
+        <input type="hidden"  name="project_info" {if condition="isset($project_info)"/} value="{$project_info}" {/if} >
+        <input type="text" placeholder="搜索" name="customer_info" {if condition="isset($customer_info)"/} value="{$customer_info}" {/if} class="form-control" autocomplete="off" >
+        <input type="hidden" name="contract_info" {if condition="isset($contract_info)"/} value="{$contract_info}" {/if}>
+        <input type="hidden"  name="join_info" {if condition="isset($join_info)"/} value="{$join_info}" {/if}>
+    </form>
+</th>
+<th>
+    <div class="p-b-20 " >合同信息 </div>
+    <form method="get" >
+        <input type="hidden" name="id_info" {if condition="isset($id_info)"/} value="{$id_info}" {/if}>
+        <input type="hidden"  name="project_info" {if condition="isset($project_info)"/} value="{$project_info}" {/if} >
+        <input type="hidden"  name="customer_info" {if condition="isset($customer_info)"/} value="{$customer_info}" {/if}>
+        <input type="text" placeholder="搜索" name="contract_info" {if condition="isset($contract_info)"/} value="{$contract_info}" {/if} class="form-control" autocomplete="off" >
+        <input type="hidden"  name="join_info" {if condition="isset($join_info)"/} value="{$join_info}" {/if}>
+    </form>
+</th>
+<th>
+    <div class="p-b-20 ">进度(天) </div>
+    <form method="get" >
+        <input type="text" placeholder="搜索"  class="form-control" autocomplete="off" disabled>
+    </form>
+</th>
+<th>
+    <div class="p-b-20 ">参与者 </div>
+    <form method="get">
+        <input type="hidden" name="id_info" {if condition="isset($id_info)"/} value="{$id_info}" {/if}>
+        <input type="hidden"  name="project_info" {if condition="isset($project_info)"/} value="{$project_info}" {/if} >
+        <input type="hidden"  name="customer_info" {if condition="isset($customer_info)"/} value="{$customer_info}" {/if}>
+        <input type="hidden"  name="contract_info" {if condition="isset($contract_info)"/} value="{$contract_info}" {/if}>
+        <input type="text" placeholder="搜索" name="join_info" {if condition="isset($join_info)"/} value="{$join_info}" {/if}  class="form-control" autocomplete="off" >
+    </form>
+</th>
+<th>
+    <div class="p-b-20 ">最后更新 </div>
+    <form method="get" >
+        <input type="text" placeholder=" 搜索"  class="form-control" autocomplete="off" disabled>
+    </form>
+</th>
+<th>
+    <div class="p-b-20 ">操作 </div>
+    <form method="get" >
+        <input type="text" placeholder="搜索"  class="form-control" autocomplete="off" disabled>
+    </form>
+</th>
