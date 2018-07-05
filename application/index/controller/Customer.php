@@ -17,15 +17,29 @@ class Customer extends Base{
 
     //客户列表
     public function customer_list(){
+        $id_info =trim(Request::instance()->get('id_info')) ;
+        $customer_name = trim(Request::instance()->get('customer_name')) ;
+        $customer_status_1 = trim(Request::instance()->get('customer_status_1')) ;
+        $customer_status_2 = trim(Request::instance()->get('customer_status_2')) ;
+        $contact_name = trim(Request::instance()->get('contact_name')) ;
+        $contact_mobile = trim(Request::instance()->get('contact_mobile')) ;
+        $create_name = trim(Request::instance()->get('create_name')) ;
+        $this->assign("id_info",$id_info);
+        $this->assign("customer_name",$customer_name);
+        $this->assign("customer_status_1",$customer_status_1);
+        $this->assign("customer_status_2",$customer_status_2);
+        $this->assign("contact_name",$contact_name);
+        $this->assign("contact_mobile",$contact_mobile);
+        $this->assign("create_name",$create_name);
 
         $create_uids = $this->check_post_menu_range_permission();
 
         if($create_uids == "all"){
-            $data = model("customer","logic")->get_customers();
+            $data = model("customer","logic")->get_customers("",$id_info,$customer_name,$customer_status_1,$customer_status_2,$contact_name,$contact_mobile,$create_name);
         }
 
         else{
-            $data = model("customer","logic")->get_customers($create_uids);
+            $data = model("customer","logic")->get_customers($create_uids,$id_info,$customer_name,$customer_status_1,$customer_status_2,$contact_name,$contact_mobile,$create_name);
         }
 
 
@@ -241,12 +255,29 @@ class Customer extends Base{
 
 
     public  function  customer_status_1($name){
+
+        $id_info =trim(Request::instance()->get('id_info')) ;
+        $customer_name = trim(Request::instance()->get('customer_name')) ;
+        $customer_status_1 = trim(Request::instance()->get('customer_status_1')) ;
+        $customer_status_2 = trim(Request::instance()->get('customer_status_2')) ;
+        $contact_name = trim(Request::instance()->get('contact_name')) ;
+        $contact_mobile = trim(Request::instance()->get('contact_mobile')) ;
+        $create_name = trim(Request::instance()->get('create_name')) ;
+        $this->assign("id_info",$id_info);
+        $this->assign("customer_name",$customer_name);
+        $this->assign("customer_status_1",$customer_status_1);
+        $this->assign("customer_status_2",$customer_status_2);
+        $this->assign("contact_name",$contact_name);
+        $this->assign("contact_mobile",$contact_mobile);
+        $this->assign("create_name",$create_name);
+        $this->assign("name",$name);
+
         $create_uids = $this->check_post_menu_range_permission();
         if($create_uids == "all"){
-            $data = model("customer","logic")->get_customers_by_status("customer_status_1",$name);
+            $data = model("customer","logic")->get_customers_by_status("customer_status_1",$name,"",$id_info,$customer_name,$customer_status_1,$customer_status_2,$contact_name,$contact_mobile,$create_name);
         }
         else{
-            $data = model("customer","logic")->get_customers_by_status("customer_status_1",$name,$create_uids);
+            $data = model("customer","logic")->get_customers_by_status("customer_status_1",$name,$create_uids,$id_info,$customer_name,$customer_status_1,$customer_status_2,$contact_name,$contact_mobile,$create_name);
         }
         return  view("customer_status_list")->assign(["data"=>$data,"name"=>$name]);
 
@@ -254,12 +285,27 @@ class Customer extends Base{
 
 
     public  function  customer_status_2($name){
+        $id_info =trim(Request::instance()->get('id_info')) ;
+        $customer_name = trim(Request::instance()->get('customer_name')) ;
+        $customer_status_1 = trim(Request::instance()->get('customer_status_1')) ;
+        $customer_status_2 = trim(Request::instance()->get('customer_status_2')) ;
+        $contact_name = trim(Request::instance()->get('contact_name')) ;
+        $contact_mobile = trim(Request::instance()->get('contact_mobile')) ;
+        $create_name = trim(Request::instance()->get('create_name')) ;
+        $this->assign("name",$name);
+        $this->assign("id_info",$id_info);
+        $this->assign("customer_name",$customer_name);
+        $this->assign("customer_status_1",$customer_status_1);
+        $this->assign("customer_status_2",$customer_status_2);
+        $this->assign("contact_name",$contact_name);
+        $this->assign("contact_mobile",$contact_mobile);
+        $this->assign("create_name",$create_name);
         $create_uids = $this->check_post_menu_range_permission();
         if($create_uids == "all"){
-            $data = model("customer","logic")->get_customers_by_status("customer_status_2",$name);
+            $data = model("customer","logic")->get_customers_by_status("customer_status_2",$name,"",$id_info,$customer_name,$customer_status_1,$customer_status_2,$contact_name,$contact_mobile,$create_name);
         }
         else{
-            $data = model("customer","logic")->get_customers_by_status("customer_status_2",$name,$create_uids);
+            $data = model("customer","logic")->get_customers_by_status("customer_status_2",$name,$create_uids,$id_info,$customer_name,$customer_status_1,$customer_status_2,$contact_name,$contact_mobile,$create_name);
         }
         return  view("customer_status_list")->assign(["data"=>$data,"name"=>$name]);
 

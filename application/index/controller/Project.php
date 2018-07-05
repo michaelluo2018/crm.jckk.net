@@ -18,11 +18,11 @@ class Project extends Base {
 
     //项目列表
     public function project_list(){
-        $id_info = Request::instance()->get('id_info');
-        $project_info = Request::instance()->get('project_info');
-        $customer_info = Request::instance()->get('customer_info');
-        $contract_info = Request::instance()->get('contract_info');
-        $join_info = Request::instance()->get('join_info');
+        $id_info = trim(Request::instance()->get('id_info')) ;
+        $project_info = trim(Request::instance()->get('project_info')) ;
+        $customer_info =  trim(Request::instance()->get('customer_info')) ;
+        $contract_info = trim(Request::instance()->get('contract_info')) ;
+        $join_info = trim(Request::instance()->get('join_info')) ;
         $this->assign("id_info",$id_info);
         $this->assign("project_info",$project_info);
         $this->assign("customer_info",$customer_info);
@@ -46,11 +46,11 @@ class Project extends Base {
 
     public  function  contract_status($name){
 
-        $id_info = Request::instance()->get('id_info');
-        $project_info = Request::instance()->get('project_info');
-        $customer_info = Request::instance()->get('customer_info');
-        $contract_info = Request::instance()->get('contract_info');
-        $join_info = Request::instance()->get('join_info');
+        $id_info = trim(Request::instance()->get('id_info')) ;
+        $project_info = trim(Request::instance()->get('project_info')) ;
+        $customer_info = trim(Request::instance()->get('customer_info')) ;
+        $contract_info = trim(Request::instance()->get('contract_info')) ;
+        $join_info = trim(Request::instance()->get('join_info')) ;
         $this->assign("id_info",$id_info);
         $this->assign("project_info",$project_info);
         $this->assign("customer_info",$customer_info);
@@ -73,11 +73,11 @@ class Project extends Base {
 
 
     public  function  product_demand($name){
-        $id_info = Request::instance()->get('id_info');
-        $project_info = Request::instance()->get('project_info');
-        $customer_info = Request::instance()->get('customer_info');
-        $contract_info = Request::instance()->get('contract_info');
-        $join_info = Request::instance()->get('join_info');
+        $id_info = trim(Request::instance()->get('id_info')) ;
+        $project_info = trim(Request::instance()->get('project_info')) ;
+        $customer_info = trim(Request::instance()->get('customer_info')) ;
+        $contract_info = trim(Request::instance()->get('contract_info')) ;
+        $join_info = trim(Request::instance()->get('join_info')) ;
         $this->assign("id_info",$id_info);
         $this->assign("project_info",$project_info);
         $this->assign("customer_info",$customer_info);
