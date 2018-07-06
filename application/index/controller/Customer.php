@@ -313,6 +313,18 @@ class Customer extends Base{
 
 
 
+    public function customer_number(){
+        $customers = model('customer')->select();
+        $i=0;
+        foreach ($customers as $customer){
+
+            $customer->number = "C".date('Ymd',strtotime($customer->create_time))."-".$customer->id;
+            if($customer->save()){
+                $i++;
+            }
+        }
+        dump($i);
+    }
 
 
 
