@@ -3,6 +3,7 @@ namespace app\index\controller;
 
 
 use think\Config;
+use think\Request;
 
 class Index extends Base
 {
@@ -43,6 +44,37 @@ class Index extends Base
         return view("index")->assign("my_logs",$my_logs)->assign("customer_status",$customer_status);
 
     }
+
+
+    public function ajax_calendar_task(){
+        $mid = $this->get_mid_by_url("index/task/task");
+        $this->menu_id = $mid;
+        $uids = $this->check_post_menu_range_permission();
+        if($uids == "all") {
+            $res =  model('task','logic')->ajax_get_tasks();
+        }else{
+            $res =  model('task','logic')->ajax_get_tasks($uids);
+        }
+        return $res;
+    }
+
+    public function get_start_task($start){
+        $dateStr = date('Ymd',$start);
+        $timestamp = strtotime($dateStr);//获取一天开始时间戳
+        $mid = $this->get_mid_by_url("index/task/task");
+        $this->menu_id = $mid;
+        $uids = $this->check_post_menu_range_permission();
+        if($uids == "all") {
+            $res =  model('task','logic')->ajax_start_task($timestamp);
+        }else{
+            $res =  model('task','logic')->ajax_start_task($timestamp,$uids);
+        }
+        $this->assign("title","所有任务");
+        $this->assign("tasks",$res);
+        return view("task");
+    }
+
+
 
     public function  login_out(){
         parent::login_out();

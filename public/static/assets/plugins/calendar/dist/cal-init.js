@@ -1,9 +1,8 @@
 
 !function($) {
     "use strict";
-
     var CalendarApp = function() {
-        this.$body = $("body")
+        this.$body = $('body'),
         this.$calendar = $('#calendar'),
         this.$event = ('#calendar-events div.calendar-events'),
         this.$categoryForm = $('#add-new-event form'),
@@ -13,9 +12,8 @@
         this.$calendarObj = null
     };
 
-
     /* on drop */
-    CalendarApp.prototype.onDrop = function (eventObj, date) { 
+    CalendarApp.prototype.onDrop = function (eventObj, date) {
         var $this = this;
             // retrieve the dropped element's stored Event Object
             var originalEventObject = eventObj.data('eventObject');
@@ -36,71 +34,24 @@
     },
     /* on click on event */
     CalendarApp.prototype.onEventClick =  function (calEvent, jsEvent, view) {
-        var $this = this;
-            var form = $("<form></form>");
-            form.append("<label>Change event name</label>");
-            form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-btn'><button type='submit' class='btn btn-success waves-effect waves-light'><i class='fa fa-check'></i> Save</button></span></div>");
-            $this.$modal.modal({
-                backdrop: 'static'
-            });
-            $this.$modal.find('.delete-event').show().end().find('.save-event').hide().end().find('.modal-body').empty().prepend(form).end().find('.delete-event').unbind('click').click(function () {
-                $this.$calendarObj.fullCalendar('removeEvents', function (ev) {
-                    return (ev._id == calEvent._id);
-                });
-                $this.$modal.modal('hide');
-            });
-            $this.$modal.find('form').on('submit', function () {
-                calEvent.title = form.find("input[type=text]").val();
-                $this.$calendarObj.fullCalendar('updateEvent', calEvent);
-                $this.$modal.modal('hide');
-                return false;
-            });
+        if(confirm('你确定要查看'+calEvent.title+'详情？')){
+            window.location.href= '/index/task/task_des.html?id='+calEvent.task_id;
+        }
     },
     /* on select */
     CalendarApp.prototype.onSelect = function (start, end, allDay) {
-        var $this = this;
-            $this.$modal.modal({
-                backdrop: 'static'
-            });
-            var form = $("<form></form>");
-            form.append("<div class='row'></div>");
-            form.find(".row")
-                .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Event Name</label><input class='form-control' placeholder='Insert Event Name' type='text' name='title'/></div></div>")
-                .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Category</label><select class='form-control' name='category'></select></div></div>")
-                .find("select[name='category']")
-                .append("<option value='bg-danger'>Danger</option>")
-                .append("<option value='bg-success'>Success</option>")
-                .append("<option value='bg-purple'>Purple</option>")
-                .append("<option value='bg-primary'>Primary</option>")
-                .append("<option value='bg-pink'>Pink</option>")
-                .append("<option value='bg-info'>Info</option>")
-                .append("<option value='bg-warning'>Warning</option></div></div>");
-            $this.$modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
-                form.submit();
-            });
-            $this.$modal.find('form').on('submit', function () {
-                var title = form.find("input[name='title']").val();
-                var beginning = form.find("input[name='beginning']").val();
-                var ending = form.find("input[name='ending']").val();
-                var categoryClass = form.find("select[name='category'] option:checked").val();
-                if (title !== null && title.length != 0) {
-                    $this.$calendarObj.fullCalendar('renderEvent', {
-                        title: title,
-                        start:start,
-                        end: end,
-                        allDay: false,
-                        className: categoryClass
-                    }, true);  
-                    $this.$modal.modal('hide');
-                }
-                else{
-                    alert('You have to give a title to your event');
-                }
-                return false;
-                
-            });
-            $this.$calendarObj.fullCalendar('unselect');
+        start = start/1000;
+        end = end/1000;
+        layer.open({
+            type: 2,
+            title: '任务列表',
+            shadeClose: true,
+            shade: 0.8,
+            area: ['80%', '90%'],
+            content: 'get_start_task?start='+start
+        });
     },
+
     CalendarApp.prototype.enableDrag = function() {
         //init events
         $(this.$event).each(function () {
@@ -119,8 +70,12 @@
             });
         });
     }
+
+
+
+
     /* Initializing */
-    CalendarApp.prototype.init = function() {
+    CalendarApp.prototype.init = function(defaultEvents) {
         this.enableDrag();
         /*  Initialize the calendar  */
         var date = new Date();
@@ -130,60 +85,21 @@
         var form = '';
         var today = new Date($.now());
 
-        var defaultEvents =  [{
-                title: 'Released Ample Admin!',
-                start: new Date($.now() + 506800000),
-                className: 'bg-info'
-            }, {
-                title: 'This is today check date',
-                start: today,
-                end: today,
-                className: 'bg-danger'
-            }, {
-                title: 'This is your birthday',
-                start: new Date($.now() + 848000000),
-                className: 'bg-info'
-            },{
-                title: 'your meeting with john',
-                start: new Date($.now() - 1099000000),
-                end:  new Date($.now() - 919000000),
-                className: 'bg-warning'
-            },{
-                title: 'your meeting with john',
-                start: new Date($.now() - 1199000000),
-                end: new Date($.now() - 1199000000),
-                className: 'bg-purple'
-            },{
-                title: 'your meeting with john',
-                start: new Date($.now() - 399000000),
-                end: new Date($.now() - 219000000),
-                className: 'bg-info'
-            },  
-              {
-                title: 'Hanns birthday',
-                start: new Date($.now() + 868000000),
-                className: 'bg-danger'
-            },{
-                title: 'Like it?',
-                start: new Date($.now() + 348000000),
-                className: 'bg-success'
-            }];
-
         var $this = this;
         $this.$calendarObj = $this.$calendar.fullCalendar({
             slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
-            minTime: '08:00:00',
-            maxTime: '19:00:00',  
-            defaultView: 'month',  
-            handleWindowResize: true,   
-             
+            minTime: '00:00:00',
+            maxTime: '24:00:00',
+            defaultView: 'month',
+            handleWindowResize: true,
+
             header: {
                 left: 'prev,next today',
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
             },
             events: defaultEvents,
-            editable: true,
+            editable: false,
             droppable: true, // this allows things to be dropped onto the calendar !!!
             eventLimit: true, // allow "more" link when too many events
             selectable: true,
@@ -203,15 +119,66 @@
             }
 
         });
+
     },
 
    //init CalendarApp
     $.CalendarApp = new CalendarApp, $.CalendarApp.Constructor = CalendarApp
-    
+
 }(window.jQuery),
 
 //initializing CalendarApp
 function($) {
     "use strict";
-    $.CalendarApp.init()
+    $.ajax({
+        url: "ajax_calendar_task",
+        data: "",
+        method:"post",
+        success:function(data){
+            var defaultEvents=[] ;
+            $.each(data,function(i,v){
+                var task_start=timestampToTime(v.task_start);
+                var task_end=timestampToTime(v.task_end);
+                defaultEvents[i] = {
+                                task_id: v.id,
+                                project_name: v.project_name,
+                                create_name: v.create_name,
+                                to_name: v.to_name,
+                                title: v.task_name,
+                                start: new Date(task_start),
+                                end:  new Date(task_end),
+                                className: task_class_sort(v.task_order)
+                };
+            });
+            $.CalendarApp.init(defaultEvents)
+        }
+    });
+
 }(window.jQuery);
+
+function timestampToTime(timestamp) {
+    var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+    var Y = date.getFullYear() + '-';
+    var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+    var D = date.getDate() + ' ';
+    var h = date.getHours() + ':';
+    var m = date.getMinutes() + ':';
+    var s = date.getSeconds();
+    return Y+M+D+h+m+s;
+}
+
+function task_class_sort(sort){
+    var class_array = new Array();
+        class_array[1] = 'bg-danger';
+        class_array[2] = 'bg-warning';
+        class_array[3] = 'bg-primary';
+        class_array[4] = 'bg-info';
+        class_array[5] = 'bg-success';
+        class_array[6] = 'bg-purple';
+        class_array[7] = 'bg-pink';
+        class_array[8] = 'bg-primary';
+        class_array[9] = 'bg-info ';
+        class_array[10] = 'bg-success';
+        class_array[0] = 'bg-purple';
+        return class_array[sort];
+}

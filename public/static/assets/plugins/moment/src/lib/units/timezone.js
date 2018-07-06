@@ -8,7 +8,8 @@ addFormatToken('zz', 0, 0, 'zoneName');
 // MOMENTS
 
 export function getZoneAbbr () {
-    return this._isUTC ? 'UTC' : '';
+    //return this._isUTC ? 'UTC' : 'PRC';
+    return  'PRC';
 }
 
 export function getZoneName () {

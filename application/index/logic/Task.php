@@ -365,6 +365,63 @@ class Task extends Model{
 
     }
 
+    public function ajax_get_tasks($uids=null){
+        if($uids){
+            return  Db::table("jckk_task")
+                ->alias("t")
+                ->field(["t.*","p.project_name","tu.chinese_name as to_name","cu.chinese_name as create_name"])
+                ->where("t.create_uid|t.to_uid","in",$uids)
+                ->where("t.is_delete","<>",1)
+                ->join("jckk_project p","p.id = t.project_id","LEFT")
+                ->join("jckk_user tu","tu.uid = t.to_uid","LEFT")
+                ->join("jckk_user cu","cu.uid = t.create_uid","LEFT")
+                ->select();
+
+        }
+        else{
+            return Db::table("jckk_task")
+                ->alias("t")
+                ->field(["t.*","p.project_name","tu.chinese_name as to_name","cu.chinese_name as create_name"])
+                ->where("t.is_delete","<>",1)
+                ->join("jckk_project p","p.id = t.project_id","LEFT")
+                ->join("jckk_user tu","tu.uid = t.to_uid","LEFT")
+                ->join("jckk_user cu","cu.uid = t.create_uid","LEFT")
+                ->select();
+        }
+
+
+    }
+
+
+    public function ajax_start_task($start,$uids=""){
+        if($uids){
+            return  Db::table("jckk_task")
+                ->alias("t")
+                ->field(["t.*","p.project_name","tu.chinese_name as to_name","cu.chinese_name as create_name"])
+                ->where("t.create_uid|t.to_uid","in",$uids)
+                ->where("t.is_delete","<>",1)
+                ->where("t.task_start",">=",$start)
+                ->where("t.task_start","<",$start+3600*24)
+                ->join("jckk_project p","p.id = t.project_id","LEFT")
+                ->join("jckk_user tu","tu.uid = t.to_uid","LEFT")
+                ->join("jckk_user cu","cu.uid = t.create_uid","LEFT")
+                ->paginate(["query"=>request()->param(),]);
+
+        }
+        else{
+            return Db::table("jckk_task")
+                ->alias("t")
+                ->field(["t.*","p.project_name","tu.chinese_name as to_name","cu.chinese_name as create_name"])
+                ->where("t.is_delete","<>",1)
+                ->where("t.task_start",">=",$start)
+                ->where("t.task_start","<",$start+3600*24)
+                ->join("jckk_project p","p.id = t.project_id","LEFT")
+                ->join("jckk_user tu","tu.uid = t.to_uid","LEFT")
+                ->join("jckk_user cu","cu.uid = t.create_uid","LEFT")
+                ->paginate(["query"=>request()->param(),]);
+        }
+
+    }
 
 
     public function get_tasks_by_project($project_id){
