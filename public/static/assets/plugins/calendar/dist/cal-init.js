@@ -86,6 +86,18 @@
         var today = new Date($.now());
         var $this = this;
         $this.$calendarObj = $this.$calendar.fullCalendar({
+            buttonText:{
+                today:'今天',
+                month:'月视图',
+                week:'周视图',
+                day:'日视图'
+            },
+            // titleFormat:{
+            //     month:'yyyy年 MMMM月',
+            //     // week:"[yyyy年] MMMM月d日 { '&#8212;' [yyyy年] MMMM月d日}",
+            //     // day: 'yyyy年 MMMM月d日 dddd'
+            // },
+            monthNames:['1月' , '2月','3月','4月','5月','6月' , '7月' , '8月' , '9月' , '10月' , '11月' , '12月' ],
             slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
             minTime: '00:00:00',
             maxTime: '24:00:00',
