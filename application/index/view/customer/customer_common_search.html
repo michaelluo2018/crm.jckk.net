@@ -1,7 +1,7 @@
 <th>
     <div class="p-b-20 ">编号 </div>
     <form method="get" >
-        <input type="text" placeholder="请输入-后面数字" name="id_info" {if condition="isset($id_info)"/} value="{$id_info}" {/if} class="form-control" autocomplete="off" >
+        <input type="text" placeholder="搜索" name="id_info" {if condition="isset($id_info)"/} value="{$id_info}" {/if} class="form-control" autocomplete="off" >
         <input type="hidden"  name="customer_name" {if condition="isset($customer_name)"/} value="{$customer_name}" {/if} >
         <input type="hidden"  name="customer_status_1" {if condition="isset($customer_status_1)"/} value="{$customer_status_1}" {/if}>
         <input type="hidden" name="customer_status_2" {if condition="isset($customer_status_2)"/} value="{$customer_status_2}" {/if}>

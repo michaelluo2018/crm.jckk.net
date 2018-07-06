@@ -53,7 +53,7 @@
                     {volist name="projects" id="project" key="k"}
                     <tr>
 
-                        <td>P{$project.create_time|date="Ymd",###}-{$project.id}</td>
+                        <td>{$project.number}</td>
                         <td>
                             <p><b>项目名称</b>：<small>{$project.project_name}</small></p>
                             <p><b>所属部门</b>：<small>{$project.department_name}</small></p>
