@@ -84,7 +84,6 @@
         var y = date.getFullYear();
         var form = '';
         var today = new Date($.now());
-
         var $this = this;
         $this.$calendarObj = $this.$calendar.fullCalendar({
             slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
@@ -96,7 +95,8 @@
             header: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'month,agendaWeek,agendaDay'
+              //  right: 'month,agendaWeek,agendaDay'
+                right: 'month'
             },
             events: defaultEvents,
             editable: false,
