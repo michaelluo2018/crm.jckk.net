@@ -313,18 +313,18 @@ class Project extends Base {
 
 
 
-    public function project_number(){
-        $projects = model('project')->select();
-        $i=0;
-        foreach ($projects as $project){
-
-            $project->number = "P".date('Ymd',strtotime($project->create_time))."-".$project->id;
-            if($project->save()){
-                $i++;
-            }
-        }
-      dump($i);
-    }
+//    public function project_number(){
+//        $projects = model('project')->select();
+//        $i=0;
+//        foreach ($projects as $project){
+//
+//            $project->number = "P".date('Ymd',strtotime($project->create_time))."-".$project->id;
+//            if($project->save()){
+//                $i++;
+//            }
+//        }
+//      dump($i);
+//    }
 
 
 

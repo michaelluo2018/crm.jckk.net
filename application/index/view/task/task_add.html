@@ -3,7 +3,17 @@
 <title>添加任务 - 客户管理系统</title>
 {/block}
 {block name="css"/}
-
+<link href="__STATIC__/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="__STATIC__/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+<!-- Page plugins css -->
+<link href="__STATIC__/assets/plugins/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
+<!-- Color picker plugins css -->
+<link href="__STATIC__/assets/plugins/jquery-asColorPicker-master/css/asColorPicker.css" rel="stylesheet">
+<!-- Date picker plugins css -->
+<link href="__STATIC__/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+<!-- Daterange picker plugins css -->
+<link href="__STATIC__/assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+<link href="__STATIC__/assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 {/block}
 {block name="breadcrumb"/}
 <div class="col-md-5 col-8 align-self-center">
@@ -77,14 +87,17 @@
                             <div class="col-md-4 ">
                                 <div class="form-group">
                                     <label class="control-label">开始时间</label>
-                                    <input type="date"  class="form-control"  name="task_start">
-                                    <small class="form-control-feedback"> </small>
+                                    <!--<input type="date"  class="form-control"  name="task_start">-->
+                                    <!--<small class="form-control-feedback"> </small>-->
+                                    <!--<label class="m-t-40">Default Material Date Timepicker</label>-->
+                                    <input type="text" id="date-format" class="form-control" name="task_start" placeholder="eg:2018-05-23 18:23:42">
                                 </div>
                             </div>
                             <div class="col-md-4 ">
                                 <div class="form-group">
                                     <label class="control-label">结束时间</label>
-                                    <input type="date"  class="form-control"  name="task_end">
+                                    <!--<input type="date"  class="form-control"  name="task_end">-->
+                                    <input type="text" id="date-format1" class="form-control" name="task_end" placeholder="eg:2018-05-23 18:23:42">
                                     <small class="form-control-feedback"> </small>
                                 </div>
                             </div>
@@ -171,4 +184,106 @@
     </div>
 </div>
 {include file="leads/leads_common_script"/}
+{/block}
+{block name="footer_js"/}
+
+<!-- Plugins for this page -->
+<!-- ============================================================== -->
+<!-- Plugin JavaScript -->
+
+<script src="__STATIC__/assets/plugins/moment/moment.js"></script>
+<script src="__STATIC__/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+<!-- Clock Plugin JavaScript -->
+<script src="__STATIC__/assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
+<!-- Color Picker Plugin JavaScript -->
+<script src="__STATIC__/assets/plugins/jquery-asColorPicker-master/libs/jquery-asColor.js"></script>
+<script src="__STATIC__/assets/plugins/jquery-asColorPicker-master/libs/jquery-asGradient.js"></script>
+<script src="__STATIC__/assets/plugins/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js"></script>
+<!-- Date Picker Plugin JavaScript -->
+<script src="__STATIC__/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<!-- Date range Plugin JavaScript -->
+<script src="__STATIC__/assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="__STATIC__/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script>
+    // MAterial Date picker
+    $('#mdate').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
+    $('#timepicker').bootstrapMaterialDatePicker({ format : 'HH:mm', time: true, date: false });
+    //$('#date-format').bootstrapMaterialDatePicker({ format : 'dddd DD MMMM YYYY - HH:mm' });
+    $('#date-format').bootstrapMaterialDatePicker({ format : 'YYYY-MM-DD HH:mm:ss' });
+    $('#date-format1').bootstrapMaterialDatePicker({ format : 'YYYY-MM-DD HH:mm:ss' });
+
+    $('#min-date').bootstrapMaterialDatePicker({ format : 'DD/MM/YYYY HH:mm', minDate : new Date() });
+    // Clock pickers
+    $('#single-input').clockpicker({
+        placement: 'bottom',
+        align: 'left',
+        autoclose: true,
+        'default': 'now'
+    });
+    $('.clockpicker').clockpicker({
+        donetext: 'Done',
+    }).find('input').change(function() {
+        console.log(this.value);
+    });
+    $('#check-minutes').click(function(e) {
+        // Have to stop propagation here
+        e.stopPropagation();
+        input.clockpicker('show').clockpicker('toggleView', 'minutes');
+    });
+    if (/mobile/i.test(navigator.userAgent)) {
+        $('input').prop('readOnly', true);
+    }
+    // Colorpicker
+    $(".colorpicker").asColorPicker();
+    $(".complex-colorpicker").asColorPicker({
+        mode: 'complex'
+    });
+    $(".gradient-colorpicker").asColorPicker({
+        mode: 'gradient'
+    });
+    // Date Picker
+    jQuery('.mydatepicker, #datepicker').datepicker();
+    jQuery('#datepicker-autoclose').datepicker({
+        autoclose: true,
+        todayHighlight: true
+    });
+    jQuery('#date-range').datepicker({
+        toggleActive: true
+    });
+    jQuery('#datepicker-inline').datepicker({
+        todayHighlight: true
+    });
+    // Daterange picker
+    $('.input-daterange-datepicker').daterangepicker({
+        buttonClasses: ['btn', 'btn-sm'],
+        applyClass: 'btn-danger',
+        cancelClass: 'btn-inverse'
+    });
+    $('.input-daterange-timepicker').daterangepicker({
+        timePicker: true,
+        format: 'MM/DD/YYYY h:mm A',
+        timePickerIncrement: 30,
+        timePicker12Hour: true,
+        timePickerSeconds: false,
+        buttonClasses: ['btn', 'btn-sm'],
+        applyClass: 'btn-danger',
+        cancelClass: 'btn-inverse'
+    });
+    $('.input-limit-datepicker').daterangepicker({
+        format: 'MM/DD/YYYY',
+        minDate: '06/01/2015',
+        maxDate: '06/30/2015',
+        buttonClasses: ['btn', 'btn-sm'],
+        applyClass: 'btn-danger',
+        cancelClass: 'btn-inverse',
+        dateLimit: {
+            days: 6
+        }
+    });
+</script>
+<!-- ============================================================== -->
+<!-- Style switcher -->
+<!-- ============================================================== -->
+<script src="__STATIC__/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+
 {/block}
