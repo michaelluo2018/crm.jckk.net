@@ -4,6 +4,7 @@ namespace  app\index\controller;
 use think\Config;
 
 use think\Request;
+use think\Session;
 
 class Project extends Base {
 
@@ -38,6 +39,9 @@ class Project extends Base {
             $projects = model("project", "logic")->get_projects("",$create_uids,$id_info,$project_info,$customer_info,$contract_info,$join_info);
         }
 
+        //获取当前url
+        header("Content-type:text/html;charset=utf-8");
+        Session::set('project_url',urldecode( Request::instance()->url()));
         return  view("project_list")->assign("projects",$projects);
 
     }
@@ -157,7 +161,14 @@ class Project extends Base {
 
         $res = model("project","logic")->save_project($data);
         if($res){
-            $this->redirect("project_list");
+            $project_url = Session::get("project_url");
+            if($project_url){
+                $this->redirect($project_url);
+            }
+            else{
+                $this->redirect("project_list");
+            }
+
         }
     }
 
@@ -195,7 +206,13 @@ class Project extends Base {
         else {
             model("project", "logic")->delete_project($id);
 
-            $this->redirect("project_list");
+            $project_url = Session::get("project_url");
+            if($project_url){
+                $this->redirect($project_url);
+            }
+            else{
+                $this->redirect("project_list");
+            }
         }
 
     }
