@@ -13,6 +13,8 @@ class Base extends Controller{
     protected $user_menus=null;
     protected $menu_id=null;
     protected $user_info=null;
+    protected $user_customer_range=null;
+    protected $user_project_range=null;
 
     function __construct(Request $request = null)
     {
@@ -55,8 +57,11 @@ class Base extends Controller{
 
 
         //总客户，总项目
-        $total_customer = model("customer","logic")->total_customer();
-        $total_project = model("project","logic")->total_project();
+        $this->user_customer_range = $this->get_range_permission($this->uid,"index/customer/customer_list");
+        $this->user_project_range  = $this->get_range_permission($this->uid,"index/project/project_list");
+
+        $total_customer = model("customer","logic")->total_customer($this->user_customer_range);
+        $total_project = model("project","logic")->total_project( $this->user_project_range);
         $this->assign("total_customer",$total_customer);
         $this->assign("total_project",$total_project);
 
@@ -230,6 +235,46 @@ class Base extends Controller{
             $uid_array = [$this->uid];
         }
 
+        return $uid_array;
+    }
+
+
+
+    public function get_range_permission($uid,$menu_url){
+      //获取岗位id
+        $user_info = model("user","logic")->get_user($this->uid);
+        $post_id = $user_info['post_id'];
+      //获取mid
+        $mid = $this->get_mid_by_url($menu_url);
+      //获取范围权限
+        $post_permission = model("post_permission")->where("pid", $post_id)->where("mid",$mid)->find();
+        $range =  $post_permission->permission_range;
+        $uid_array = null;
+        if($range=="所有人"){
+            $uid_array = "all";
+        }
+        if($range=="部门所有人"){
+            //  登陆者可见部门所有人创建内容
+            $department_id = $user_info['department_id'];
+            //获取部门下所有uid
+            $uid_array = model("user")->where("department_id",$department_id)->column("uid");
+
+        }
+        if($range=="自己和下属"){
+            //  登陆者可见自己和下属创建内容
+            $my_path =  ($user_info['post_path']).'-'.($user_info['post_id']);
+            //获取自己和下属岗位id
+            $post_ids = model("post")->where("path","like",$my_path.'%')->column("id");
+            $uid_array = model("user")->whereIn("post_id",$post_ids)->column("uid");
+            array_push($uid_array,$this->uid);
+        }
+        if($range=="仅自己"){
+            //  登陆者可见仅自己创建内容
+            $uid_array = [$uid];
+        }
+        if(!$uid_array){
+            $uid_array = [$uid];
+        }
         return $uid_array;
     }
 

@@ -8368,10 +8368,17 @@ class Customer extends  Model{
 
 
 
+    public function  total_customer($uids=null){
 
+        if($uids && $uids!='all'){
+            return $this->where("is_delete","<>",1)
+                ->whereIn("create_uid",$uids)
+                ->count();
+        }
+        else{
+            return $this->where("is_delete","<>",1)->count();
+        }
 
-    public function  total_customer(){
-        return $this->where("is_delete","<>",1)->count();
     }
 
     public function  find_by_name($name){
@@ -8388,12 +8395,30 @@ class Customer extends  Model{
     }
 
 
-    public function customer_count_status_1($name){
-        $data = $this->where("customer_status_1",$name)->where("is_delete","<>",1)->count();
+    public function customer_count_status_1($name,$uids=null){
+        if($uids && $uids!='all'){
+            $data = $this->where("customer_status_1",$name)
+                ->where("is_delete","<>",1)
+                ->where("create_uid","in",$uids)
+                ->count();
+        }
+        else{
+            $data = $this->where("customer_status_1",$name)->where("is_delete","<>",1)->count();
+        }
+
         return $data;
     }
-    public function customer_count_status_2($name){
-        $data = $this->where("customer_status_2",$name)->where("is_delete","<>",1)->count();
+    public function customer_count_status_2($name,$uids=null){
+        if($uids && $uids!='all'){
+            $data = $this->where("customer_status_2",$name)
+                ->where("is_delete","<>",1)
+                ->where("create_uid","in",$uids)
+                ->count();
+        }
+        else{
+            $data = $this->where("customer_status_2",$name)->where("is_delete","<>",1)->count();
+        }
+
         return $data;
     }
 

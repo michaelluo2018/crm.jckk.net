@@ -15,6 +15,7 @@ class Index extends Base
 
         //数据统计--客户状态
         $customer_status_1 = $this->get_customer_status1();
+//        dump($customer_status_1);die;
         $customer_status_2 = $this->get_customer_status2();
 
         //数据统计--合同状态
@@ -92,7 +93,7 @@ class Index extends Base
             $customer_status_1 = $array[$i];
             $list[$i]['field']='customer_status_1';
             $list[$i]['key']=$customer_status_1;
-            $list[$i]['value']  = model("customer","logic")->customer_count_status_1($customer_status_1);
+            $list[$i]['value']  = model("customer","logic")->customer_count_status_1($customer_status_1, $this->user_customer_range);
 
         }
         return $list;
@@ -109,7 +110,7 @@ class Index extends Base
             $customer_status_2 = $array[$i];
             $list[$i]['field']='customer_status_2';
             $list[$i]['key']=$customer_status_2;
-            $list[$i]['value']  = model("customer","logic")->customer_count_status_2($customer_status_2);
+            $list[$i]['value']  = model("customer","logic")->customer_count_status_2($customer_status_2,$this->user_customer_range);
 
         }
         return $list;
@@ -126,7 +127,7 @@ class Index extends Base
             $contract_status = $array[$i];
             $list[$i]['field']='contract_status1';
             $list[$i]['key']=$contract_status;
-            $list[$i]['value']  = model("project","logic")->contract_count_status($contract_status);
+            $list[$i]['value']  = model("project","logic")->contract_count_status($contract_status,$this->user_project_range);
 
         }
         return $list;
@@ -142,7 +143,7 @@ class Index extends Base
             $contract_status = $array[$i];
             $list[$i]['field']='contract_status2';
             $list[$i]['key']=$contract_status;
-            $list[$i]['value']  = model("project","logic")->contract_count_status($contract_status);
+            $list[$i]['value']  = model("project","logic")->contract_count_status($contract_status,$this->user_project_range);
 
         }
         return $list;
@@ -159,7 +160,7 @@ class Index extends Base
             $product_demand_1 = $array[$i];
             $list[$i]['field']='product_demand_1';
             $list[$i]['key']=$product_demand_1;
-            $list[$i]['value']  = model("project","logic")->product_demand_count_1($product_demand_1);
+            $list[$i]['value']  = model("project","logic")->product_demand_count_1($product_demand_1,$this->user_project_range);
 
         }
         return $list;

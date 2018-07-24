@@ -3764,8 +3764,16 @@ class Project extends Model{
 
 
 
-    public function  total_project(){
-        return $this->where("is_delete","<>",1)->count();
+    public function  total_project($uids=null){
+        if($uids && $uids!='all'){
+            return $this->where("is_delete","<>",1)
+                ->where("create_uid|executor_uid|planning_uid|docking_uid|manage_uid","in",$uids)
+                ->count();
+        }
+        else{
+            return $this->where("is_delete","<>",1)->count();
+        }
+
     }
 
 
@@ -3794,15 +3802,31 @@ class Project extends Model{
     }
 
 
-    public function contract_count_status($status){
+    public function contract_count_status($status,$uids=null){
+        if($uids && $uids!='all'){
+            return $this->where("contract_status",$status)
+                ->where("is_delete","<>",1)
+                ->where("create_uid|executor_uid|planning_uid|docking_uid|manage_uid","in",$uids)
+                ->count();
+        }
+        else{
+            return $this->where("contract_status",$status)->where("is_delete","<>",1)->count();
+        }
 
-        return $this->where("contract_status",$status)->where("is_delete","<>",1)->count();
     }
 
 
-    public function product_demand_count_1($status){
+    public function product_demand_count_1($status,$uids=null){
+        if($uids && $uids!='all'){
+            return $this->where("product_demand_1",$status)
+                ->where("is_delete","<>",1)
+                ->where("create_uid|executor_uid|planning_uid|docking_uid|manage_uid","in",$uids)
+                ->count();
+        }
+        else{
+            return $this->where("product_demand_1",$status)->where("is_delete","<>",1)->count();
+        }
 
-        return $this->where("product_demand_1",$status)->where("is_delete","<>",1)->count();
     }
 
 
