@@ -321,12 +321,60 @@ create table jckk_leave (
     )ENGINE=MYISAM DEFAULT CHARSET=utf8;
 
 
-create table wp_welcome (
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   create table wp_shop_order_product (
     id int primary key auto_increment,
-    token varchar(100) comment "token",
-    material_type varchar(20) comment "素材类型",
-    material_id int comment "本地素材id",
-    wx_material_id varchar(100) comment "微信素材id",
-    is_use  int default 1 comment "是否使用",
-    create_time int  comment "创建时间"
+    payment_order_id int comment "多商品统一支付id",
+    product_id int comment "产品",
+    add_time int  comment "创建时间"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+  create table wp_shop_order (
+    id int primary key auto_increment,
+    payment_order_id varchar(100) comment "多商品统一支付id",
+    out_trade_no varchar(100) comment "商户订单号",
+    address_id int comment "收获地址id",
+    add_time int comment "添加时间",
+    pay_time int  comment "支付时间",
+    express text comment "快递信息",
+    total_fee int comment "总支付金额",
+    status int comment "订单状态",
+    uid int comment "购买者id",
+    token varchar(100) comment "微信公众号token",
+    note  text comment "备注"
+    )ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+ create table wp_shop_user_address (
+    address_id int primary key auto_increment,
+    uid int comment "uid",
+    province_id int comment "省",
+    city_id  int comment "市",
+    district_id int comment "区",
+    address varchar(200) comment "详细地址",
+    name varchar(100) comment "收货人姓名",
+    phone varchar(100) comment "收货人电话",
+    add_time int  comment "创建时间"
     )ENGINE=MYISAM DEFAULT CHARSET=utf8;
