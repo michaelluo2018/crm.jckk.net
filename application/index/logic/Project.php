@@ -189,7 +189,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -211,7 +211,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -235,7 +235,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -256,7 +256,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -282,7 +282,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -303,7 +303,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -326,7 +326,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -346,7 +346,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -374,7 +374,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -395,7 +395,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -418,7 +418,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -438,7 +438,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -463,7 +463,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -483,7 +483,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -505,7 +505,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -524,7 +524,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -554,7 +554,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -575,7 +575,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -598,7 +598,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -618,7 +618,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -643,7 +643,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -663,7 +663,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -685,7 +685,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -704,7 +704,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -731,7 +731,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -751,7 +751,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -773,7 +773,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -792,7 +792,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -816,7 +816,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -835,7 +835,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -856,7 +856,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -874,7 +874,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -906,7 +906,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -927,7 +927,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -950,7 +950,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -970,7 +970,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -995,7 +995,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1015,7 +1015,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1037,7 +1037,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1056,7 +1056,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1083,7 +1083,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1103,7 +1103,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1125,7 +1125,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1144,7 +1144,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1168,7 +1168,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1187,7 +1187,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1208,7 +1208,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1226,7 +1226,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1255,7 +1255,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1275,7 +1275,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1297,7 +1297,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1316,7 +1316,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1340,7 +1340,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1359,7 +1359,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1380,7 +1380,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1398,7 +1398,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1424,7 +1424,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1443,7 +1443,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1464,7 +1464,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1482,7 +1482,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1505,7 +1505,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1523,7 +1523,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1543,7 +1543,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1560,7 +1560,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1594,7 +1594,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1615,7 +1615,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1638,7 +1638,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1658,7 +1658,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1683,7 +1683,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1703,7 +1703,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1725,7 +1725,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1744,7 +1744,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1771,7 +1771,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1791,7 +1791,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1813,7 +1813,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1832,7 +1832,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1856,7 +1856,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1875,7 +1875,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1896,7 +1896,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1914,7 +1914,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1943,7 +1943,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -1963,7 +1963,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -1985,7 +1985,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2004,7 +2004,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2028,7 +2028,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2047,7 +2047,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2068,7 +2068,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2086,7 +2086,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2112,7 +2112,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2131,7 +2131,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2152,7 +2152,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2170,7 +2170,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2193,7 +2193,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2211,7 +2211,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2231,7 +2231,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2248,7 +2248,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2279,7 +2279,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2299,7 +2299,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2321,7 +2321,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2340,7 +2340,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2364,7 +2364,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2383,7 +2383,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2404,7 +2404,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2422,7 +2422,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2448,7 +2448,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2467,7 +2467,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2488,7 +2488,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2506,7 +2506,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2529,7 +2529,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2547,7 +2547,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2567,7 +2567,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2584,7 +2584,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2612,7 +2612,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2631,7 +2631,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2652,7 +2652,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2670,7 +2670,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2693,7 +2693,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2711,7 +2711,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2731,7 +2731,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2748,7 +2748,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2773,7 +2773,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2791,7 +2791,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2811,7 +2811,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2828,7 +2828,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2850,7 +2850,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2867,7 +2867,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                             }
@@ -2886,7 +2886,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
                                 else{
@@ -2902,7 +2902,7 @@ class Project extends Model{
                                         ->join("jckk_user mu","p.manage_uid = mu.uid","LEFT")
                                         ->join("jckk_user cu","p.create_uid = cu.uid","LEFT")
                                         ->join("jckk_department d","d.id = eu.department_id","LEFT")
-                                        ->order("p.id","desc")
+                                        ->order("p.update_time","desc")
                                         ->paginate( ['query' => request()->param(),]);
                                 }
 

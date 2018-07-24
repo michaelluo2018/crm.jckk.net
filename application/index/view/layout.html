@@ -543,6 +543,10 @@
         }
     }
 
+    function goBack(){
+        window.history.go(-1);
+    }
+
     $("#menu_display_setting").click(function () {
         var sidebar_display_x = $(".scroll-sidebar").css("overflow-x");
         var sidebar_display_y = $(".scroll-sidebar").css("overflow-Y");
