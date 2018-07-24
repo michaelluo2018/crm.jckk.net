@@ -7,7 +7,14 @@ use think\Request;
 
 class Index extends Base
 {
+    public function __construct(Request $request = null)
+    {
+        parent::__construct($request);
+        $mid = $this->get_mid_by_url("index/index/index");
+        $this->menu_id = $mid;
+        $this->assign("mid",$this->menu_id);
 
+    }
     public function index()
     {
         //本人操作日志
@@ -15,7 +22,6 @@ class Index extends Base
 
         //数据统计--客户状态
         $customer_status_1 = $this->get_customer_status1();
-//        dump($customer_status_1);die;
         $customer_status_2 = $this->get_customer_status2();
 
         //数据统计--合同状态
@@ -31,14 +37,15 @@ class Index extends Base
         //任务排期
         $year = isset($_GET['year']) ? $_GET['year'] : date("Y");
         $month = isset($_GET['month']) ? $_GET['month'] : date("m");
-        $mid = $this->get_mid_by_url("index/task/task");
-        $this->menu_id = $mid;
-        $uids = $this->check_post_menu_range_permission();
+
+        $uids = $this->get_range_permission($this->uid,"index/task/task");
+
         if($uids == "all") {
             $res = __toString('index',$year,$month,'');
         }else{
             $res = __toString('index',$year,$month,$uids);
         }
+
         $this->assign('res',$res['out']);
         $this->assign('tasks',$res['tasks']);
 
