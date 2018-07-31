@@ -75,7 +75,12 @@ class TaskTime extends Model{
     //获取列表
     public function get_task_time_by_task($task_id){
 
-        return  $this->where("task_id",$task_id)->select();
+        return   Db::table("jckk_task_time")
+            ->alias("task_time")
+            ->field(["task_time.*","user.chinese_name"])
+            ->where("task_time.task_id",$task_id)
+            ->join("jckk_user user","user.uid=task_time.create_uid","LEFT")
+            ->select();
     }
 
 

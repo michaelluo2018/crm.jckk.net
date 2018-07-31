@@ -63,27 +63,42 @@
 
                         <h3 class="card-title">历史记录</h3>
                         <hr>
-                        {volist name="task_history" id="history" key="k"}
-                        <div class="col-md-12">
-                            <div class="form-group">
-                               {$k}、   {$history.title}
-                                {if condition="$history.after_value"/}
-                               <p style="margin-left: 30px;line-height: 30px;"><samll>把{$history.before_value}改成{$history.after_value}</samll></p>
-                                {/if}
+                        {if condition="$task_history"/}
+                            {volist name="task_history" id="history" key="k"}
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                   {$k}、   {$history.title}
+                                    {if condition="$history.after_value"/}
+                                   <p style="margin-left: 30px;line-height: 30px;"><samll>把{$history.before_value}改成{$history.after_value}</samll></p>
+                                    {/if}
+                                </div>
                             </div>
-                        </div>
-                        {/volist}
-
+                            {/volist}
+                        {else/}
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    暂无
+                                </div>
+                            </div>
+                        {/if}
                         <h3 class="card-title">工时记录</h3>
                         <hr>
+                        {if condition="$task_time"/}
                         {volist name="task_time" id="time" key="v"}
                         <div class="col-md-12">
                             <div class="form-group">
-                                {$v}、 {$time.start_time} - {$time.end_time} &nbsp;&nbsp;&nbsp;&nbsp; {$time.title}   &nbsp;&nbsp;&nbsp;&nbsp;{if condition="$time.file"/}
+                                {$v}、 {$time.start_time} - {$time.end_time} &nbsp;&nbsp;&nbsp;&nbsp; {$time.title}   &nbsp;&nbsp;&nbsp;&nbsp; {$time.chinese_name} &nbsp;&nbsp;&nbsp;&nbsp;{if condition="$time.file"/}
                                 <a href="{:url('index/task/download_file')}?p={$time.file}" class="downloadFile">附件下载</a>{/if}
                             </div>
                         </div>
                         {/volist}
+                        {else/}
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    暂无
+                                </div>
+                            </div>
+                        {/if}
                         <div>
                             {if condition="$user_info['uid'] eq $task.create_uid"/}
                             <a href="javascript:void (0);" onclick="delete_sure('确定要删除此任务吗？','{:url(\'index/task/task_del\')}?id={$task.id}&cd={$task.create_uid}')" class="btn btn-primary" title="删除"><i class="mdi mdi-close" aria-hidden="true"></i></a>
