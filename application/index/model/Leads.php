@@ -3,7 +3,7 @@
 namespace  app\index\model;
 
 
-use think\Model;
+use think\model;
 
 class Leads extends Model{
 

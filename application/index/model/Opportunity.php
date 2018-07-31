@@ -2,7 +2,7 @@
 
 namespace  app\index\model;
 
-use think\Model;
+use think\model;
 
 class Opportunity extends Model{
 

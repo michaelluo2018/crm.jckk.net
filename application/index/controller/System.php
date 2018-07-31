@@ -10,7 +10,7 @@ class System extends Base{
 
     public function organization($id = null,$mid=null){
 
-        $mid = $this->get_mid_by_url("index/project/project_list");
+        $mid = $this->get_mid_by_url("index/system/organization");
         $this->menu_id = $mid;
         $this->assign("mid",$this->menu_id);
         
@@ -92,8 +92,10 @@ class System extends Base{
 
 
     public function member(){
+        $mid = $this->get_mid_by_url("index/system/member");
+        $this->menu_id = $mid;
+        $this->assign("mid",$this->menu_id);
         $users = model("user","logic")->get_users();
-
         return view("member")->assign("users",$users);
     }
 
