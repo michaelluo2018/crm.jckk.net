@@ -78,7 +78,8 @@ class Base extends Controller{
         }
 
         //公告
-        $announcements = model("announcement","logic")->get_announcement();
+
+        $announcements = model("announcement","logic")->get_department_announcement( $user_info['department_id']);
         $this->assign("announcements",$announcements);
 
         //系统消息

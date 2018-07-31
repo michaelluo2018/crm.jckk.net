@@ -34,6 +34,7 @@ class Announcement extends  model{
 
         $announcement->title = trim($data['title']);
         $announcement->content = trim($data['content']);
+        $announcement->department_id = json_encode($data['department_id']);
 
         if($announcement->save()){
             $log_ann["after_value"] = json_encode($announcement);
@@ -52,6 +53,13 @@ class Announcement extends  model{
                 ->select();
     }
 
+    public function get_department_announcement($department_id){
+        return Db::table("jckk_announcement")
+            ->where("jckk_announcement.department_id","like",'%"'.$department_id.'"%')
+            ->field(["jckk_announcement.*","jckk_user.chinese_name"])
+            ->join("jckk_user","jckk_user.uid=jckk_announcement.create_uid")
+            ->select();
+    }
 
     public function  delete_announcement($id){
 
@@ -69,7 +77,9 @@ class Announcement extends  model{
 
     public  function  get_announcement_by_id($id){
 
-        return $this->where("id",$id)->find();
+        $announcement =  $this->where("id",$id)->find();
+        $announcement->department_id = json_decode($announcement->department_id,true);
+        return  $announcement;
 
     }
 

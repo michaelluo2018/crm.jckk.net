@@ -26,7 +26,6 @@
             <div class="card-body">
                 <form action="{:url('index/announcement/save_announcement')}?mid={$mid}" method="post">
                     <div class="form-body">
-
                         <div class="row">
                             <!--/span-->
                             <div class="col-md-10">
@@ -38,16 +37,33 @@
                             </div>
                             <!--/span-->
                         </div>
+
                         <div class="row">
                             <!--/span-->
                             <div class="col-md-10">
                                 <div class="form-group">
                                     <label><span class="text-danger"> * </span>内容</label>
-                                    <textarea  class="form-control"  name="content"  rows="10" required></textarea>
-                                    <small class="form-control-feedback"> </small>
+                                    <!--<textarea  class="form-control"  name="content"  rows="10" required></textarea>-->
+                                    <!--<small class="form-control-feedback"> </small>-->
+                                    <script id="container" name="content" type="text/plain"></script>
                                 </div>
                             </div>
                             <!--/span-->
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-10">
+                                <label>接收部门（不填写就暂不发送）</label>
+                                <div class="form-group">
+                                    {volist name="departments" id="department"/}
+                                        <label class="custom-control custom-checkbox">
+                                            <input  name="department_id[]" type="checkbox" class="custom-control-input" value="{$department.id}">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">{$department.department_name}</span>
+                                        </label>
+                                    {/volist}
+                                </div>
+                            </div>
                         </div>
                         <div class="form-actions">
                             <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> 保存</button>
@@ -59,5 +75,25 @@
         </div>
     </div>
 </div>
+{/block}
+{block name="footer_js"/}
+<!-- 百度编辑器配置文件 -->
+<script type="text/javascript" src="__STATIC__/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="__STATIC__/ueditor/ueditor.all.js"></script>
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+
+    var imageEditor = UE.getEditor('container',{
+        toolbars: [
+            ['fullscreen','source','|','undo','redo','|','bold','italic','underline','fontborder','strikethrough','superscript','subscript','removeformat','formatmatch','autotypeset','blockquote','pasteplain','|','forecolor','backcolor','insertorderedlist','insertunorderedlist','selectall','cleardoc','|','rowspacingtop','rowspacingbottom','lineheight','|','customstyle','paragraph','fontfamily','fontsize','|','directionalityltr','directionalityrtl','indent','|','justifyleft','justifycenter','justifyright','justifyjustify','|','touppercase','tolowercase','|','link','unlink','anchor','|','imagenone','imageleft','imageright','imagecenter','|','simpleupload','insertimage','emotion','scrawl','insertvideo','attachment','map','insertframe','pagebreak','template','background','|','horizontal','date','time','spechars','snapscreen','|','inserttable','deletetable','insertparagraphbeforetable','insertrow','deleterow','insertcol','deletecol','mergecells','mergeright','mergedown','splittocells','splittorows','splittocols','charts','|','print','preview']
+        ],
+        autoHeightEnabled: true,
+        autoFloatEnabled: true,
+        allowDivTransToP: false,
+        initialFrameHeight:320  //初始化编辑器高度,默认320
+    });
+</script>
+
 
 {/block}

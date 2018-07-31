@@ -23,6 +23,9 @@ class Announcement extends  Base{
             echo "<script> alert('没有权限！');history.back(-1);</script>";
         }
         else {
+            //所有部门
+            $departments = model("department",'logic')->get_departments();
+            $this->assign('departments',$departments);
             return view("announcement_add");
         }
 
@@ -37,9 +40,10 @@ class Announcement extends  Base{
         }
         else {
             $announcement = model("announcement","logic")->get_announcement_by_id($id);
-
             $this->assign("edit_announcement",$announcement);
-
+            //所有部门
+            $departments = model("department",'logic')->get_departments();
+            $this->assign('departments',$departments);
             return view("announcement_edit");
         }
     }
@@ -47,7 +51,8 @@ class Announcement extends  Base{
 
     public  function  announcement_list(){
 
-
+        $announcements = model("announcement","logic")->get_announcement();
+        $this->assign("announcements",$announcements);
         return view("announcement_list");
 
     }
@@ -77,10 +82,9 @@ class Announcement extends  Base{
     public  function  announcement_des($id){
 
         $announcement = model("announcement","logic")->get_announcement_by_id($id);
-
-
         $this->assign("des_announcement",$announcement);
-
+        $departments = model("department",'logic')->get_departments();
+        $this->assign('departments',$departments);
         return view("announcement_des");
     }
 
