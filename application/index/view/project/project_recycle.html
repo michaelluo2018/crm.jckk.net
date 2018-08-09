@@ -78,17 +78,20 @@
                         </td>
                         <td>
                             <span><span class="text-primary">客户名称</span>：{$project.customer_name}</span>
-                            <span class="p-l-20"><span class="text-primary">所属部门</span>：{$project.department_name}</span>
                             <span class="p-l-20"><span class="text-primary">客户类别</span>：{$project.customer_status_1}</span>
                             <span class="p-l-20"><span class="text-primary">客户状态</span>：{$project.customer_status_2}</span>
-                            <span class="p-l-20"><span class="text-primary">回款模式</span>：{$project.payment_type}</span><br/>
-                            <span><span class="text-primary">创建者</span>：{$project.c_name}</span>
+                            <br/>
+                            <span><span class="text-primary">所属部门</span>：{$project.department_name}</span>
+                            <span class="p-l-20"><span class="text-primary">创建者</span>：{$project.c_name}</span>
                             <span class="p-l-20"><span class="text-primary">管理人</span>：{$project.m_name}</span>
                             <span class="p-l-20"><span class="text-primary">执行者</span>：{$project.e_name}</span>
                             <span class="p-l-20"><span class="text-primary">策划人</span>：{$project.p_name}</span>
                             <span class="p-l-20"><span class="text-primary">对接人</span>：{$project.d_name}</span>
+                            <br/>
+                            <span><span class="text-primary">回款模式</span>：{$project.payment_type}</span>
+                            <br/>
                             <?php if($project['project_start'] && $project['project_end']){ ?>
-                            <span class="p-l-20"><span class="text-primary">预计</span>： <?php echo $num1= $num1 >0 ?$num1 :0; ?>（天）</span>
+                            <span><span class="text-primary">预计</span>： <?php echo $num1= $num1 >0 ?$num1 :0; ?>（天）</span>
                             <span class="p-l-20"><span class="text-primary">消耗</span>： <?php echo $num2= $num2 >0 ?$num2 :0; ?>（天）</span>
                             <?php  }?>
                         </td>
