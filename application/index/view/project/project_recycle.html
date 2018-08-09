@@ -51,7 +51,7 @@
                     <tr>
                         <td>{$project.number}</td>
                         <td>{$project.project_name}</td>
-                        <td>{$project.contract_status}</td>
+                        <td><span style="padding: 5px; background-color: {$data['status_label_color'][$project['contract_status']]}">{$project.contract_status}</span></td>
                         <td>{$project.payment_status}</td>
                         <?php if($project['project_start'] && $project['project_end']){ ?>
                         <td>

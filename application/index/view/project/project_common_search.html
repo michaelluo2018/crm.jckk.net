@@ -2,8 +2,8 @@
     <form method="get">
         {if condition="isset($name)"/}<input type="hidden" name="name" value="{$name}">{/if}
         <div style="margin: 0 auto;">
-            <div class="p-t-20">
-                <div style="width: 20%;margin-right: 5%;margin-left: 2%;float: left;" >
+            <div class="p-t-20" style="min-height: 120px;">
+                <div style="width: 20%;margin-left: 2%;margin-right: 2%;float: left;" >
                     <p>合同状态：</p>
                     <select name="contract_status" class="form-control" >
                         <option value="">请选择</option>
@@ -43,12 +43,12 @@
                     </select>
                 </div>
                 <div style="width: 20%;margin-right: 2%;float: left;" >
-                    <p> 其他（项目名称，客户名称）</p>
-                    <input type="text" name="keyword" {if condition="isset($keyword)"/} value="{$keyword}" {/if} class="form-control" autocomplete="off" >
+                    <p> 其他</p>
+                    <input type="text" placeholder="项目名称，客户名称" name="keyword" {if condition="isset($keyword)"/} value="{$keyword}" {/if} class="form-control" autocomplete="off" >
                 </div>
-            </div>
-            <div class="text-center clear p-t-20">
-                <input type="submit" value="搜索" class="btn btn-success ">
+                <div style="float: left;padding-top: 40px;" >
+                    <input type="submit" value="搜索" class="btn btn-success ">
+                </div>
             </div>
         </div>
     </form>

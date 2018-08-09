@@ -17,6 +17,7 @@ class Project extends Model{
         $data['payment_type'] = Config::get("payment_type");
         $data['payment_status'] = Config::get("payment_status");
         $data['project_channel'] = Config::get("project_channel");
+        $data['status_label_color'] = Config::get("status_label_color");
         return $data;
     }
 
