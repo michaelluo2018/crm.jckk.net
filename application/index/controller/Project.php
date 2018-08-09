@@ -19,24 +19,33 @@ class Project extends Base {
 
     //项目列表
     public function project_list(){
-        $id_info = trim(Request::instance()->get('id_info')) ;
-        $project_info = trim(Request::instance()->get('project_info')) ;
-        $customer_info =  trim(Request::instance()->get('customer_info')) ;
-        $contract_info = trim(Request::instance()->get('contract_info')) ;
-        $join_info = trim(Request::instance()->get('join_info')) ;
-        $this->assign("id_info",$id_info);
-        $this->assign("project_info",$project_info);
-        $this->assign("customer_info",$customer_info);
-        $this->assign("contract_info",$contract_info);
-        $this->assign("join_info",$join_info);
+        $data = model("project", "logic")->get_project_total_entity();
+        $this->assign("data",$data);
+        $contract_status = Request::instance()->get('contract_status');//合同状态
+        $payment_status = Request::instance()->get('payment_status'); //回款状态
+        $product_demand = Request::instance()->get('product_demand'); //产品需求
+        $keyword = trim(Request::instance()->get('keyword')) ;
+        $this->assign("contractStatus",$contract_status);
+        $this->assign("paymentStatus",$payment_status);
+        $this->assign("productDemand",$product_demand);
+        $this->assign("keyword",$keyword);
+        $where =[];
+        if($contract_status){
+            $where["p.contract_status"]= $contract_status;
+        }
+        if($payment_status){
+            $where["p.payment_status"]= $payment_status;
+        }
+        if($product_demand){
+            $where["p.product_demand_1"]= $product_demand ;
+        }
 
         $create_uids = $this->check_post_menu_range_permission();
 
         if($create_uids == "all") {
-
-            $projects = model("project", "logic")->get_projects("","",$id_info,$project_info,$customer_info,$contract_info,$join_info);
+            $projects = model("project", "logic")->get_projects("","",$where,$keyword);
         }else{
-            $projects = model("project", "logic")->get_projects("",$create_uids,$id_info,$project_info,$customer_info,$contract_info,$join_info);
+            $projects = model("project", "logic")->get_projects("",$create_uids,$where,$keyword);
         }
 
         //获取当前url
@@ -50,24 +59,36 @@ class Project extends Base {
 
     public  function  contract_status($name){
 
-        $id_info = trim(Request::instance()->get('id_info')) ;
-        $project_info = trim(Request::instance()->get('project_info')) ;
-        $customer_info = trim(Request::instance()->get('customer_info')) ;
-        $contract_info = trim(Request::instance()->get('contract_info')) ;
-        $join_info = trim(Request::instance()->get('join_info')) ;
-        $this->assign("id_info",$id_info);
-        $this->assign("project_info",$project_info);
-        $this->assign("customer_info",$customer_info);
-        $this->assign("contract_info",$contract_info);
-        $this->assign("join_info",$join_info);
+        $data = model("project", "logic")->get_project_total_entity();
+        $this->assign("data",$data);
+        $contract_status = Request::instance()->get('contract_status');//合同状态
+        $payment_status = Request::instance()->get('payment_status'); //回款状态
+        $product_demand = Request::instance()->get('product_demand'); //产品需求
+        $keyword = trim(Request::instance()->get('keyword')) ;
+        $this->assign("contractStatus",$contract_status);
+        $this->assign("paymentStatus",$payment_status);
+        $this->assign("productDemand",$product_demand);
+        $this->assign("keyword",$keyword);
         $this->assign("name",$name);
+        $where =[];
+        if($contract_status){
+            $where["p.contract_status"]= $contract_status;
+        }
+        if($payment_status){
+            $where["p.payment_status"]= $payment_status;
+        }
+        if($product_demand){
+            $where["p.product_demand_1"]= $product_demand ;
+        }
+
+
         $create_uids = $this->check_post_menu_range_permission();
 
         if($create_uids == "all") {
 
-            $projects = model("project", "logic")->get_projects_by_status("contract_status",$name,"",$id_info,$project_info,$customer_info,$contract_info,$join_info);
+            $projects = model("project", "logic")->get_projects_by_status("contract_status",$name,"",$where,$keyword);
         }else{
-            $projects = model("project", "logic")->get_projects_by_status("contract_status",$name,$create_uids,$id_info,$project_info,$customer_info,$contract_info,$join_info);
+            $projects = model("project", "logic")->get_projects_by_status("contract_status",$name,$create_uids,$where,$keyword);
         }
 
 
@@ -77,23 +98,34 @@ class Project extends Base {
 
 
     public  function  product_demand($name){
-        $id_info = trim(Request::instance()->get('id_info')) ;
-        $project_info = trim(Request::instance()->get('project_info')) ;
-        $customer_info = trim(Request::instance()->get('customer_info')) ;
-        $contract_info = trim(Request::instance()->get('contract_info')) ;
-        $join_info = trim(Request::instance()->get('join_info')) ;
-        $this->assign("id_info",$id_info);
-        $this->assign("project_info",$project_info);
-        $this->assign("customer_info",$customer_info);
-        $this->assign("contract_info",$contract_info);
-        $this->assign("join_info",$join_info);
+        $data = model("project", "logic")->get_project_total_entity();
+        $this->assign("data",$data);
+        $contract_status = Request::instance()->get('contract_status');//合同状态
+        $payment_status = Request::instance()->get('payment_status'); //回款状态
+        $product_demand = Request::instance()->get('product_demand'); //产品需求
+        $keyword = trim(Request::instance()->get('keyword')) ;
+        $this->assign("contractStatus",$contract_status);
+        $this->assign("paymentStatus",$payment_status);
+        $this->assign("productDemand",$product_demand);
+        $this->assign("keyword",$keyword);
         $this->assign("name",$name);
+        $where =[];
+        if($contract_status){
+            $where["p.contract_status"]= $contract_status;
+        }
+        if($payment_status){
+            $where["p.payment_status"]= $payment_status;
+        }
+        if($product_demand){
+            $where["p.product_demand_1"]= $product_demand ;
+        }
+
         $create_uids = $this->check_post_menu_range_permission();
 
         if($create_uids == "all") {
-            $projects = model("project", "logic")->get_projects_by_status("product_demand_1",$name,"",$id_info,$project_info,$customer_info,$contract_info,$join_info);
+            $projects = model("project", "logic")->get_projects_by_status("product_demand_1",$name,"",$where,$keyword);
         }else{
-            $projects = model("project", "logic")->get_projects_by_status("product_demand_1",$name,$create_uids,$id_info,$project_info,$customer_info,$contract_info,$join_info);
+            $projects = model("project", "logic")->get_projects_by_status("product_demand_1",$name,$create_uids,$where,$keyword);
         }
 
         return  view("project_status_list")->assign(["projects"=>$projects,"name"=>$name]);
@@ -103,15 +135,35 @@ class Project extends Base {
 
     //项目回收站
     public function project_recycle(){
-
+        $data = model("project", "logic")->get_project_total_entity();
+        $this->assign("data",$data);
+        $contract_status = Request::instance()->get('contract_status');//合同状态
+        $payment_status = Request::instance()->get('payment_status'); //回款状态
+        $product_demand = Request::instance()->get('product_demand'); //产品需求
+        $keyword = trim(Request::instance()->get('keyword')) ;
+        $this->assign("contractStatus",$contract_status);
+        $this->assign("paymentStatus",$payment_status);
+        $this->assign("productDemand",$product_demand);
+        $this->assign("keyword",$keyword);
+        $where =[];
+        if($contract_status){
+            $where["p.contract_status"]= $contract_status;
+        }
+        if($payment_status){
+            $where["p.payment_status"]= $payment_status;
+        }
+        if($product_demand){
+            $where["p.product_demand_1"]= $product_demand ;
+        }
         $create_uids = $this->check_post_menu_range_permission();
+
 
         if($create_uids == "all") {
 
-            $projects = model("project", "logic")->project_recycle();
+            $projects = model("project", "logic")->project_recycle("","",$where,$keyword);
 
         }else{
-            $projects = model("project", "logic")->project_recycle("",$create_uids);
+            $projects = model("project", "logic")->project_recycle("",$create_uids,$where,$keyword);
         }
 
         return  view("project_recycle")->assign("projects",$projects);

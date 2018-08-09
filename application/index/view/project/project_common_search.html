@@ -1,33 +1,50 @@
 <div style="border: 1px dashed grey;padding: 10px;margin-bottom: 40px;" >
     <form method="get">
+        {if condition="isset($name)"/}<input type="hidden" name="name" value="{$name}">{/if}
         <div style="margin: 0 auto;">
             <div class="p-t-20">
-                <div style="width: 25%;margin-right: 5%;margin-left: 2%;float: left;" >
-                    <p>按编号搜索：</p>
-                    <!--<p><small>（项目编号）</small></p>-->
-                    <input type="text" placeholder="项目编号" name="id_info" {if condition="isset($id_info)"/} value="{$id_info}" {/if} class="form-control" autocomplete="off" >
+                <div style="width: 20%;margin-right: 5%;margin-left: 2%;float: left;" >
+                    <p>合同状态：</p>
+                    <select name="contract_status" class="form-control" >
+                        <option value="">请选择</option>
+                        {volist name="data['contract_status']" id="contract_status"/}
+                        {if condition="isset($contractStatus) and $contract_status eq $contractStatus"/}
+                        <option value="{$contract_status}" selected>{$contract_status}</option>
+                        {else/}
+                        <option value="{$contract_status}">{$contract_status}</option>
+                        {/if}
+                        {/volist}
+                    </select>
                 </div>
-                <div style="width: 25%;margin-right: 5%;float: left;" >
-                    <p>按项目信息搜索:</p>
-                    <!--<p><small>（项目名称，所属部门，需求产品）</small></p>-->
-                    <input type="text" placeholder="项目名称、部门、需求产品" name="project_info" {if condition="isset($project_info)"/} value="{$project_info}" {/if} class="form-control" autocomplete="off" >
+                <div style="width: 20%;margin-right: 2%;float: left;" >
+                    <p>回款状态:</p>
+                    <select name="payment_status" class="form-control" >
+                        <option value="">请选择</option>
+                        {volist name="data['payment_status']" id="payment_status"/}
+                        {if condition="isset($paymentStatus) and $payment_status eq $paymentStatus"/}
+                        <option value="{$payment_status}" selected>{$payment_status}</option>
+                        {else/}
+                        <option value="{$payment_status}">{$payment_status}</option>
+                        {/if}
+                        {/volist}
+                    </select>
                 </div>
-                <div style="width: 25%;margin-right: 5%;float: left;" >
-                    <p>按客户信息搜索：</p>
-                    <!--<p><small>（客户名称，客户类别，客户状态）</small></p>-->
-                    <input type="text" placeholder="客户名称、类别、状态" name="customer_info" {if condition="isset($customer_info)"/} value="{$customer_info}" {/if} class="form-control" autocomplete="off" >
+                <div style="width: 20%;margin-right: 2%;float: left;" >
+                    <p>产品需求：</p>
+                    <select name="product_demand" class="form-control" >
+                        <option value="">请选择</option>
+                        {volist name="data['product_demand']" id="product_demand"/}
+                        {if condition="isset($productDemand) and $product_demand eq $productDemand"/}
+                        <option value="{$product_demand}" selected>{$product_demand}</option>
+                        {else/}
+                        <option value="{$product_demand}">{$product_demand}</option>
+                        {/if}
+                        {/volist}
+                    </select>
                 </div>
-            </div>
-            <div class="p-t-20 clear">
-                <div style="width: 25%;margin-right: 5%;margin-left: 2%;float: left;" >
-                    <p> 按合同信息搜索：</p>
-                    <!--<p><small>（合同状态，回款模式，回款状态）</small></p>-->
-                    <input type="text" placeholder="合同状态、回款模式、回款状态" name="contract_info" {if condition="isset($contract_info)"/} value="{$contract_info}" {/if} class="form-control" autocomplete="off" >
-                </div>
-                <div style="width: 25%;float: left;" >
-                    <p>按参与者搜索：</p>
-                    <!--<p><small>（创建者，管理者，执行者，策划者，对接人）</small></p>-->
-                    <input type="text" placeholder="创建者、管理者、执行者、策划者、对接人" name="join_info" {if condition="isset($join_info)"/} value="{$join_info}" {/if}  class="form-control" autocomplete="off" >
+                <div style="width: 20%;margin-right: 2%;float: left;" >
+                    <p> 其他（项目名称，客户名称）</p>
+                    <input type="text" name="keyword" {if condition="isset($keyword)"/} value="{$keyword}" {/if} class="form-control" autocomplete="off" >
                 </div>
             </div>
             <div class="text-center clear p-t-20">
@@ -36,76 +53,12 @@
         </div>
     </form>
 </div>
-<th>
-    <div class="p-b-20 ">编号 </div>
-    <!--<form method="get" >-->
-        <!--<input type="text" placeholder="搜索" name="id_info" {if condition="isset($id_info)"/} value="{$id_info}" {/if} class="form-control" autocomplete="off" >-->
-        <!--<input type="hidden"  name="project_info" {if condition="isset($project_info)"/} value="{$project_info}" {/if} >-->
-        <!--<input type="hidden"  name="customer_info" {if condition="isset($customer_info)"/} value="{$customer_info}" {/if}>-->
-        <!--<input type="hidden" name="contract_info" {if condition="isset($contract_info)"/} value="{$contract_info}" {/if}>-->
-        <!--<input type="hidden"  name="join_info" {if condition="isset($join_info)"/} value="{$join_info}" {/if}>-->
-        <!--<input type="hidden"  name="name" {if condition="isset($name)"/} value="{$name}" {/if}>-->
-    <!--</form>-->
-</th>
-<th>
-    <div class="p-b-20 ">项目信息 </div>
-    <!--<form method="get" >-->
-        <!--<input type="hidden"  name="id_info" {if condition="isset($id_info)"/} value="{$id_info}" {/if}>-->
-        <!--<input type="text" placeholder="搜索" name="project_info" {if condition="isset($project_info)"/} value="{$project_info}" {/if} class="form-control" autocomplete="off" >-->
-        <!--<input type="hidden"  name="customer_info" {if condition="isset($customer_info)"/} value="{$customer_info}" {/if}>-->
-        <!--<input type="hidden" name="contract_info" {if condition="isset($contract_info)"/} value="{$contract_info}" {/if}>-->
-        <!--<input type="hidden"  name="join_info" {if condition="isset($join_info)"/} value="{$join_info}" {/if}>-->
-        <!--<input type="hidden"  name="name" {if condition="isset($name)"/} value="{$name}" {/if}>-->
-    <!--</form>-->
-</th>
-<th>
-    <div class="p-b-20 ">客户信息 </div>
-    <!--<form method="get" >-->
-        <!--<input type="hidden" name="id_info" {if condition="isset($id_info)"/} value="{$id_info}" {/if}>-->
-        <!--<input type="hidden"  name="project_info" {if condition="isset($project_info)"/} value="{$project_info}" {/if} >-->
-        <!--<input type="text" placeholder="搜索" name="customer_info" {if condition="isset($customer_info)"/} value="{$customer_info}" {/if} class="form-control" autocomplete="off" >-->
-        <!--<input type="hidden" name="contract_info" {if condition="isset($contract_info)"/} value="{$contract_info}" {/if}>-->
-        <!--<input type="hidden"  name="join_info" {if condition="isset($join_info)"/} value="{$join_info}" {/if}>-->
-        <!--<input type="hidden"  name="name" {if condition="isset($name)"/} value="{$name}" {/if}>-->
-    <!--</form>-->
-</th>
-<th>
-    <div class="p-b-20 " >合同信息 </div>
-    <!--<form method="get" >-->
-        <!--<input type="hidden" name="id_info" {if condition="isset($id_info)"/} value="{$id_info}" {/if}>-->
-        <!--<input type="hidden"  name="project_info" {if condition="isset($project_info)"/} value="{$project_info}" {/if} >-->
-        <!--<input type="hidden"  name="customer_info" {if condition="isset($customer_info)"/} value="{$customer_info}" {/if}>-->
-        <!--<input type="text" placeholder="搜索" name="contract_info" {if condition="isset($contract_info)"/} value="{$contract_info}" {/if} class="form-control" autocomplete="off" >-->
-        <!--<input type="hidden"  name="join_info" {if condition="isset($join_info)"/} value="{$join_info}" {/if}>-->
-        <!--<input type="hidden"  name="name" {if condition="isset($name)"/} value="{$name}" {/if}>-->
-    <!--</form>-->
-</th>
-<th>
-    <div class="p-b-20 ">进度(天) </div>
-    <!--<form method="get" >-->
-        <!--<input type="text" placeholder="搜索"  class="form-control" autocomplete="off" disabled>-->
-    <!--</form>-->
-</th>
-<th>
-    <div class="p-b-20 ">参与者 </div>
-    <!--<form method="get">-->
-        <!--<input type="hidden" name="id_info" {if condition="isset($id_info)"/} value="{$id_info}" {/if}>-->
-        <!--<input type="hidden"  name="project_info" {if condition="isset($project_info)"/} value="{$project_info}" {/if} >-->
-        <!--<input type="hidden"  name="customer_info" {if condition="isset($customer_info)"/} value="{$customer_info}" {/if}>-->
-        <!--<input type="hidden"  name="contract_info" {if condition="isset($contract_info)"/} value="{$contract_info}" {/if}>-->
-        <!--<input type="text" placeholder="搜索" name="join_info" {if condition="isset($join_info)"/} value="{$join_info}" {/if}  class="form-control" autocomplete="off" >-->
-        <!--<input type="hidden"  name="name" {if condition="isset($name)"/} value="{$name}" {/if}>-->
-    <!--</form>-->
-</th>
-<th>
-    <div class="p-b-20 ">最后更新 </div>
-    <!--<form method="get" >-->
-        <!--<input type="text" placeholder=" 搜索"  class="form-control" autocomplete="off" disabled>-->
-    <!--</form>-->
-</th>
-<th>
-    <div class="p-b-20 ">操作 </div>
-    <!--<form method="get" >-->
-        <!--<input type="text" placeholder="搜索"  class="form-control" autocomplete="off" disabled>-->
-    <!--</form>-->
-</th>
+<th data-toggle="true">编号</th>
+<th>项目名称</th>
+<th>合同状态</th>
+<th>回款状态</th>
+<th>剩余天数</th>
+<th>产品需求</th>
+<th>最后更新</th>
+<th data-hide="all"></th>
+<th>操作</th>
