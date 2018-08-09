@@ -2,6 +2,11 @@
 {block name="title"}
     <title>项目列表 - 客户管理系统</title>
 {/block}
+{block name="css"}
+    <style>
+        .pagination ul{display:none;}
+    </style>
+{/block}
 {block name="breadcrumb"/}
     <div class="col-md-5 col-8 align-self-center">
         <h3 class="text-themecolor">项目列表</h3>
@@ -37,7 +42,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <table id="demo-foo-row-toggler" class="table toggle-circle table-hover" >
+                            <table id="demo-foo-row-toggler"  class="table toggle-circle table-hover" >
                                 <thead>
                                 <tr class="text-align">
                                    {include file="project/project_common_search"/}
@@ -100,11 +105,11 @@
                                 {/volist}
                                 </tbody>
                                 <tfoot>
-                                <tr>
-                                    <td colspan="8">
-                                        {$projects->render()}
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="8">
+                                            {$projects->render()}
+                                        </td>
+                                    </tr>
                                 </tfoot>
                             </table>
                         </div>
