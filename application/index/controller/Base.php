@@ -25,7 +25,10 @@ class Base extends Controller{
                 $this->redirect("login/login");
             }
         }
-
+        if($_SERVER['REQUEST_URI']=="/"){
+            $this->redirect("index/index"); //解决首页日历问题
+        }
+        
         $this->uid = Session::get("uid");
         $user_info = model("user","logic")->get_user($this->uid);
         $this->assign("user_info",$user_info);
