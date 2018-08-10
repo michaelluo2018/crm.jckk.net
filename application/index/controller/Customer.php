@@ -17,29 +17,32 @@ class Customer extends Base{
 
     //客户列表
     public function customer_list(){
-        $id_info =trim(Request::instance()->get('id_info')) ;
-        $customer_name = trim(Request::instance()->get('customer_name')) ;
-        $customer_status_1 = trim(Request::instance()->get('customer_status_1')) ;
-        $customer_status_2 = trim(Request::instance()->get('customer_status_2')) ;
-        $contact_name = trim(Request::instance()->get('contact_name')) ;
-        $contact_mobile = trim(Request::instance()->get('contact_mobile')) ;
-        $create_name = trim(Request::instance()->get('create_name')) ;
-        $this->assign("id_info",$id_info);
-        $this->assign("customer_name",$customer_name);
-        $this->assign("customer_status_1",$customer_status_1);
-        $this->assign("customer_status_2",$customer_status_2);
-        $this->assign("contact_name",$contact_name);
-        $this->assign("contact_mobile",$contact_mobile);
-        $this->assign("create_name",$create_name);
+        $entity = model("customer","logic")->get_customer_entity();
+        $this->assign("entity",$entity);
+
+        $status1 =trim(Request::instance()->get('customer_status_1')) ;
+        $status2 = trim(Request::instance()->get('customer_status_2')) ;
+        $keyword = trim(Request::instance()->get('keyword')) ;
+        $this->assign("status1",$status1);
+        $this->assign("status2",$status2);
+        $this->assign("keyword",$keyword);
+
+        $where =[];
+        if($status1){
+            $where["jckk_customer.customer_status_1"]= $status1;
+        }
+        if($status2){
+            $where["jckk_customer.customer_status_2"]= $status2;
+        }
 
         $create_uids = $this->check_post_menu_range_permission();
 
         if($create_uids == "all"){
-            $data = model("customer","logic")->get_customers("",$id_info,$customer_name,$customer_status_1,$customer_status_2,$contact_name,$contact_mobile,$create_name);
+            $data = model("customer","logic")->get_customers("",$where,$keyword);
         }
 
         else{
-            $data = model("customer","logic")->get_customers($create_uids,$id_info,$customer_name,$customer_status_1,$customer_status_2,$contact_name,$contact_mobile,$create_name);
+            $data = model("customer","logic")->get_customers($create_uids,$where,$keyword);
         }
 
 
@@ -255,29 +258,34 @@ class Customer extends Base{
 
 
     public  function  customer_status_1($name){
+        $entity = model("customer","logic")->get_customer_entity();
+        $this->assign("entity",$entity);
 
-        $id_info =trim(Request::instance()->get('id_info')) ;
-        $customer_name = trim(Request::instance()->get('customer_name')) ;
-        $customer_status_1 = trim(Request::instance()->get('customer_status_1')) ;
-        $customer_status_2 = trim(Request::instance()->get('customer_status_2')) ;
-        $contact_name = trim(Request::instance()->get('contact_name')) ;
-        $contact_mobile = trim(Request::instance()->get('contact_mobile')) ;
-        $create_name = trim(Request::instance()->get('create_name')) ;
-        $this->assign("id_info",$id_info);
-        $this->assign("customer_name",$customer_name);
-        $this->assign("customer_status_1",$customer_status_1);
-        $this->assign("customer_status_2",$customer_status_2);
-        $this->assign("contact_name",$contact_name);
-        $this->assign("contact_mobile",$contact_mobile);
-        $this->assign("create_name",$create_name);
+        $status1 =trim(Request::instance()->get('customer_status_1')) ;
+        $status2 = trim(Request::instance()->get('customer_status_2')) ;
+        $keyword = trim(Request::instance()->get('keyword')) ;
+        if(!$status1){
+            $status1 =  $name;
+        }
+        $this->assign("status1",$status1);
+        $this->assign("status2",$status2);
+        $this->assign("keyword",$keyword);
         $this->assign("name",$name);
+        $where =[];
+        if($status1){
+            $where["jckk_customer.customer_status_1"]= $status1;
+        }
+        if($status2){
+            $where["jckk_customer.customer_status_2"]= $status2;
+        }
+
 
         $create_uids = $this->check_post_menu_range_permission();
         if($create_uids == "all"){
-            $data = model("customer","logic")->get_customers_by_status("customer_status_1",$name,"",$id_info,$customer_name,$customer_status_1,$customer_status_2,$contact_name,$contact_mobile,$create_name);
+            $data = model("customer","logic")->get_customers_by_status("customer_status_1",$name,"",$where,$keyword);
         }
         else{
-            $data = model("customer","logic")->get_customers_by_status("customer_status_1",$name,$create_uids,$id_info,$customer_name,$customer_status_1,$customer_status_2,$contact_name,$contact_mobile,$create_name);
+            $data = model("customer","logic")->get_customers_by_status("customer_status_1",$name,$create_uids,$where,$keyword);
         }
         return  view("customer_status_list")->assign(["data"=>$data,"name"=>$name]);
 
@@ -285,27 +293,33 @@ class Customer extends Base{
 
 
     public  function  customer_status_2($name){
-        $id_info =trim(Request::instance()->get('id_info')) ;
-        $customer_name = trim(Request::instance()->get('customer_name')) ;
-        $customer_status_1 = trim(Request::instance()->get('customer_status_1')) ;
-        $customer_status_2 = trim(Request::instance()->get('customer_status_2')) ;
-        $contact_name = trim(Request::instance()->get('contact_name')) ;
-        $contact_mobile = trim(Request::instance()->get('contact_mobile')) ;
-        $create_name = trim(Request::instance()->get('create_name')) ;
+        $entity = model("customer","logic")->get_customer_entity();
+        $this->assign("entity",$entity);
+
+        $status1 =Request::instance()->get('customer_status_1') ;
+        $status2 = Request::instance()->get('customer_status_2');
+        $keyword = trim(Request::instance()->get('keyword')) ;
+        if(!$status2){
+            $status2 =  $name;
+        }
+        $this->assign("status1",$status1);
+        $this->assign("status2",$status2);
+        $this->assign("keyword",$keyword);
         $this->assign("name",$name);
-        $this->assign("id_info",$id_info);
-        $this->assign("customer_name",$customer_name);
-        $this->assign("customer_status_1",$customer_status_1);
-        $this->assign("customer_status_2",$customer_status_2);
-        $this->assign("contact_name",$contact_name);
-        $this->assign("contact_mobile",$contact_mobile);
-        $this->assign("create_name",$create_name);
+        $where =[];
+        if($status1){
+            $where["jckk_customer.customer_status_1"]= $status1;
+        }
+        if($status2){
+            $where["jckk_customer.customer_status_2"]= $status2;
+        }
+       // dump($where);die;
         $create_uids = $this->check_post_menu_range_permission();
         if($create_uids == "all"){
-            $data = model("customer","logic")->get_customers_by_status("customer_status_2",$name,"",$id_info,$customer_name,$customer_status_1,$customer_status_2,$contact_name,$contact_mobile,$create_name);
+            $data = model("customer","logic")->get_customers_by_status("customer_status_2",$name,"",$where,$keyword);
         }
         else{
-            $data = model("customer","logic")->get_customers_by_status("customer_status_2",$name,$create_uids,$id_info,$customer_name,$customer_status_1,$customer_status_2,$contact_name,$contact_mobile,$create_name);
+            $data = model("customer","logic")->get_customers_by_status("customer_status_2",$name,$create_uids,$where,$keyword);
         }
         return  view("customer_status_list")->assign(["data"=>$data,"name"=>$name]);
 

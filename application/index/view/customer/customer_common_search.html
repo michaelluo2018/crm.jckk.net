@@ -1,50 +1,45 @@
-<div style="border: 1px dashed grey;padding: 10px;margin-bottom: 40px;" >
+<div style="margin-bottom: 40px;" >
     <form method="get">
         <input type="hidden"  name="name" {if condition="isset($name)"/} value="{$name}" {/if}>
         <div style="margin: 0 auto;">
-            <div class="p-t-20">
-                <div style="width: 25%;margin-right: 5%;margin-left: 2%;float: left;" >
-                    <p>按编号搜索：</p>
-                    <input type="text" placeholder="搜索" name="id_info" {if condition="isset($id_info)"/} value="{$id_info}" {/if} class="form-control" autocomplete="off" >
+            <div class="p-t-10" style="min-height: 80px;">
+                <div style="width: 25%;margin-right: 5%;float: left;" >
+                    <p>客户类别</p>
+                    <select name="customer_status_1" class="form-control">
+                        <option value="">请选择</option>
+                        {volist name="entity['customer_status_1']" id="customer_status_1"/}
+                            {if condition="isset($status1) and $status1 eq $customer_status_1"/}
+                                <option value="{$customer_status_1}" selected>{$customer_status_1}</option>
+                            {else/}
+                                <option value="{$customer_status_1}">{$customer_status_1}</option>
+                            {/if}
+                        {/volist}
+                    </select>
                 </div>
                 <div style="width: 25%;margin-right: 5%;float: left;" >
-                    <p>按客户全称搜索:</p>
-                    <input type="text" placeholder="搜索" name="customer_name" {if condition="isset($customer_name)"/} value="{$customer_name}" {/if} class="form-control" autocomplete="off" >
+                    <p>客户状态</p>
+                    <select name="customer_status_2" class="form-control">
+                        <option value="">请选择</option>
+                        {volist name="entity['customer_status_2']" id="customer_status_2"/}
+                            {if condition="isset($status2) and $status2 eq $customer_status_2"/}
+                                <option value="{$customer_status_2}" selected>{$customer_status_2}</option>
+                            {else/}
+                                <option value="{$customer_status_2}">{$customer_status_2}</option>
+                            {/if}
+                        {/volist}
+                    </select>
                 </div>
                 <div style="width: 25%;margin-right: 5%;float: left;" >
-                    <p>按客户类别搜索：</p>
-                    <input type="text" placeholder="搜索" name="customer_status_1" {if condition="isset($customer_status_1)"/} value="{$customer_status_1}" {/if} class="form-control" autocomplete="off" >
+                    <p>其他</p>
+                    <input type="text" placeholder="搜索" name="keyword" {if condition="isset($keyword)"/} value="{$keyword}" {/if}  class="form-control" autocomplete="off" >
                 </div>
-            </div>
-            <div class="p-t-20 clear">
-                <div style="width: 25%;margin-right: 5%;margin-left: 2%;float: left;" >
-                    <p> 按客户状态搜索：</p>
-                    <input type="text" placeholder="搜索" name="customer_status_2" {if condition="isset($customer_status_2)"/} value="{$customer_status_2}" {/if} class="form-control" autocomplete="off" >
+                <div style="float: left;padding-top: 40px;" >
+                    <input type="submit" value="搜索" class="btn btn-success ">
                 </div>
-                <div style="width: 25%;margin-right: 5%;float: left;" >
-                    <p>按联系人搜索：</p>
-                    <input type="text"  placeholder="搜索" name="contact_name" {if condition="isset($contact_name)"/} value="{$contact_name}" {/if} class="form-control" autocomplete="off">
-                </div>
-                <div style="width: 25%;margin-right: 5%;float: left;" >
-                    <p>按电话搜索：</p>
-                    <input type="text"  placeholder="搜索" name="contact_mobile" {if condition="isset($contact_mobile)"/} value="{$contact_mobile}" {/if} class="form-control" autocomplete="off" >
-                </div>
-            </div>
-            <div class="p-t-20 clear">
-                <div style="width: 25%;margin-right: 5%;margin-left: 2%;float: left;" >
-                    <p>按创建者搜索：</p>
-                    <input type="text" placeholder="搜索" name="create_name" {if condition="isset($create_name)"/} value="{$create_name}" {/if}  class="form-control" autocomplete="off" >
-                </div>
-            </div>
-            <div class="text-center clear p-t-20">
-                <input type="submit" value="搜索" class="btn btn-success ">
             </div>
         </div>
     </form>
 </div>
-
-
-
 
 <th><div class="p-b-20 ">编号 </div></th>
 <th><div class="p-b-20 ">客户全称 </div></th>
