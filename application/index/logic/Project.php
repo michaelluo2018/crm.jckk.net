@@ -168,7 +168,6 @@ class Project extends Model{
         if($customer_id){
             $where["p.customer_id"] = $customer_id;
         }
-
         if($create_uids){
             if($keyword){
                 return Db::table("jckk_project")
