@@ -204,8 +204,31 @@ class Customer extends Base{
    //客户项目查看
 
     public function  customer_project($id){
-
-        $projects = model("project","logic")->get_projects($id);
+        $data = model("project", "logic")->get_project_total_entity();
+        $this->assign("data",$data);
+        $contract_status = Request::instance()->get('contract_status');//合同状态
+        $payment_status = Request::instance()->get('payment_status'); //回款状态
+        $product_demand = Request::instance()->get('product_demand'); //产品需求
+        $keyword = trim(Request::instance()->get('keyword')) ;
+        $this->assign("contractStatus",$contract_status);
+        $this->assign("paymentStatus",$payment_status);
+        $this->assign("productDemand",$product_demand);
+        $this->assign("keyword",$keyword);
+        $this->assign("id",$id);
+        $where =[];
+        if($contract_status){
+            $where["p.contract_status"]= $contract_status;
+        }
+        if($payment_status){
+            $where["p.payment_status"]= $payment_status;
+        }
+        if($product_demand){
+            $where["p.product_demand_1"]= $product_demand ;
+        }
+        $mid = $this->get_mid_by_url("index/project/project_list");
+        $this->menu_id = $mid;
+        $create_uids = $this->check_post_menu_range_permission();
+        $projects = model("project","logic")->get_projects($id,$create_uids,$where);
         $array =collection($projects)->toArray();
 
         if(empty($array)){
