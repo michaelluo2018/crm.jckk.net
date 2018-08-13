@@ -228,7 +228,7 @@ class Customer extends Base{
         $mid = $this->get_mid_by_url("index/project/project_list");
         $this->menu_id = $mid;
         $create_uids = $this->check_post_menu_range_permission();
-        dump($create_uids);
+        dump($create_uids);die;
         $projects = model("project","logic")->get_projects($id,$create_uids,$where);
         $array =collection($projects)->toArray();
 
