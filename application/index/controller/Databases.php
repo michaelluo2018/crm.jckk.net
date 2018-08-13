@@ -4,7 +4,7 @@ namespace  app\index\controller;
 use extend\DbManage;
 use think\Config;
 use think\Request;
-use app\index\model\Log;
+use app\common\model\Log;
 require ROOT_PATH .'/extend/DbManage.php';
 
 class Databases extends Base{
