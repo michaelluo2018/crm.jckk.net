@@ -3,6 +3,7 @@ namespace  app\index\controller;
 
 use think\Config;
 
+use think\Cookie;
 use think\Request;
 use think\Session;
 
@@ -21,10 +22,24 @@ class Project extends Base {
     public function project_list(){
         $data = model("project", "logic")->get_project_total_entity();
         $this->assign("data",$data);
-        $contract_status = Request::instance()->get('contract_status');//合同状态
-        $payment_status = Request::instance()->get('payment_status'); //回款状态
-        $product_demand = Request::instance()->get('product_demand'); //产品需求
-        $keyword = trim(Request::instance()->get('keyword')) ;
+
+        if(isset($_GET['contract_status'])){
+            Cookie::set('pl_contract_status',$_GET['contract_status'],30*24*3600);
+        }
+        if(isset($_GET['payment_status'])){
+            Cookie::set('pl_payment_status',$_GET['payment_status'],30*24*3600);
+        }
+        if(isset($_GET['product_demand'])){
+            Cookie::set('pl_product_demand',$_GET['product_demand'],30*24*3600);
+        }
+        if(isset($_GET['keyword'])){
+            Cookie::set('pl_keyword',$_GET['keyword'],30*24*3600);
+        }
+        $contract_status = Cookie::get('pl_contract_status');
+        $payment_status = Cookie::get('pl_payment_status');
+        $product_demand = Cookie::get('pl_product_demand');
+        $keyword = Cookie::get('pl_keyword');
+
         $this->assign("contractStatus",$contract_status);
         $this->assign("paymentStatus",$payment_status);
         $this->assign("productDemand",$product_demand);
@@ -61,10 +76,26 @@ class Project extends Base {
 
         $data = model("project", "logic")->get_project_total_entity();
         $this->assign("data",$data);
-        $contract_status = Request::instance()->get('contract_status');//合同状态
-        $payment_status = Request::instance()->get('payment_status'); //回款状态
-        $product_demand = Request::instance()->get('product_demand'); //产品需求
-        $keyword = trim(Request::instance()->get('keyword')) ;
+
+        if(isset($_GET['contract_status'])){
+            Cookie::set('cs_contract_status',$_GET['contract_status'],30*24*3600);
+        }
+        if(isset($_GET['payment_status'])){
+            Cookie::set('cs_payment_status',$_GET['payment_status'],30*24*3600);
+        }
+        if(isset($_GET['product_demand'])){
+            Cookie::set('cs_product_demand',$_GET['product_demand'],30*24*3600);
+        }
+        if(isset($_GET['keyword'])){
+            Cookie::set('cs_keyword',$_GET['keyword'],30*24*3600);
+        }
+        $contract_status = Cookie::get('cs_contract_status');
+        $payment_status = Cookie::get('cs_payment_status');
+        $product_demand = Cookie::get('cs_product_demand');
+        $keyword = Cookie::get('cs_keyword');
+        if(!$contract_status){
+            $contract_status = $name;
+        }
         $this->assign("contractStatus",$contract_status);
         $this->assign("paymentStatus",$payment_status);
         $this->assign("productDemand",$product_demand);
@@ -100,10 +131,27 @@ class Project extends Base {
     public  function  product_demand($name){
         $data = model("project", "logic")->get_project_total_entity();
         $this->assign("data",$data);
-        $contract_status = Request::instance()->get('contract_status');//合同状态
-        $payment_status = Request::instance()->get('payment_status'); //回款状态
-        $product_demand = Request::instance()->get('product_demand'); //产品需求
-        $keyword = trim(Request::instance()->get('keyword')) ;
+
+        if(isset($_GET['contract_status'])){
+            Cookie::set('pd_contract_status',$_GET['contract_status'],30*24*3600);
+        }
+        if(isset($_GET['payment_status'])){
+            Cookie::set('pd_payment_status',$_GET['payment_status'],30*24*3600);
+        }
+        if(isset($_GET['product_demand'])){
+            Cookie::set('pd_product_demand',$_GET['product_demand'],30*24*3600);
+        }
+        if(isset($_GET['keyword'])){
+            Cookie::set('pd_keyword',$_GET['keyword'],30*24*3600);
+        }
+        $contract_status = Cookie::get('pd_contract_status');
+        $payment_status = Cookie::get('pd_payment_status');
+        $product_demand = Cookie::get('pd_product_demand');
+        $keyword = Cookie::get('pd_keyword');
+
+        if(!$product_demand){
+            $product_demand = $name;
+        }
         $this->assign("contractStatus",$contract_status);
         $this->assign("paymentStatus",$payment_status);
         $this->assign("productDemand",$product_demand);
@@ -137,10 +185,24 @@ class Project extends Base {
     public function project_recycle(){
         $data = model("project", "logic")->get_project_total_entity();
         $this->assign("data",$data);
-        $contract_status = Request::instance()->get('contract_status');//合同状态
-        $payment_status = Request::instance()->get('payment_status'); //回款状态
-        $product_demand = Request::instance()->get('product_demand'); //产品需求
-        $keyword = trim(Request::instance()->get('keyword')) ;
+
+        if(isset($_GET['contract_status'])){
+            Cookie::set('pr_contract_status',$_GET['contract_status'],30*24*3600);
+        }
+        if(isset($_GET['payment_status'])){
+            Cookie::set('pr_payment_status',$_GET['payment_status'],30*24*3600);
+        }
+        if(isset($_GET['product_demand'])){
+            Cookie::set('pr_product_demand',$_GET['product_demand'],30*24*3600);
+        }
+        if(isset($_GET['keyword'])){
+            Cookie::set('pr_keyword',$_GET['keyword'],30*24*3600);
+        }
+        $contract_status = Cookie::get('pr_contract_status');
+        $payment_status = Cookie::get('pr_payment_status');
+        $product_demand = Cookie::get('pr_product_demand');
+        $keyword = Cookie::get('pr_keyword');
+
         $this->assign("contractStatus",$contract_status);
         $this->assign("paymentStatus",$payment_status);
         $this->assign("productDemand",$product_demand);

@@ -1,6 +1,7 @@
 <?php
 namespace  app\index\controller;
 use app\index\controller\Base;
+use think\Cookie;
 use think\Request;
 
 
@@ -20,9 +21,21 @@ class Customer extends Base{
         $entity = model("customer","logic")->get_customer_entity();
         $this->assign("entity",$entity);
 
-        $status1 =trim(Request::instance()->get('customer_status_1')) ;
-        $status2 = trim(Request::instance()->get('customer_status_2')) ;
-        $keyword = trim(Request::instance()->get('keyword')) ;
+        if(isset($_GET['customer_status_1'])){
+            Cookie::set('cl_status1',$_GET['customer_status_1'],30*24*3600);
+        }
+
+        if(isset($_GET['customer_status_2'])){
+            Cookie::set('cl_status2',$_GET['customer_status_2'],30*24*3600);
+        }
+
+        if(isset($_GET['keyword'])){
+            Cookie::set('cl_keyword',$_GET['keyword'],30*24*3600);
+        }
+        $status1 = Cookie::get('cl_status1');
+        $status2 = Cookie::get('cl_status2');
+        $keyword = Cookie::get('cl_keyword');
+
         $this->assign("status1",$status1);
         $this->assign("status2",$status2);
         $this->assign("keyword",$keyword);
@@ -206,10 +219,26 @@ class Customer extends Base{
     public function  customer_project($id){
         $data = model("project", "logic")->get_project_total_entity();
         $this->assign("data",$data);
-        $contract_status = Request::instance()->get('contract_status');//合同状态
-        $payment_status = Request::instance()->get('payment_status'); //回款状态
-        $product_demand = Request::instance()->get('product_demand'); //产品需求
-        $keyword = trim(Request::instance()->get('keyword')) ;
+
+        if(isset($_GET['contract_status'])){
+            Cookie::set('cp_contract_status',$_GET['contract_status'],30*24*3600);
+        }
+
+        if(isset($_GET['payment_status'])){
+            Cookie::set('cp_payment_status',$_GET['payment_status'],30*24*3600);
+        }
+
+        if(isset($_GET['product_demand'])){
+            Cookie::set('cp_product_demand',$_GET['product_demand'],30*24*3600);
+        }
+        if(isset($_GET['keyword'])){
+            Cookie::set('cp_keyword',$_GET['keyword'],30*24*3600);
+        }
+        $contract_status = Cookie::get('cp_contract_status');
+        $payment_status = Cookie::get('cp_payment_status');
+        $product_demand = Cookie::get('cp_product_demand');
+        $keyword = Cookie::get('cp_keyword');
+
         $this->assign("contractStatus",$contract_status);
         $this->assign("paymentStatus",$payment_status);
         $this->assign("productDemand",$product_demand);
@@ -289,9 +318,21 @@ class Customer extends Base{
         $entity = model("customer","logic")->get_customer_entity();
         $this->assign("entity",$entity);
 
-        $status1 =trim(Request::instance()->get('customer_status_1')) ;
-        $status2 = trim(Request::instance()->get('customer_status_2')) ;
-        $keyword = trim(Request::instance()->get('keyword')) ;
+        if(isset($_GET['customer_status_1'])){
+            Cookie::set('cs1_status1',$_GET['customer_status_1'],30*24*3600);
+        }
+
+        if(isset($_GET['customer_status_2'])){
+            Cookie::set('cs1_status2',$_GET['customer_status_2'],30*24*3600);
+        }
+
+        if(isset($_GET['keyword'])){
+            Cookie::set('cs1_keyword',$_GET['keyword'],30*24*3600);
+        }
+        $status1 = Cookie::get('cs1_status1');
+        $status2 = Cookie::get('cs1_status2');
+        $keyword = Cookie::get('cs1_keyword');
+
         if(!$status1){
             $status1 =  $name;
         }
@@ -324,9 +365,21 @@ class Customer extends Base{
         $entity = model("customer","logic")->get_customer_entity();
         $this->assign("entity",$entity);
 
-        $status1 =Request::instance()->get('customer_status_1') ;
-        $status2 = Request::instance()->get('customer_status_2');
-        $keyword = trim(Request::instance()->get('keyword')) ;
+        if(isset($_GET['customer_status_1'])){
+            Cookie::set('cs2_status1',$_GET['customer_status_1'],30*24*3600);
+        }
+
+        if(isset($_GET['customer_status_2'])){
+            Cookie::set('cs2_status2',$_GET['customer_status_2'],30*24*3600);
+        }
+
+        if(isset($_GET['keyword'])){
+            Cookie::set('cs2_keyword',$_GET['keyword'],30*24*3600);
+        }
+        $status1 = Cookie::get('cs2_status1');
+        $status2 = Cookie::get('cs2_status2');
+        $keyword = Cookie::get('cs2_keyword');
+
         if(!$status2){
             $status2 =  $name;
         }
