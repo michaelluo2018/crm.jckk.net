@@ -155,8 +155,8 @@ class Customer extends Base{
                 echo "<script> alert(\" ".$result."\"); history.back(-1);</script>";
             }
             else{
-
-                $this->redirect("customer_list");
+                echo "<script> history.back(-1);</script>";
+               // $this->redirect("customer_list");
             }
         }
 
