@@ -328,7 +328,7 @@ class Customer extends  Model{
     public  function delete_customer($id)
     {
 //检测客户是否有项目
-        $projects = model("project","logic")->get_projects($id);
+        $projects = model("project")->where('customer_id',$id)->select();
         $array = collection($projects)->toArray();
         if(empty($array)) {
             $customer = $this->where("id",$id)->find();
